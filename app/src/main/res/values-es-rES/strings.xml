@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Ayuda EPOC</string>
+
+    <!-- Exception messages -->
+    <string name="exception_message_generic">There was an application error</string>
+    <string name="exception_message_internet_not_available">There is no internet connection</string>
 </resources>
