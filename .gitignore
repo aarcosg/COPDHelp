@@ -1,0 +1,13 @@
+/.idea
+.DS_Store
+/captures
+bin/
+gen/
+.gradle/
+build/
+/*/build/
+local.properties
+/gradle.properties
+proguard/
+*.log
+*.iml
