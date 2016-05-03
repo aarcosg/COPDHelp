@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
@@ -13,10 +14,13 @@ import com.aarcosg.copdhelp.di.components.DaggerMainComponent;
 import com.aarcosg.copdhelp.di.components.MainComponent;
 import com.aarcosg.copdhelp.mvp.presenter.MainPresenter;
 import com.aarcosg.copdhelp.mvp.view.MainView;
+import com.aarcosg.copdhelp.ui.fragment.MedicalAttentionMainFragment;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 
 import javax.inject.Inject;
 
@@ -26,6 +30,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity implements MainView, HasComponent<MainComponent> {
 
     private static final String TAG = MainActivity.class.getCanonicalName();
+    private static final int MEDICAL_ATTENTION_MAIN_ID = 1;
 
     @Inject
     MainPresenter mMainPresenter;
@@ -45,6 +50,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
         ButterKnife.bind(this);
         setupToolbar();
         setupNavigationDrawer(savedInstanceState);
+        selectDrawerItem(MEDICAL_ATTENTION_MAIN_ID);
     }
 
     @Override
@@ -103,7 +109,35 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 .withDisplayBelowStatusBar(false)
                 .withTranslucentStatusBar(true)
                 .withAccountHeader(accountHeader)
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName(getString(R.string.medical_attention)).withIcon(GoogleMaterial.Icon.gmd_local_hospital).withIdentifier(MEDICAL_ATTENTION_MAIN_ID)
+                )
+                .withOnDrawerItemClickListener((view, position, drawerItem) -> {
+                    if(drawerItem != null){
+                        selectDrawerItem((int)drawerItem.getIdentifier());
+                    }
+                    return false;
+                })
                 .build();
+    }
+
+    private boolean selectDrawerItem(int fragmentId) {
+        Fragment fragment;
+        switch (fragmentId){
+            case MEDICAL_ATTENTION_MAIN_ID:
+                setTitle(getString(R.string.title_fragment_medical_attention));
+                fragment = MedicalAttentionMainFragment.newInstance();
+                break;
+            default:
+                setTitle(getString(R.string.title_fragment_medical_attention));
+                fragment = MedicalAttentionMainFragment.newInstance();
+        }
+
+        if(fragment != null){
+            replaceFragment(R.id.fragment_container,fragment);
+        }
+
+        return false;
     }
 
     private void initializeInjector() {

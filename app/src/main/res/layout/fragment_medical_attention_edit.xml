@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.MedicalAttentionEditFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <include layout="@layout/progress_bar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/mid_space">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:ico_color="@color/icons_dark"
+                app:ico_icon="cmd_stethoscope"
+                app:ico_size="@dimen/icon_default_size"/>
+
+            <Spinner
+                android:id="@+id/type_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/left_margin_list_after_icon"
+                android:layout_marginStart="@dimen/left_margin_list_after_icon"
+                android:entries="@array/medical_attention_type"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_height"
+            style="@style/ListDivider"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/mid_space">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:ico_color="@color/icons_dark"
+                app:ico_icon="gmd_event"
+                app:ico_size="@dimen/icon_default_size" />
+
+            <TextView
+                android:id="@+id/date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/left_margin_list_after_icon"
+                android:layout_marginStart="@dimen/left_margin_list_after_icon"
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                android:clickable="true"
+                android:background="?selectableItemBackground"
+                android:text="@string/add_date"/>
+
+            <TextView
+                android:id="@+id/time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/wide_space"
+                android:layout_marginStart="@dimen/wide_space"
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                android:clickable="true"
+                android:background="?selectableItemBackground"
+                android:text="@string/add_time"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_height"
+            style="@style/ListDivider"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/mid_space">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:ico_color="@color/icons_dark"
+                app:ico_icon="gmd_subject"
+                app:ico_size="@dimen/icon_default_size"/>
+
+            <EditText
+                android:id="@+id/note_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/left_margin_list_after_icon"
+                android:layout_marginStart="@dimen/left_margin_list_after_icon"
+                android:inputType="textMultiLine"
+                android:hint="@string/add_note"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_height"
+            style="@style/ListDivider"/>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

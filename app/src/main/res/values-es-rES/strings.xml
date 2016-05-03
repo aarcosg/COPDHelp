@@ -3,6 +3,21 @@
     <string name="app_name">Ayuda EPOC</string>
 
     <!-- Exception messages -->
-    <string name="exception_message_generic">There was an application error</string>
-    <string name="exception_message_internet_not_available">There is no internet connection</string>
+    <string name="exception_message_generic">Se ha producido un error. Inténtelo más tarde.</string>
+    <string name="exception_message_internet_not_available">No hay conexión a internet</string>
+
+    <!-- Fragment titles -->
+    <string name="title_fragment_medical_attention">Atención sanitaria</string>
+    <string name="title_fragment_medical_attention_add">Nueva atención sanitaria</string>
+    <string name="title_fragment_medical_attention_edit">Editar atención sanitaria</string>
+
+    <string name="medical_attention">Atención sanitaria</string>
+    <string name="add_date">Añadir día</string>
+    <string name="add_time">Añadir hora</string>
+    <string name="add_note">Añadir nota</string>
+    <string name="save">Guardar</string>
+    <string name="add">Añadir</string>
+    <string name="edit">Editar</string>
+
+
 </resources>

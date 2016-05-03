@@ -9,6 +9,7 @@ import com.aarcosg.copdhelp.di.modules.InteractorsModule;
 import com.aarcosg.copdhelp.di.modules.NetworkModule;
 import com.aarcosg.copdhelp.di.scopes.PerApp;
 import com.aarcosg.copdhelp.interactor.MainInteractor;
+import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractor;
 import com.aarcosg.copdhelp.ui.activity.BaseActivity;
 import com.aarcosg.copdhelp.utils.RxNetwork;
 import com.google.gson.Gson;
@@ -37,5 +38,6 @@ public interface ApplicationComponent {
     COPDHelpApi getCOPDHelpApi();
 
     MainInteractor getMainInteractor();
+    MedicalAttentionInteractor getMedicalAttentionInteractor();
 
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="medical_attention_type">
+        <item>@string/medical_attention_type_checkup</item>
+        <item>@string/medical_attention_type_emergency</item>
+    </string-array>
+</resources>
