@@ -3,14 +3,14 @@ package com.aarcosg.copdhelp.ui.fragment;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,11 +22,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.aarcosg.copdhelp.R;
-import com.aarcosg.copdhelp.data.api.entity.MedicalAttentionEntity;
+import com.aarcosg.copdhelp.data.entity.MedicalAttention;
 import com.aarcosg.copdhelp.di.components.MedicalAttentionComponent;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionEditPresenter;
 import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionEditView;
@@ -44,7 +43,7 @@ import butterknife.OnClick;
 public class MedicalAttentionEditFragment extends BaseFragment implements MedicalAttentionEditView {
 
     private static final String TAG = MedicalAttentionEditFragment.class.getCanonicalName();
-    private static final String EXTRA_MEDICAL_ATTENTION = "extra_medical_attention";
+    private static final String EXTRA_MEDICAL_ATTENTION = "extra_medical_attention_id";
 
     @Inject
     MedicalAttentionEditPresenter mMedicalAttentionEditPresenter;
@@ -58,10 +57,9 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
     @Bind(R.id.note_et)
     EditText mNoteEt;
     static TextView mDateTv;
-    static TextView mTimeTv;
 
     private static Calendar mMedicalAttentionTime;
-    private MedicalAttentionEntity mMedicalAttentionEntity;
+    private MedicalAttention mMedicalAttention;
 
     public static MedicalAttentionEditFragment newInstance() {
         MedicalAttentionEditFragment fragment = new MedicalAttentionEditFragment();
@@ -70,10 +68,10 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
         return fragment;
     }
 
-    public static Fragment newInstance(MedicalAttentionEntity medicalAttentionEntity) {
+    public static Fragment newInstance(Integer medicalAttentionId) {
         MedicalAttentionEditFragment fragment = new MedicalAttentionEditFragment();
         Bundle args = new Bundle();
-        args.putParcelable(EXTRA_MEDICAL_ATTENTION, medicalAttentionEntity);
+        args.putInt(EXTRA_MEDICAL_ATTENTION, medicalAttentionId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -87,9 +85,6 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
         super.onCreate(savedInstanceState);
         getComponent(MedicalAttentionComponent.class).inject(this);
         mMedicalAttentionEditPresenter.setView(this);
-        if (!getArguments().isEmpty() && getArguments().containsKey(EXTRA_MEDICAL_ATTENTION)) {
-            mMedicalAttentionEntity = getArguments().getParcelable(EXTRA_MEDICAL_ATTENTION);
-        }
         mMedicalAttentionTime = Calendar.getInstance();
     }
 
@@ -98,16 +93,43 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
         final View fragmentView = inflater.inflate(R.layout.fragment_medical_attention_edit, container, false);
         ButterKnife.bind(this, fragmentView);
         mDateTv = ButterKnife.findById(fragmentView,R.id.date_tv);
-        mTimeTv = ButterKnife.findById(fragmentView,R.id.time_tv);
-        setupToolbar();
         setHasOptionsMenu(true);
         return fragmentView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setupToolbar();
+        setDateTV(mMedicalAttentionTime);
+        if (!getArguments().isEmpty() && getArguments().containsKey(EXTRA_MEDICAL_ATTENTION)) {
+            mMedicalAttentionEditPresenter.loadMedicalAttention(
+                    getArguments().getInt(EXTRA_MEDICAL_ATTENTION)
+            );
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mMedicalAttentionEditPresenter.onPause();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void bindMedicalAttention(MedicalAttention medicalAttention) {
+        mMedicalAttention = medicalAttention;
+        if(mMedicalAttention != null){
+            mTypeSpinner.setSelection(mMedicalAttention.getType());
+            mMedicalAttentionTime.setTimeInMillis(mMedicalAttention.getTime().getTime());
+            setDateTV(mMedicalAttentionTime);
+            mNoteEt.setText(mMedicalAttention.getNote());
+        }
     }
 
     @Override
@@ -121,6 +143,24 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
     }
 
     @Override
+    public void onRealmSuccess() {
+        Toast.makeText(getContext()
+                ,R.string.medical_attention_realm_success
+                ,Toast.LENGTH_LONG)
+                .show();
+        getActivity().finish();
+    }
+
+    @Override
+    public void onRealmError() {
+        Snackbar.make(mToolbar.getRootView()
+                ,R.string.medical_attention_realm_error
+                ,Snackbar.LENGTH_LONG)
+                .setAction(R.string.retry,v -> saveMedicalAttention())
+                .show();
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.medical_attention_edit, menu);
         super.onCreateOptionsMenu(menu, inflater);
@@ -130,7 +170,7 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_save:
-                Toast.makeText(getContext(), R.string.save, Toast.LENGTH_LONG).show();
+                saveMedicalAttention();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -141,18 +181,8 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
         new DatePickerFragment().show(getSupportFragmentManager(), "datePicker");
     }
 
-    @OnClick(R.id.time_tv)
-    public void onTimeClick(){
-        new TimePickerFragment().show(getSupportFragmentManager(), "timePicker");
-    }
-
     private void setupToolbar() {
         mToolbar.setTitle(R.string.title_fragment_medical_attention);
-        if (mMedicalAttentionEntity == null) {
-            mToolbar.setSubtitle(R.string.add);
-        } else {
-            mToolbar.setSubtitle(R.string.edit);
-        }
         mToolbar.setNavigationIcon(new IconicsDrawable(getContext())
                 .icon(GoogleMaterial.Icon.gmd_clear)
                 .color(Color.WHITE)
@@ -161,26 +191,30 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-
-    public static class TimePickerFragment extends DialogFragment
-            implements TimePickerDialog.OnTimeSetListener {
-
-        @Override
-        public Dialog onCreateDialog(@NonNull Bundle savedInstanceState) {
-            final Calendar c = Calendar.getInstance();
-            int hour = c.get(Calendar.HOUR_OF_DAY);
-            int minute = c.get(Calendar.MINUTE);
-            return new TimePickerDialog(getActivity(), this, hour, minute,
-                    DateFormat.is24HourFormat(getActivity()));
-        }
-
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            mTimeTv.setText(getString(R.string.time_string, hourOfDay, String.format("%02d", minute)));
-            mMedicalAttentionTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-            mMedicalAttentionTime.set(Calendar.MINUTE, minute);
-        }
+    private void setDateTV(Calendar calendar){
+        mDateTv.setText(getString(R.string.date_string,
+                calendar.get(Calendar.DAY_OF_MONTH),
+                String.format("%02d",
+                        calendar.get(Calendar.MONTH) + 1),
+                calendar.get(Calendar.YEAR))
+        );
     }
 
+    private void saveMedicalAttention(){
+        if(mMedicalAttention == null){
+            MedicalAttention medicalAttention = new MedicalAttention(
+                    mTypeSpinner.getSelectedItemPosition(),
+                    mMedicalAttentionTime.getTime(),
+                    mNoteEt.getText().toString()
+            );
+            mMedicalAttentionEditPresenter.createMedicalAttention(medicalAttention);
+        }else{
+            mMedicalAttention.setType(mTypeSpinner.getSelectedItemPosition());
+            mMedicalAttention.setTime(mMedicalAttentionTime.getTime());
+            mMedicalAttention.setNote(mNoteEt.getText().toString());
+            mMedicalAttentionEditPresenter.editMedicalAttention(mMedicalAttention);
+        }
+    }
 
     public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {

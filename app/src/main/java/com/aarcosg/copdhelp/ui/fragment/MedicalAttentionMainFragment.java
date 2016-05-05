@@ -2,7 +2,10 @@ package com.aarcosg.copdhelp.ui.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +17,11 @@ import com.aarcosg.copdhelp.di.components.MainComponent;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionMainPresenter;
 import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionMainView;
 import com.aarcosg.copdhelp.ui.activity.MedicalAttentionEditActivity;
+import com.aarcosg.copdhelp.ui.adapter.MedicalAttentionItem;
+import com.aarcosg.copdhelp.ui.decorator.SimpleDividerItemDecoration;
+import com.mikepenz.fastadapter.adapters.FastItemAdapter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -33,6 +41,8 @@ public class MedicalAttentionMainFragment extends BaseFragment implements Medica
     RecyclerView mRecyclerView;
     @Bind(R.id.medical_attention_fab)
     FloatingActionButton mFab;
+
+    private FastItemAdapter<MedicalAttentionItem> mAdapter = new FastItemAdapter<>();
 
     public static MedicalAttentionMainFragment newInstance() {
         MedicalAttentionMainFragment fragment = new MedicalAttentionMainFragment();
@@ -57,13 +67,31 @@ public class MedicalAttentionMainFragment extends BaseFragment implements Medica
         final View fragmentView = inflater.inflate(R.layout.fragment_medical_attention_main, container, false);
         ButterKnife.bind(this, fragmentView);
         setupFab();
+        setupRecyclerView();
         return fragmentView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mMedicalAttentionMainPresenter.loadAllMedicalAttentions();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mMedicalAttentionMainPresenter.onPause();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void bindMedicalAttentions(List<MedicalAttentionItem> medicalAttentions) {
+        mAdapter.add(medicalAttentions);
     }
 
     @Override
@@ -80,6 +108,13 @@ public class MedicalAttentionMainFragment extends BaseFragment implements Medica
         mFab.setOnClickListener(v ->
                 MedicalAttentionEditActivity.launch(this.getActivity())
         );
+    }
+
+    private void setupRecyclerView(){
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
+        mRecyclerView.setAdapter(mAdapter);
     }
 
 }

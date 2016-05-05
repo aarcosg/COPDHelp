@@ -8,8 +8,16 @@ import android.support.v7.widget.Toolbar;
 import com.aarcosg.copdhelp.di.HasComponent;
 import com.aarcosg.copdhelp.ui.activity.BaseActivity;
 
+import io.realm.Realm;
+
 
 public abstract class BaseFragment extends Fragment {
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Realm.getDefaultInstance().close();
+    }
 
     @SuppressWarnings("unchecked")
     protected <C> C getComponent(Class<C> componentType){

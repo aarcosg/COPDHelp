@@ -8,6 +8,7 @@ import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractorImpl;
 
 import dagger.Module;
 import dagger.Provides;
+import io.realm.Realm;
 
 @Module
 public class InteractorsModule {
