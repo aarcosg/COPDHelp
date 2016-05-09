@@ -18,7 +18,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         this.getApplicationComponent().inject(this);
     }
 
-     @Override
+    @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(IconicsContextWrapper.wrap(newBase));
     }
@@ -37,5 +37,15 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected ActivityModule getActivityModule(){
         return new ActivityModule(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        if (count == 0) {
+            super.onBackPressed();
+        } else {
+            getSupportFragmentManager().popBackStackImmediate();
+        }
     }
 }

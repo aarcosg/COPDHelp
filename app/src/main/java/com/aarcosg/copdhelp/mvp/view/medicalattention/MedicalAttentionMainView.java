@@ -1,9 +1,9 @@
 package com.aarcosg.copdhelp.mvp.view.medicalattention;
 
+import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
 import com.aarcosg.copdhelp.mvp.view.View;
-import com.aarcosg.copdhelp.ui.adapter.MedicalAttentionItem;
 
-import java.util.List;
+import io.realm.RealmResults;
 
 public interface MedicalAttentionMainView extends View {
 
@@ -11,5 +11,15 @@ public interface MedicalAttentionMainView extends View {
 
     void hideProgressBar();
 
-    void bindMedicalAttentions(List<MedicalAttentionItem> medicalAttentions);
+    void bindAllMedicalAttentions(RealmResults<MedicalAttention> medicalAttentions);
+
+    void showEmptyView();
+
+    void hideEmptyView();
+
+    void showLoadAllRealmErrorMessage();
+
+    void showRemoveRealmSuccessMessage();
+
+    void showRemoveRealmErrorMessage();
 }

@@ -1,18 +1,19 @@
 package com.aarcosg.copdhelp.interactor;
 
-import com.aarcosg.copdhelp.data.entity.MedicalAttention;
+import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
 
-import java.util.List;
-
+import io.realm.RealmResults;
 import rx.Observable;
 
 public interface MedicalAttentionInteractor extends Interactor {
 
-    Observable<List<MedicalAttention>> realmFindAll();
+    Observable<RealmResults<MedicalAttention>> realmFindAll();
 
-    Observable<MedicalAttention> realmFindById(int id);
+    Observable<MedicalAttention> realmFindById(Long id);
 
-    Observable<Boolean> realmCreate(MedicalAttention medicalAttention);
+    Observable<MedicalAttention> realmCreate(MedicalAttention medicalAttention);
 
-    Observable<Boolean> realmUpdate(MedicalAttention medicalAttention);
+    Observable<MedicalAttention> realmUpdate(Long id, MedicalAttention medicalAttention);
+
+    Observable<MedicalAttention> realmRemove(Long id);
 }

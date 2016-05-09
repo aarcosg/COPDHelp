@@ -7,11 +7,11 @@
     <color name="accent">@color/md_red_A200</color>
     <color name="primary_text">@color/md_grey_900</color>
     <color name="secondary_text">@color/md_grey_600</color>
-    <color name="icons_light">@color/md_white_1000</color>
     <color name="divider">@color/md_grey_400</color>
     <color name="fab_normal">@color/md_red_A200</color>
     <color name="fab_pressed">@color/md_red_400</color>
     <color name="fab_ripple">#99FFFFFF</color>
-    <color name="icons_dark">@color/md_grey_700</color>
+    <color name="icon_light">@color/md_white_1000</color>
+    <color name="icon_dark">@color/md_grey_700</color>
 
 </resources>

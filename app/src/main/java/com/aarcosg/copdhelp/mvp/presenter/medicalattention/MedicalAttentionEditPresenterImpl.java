@@ -1,6 +1,6 @@
 package com.aarcosg.copdhelp.mvp.presenter.medicalattention;
 
-import com.aarcosg.copdhelp.data.entity.MedicalAttention;
+import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
 import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractor;
 import com.aarcosg.copdhelp.mvp.view.View;
 import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionEditView;
@@ -35,37 +35,38 @@ public class MedicalAttentionEditPresenterImpl implements MedicalAttentionEditPr
     }
 
     @Override
-    public void loadMedicalAttention(int id) {
+    public void loadMedicalAttention(Long id) {
         mSubscription = mMedicalAttentionInteractor.realmFindById(id)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(medicalAttention ->
-                        mMedicalAttentionEditView.bindMedicalAttention(medicalAttention)
+                .subscribe(
+                        medicalAttention ->
+                                mMedicalAttentionEditView.bindMedicalAttention(medicalAttention)
+                        ,throwable ->
+                                mMedicalAttentionEditView.showMedicalAttentionNotFoundError()
                 );
     }
 
     @Override
-    public void createMedicalAttention(MedicalAttention medicalAttention) {
+    public void addMedicalAttention(MedicalAttention medicalAttention) {
         mSubscription = mMedicalAttentionInteractor.realmCreate(medicalAttention)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(success -> {
-                    if(success){
-                        mMedicalAttentionEditView.onRealmSuccess();
-                    }else{
-                        mMedicalAttentionEditView.onRealmError();
-                    }
-                });
+                .subscribe(
+                        realmMedicalAttention ->
+                                mMedicalAttentionEditView.showSaveRealmSuccessMessage()
+                        ,throwable ->
+                                mMedicalAttentionEditView.showSaveRealmErrorMessage()
+                );
     }
 
     @Override
-    public void editMedicalAttention(MedicalAttention medicalAttention) {
-        mSubscription = mMedicalAttentionInteractor.realmUpdate(medicalAttention)
+    public void editMedicalAttention(Long id, MedicalAttention medicalAttention) {
+        mSubscription = mMedicalAttentionInteractor.realmUpdate(id,medicalAttention)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(success -> {
-                    if(success){
-                        mMedicalAttentionEditView.onRealmSuccess();
-                    }else{
-                        mMedicalAttentionEditView.onRealmError();
-                    }
-                });
+                .subscribe(
+                        realmMedicalAttention ->
+                                mMedicalAttentionEditView.showSaveRealmSuccessMessage()
+                        ,throwable ->
+                                mMedicalAttentionEditView.showSaveRealmErrorMessage()
+                );
     }
 }

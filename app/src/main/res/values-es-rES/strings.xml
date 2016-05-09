@@ -15,15 +15,26 @@
     <string name="add_date">Añadir día</string>
     <string name="add_time">Añadir hora</string>
     <string name="add_note">Añadir nota</string>
+    <string name="note">Nota</string>
     <string name="save">Guardar</string>
     <string name="add">Añadir</string>
     <string name="edit">Editar</string>
     <string name="retry">Reintentar</string>
+    <string name="empty_data">No hay datos registrados</string>
 
     <!-- Toast & Snackbars messages -->
-    <string name="medical_attention_realm_success">Atención sanitaria guardada</string>
-    <string name="medical_attention_realm_error">Error al guardar la atención sanitaria</string>
-    <string name="note">Nota</string>
+    <string name="medical_attention_save_realm_success">Atención sanitaria guardada</string>
+    <string name="medical_attention_save_realm_error">Error al guardar la atención sanitaria</string>
+    <string name="medical_attention_load_realm_error">Error al cargar las asistencias médicas</string>
+    <string name="medical_attention_not_found_realm_error">Asistencia médica no encontrada</string>
+
+    <!-- Arrays -->
+    <string name="medical_attention_type_checkup">Revisión</string>
+    <string name="medical_attention_type_emergency">Urgencia</string>
+    <string name="delete">Eliminar</string>
+    <string name="ask_delete_medical_attention">¿Desea eliminar la atención sanitaria?</string>
+    <string name="medical_attention_remove_realm_success">Atención sanitaria eliminada</string>
+    <string name="medical_attention_remove_realm_error">Error al eliminar la atención sanitaria</string>
 
 
 </resources>

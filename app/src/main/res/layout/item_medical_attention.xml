@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/icon_iv"
         android:layout_toEndOf="@id/icon_iv"
-        style="@style/TextAppearance.AppCompat.Large"
+        style="@style/TextAppearance.AppCompat.Medium"
         android:fontFamily="sans-serif-light"
         android:text="@string/medical_attention_type_checkup"/>
 
@@ -33,6 +33,8 @@
         android:layout_toEndOf="@id/icon_iv"
         style="@style/TextAppearance.AppCompat.Small"
         android:fontFamily="sans-serif-light"
+        android:maxLines="2"
+        android:ellipsize="end"
         android:text="@string/note"/>
 
     <TextView

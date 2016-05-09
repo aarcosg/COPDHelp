@@ -21,7 +21,7 @@
         app:fab_colorPressed="@color/fab_pressed"
         app:fab_colorRipple="@color/fab_ripple"
         app:ico_icon="gmd-local-hospital"
-        app:ico_color="@color/icons_light"
+        app:ico_color="@color/icon_light"
         app:ico_size="@dimen/fab_mini_icon_size"/>
 
 </com.github.clans.fab.FloatingActionMenu>

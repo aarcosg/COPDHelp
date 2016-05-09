@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="medical_attention_type_checkup">Revisión</string>
-    <string name="medical_attention_type_emergency">Urgencia</string>
-</resources>

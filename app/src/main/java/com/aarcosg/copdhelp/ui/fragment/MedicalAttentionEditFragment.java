@@ -7,9 +7,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -25,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aarcosg.copdhelp.R;
-import com.aarcosg.copdhelp.data.entity.MedicalAttention;
+import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
 import com.aarcosg.copdhelp.di.components.MedicalAttentionComponent;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionEditPresenter;
 import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionEditView;
@@ -52,6 +54,8 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
     ProgressBar mProgressBar;
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
+    @Bind(R.id.fab)
+    FloatingActionButton mFab;
     @Bind(R.id.type_spinner)
     Spinner mTypeSpinner;
     @Bind(R.id.note_et)
@@ -68,10 +72,10 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
         return fragment;
     }
 
-    public static Fragment newInstance(Integer medicalAttentionId) {
+    public static MedicalAttentionEditFragment newInstance(Long medicalAttentionId) {
         MedicalAttentionEditFragment fragment = new MedicalAttentionEditFragment();
         Bundle args = new Bundle();
-        args.putInt(EXTRA_MEDICAL_ATTENTION, medicalAttentionId);
+        args.putLong(EXTRA_MEDICAL_ATTENTION, medicalAttentionId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -92,7 +96,7 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View fragmentView = inflater.inflate(R.layout.fragment_medical_attention_edit, container, false);
         ButterKnife.bind(this, fragmentView);
-        mDateTv = ButterKnife.findById(fragmentView,R.id.date_tv);
+        mDateTv = ButterKnife.findById(fragmentView, R.id.date_tv);
         setHasOptionsMenu(true);
         return fragmentView;
     }
@@ -104,8 +108,8 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
         setDateTV(mMedicalAttentionTime);
         if (!getArguments().isEmpty() && getArguments().containsKey(EXTRA_MEDICAL_ATTENTION)) {
             mMedicalAttentionEditPresenter.loadMedicalAttention(
-                    getArguments().getInt(EXTRA_MEDICAL_ATTENTION)
-            );
+                    getArguments().getLong(EXTRA_MEDICAL_ATTENTION));
+            animateFab(360);
         }
     }
 
@@ -118,15 +122,16 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        ButterKnife.unbind(mDateTv);
         ButterKnife.unbind(this);
     }
 
     @Override
     public void bindMedicalAttention(MedicalAttention medicalAttention) {
         mMedicalAttention = medicalAttention;
-        if(mMedicalAttention != null){
+        if (mMedicalAttention != null) {
             mTypeSpinner.setSelection(mMedicalAttention.getType());
-            mMedicalAttentionTime.setTimeInMillis(mMedicalAttention.getTime().getTime());
+            mMedicalAttentionTime.setTimeInMillis(mMedicalAttention.getDate().getTime());
             setDateTV(mMedicalAttentionTime);
             mNoteEt.setText(mMedicalAttention.getNote());
         }
@@ -143,21 +148,33 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
     }
 
     @Override
-    public void onRealmSuccess() {
+    public void showSaveRealmSuccessMessage() {
         Toast.makeText(getContext()
-                ,R.string.medical_attention_realm_success
-                ,Toast.LENGTH_LONG)
+                , R.string.medical_attention_save_realm_success
+                , Toast.LENGTH_LONG)
                 .show();
-        getActivity().finish();
+        //getSupportFragmentManager().beginTransaction().remove(this).commit();
+        //getActivity().finish();
+        getActivity().onBackPressed();
     }
 
     @Override
-    public void onRealmError() {
+    public void showSaveRealmErrorMessage() {
         Snackbar.make(mToolbar.getRootView()
-                ,R.string.medical_attention_realm_error
-                ,Snackbar.LENGTH_LONG)
-                .setAction(R.string.retry,v -> saveMedicalAttention())
+                , R.string.medical_attention_save_realm_error
+                , Snackbar.LENGTH_LONG)
+                .setAction(R.string.retry, v -> saveMedicalAttention())
                 .show();
+    }
+
+    @Override
+    public void showMedicalAttentionNotFoundError() {
+        Toast.makeText(getContext()
+                , R.string.medical_attention_not_found_realm_error
+                , Toast.LENGTH_LONG)
+                .show();
+        getSupportFragmentManager().beginTransaction().remove(this).commit();
+        getActivity().finish();
     }
 
     @Override
@@ -172,12 +189,20 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
             case R.id.action_save:
                 saveMedicalAttention();
                 break;
+            case android.R.id.home:
+                getActivity().onBackPressed();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    @OnClick(R.id.fab)
+    public void onFabClick(){
+        saveMedicalAttention();
+    }
+
     @OnClick(R.id.date_tv)
-    public void onDateClick(){
+    public void onDateClick() {
         new DatePickerFragment().show(getSupportFragmentManager(), "datePicker");
     }
 
@@ -191,7 +216,7 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private void setDateTV(Calendar calendar){
+    private void setDateTV(Calendar calendar) {
         mDateTv.setText(getString(R.string.date_string,
                 calendar.get(Calendar.DAY_OF_MONTH),
                 String.format("%02d",
@@ -200,20 +225,21 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
         );
     }
 
-    private void saveMedicalAttention(){
-        if(mMedicalAttention == null){
-            MedicalAttention medicalAttention = new MedicalAttention(
-                    mTypeSpinner.getSelectedItemPosition(),
-                    mMedicalAttentionTime.getTime(),
-                    mNoteEt.getText().toString()
-            );
-            mMedicalAttentionEditPresenter.createMedicalAttention(medicalAttention);
+    private void saveMedicalAttention() {
+        MedicalAttention medicalAttention = new MedicalAttention(
+                mTypeSpinner.getSelectedItemPosition(),
+                mMedicalAttentionTime.getTime(),
+                mNoteEt.getText().toString());
+        if (mMedicalAttention == null) {
+            mMedicalAttentionEditPresenter.addMedicalAttention(medicalAttention);
         }else{
-            mMedicalAttention.setType(mTypeSpinner.getSelectedItemPosition());
-            mMedicalAttention.setTime(mMedicalAttentionTime.getTime());
-            mMedicalAttention.setNote(mNoteEt.getText().toString());
-            mMedicalAttentionEditPresenter.editMedicalAttention(mMedicalAttention);
+            mMedicalAttentionEditPresenter.editMedicalAttention(mMedicalAttention.getId(),medicalAttention);
         }
+    }
+
+    private void animateFab(float rotation){
+        final OvershootInterpolator interpolator = new OvershootInterpolator();
+        ViewCompat.animate(mFab).rotation(rotation).withLayer().setDuration(600).setInterpolator(interpolator).start();
     }
 
     public static class DatePickerFragment extends DialogFragment
@@ -221,10 +247,9 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
 
         @Override
         public Dialog onCreateDialog(@NonNull Bundle savedInstanceState) {
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
+            int year = mMedicalAttentionTime.get(Calendar.YEAR);
+            int month = mMedicalAttentionTime.get(Calendar.MONTH);
+            int day = mMedicalAttentionTime.get(Calendar.DAY_OF_MONTH);
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
 

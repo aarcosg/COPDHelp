@@ -7,6 +7,7 @@ import com.aarcosg.copdhelp.mvp.view.View;
 import javax.inject.Inject;
 
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.subscriptions.Subscriptions;
 
 public class MedicalAttentionDetailsPresenterImpl implements MedicalAttentionDetailsPresenter {
@@ -32,4 +33,15 @@ public class MedicalAttentionDetailsPresenterImpl implements MedicalAttentionDet
         }
     }
 
+    @Override
+    public void loadMedicalAttention(Long id) {
+        mSubscription = mMedicalAttentionInteractor.realmFindById(id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        medicalAttention ->
+                                mMedicalAttentionDetailsView.bindMedicalAttention(medicalAttention)
+                        ,throwable ->
+                                mMedicalAttentionDetailsView.showMedicalAttentionNotFoundError()
+                );
+    }
 }

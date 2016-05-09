@@ -1,4 +1,4 @@
-package com.aarcosg.copdhelp.data.entity;
+package com.aarcosg.copdhelp.data.realm.entity;
 
 import java.util.Date;
 
@@ -8,25 +8,32 @@ import io.realm.annotations.PrimaryKey;
 public class MedicalAttention extends RealmObject{
 
     @PrimaryKey
-    private Integer id;
+    private Long id;
     private Integer type;
-    private Date time;
+    private Date date;
     private String note;
 
     public MedicalAttention() {
     }
 
-    public MedicalAttention(Integer type, Date time, String note) {
+    public MedicalAttention(Integer type, Date date, String note) {
         this.type = type;
-        this.time = time;
+        this.date = date;
         this.note = note;
     }
 
-    public Integer getId() {
+    public MedicalAttention(Long id, Integer type, Date date, String note) {
+        this.id = id;
+        this.type = type;
+        this.date = date;
+        this.note = note;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -38,12 +45,12 @@ public class MedicalAttention extends RealmObject{
         this.type = type;
     }
 
-    public Date getTime() {
-        return time;
+    public Date getDate() {
+        return date;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getNote() {

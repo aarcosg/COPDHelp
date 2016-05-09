@@ -1,6 +1,5 @@
 package com.aarcosg.copdhelp.mvp.presenter.medicalattention;
 
-import com.aarcosg.copdhelp.data.entity.mapper.MedicalAttentionMapper;
 import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractor;
 import com.aarcosg.copdhelp.mvp.view.View;
 import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionMainView;
@@ -38,10 +37,24 @@ public class MedicalAttentionMainPresenterImpl implements MedicalAttentionMainPr
     public void loadAllMedicalAttentions() {
         mSubscription = mMedicalAttentionInteractor.realmFindAll()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(medicalAttentions ->
-                        mMedicalAttentionMainView.bindMedicalAttentions(
-                                MedicalAttentionMapper.transform(medicalAttentions)
-                        )
+                .subscribe(
+                    medicalAttentions ->
+                            mMedicalAttentionMainView.bindAllMedicalAttentions(medicalAttentions)
+
+                    ,throwable ->
+                            mMedicalAttentionMainView.showLoadAllRealmErrorMessage()
+                );
+    }
+
+    @Override
+    public void removeMedicalAttention(Long id) {
+        mSubscription = mMedicalAttentionInteractor.realmRemove(id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        realmMedicalAttention ->
+                                mMedicalAttentionMainView.showRemoveRealmSuccessMessage()
+                        ,throwable ->
+                                mMedicalAttentionMainView.showRemoveRealmErrorMessage()
                 );
     }
 }

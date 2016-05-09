@@ -1,13 +1,13 @@
 package com.aarcosg.copdhelp.mvp.presenter.medicalattention;
 
-import com.aarcosg.copdhelp.data.entity.MedicalAttention;
+import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
 import com.aarcosg.copdhelp.mvp.presenter.Presenter;
 
 public interface MedicalAttentionEditPresenter extends Presenter {
 
-    void loadMedicalAttention(int id);
+    void loadMedicalAttention(Long id);
 
-    void createMedicalAttention(MedicalAttention medicalAttention);
+    void addMedicalAttention(MedicalAttention medicalAttention);
 
-    void editMedicalAttention(MedicalAttention medicalAttention);
+    void editMedicalAttention(Long id, MedicalAttention medicalAttention);
 }

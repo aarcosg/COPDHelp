@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ui.fragment.MedicalAttentionEditFragment">
+    tools:context=".ui.fragment.MedicalAttentionDetailsFragment">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -73,13 +73,13 @@
                     app:ico_icon="cmd_stethoscope"
                     app:ico_size="@dimen/icon_default_size"/>
 
-                <Spinner
-                    android:id="@+id/type_spinner"
+                <TextView
+                    android:id="@+id/type_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_list_after_icon"
                     android:layout_marginStart="@dimen/left_margin_list_after_icon"
-                    android:entries="@array/medical_attention_type"/>
+                    style="@style/Base.TextAppearance.AppCompat.Medium" />
 
             </LinearLayout>
 
@@ -103,14 +103,11 @@
 
                 <TextView
                     android:id="@+id/date_tv"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_list_after_icon"
                     android:layout_marginStart="@dimen/left_margin_list_after_icon"
-                    style="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:clickable="true"
-                    android:background="?selectableItemBackground"
-                    android:text="@string/add_date"/>
+                    style="@style/Base.TextAppearance.AppCompat.Medium"/>
 
             </LinearLayout>
 
@@ -132,15 +129,14 @@
                     app:ico_icon="gmd_subject"
                     app:ico_size="@dimen/icon_default_size"/>
 
-                <EditText
-                    android:id="@+id/note_et"
+                <TextView
+                    android:id="@+id/note_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_list_after_icon"
                     android:layout_marginStart="@dimen/left_margin_list_after_icon"
-                    android:inputType="textMultiLine"
-                    android:hint="@string/add_note"
-                    android:background="@android:color/transparent"/>
+                    android:background="@android:color/transparent"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"/>
 
             </LinearLayout>
 
@@ -161,7 +157,7 @@
         android:clickable="true"
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|right|end"
-        app:ico_icon="gmd_check"
+        app:ico_icon="gmd_edit"
         app:ico_color="@color/icon_light"
         app:ico_size="@dimen/fab_normal_icon_size"
         app:ico_padding="@dimen/fab_padding"/>

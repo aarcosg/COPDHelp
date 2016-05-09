@@ -8,25 +8,35 @@
 
     <include layout="@layout/progress_bar" />
 
+    <include layout="@layout/view_empty"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/medical_attention_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-    <!--<include layout="@layout/fab_multi_actions_patient"
-        app:layout_anchor="@id/medical_attention_rv"
-        app:layout_anchorGravity="bottom|right|end"/>-->
+<!--    <co.moonmonkeylabs.realmrecyclerview.RealmRecyclerView
+        android:id="@+id/medical_attention_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rrvIsRefreshable="true"
+        app:rrvLayoutType="LinearLayout"
+        app:rrvEmptyLayoutId="@layout/view_empty"
+        app:rrvSwipeToDelete="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>-->
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/medical_attention_fab"
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
         app:layout_anchor="@id/medical_attention_rv"
-        app:layout_anchorGravity="bottom|end"
+        app:layout_anchorGravity="bottom|right|end"
         app:ico_icon="gmd-add"
-        app:ico_color="@color/icons_light"
-        app:ico_size="@dimen/fab_mini_icon_size"/>
+        app:ico_color="@color/icon_light"
+        app:ico_size="@dimen/fab_normal_icon_size"
+        app:ico_padding="@dimen/fab_padding"/>
 
 </android.support.design.widget.CoordinatorLayout>

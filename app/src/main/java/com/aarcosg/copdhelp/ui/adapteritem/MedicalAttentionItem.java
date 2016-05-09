@@ -1,4 +1,4 @@
-package com.aarcosg.copdhelp.ui.adapter;
+package com.aarcosg.copdhelp.ui.adapteritem;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
@@ -8,27 +8,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aarcosg.copdhelp.R;
+import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
 import com.mikepenz.community_material_typeface_library.CommunityMaterial;
-import com.mikepenz.fastadapter.items.AbstractItem;
+import com.mikepenz.fastadapter.items.GenericAbstractItem;
+import com.mikepenz.fastadapter.utils.ViewHolderFactory;
 import com.mikepenz.iconics.IconicsDrawable;
-
-import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MedicalAttentionItem extends AbstractItem<MedicalAttentionItem, MedicalAttentionItem.ViewHolder> {
+public class MedicalAttentionItem extends GenericAbstractItem<MedicalAttention, MedicalAttentionItem, MedicalAttentionItem.ViewHolder> {
 
-    private Integer mId;
-    private Integer mType;
-    private Date mDate;
-    private String mNote;
+    private static final ViewHolderFactory<? extends ViewHolder> FACTORY = new ItemFactory();
 
-    public MedicalAttentionItem(Integer mId, Integer mType, Date mDate, String mNote) {
-        this.mId = mId;
-        this.mType = mType;
-        this.mDate = mDate;
-        this.mNote = mNote;
+    public MedicalAttentionItem(MedicalAttention medicalAttention) {
+        super(medicalAttention);
     }
 
     @Override
@@ -38,7 +32,7 @@ public class MedicalAttentionItem extends AbstractItem<MedicalAttentionItem, Med
 
     @Override
     public int getLayoutRes() {
-        return R.layout.medical_attention_item;
+        return R.layout.item_medical_attention;
     }
 
     @Override
@@ -47,7 +41,7 @@ public class MedicalAttentionItem extends AbstractItem<MedicalAttentionItem, Med
         IconicsDrawable iconDrawable = new IconicsDrawable(viewHolder.itemView.getContext())
                 .icon(CommunityMaterial.Icon.cmd_stethoscope)
                 .sizeDp(20);
-        switch (mType){
+        switch (getModel().getType()){
             //Check up
             case 0:
                 iconDrawable.color(Color.BLUE);
@@ -60,12 +54,24 @@ public class MedicalAttentionItem extends AbstractItem<MedicalAttentionItem, Med
         viewHolder.iconIv.setImageDrawable(iconDrawable);
         viewHolder.typeTv.setText(
                 viewHolder.itemView.getContext().getResources()
-                        .getStringArray(R.array.medical_attention_type)[mType]
+                        .getStringArray(R.array.medical_attention_type)[getModel().getType()]
         );
         viewHolder.dateTv.setText(DateUtils.getRelativeTimeSpanString(
-                mDate.getTime(),System.currentTimeMillis(),DateUtils.DAY_IN_MILLIS)
+                getModel().getDate().getTime(),System.currentTimeMillis(),DateUtils.DAY_IN_MILLIS)
         );
-        viewHolder.noteTv.setText(mNote);
+        viewHolder.noteTv.setText(getModel().getNote());
+        viewHolder.itemView.setTag(getModel());
+    }
+
+    @Override
+    public ViewHolderFactory<? extends ViewHolder> getFactory() {
+        return FACTORY;
+    }
+
+    protected static class ItemFactory implements ViewHolderFactory<ViewHolder> {
+        public ViewHolder create(View v) {
+            return new ViewHolder(v);
+        }
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {

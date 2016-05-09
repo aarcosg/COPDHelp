@@ -19,7 +19,6 @@
 
     <style name="ListDivider">
         <item name="android:background">@color/divider</item>
-        <!--<item name="android:layout_marginLeft">@dimen/left_margin_list</item>-->
     </style>
 
 </resources>
