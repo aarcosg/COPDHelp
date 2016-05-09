@@ -1,13 +1,14 @@
 package com.aarcosg.copdhelp.mvp.presenter.medicalattention;
 
 import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractor;
-import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionDetailsView;
 import com.aarcosg.copdhelp.mvp.view.View;
+import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionDetailsView;
 
 import javax.inject.Inject;
 
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.subjects.PublishSubject;
 import rx.subscriptions.Subscriptions;
 
 public class MedicalAttentionDetailsPresenterImpl implements MedicalAttentionDetailsPresenter {
@@ -15,6 +16,7 @@ public class MedicalAttentionDetailsPresenterImpl implements MedicalAttentionDet
     private MedicalAttentionDetailsView mMedicalAttentionDetailsView;
     private final MedicalAttentionInteractor mMedicalAttentionInteractor;
     private Subscription mSubscription = Subscriptions.empty();
+    private PublishSubject<Long> onEditButtonClickSubject = PublishSubject.create();
 
     @Inject
     public MedicalAttentionDetailsPresenterImpl(MedicalAttentionInteractor medicalAttentionInteractor){
@@ -43,5 +45,15 @@ public class MedicalAttentionDetailsPresenterImpl implements MedicalAttentionDet
                         ,throwable ->
                                 mMedicalAttentionDetailsView.showMedicalAttentionNotFoundError()
                 );
+    }
+
+    @Override
+    public void onEditButtonClick(Long id){
+        onEditButtonClickSubject.onNext(id);
+    }
+
+    @Override
+    public PublishSubject<Long> getOnEditButtonClickSubject() {
+        return onEditButtonClickSubject;
     }
 }

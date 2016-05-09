@@ -1,6 +1,6 @@
 package com.aarcosg.copdhelp.ui.adapteritem;
 
-import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.View;
@@ -44,11 +44,15 @@ public class MedicalAttentionItem extends GenericAbstractItem<MedicalAttention, 
         switch (getModel().getType()){
             //Check up
             case 0:
-                iconDrawable.color(Color.BLUE);
+                iconDrawable.color(
+                        ContextCompat.getColor(viewHolder.itemView.getContext(),
+                                R.color.md_blue_600));
                 break;
             //Emergency
             case 1:
-                iconDrawable.color(Color.RED);
+                iconDrawable.color(
+                        ContextCompat.getColor(viewHolder.itemView.getContext(),
+                                R.color.md_deep_orange_600));
                 break;
         }
         viewHolder.iconIv.setImageDrawable(iconDrawable);

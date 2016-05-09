@@ -14,12 +14,16 @@ import com.aarcosg.copdhelp.di.modules.MedicalAttentionModule;
 import com.aarcosg.copdhelp.ui.fragment.MedicalAttentionDetailsFragment;
 import com.aarcosg.copdhelp.ui.fragment.MedicalAttentionEditFragment;
 
-public class MedicalAttentionDetailsActivity extends BaseActivity implements HasComponent<MedicalAttentionComponent> {
+import rx.Subscription;
+import rx.subscriptions.Subscriptions;
 
-    private static final String TAG = MedicalAttentionDetailsActivity.class.getCanonicalName();
+public class MedicalAttentionActivity extends BaseActivity implements HasComponent<MedicalAttentionComponent> {
+
+    private static final String TAG = MedicalAttentionActivity.class.getCanonicalName();
     private static final String EXTRA_MEDICAL_ATTENTION = "extra_medical_attention_id";
 
     private MedicalAttentionComponent mMedicalAttentionComponent;
+    private Subscription mSubscription = Subscriptions.empty();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +31,21 @@ public class MedicalAttentionDetailsActivity extends BaseActivity implements Has
         this.initializeInjector();
         setContentView(R.layout.activity_medical_attention_content);
         if(getIntent().hasExtra(EXTRA_MEDICAL_ATTENTION)){
-            addFragment(R.id.fragment_container,
-                    MedicalAttentionDetailsFragment.newInstance(
-                            getIntent().getExtras().getLong(EXTRA_MEDICAL_ATTENTION)));
+            addDetailsFragment(getIntent().getExtras().getLong(EXTRA_MEDICAL_ATTENTION));
         }else{
-            addFragment(R.id.fragment_container, MedicalAttentionEditFragment.newInstance());
+            addCreateFragment();
+        }
+        mSubscription = mMedicalAttentionComponent
+                .getMedicalAttentionDetailsPresenter()
+                .getOnEditButtonClickSubject()
+                .subscribe(this::addEditFragment);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mSubscription.isUnsubscribed()){
+            mSubscription.unsubscribe();
         }
     }
 
@@ -48,13 +62,32 @@ public class MedicalAttentionDetailsActivity extends BaseActivity implements Has
                 .build();
     }
 
+    private void addDetailsFragment(Long id){
+        addFragment(R.id.fragment_container,
+                MedicalAttentionDetailsFragment.newInstance(id));
+    }
+
+    private void addCreateFragment(){
+        addFragment(R.id.fragment_container,
+                MedicalAttentionEditFragment.newInstance());
+    }
+
+    private void addEditFragment(Long id){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container,
+                        MedicalAttentionEditFragment.newInstance(id))
+                .addToBackStack(null)
+                .commit();
+    }
+
     public static void launch(Activity activity) {
-        Intent intent = new Intent(activity, MedicalAttentionDetailsActivity.class);
+        Intent intent = new Intent(activity, MedicalAttentionActivity.class);
         ActivityCompat.startActivity(activity, intent, null);
     }
 
     public static void launch(Activity activity, Long medicalAttentionId) {
-        Intent intent = new Intent(activity, MedicalAttentionDetailsActivity.class);
+        Intent intent = new Intent(activity, MedicalAttentionActivity.class);
         intent.putExtra(EXTRA_MEDICAL_ATTENTION, medicalAttentionId);
         ActivityCompat.startActivity(activity, intent, null);
     }

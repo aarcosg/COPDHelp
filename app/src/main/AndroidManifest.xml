@@ -16,11 +16,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.MedicalAttentionEditActivity"
-            android:configChanges="orientation|screenSize">
-        </activity>
-        <activity
-            android:name=".ui.activity.MedicalAttentionDetailsActivity"
+            android:name=".ui.activity.MedicalAttentionActivity"
             android:configChanges="orientation|screenSize">
         </activity>
     </application>

@@ -22,7 +22,7 @@ import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
 import com.aarcosg.copdhelp.di.components.MainComponent;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionMainPresenter;
 import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionMainView;
-import com.aarcosg.copdhelp.ui.activity.MedicalAttentionDetailsActivity;
+import com.aarcosg.copdhelp.ui.activity.MedicalAttentionActivity;
 import com.aarcosg.copdhelp.ui.adapteritem.MedicalAttentionItem;
 import com.aarcosg.copdhelp.ui.decorator.SimpleDividerItemDecoration;
 import com.mikepenz.community_material_typeface_library.CommunityMaterial;
@@ -172,14 +172,14 @@ public class MedicalAttentionMainFragment extends BaseFragment implements Medica
 
     @OnClick(R.id.fab)
     public void onFabClick(){
-        MedicalAttentionDetailsActivity.launch(getActivity());
+        MedicalAttentionActivity.launch(getActivity());
     }
 
     private void setupAdapter() {
         mItemAdapter = new GenericItemAdapter<>(MedicalAttentionItem.class, MedicalAttention.class);
         mFastAdapter = new FastAdapter();
         mFastAdapter.withOnClickListener((v, adapter, item, position) -> {
-            MedicalAttentionDetailsActivity.launch(
+            MedicalAttentionActivity.launch(
                     getActivity(), ((MedicalAttention)v.getTag()).getId());
             return false;
         });

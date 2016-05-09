@@ -3,8 +3,8 @@ package com.aarcosg.copdhelp.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -50,10 +50,12 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
     TextView mNoteTv;
     @Bind(R.id.date_tv)
     TextView mDateTv;
+    @Bind(R.id.appbar)
+    AppBarLayout mAppBar;
 
     private MedicalAttention mMedicalAttention;
 
-    public static Fragment newInstance(Long medicalAttentionId) {
+    public static MedicalAttentionDetailsFragment newInstance(Long medicalAttentionId) {
         MedicalAttentionDetailsFragment fragment = new MedicalAttentionDetailsFragment();
         Bundle args = new Bundle();
         args.putLong(EXTRA_MEDICAL_ATTENTION, medicalAttentionId);
@@ -149,7 +151,7 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_edit:
-                navigateToEditFragment();
+                mMedicalAttentionDetailsPresenter.onEditButtonClick(mMedicalAttention.getId());
                 break;
             case android.R.id.home:
                 getActivity().onBackPressed();
@@ -160,21 +162,13 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
 
     @OnClick(R.id.fab)
     public void onFabClick(){
-        navigateToEditFragment();
+        mMedicalAttentionDetailsPresenter.onEditButtonClick(mMedicalAttention.getId());
     }
 
     private void setupToolbar() {
         mToolbar.setTitle(R.string.title_fragment_medical_attention);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    private void navigateToEditFragment(){
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, MedicalAttentionEditFragment.newInstance(mMedicalAttention.getId()))
-                .addToBackStack(null)
-                .commit();
     }
 
 }
