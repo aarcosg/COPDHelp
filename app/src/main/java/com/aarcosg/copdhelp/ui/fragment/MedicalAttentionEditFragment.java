@@ -2,15 +2,12 @@ package com.aarcosg.copdhelp.ui.fragment;
 
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,7 +15,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -57,13 +53,15 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
     FloatingActionButton mFab;
     @Bind(R.id.type_spinner)
     Spinner mTypeSpinner;
+    @Bind(R.id.date_tv)
+    TextView mDateTv;
     @Bind(R.id.note_et)
     EditText mNoteEt;
     @Bind(R.id.appbar)
     AppBarLayout mAppBar;
 
-    private static TextView mDateTv;
-    private static Calendar mMedicalAttentionTime;
+    private Calendar mMedicalAttentionTime;
+    private DatePickerDialog mDatePickerDialog;
     private MedicalAttention mMedicalAttention;
 
     public static MedicalAttentionEditFragment newInstance() {
@@ -97,7 +95,6 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View fragmentView = inflater.inflate(R.layout.fragment_medical_attention_edit, container, false);
         ButterKnife.bind(this, fragmentView);
-        mDateTv = ButterKnife.findById(fragmentView, R.id.date_tv);
         setHasOptionsMenu(true);
         return fragmentView;
     }
@@ -106,13 +103,15 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setupToolbar();
-        setDateTV(mMedicalAttentionTime);
         if (!getArguments().isEmpty() && getArguments().containsKey(EXTRA_MEDICAL_ATTENTION)) {
-            mMedicalAttentionEditPresenter.loadMedicalAttention(
-                    getArguments().getLong(EXTRA_MEDICAL_ATTENTION));
+            mMedicalAttentionEditPresenter.loadMedicalAttention(getArguments().getLong(EXTRA_MEDICAL_ATTENTION));
             mAppBar.setExpanded(false,true);
             mNoteEt.requestFocus();
+        }else{
+            setupDatePickerDialog();
+            setupDateTextView();
         }
+
     }
 
     @Override
@@ -124,8 +123,10 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(mDateTv);
         ButterKnife.unbind(this);
+        if(mDatePickerDialog != null && mDatePickerDialog.isShowing()){
+            mDatePickerDialog.dismiss();
+        }
     }
 
     @Override
@@ -133,9 +134,10 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
         mMedicalAttention = medicalAttention;
         if (mMedicalAttention != null) {
             mTypeSpinner.setSelection(mMedicalAttention.getType());
-            mMedicalAttentionTime.setTimeInMillis(mMedicalAttention.getDate().getTime());
-            setDateTV(mMedicalAttentionTime);
             mNoteEt.setText(mMedicalAttention.getNote());
+            mMedicalAttentionTime.setTimeInMillis(mMedicalAttention.getDate().getTime());
+            setupDatePickerDialog();
+            setupDateTextView();
         }
     }
 
@@ -203,7 +205,7 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
 
     @OnClick(R.id.date_tv)
     public void onDateClick() {
-        new DatePickerFragment().show(getSupportFragmentManager(), "datePicker");
+        mDatePickerDialog.show();
     }
 
     private void setupToolbar() {
@@ -216,12 +218,25 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private void setDateTV(Calendar calendar) {
+    private void setupDatePickerDialog(){
+        mDatePickerDialog = new DatePickerDialog(
+                getContext()
+                , (view, year, monthOfYear, dayOfMonth) -> {
+                    mMedicalAttentionTime.set(Calendar.YEAR, year);
+                    mMedicalAttentionTime.set(Calendar.MONTH, monthOfYear);
+                    mMedicalAttentionTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    setupDateTextView();
+                }
+                , mMedicalAttentionTime.get(Calendar.YEAR)
+                , mMedicalAttentionTime.get(Calendar.MONTH)
+                , mMedicalAttentionTime.get(Calendar.DAY_OF_MONTH));
+    }
+
+    private void setupDateTextView() {
         mDateTv.setText(getString(R.string.date_string,
-                calendar.get(Calendar.DAY_OF_MONTH),
-                String.format("%02d",
-                        calendar.get(Calendar.MONTH) + 1),
-                calendar.get(Calendar.YEAR))
+                mMedicalAttentionTime.get(Calendar.DAY_OF_MONTH),
+                String.format("%02d", mMedicalAttentionTime.get(Calendar.MONTH) + 1),
+                mMedicalAttentionTime.get(Calendar.YEAR))
         );
     }
 
@@ -234,25 +249,6 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
             mMedicalAttentionEditPresenter.addMedicalAttention(medicalAttention);
         } else {
             mMedicalAttentionEditPresenter.editMedicalAttention(mMedicalAttention.getId(), medicalAttention);
-        }
-    }
-
-    public static class DatePickerFragment extends DialogFragment
-            implements DatePickerDialog.OnDateSetListener {
-
-        @Override
-        public Dialog onCreateDialog(@NonNull Bundle savedInstanceState) {
-            int year = mMedicalAttentionTime.get(Calendar.YEAR);
-            int month = mMedicalAttentionTime.get(Calendar.MONTH);
-            int day = mMedicalAttentionTime.get(Calendar.DAY_OF_MONTH);
-            return new DatePickerDialog(getActivity(), this, year, month, day);
-        }
-
-        public void onDateSet(DatePicker view, int year, int month, int day) {
-            mDateTv.setText(getString(R.string.date_string, day, String.format("%02d", month + 1), year));
-            mMedicalAttentionTime.set(Calendar.YEAR, year);
-            mMedicalAttentionTime.set(Calendar.MONTH, month);
-            mMedicalAttentionTime.set(Calendar.DAY_OF_MONTH, day);
         }
     }
 
