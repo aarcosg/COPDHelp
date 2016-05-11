@@ -5,7 +5,7 @@ import com.aarcosg.copdhelp.di.modules.MedicalAttentionModule;
 import com.aarcosg.copdhelp.di.scopes.PerActivity;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionDetailsPresenter;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionEditPresenter;
-import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionMainPresenter;
+import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionListPresenter;
 import com.aarcosg.copdhelp.ui.fragment.MedicalAttentionDetailsFragment;
 import com.aarcosg.copdhelp.ui.fragment.MedicalAttentionEditFragment;
 
@@ -23,7 +23,7 @@ public interface MedicalAttentionComponent extends ActivityComponent {
     void inject(MedicalAttentionEditFragment medicalAttentionEditFragment);
     void inject(MedicalAttentionDetailsFragment medicalAttentionDetailsFragment);
 
-    MedicalAttentionMainPresenter getMedicalAttentionMainPresenter();
+    MedicalAttentionListPresenter getMedicalAttentionMainPresenter();
     MedicalAttentionDetailsPresenter getMedicalAttentionDetailsPresenter();
     MedicalAttentionEditPresenter getMedicalAttentionEditPresenter();
 

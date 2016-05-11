@@ -1,42 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.fragment.MedicalAttentionMainFragment">
 
-    <include layout="@layout/progress_bar" />
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <include layout="@layout/view_empty"/>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            app:tabIndicatorColor="@android:color/white"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/medical_attention_rv"
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-
-<!--    <co.moonmonkeylabs.realmrecyclerview.RealmRecyclerView
-        android:id="@+id/medical_attention_rv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:rrvIsRefreshable="true"
-        app:rrvLayoutType="LinearLayout"
-        app:rrvEmptyLayoutId="@layout/view_empty"
-        app:rrvSwipeToDelete="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>-->
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:clickable="true"
-        app:layout_anchor="@id/medical_attention_rv"
-        app:layout_anchorGravity="bottom|right|end"
-        app:ico_icon="gmd-add"
-        app:ico_color="@color/icon_light"
-        app:ico_size="@dimen/fab_normal_icon_size"
-        app:ico_padding="@dimen/fab_padding"/>
 
 </android.support.design.widget.CoordinatorLayout>

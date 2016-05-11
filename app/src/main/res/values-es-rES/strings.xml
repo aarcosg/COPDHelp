@@ -35,6 +35,8 @@
     <string name="ask_delete_medical_attention">¿Desea eliminar la atención sanitaria?</string>
     <string name="medical_attention_remove_realm_success">Atención sanitaria eliminada</string>
     <string name="medical_attention_remove_realm_error">Error al eliminar la atención sanitaria</string>
+    <string name="list">Lista</string>
+    <string name="charts">Gráficas</string>
 
 
 </resources>

@@ -2,7 +2,7 @@ package com.aarcosg.copdhelp.mvp.presenter.medicalattention;
 
 import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractor;
 import com.aarcosg.copdhelp.mvp.view.View;
-import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionMainView;
+import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionListView;
 
 import javax.inject.Inject;
 
@@ -10,20 +10,20 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.subscriptions.Subscriptions;
 
-public class MedicalAttentionMainPresenterImpl implements MedicalAttentionMainPresenter {
+public class MedicalAttentionListPresenterImpl implements MedicalAttentionListPresenter {
 
-    private MedicalAttentionMainView mMedicalAttentionMainView;
+    private MedicalAttentionListView mMedicalAttentionListView;
     private final MedicalAttentionInteractor mMedicalAttentionInteractor;
     private Subscription mSubscription = Subscriptions.empty();
 
     @Inject
-    public MedicalAttentionMainPresenterImpl(MedicalAttentionInteractor medicalAttentionInteractor){
+    public MedicalAttentionListPresenterImpl(MedicalAttentionInteractor medicalAttentionInteractor){
         this.mMedicalAttentionInteractor = medicalAttentionInteractor;
     }
 
     @Override
     public void setView(View v) {
-        mMedicalAttentionMainView = (MedicalAttentionMainView) v;
+        mMedicalAttentionListView = (MedicalAttentionListView) v;
     }
 
     @Override
@@ -39,10 +39,10 @@ public class MedicalAttentionMainPresenterImpl implements MedicalAttentionMainPr
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                     medicalAttentions ->
-                            mMedicalAttentionMainView.bindAllMedicalAttentions(medicalAttentions)
+                            mMedicalAttentionListView.bindAllMedicalAttentions(medicalAttentions)
 
                     ,throwable ->
-                            mMedicalAttentionMainView.showLoadAllRealmErrorMessage()
+                            mMedicalAttentionListView.showLoadAllRealmErrorMessage()
                 );
     }
 
@@ -52,9 +52,9 @@ public class MedicalAttentionMainPresenterImpl implements MedicalAttentionMainPr
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         realmMedicalAttention ->
-                                mMedicalAttentionMainView.showRemoveRealmSuccessMessage()
+                                mMedicalAttentionListView.showRemoveRealmSuccessMessage()
                         ,throwable ->
-                                mMedicalAttentionMainView.showRemoveRealmErrorMessage()
+                                mMedicalAttentionListView.showRemoveRealmErrorMessage()
                 );
     }
 }

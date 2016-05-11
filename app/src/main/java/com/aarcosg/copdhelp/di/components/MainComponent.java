@@ -5,9 +5,9 @@ import com.aarcosg.copdhelp.di.modules.MainModule;
 import com.aarcosg.copdhelp.di.modules.MedicalAttentionModule;
 import com.aarcosg.copdhelp.di.scopes.PerActivity;
 import com.aarcosg.copdhelp.mvp.presenter.MainPresenter;
-import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionMainPresenter;
+import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionListPresenter;
 import com.aarcosg.copdhelp.ui.activity.MainActivity;
-import com.aarcosg.copdhelp.ui.fragment.MedicalAttentionMainFragment;
+import com.aarcosg.copdhelp.ui.fragment.MedicalAttentionListFragment;
 
 import dagger.Component;
 
@@ -22,9 +22,9 @@ import dagger.Component;
 public interface MainComponent extends ActivityComponent{
 
     void inject(MainActivity mainActivity);
-    void inject(MedicalAttentionMainFragment medicalAttentionMainFragment);
+    void inject(MedicalAttentionListFragment medicalAttentionListFragment);
 
     MainPresenter getMainPresenter();
-    MedicalAttentionMainPresenter getMedicalAttentionPresenter();
+    MedicalAttentionListPresenter getMedicalAttentionPresenter();
 
 }

@@ -2,7 +2,9 @@ package com.aarcosg.copdhelp.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
@@ -37,6 +39,8 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
+    @Bind(R.id.appbar)
+    AppBarLayout mAppBarLayout;
 
     private MainComponent mMainComponent;
     private Drawer mDrawer;
@@ -125,6 +129,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
         Fragment fragment;
         switch (fragmentId){
             case MEDICAL_ATTENTION_MAIN_ID:
+                setAppBarElevation(0);
                 setTitle(getString(R.string.title_fragment_medical_attention));
                 fragment = MedicalAttentionMainFragment.newInstance();
                 break;
@@ -146,6 +151,12 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 .activityModule(getActivityModule())
                 .build();
         mMainComponent.inject(this);
+    }
+
+    private void setAppBarElevation(float elevation){
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mAppBarLayout.setElevation(0);
+        }
     }
 
     public static void launch(Activity activity) {

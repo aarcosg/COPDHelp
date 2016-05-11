@@ -18,4 +18,5 @@
     <dimen name="line_divider_left_margin_list">54dp</dimen>
     <dimen name="divider_height">1dp</dimen>
     <dimen name="appbar_background_image_height">256dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
 </resources>

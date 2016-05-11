@@ -5,7 +5,7 @@ import com.aarcosg.copdhelp.mvp.view.View;
 
 import io.realm.RealmResults;
 
-public interface MedicalAttentionMainView extends View {
+public interface MedicalAttentionListView extends View {
 
     void showProgressBar();
 

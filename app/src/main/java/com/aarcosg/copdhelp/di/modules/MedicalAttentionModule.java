@@ -6,8 +6,8 @@ import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionDetai
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionDetailsPresenterImpl;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionEditPresenter;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionEditPresenterImpl;
-import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionMainPresenter;
-import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionMainPresenterImpl;
+import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionListPresenter;
+import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionListPresenterImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -17,8 +17,8 @@ public class MedicalAttentionModule {
 
     @Provides
     @PerActivity
-    public MedicalAttentionMainPresenter provideMedicalAttentionMainPresenter(MedicalAttentionInteractor medicalAttentionInteractor) {
-        return new MedicalAttentionMainPresenterImpl(medicalAttentionInteractor);
+    public MedicalAttentionListPresenter provideMedicalAttentionMainPresenter(MedicalAttentionInteractor medicalAttentionInteractor) {
+        return new MedicalAttentionListPresenterImpl(medicalAttentionInteractor);
     }
 
     @Provides
