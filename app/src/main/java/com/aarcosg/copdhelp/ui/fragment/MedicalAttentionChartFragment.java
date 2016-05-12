@@ -1,11 +1,9 @@
 package com.aarcosg.copdhelp.ui.fragment;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +15,15 @@ import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
 import com.aarcosg.copdhelp.di.components.MainComponent;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionChartPresenter;
 import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionChartView;
+import com.aarcosg.copdhelp.utils.ChartUtils;
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -38,7 +34,8 @@ import io.realm.RealmResults;
 public class MedicalAttentionChartFragment extends BaseFragment implements MedicalAttentionChartView {
 
     private static final String TAG = MedicalAttentionChartFragment.class.getCanonicalName();
-    private static final float DEFAULT_WEEK_CHART_AXIS_LEFT_MAX_VALUE = 5f;
+    private static final float DEFAULT_WEEK_MONTH_CHART_AXIS_LEFT_MAX_VALUE = 5f;
+    private static final float DEFAULT_YEAR_CHART_AXIS_LEFT_MAX_VALUE = 15f;
 
     @Inject
     MedicalAttentionChartPresenter mMedicalAttentionChartPresenter;
@@ -47,8 +44,14 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
     ProgressBar mProgressBar;
     @Bind(R.id.week_barchart)
     BarChart mWeekBarChart;
+    @Bind(R.id.month_barchart)
+    BarChart mMonthBarChart;
+    @Bind(R.id.year_barchart)
+    BarChart mYearBarChart;
 
-    private RealmResults<MedicalAttention> mMedicalAttentions;
+    private RealmResults<MedicalAttention> mWeekMedicalAttentions;
+    private RealmResults<MedicalAttention> mMonthMedicalAttentions;
+    private RealmResults<MedicalAttention> mYearMedicalAttentions;
 
     public static MedicalAttentionChartFragment newInstance() {
         MedicalAttentionChartFragment fragment = new MedicalAttentionChartFragment();
@@ -73,6 +76,8 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
         final View fragmentView = inflater.inflate(R.layout.fragment_medical_attention_chart, container, false);
         ButterKnife.bind(this, fragmentView);
         setupWeekChart();
+        setupMonthChart();
+        setupYearChart();
         return fragmentView;
     }
 
@@ -80,6 +85,8 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mMedicalAttentionChartPresenter.loadWeekMedicalAttentions();
+        mMedicalAttentionChartPresenter.loadMonthMedicalAttentions();
+        mMedicalAttentionChartPresenter.loadYearMedicalAttentions();
     }
 
     @Override
@@ -97,17 +104,41 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(mMedicalAttentions != null){
-            mMedicalAttentions.removeChangeListeners();
+        if (mWeekMedicalAttentions != null) {
+            mWeekMedicalAttentions.removeChangeListeners();
+        }
+        if (mMonthMedicalAttentions != null) {
+            mMonthMedicalAttentions.removeChangeListeners();
+        }
+        if (mYearMedicalAttentions != null) {
+            mYearMedicalAttentions.removeChangeListeners();
         }
     }
 
     @Override
     public void bindWeekMedicalAttentions(RealmResults<MedicalAttention> medicalAttentions) {
-        mMedicalAttentions = medicalAttentions;
-        mMedicalAttentions.addChangeListener(element -> bindDataWeekChart());
-        if(!medicalAttentions.isEmpty()){
+        mWeekMedicalAttentions = medicalAttentions;
+        mWeekMedicalAttentions.addChangeListener(element -> bindDataWeekChart());
+        if (!medicalAttentions.isEmpty()) {
             bindDataWeekChart();
+        }
+    }
+
+    @Override
+    public void bindMonthMedicalAttentions(RealmResults<MedicalAttention> medicalAttentions) {
+        mMonthMedicalAttentions = medicalAttentions;
+        mMonthMedicalAttentions.addChangeListener(element -> bindDataMonthChart());
+        if (!medicalAttentions.isEmpty()) {
+            bindDataMonthChart();
+        }
+    }
+
+    @Override
+    public void bindYearMedicalAttentions(RealmResults<MedicalAttention> medicalAttentions) {
+        mYearMedicalAttentions = medicalAttentions;
+        mYearMedicalAttentions.addChangeListener(element -> bindDataYearChart());
+        if (!medicalAttentions.isEmpty()) {
+            bindDataYearChart();
         }
     }
 
@@ -131,95 +162,112 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
                 .show();
     }
 
-    private void setupWeekChart(){
-        mWeekBarChart.setDescription("");
-        mWeekBarChart.setPinchZoom(false);
-        mWeekBarChart.setDrawGridBackground(false);
-        mWeekBarChart.setDrawBarShadow(false);
-        mWeekBarChart.setDrawValueAboveBar(false);
-        mWeekBarChart.setDrawGridBackground(false);
-        mWeekBarChart.getAxisRight().setEnabled(false);
-        mWeekBarChart.getAxisLeft().setAxisMinValue(0f);
-        mWeekBarChart.getXAxis().setLabelsToSkip(0);
-        mWeekBarChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-        mWeekBarChart.getXAxis().setDrawGridLines(false);
-        mWeekBarChart.getAxisLeft().setAxisMaxValue(DEFAULT_WEEK_CHART_AXIS_LEFT_MAX_VALUE);
-        mWeekBarChart.getAxisLeft().setDrawGridLines(false);
-
-        Legend legend = mWeekBarChart.getLegend();
-        legend.setPosition(Legend.LegendPosition.ABOVE_CHART_RIGHT);
-        legend.setTextSize(12f);
-        legend.setFormSize(8f);
-        legend.setFormToTextSpace(4f);
-        legend.setXEntrySpace(6f);
+    private void setupWeekChart() {
+        ChartUtils.setupDefaultBarChart(getContext(), mWeekBarChart);
+        mWeekBarChart.getAxisLeft().setAxisMaxValue(DEFAULT_WEEK_MONTH_CHART_AXIS_LEFT_MAX_VALUE);
     }
 
-    private void bindDataWeekChart(){
-        ArrayList<BarEntry> yVals = new ArrayList<>(7);
+    private void setupMonthChart() {
+        ChartUtils.setupDefaultBarChart(getContext(), mMonthBarChart);
+        mMonthBarChart.getAxisLeft().setAxisMaxValue(DEFAULT_WEEK_MONTH_CHART_AXIS_LEFT_MAX_VALUE);
+        mMonthBarChart.getXAxis().setLabelsToSkip(1);
+    }
 
-        // Add Monday to Saturday counters
-        for (int dayOfWeek = Calendar.MONTH ; dayOfWeek <= Calendar.SATURDAY ; dayOfWeek++){
-            float checkupVal = mMedicalAttentions.where()
-                    .equalTo(RealmTable.MedicalAttention.DAY_OF_WEEK,dayOfWeek)
+    private void setupYearChart() {
+        ChartUtils.setupDefaultBarChart(getContext(), mYearBarChart);
+        mYearBarChart.getAxisLeft().setAxisMaxValue(DEFAULT_YEAR_CHART_AXIS_LEFT_MAX_VALUE);
+        mYearBarChart.getXAxis().setLabelsToSkip(1);
+    }
+
+    private void bindDataWeekChart() {
+        List<BarEntry> yVals = new LinkedList<>(Arrays.asList(new BarEntry[7]));
+
+        for (int dayOfWeek = Calendar.SUNDAY; dayOfWeek <= Calendar.SATURDAY; dayOfWeek++) {
+            float checkupVal = mWeekMedicalAttentions.where()
+                    .equalTo(RealmTable.MedicalAttention.DAY_OF_WEEK, dayOfWeek)
                     .equalTo(RealmTable.MedicalAttention.TYPE, MedicalAttention.TYPE_CHECKUP)
                     .count();
-            float emergencyVal = mMedicalAttentions.where()
-                    .equalTo(RealmTable.MedicalAttention.DAY_OF_WEEK,dayOfWeek)
+            float emergencyVal = mWeekMedicalAttentions.where()
+                    .equalTo(RealmTable.MedicalAttention.DAY_OF_WEEK, dayOfWeek)
                     .equalTo(RealmTable.MedicalAttention.TYPE, MedicalAttention.TYPE_EMERGENCY)
                     .count();
-            yVals.add(new BarEntry(new float[] {checkupVal, emergencyVal}, dayOfWeek - 2));
-            if(checkupVal  + emergencyVal > DEFAULT_WEEK_CHART_AXIS_LEFT_MAX_VALUE){
+            if (checkupVal + emergencyVal > DEFAULT_WEEK_MONTH_CHART_AXIS_LEFT_MAX_VALUE) {
                 mWeekBarChart.getAxisLeft().resetAxisMaxValue();
+            }
+            if (dayOfWeek == Calendar.SUNDAY) {
+                yVals.set(6, new BarEntry(new float[]{checkupVal, emergencyVal}, 6));
+            } else {
+                yVals.set(dayOfWeek - 2, new BarEntry(new float[]{checkupVal, emergencyVal}, dayOfWeek - 2));
             }
         }
 
-        // Add Sunday counter
-        float checkupVal = mMedicalAttentions.where()
-                .equalTo(RealmTable.MedicalAttention.DAY_OF_WEEK,Calendar.SUNDAY)
-                .equalTo(RealmTable.MedicalAttention.TYPE, MedicalAttention.TYPE_CHECKUP)
-                .count();
-        float emergencyVal = mMedicalAttentions.where()
-                .equalTo(RealmTable.MedicalAttention.DAY_OF_WEEK,Calendar.SUNDAY)
-                .equalTo(RealmTable.MedicalAttention.TYPE, MedicalAttention.TYPE_EMERGENCY)
-                .count();
-        yVals.add(new BarEntry(new float[] {checkupVal, emergencyVal}, 6));
-        if(checkupVal  + emergencyVal > DEFAULT_WEEK_CHART_AXIS_LEFT_MAX_VALUE){
-            mWeekBarChart.getAxisLeft().resetAxisMaxValue();
+        ChartUtils.addDataToBarChart(
+                getContext()
+                , mWeekBarChart
+                , getResources().getStringArray(R.array.week_days_alt)
+                , yVals
+                , new int[]{R.color.md_blue_600, R.color.md_deep_orange_600}
+                , getResources().getStringArray(R.array.medical_attention_type)
+        );
+
+    }
+
+    private void bindDataMonthChart() {
+        List<BarEntry> yVals = new ArrayList<>(31);
+        List<String> xVals = new ArrayList<>(31);
+
+        for (int dayOfMonth = 1; dayOfMonth <= 31; dayOfMonth++) {
+            float checkupVal = mMonthMedicalAttentions.where()
+                    .equalTo(RealmTable.MedicalAttention.DAY, dayOfMonth)
+                    .equalTo(RealmTable.MedicalAttention.TYPE, MedicalAttention.TYPE_CHECKUP)
+                    .count();
+            float emergencyVal = mMonthMedicalAttentions.where()
+                    .equalTo(RealmTable.MedicalAttention.DAY, dayOfMonth)
+                    .equalTo(RealmTable.MedicalAttention.TYPE, MedicalAttention.TYPE_EMERGENCY)
+                    .count();
+            if (checkupVal + emergencyVal > DEFAULT_WEEK_MONTH_CHART_AXIS_LEFT_MAX_VALUE) {
+                mMonthBarChart.getAxisLeft().resetAxisMaxValue();
+            }
+            yVals.add(new BarEntry(new float[]{checkupVal, emergencyVal}, dayOfMonth - 1));
+            xVals.add(String.valueOf(dayOfMonth));
         }
 
-        BarDataSet dataSet;
+        ChartUtils.addDataToBarChart(
+                getContext()
+                , mMonthBarChart
+                , xVals.toArray(new String[0])
+                , yVals
+                , new int[]{R.color.md_blue_600, R.color.md_deep_orange_600}
+                , getResources().getStringArray(R.array.medical_attention_type)
+        );
+    }
 
-        if(mWeekBarChart.getData() != null &&
-                mWeekBarChart.getData().getDataSetCount() > 0) {
-            dataSet = (BarDataSet)mWeekBarChart.getData().getDataSetByIndex(0);
-            dataSet.getYVals().clear();
-            dataSet.getYVals().addAll(yVals);
-            mWeekBarChart.getData().notifyDataChanged();
-            mWeekBarChart.notifyDataSetChanged();
-        }else{
-            dataSet = new BarDataSet(yVals, "");
-            dataSet.setStackLabels(getResources().getStringArray(R.array.medical_attention_type));
-            dataSet.setColors(new int[]{
-                    ContextCompat.getColor(getContext(),R.color.md_blue_600)
-                    ,ContextCompat.getColor(getContext(),R.color.md_deep_orange_600)
-            });
+    private void bindDataYearChart() {
+        List<BarEntry> yVals = new ArrayList<>(12);
 
-            ArrayList<IBarDataSet> dataSets = new ArrayList<>();
-            dataSets.add(dataSet);
-
-            ArrayList<String> xVals = new ArrayList<>();
-            xVals.addAll(Arrays.asList(getResources().getStringArray(R.array.week_days_alt)));
-
-            BarData data = new BarData(xVals, dataSets);
-            data.setValueFormatter((value, entry, dataSetIndex, viewPortHandler) ->
-                String.valueOf(Math.round(value))
-            );
-            data.setValueTextColor(Color.WHITE);
-            data.setValueTextSize(12f);
-
-            mWeekBarChart.setData(data);
-            mWeekBarChart.invalidate();
+        for (int month = Calendar.JANUARY; month <= Calendar.DECEMBER; month++) {
+            float checkupVal = mYearMedicalAttentions.where()
+                    .equalTo(RealmTable.MedicalAttention.MONTH, month)
+                    .equalTo(RealmTable.MedicalAttention.TYPE, MedicalAttention.TYPE_CHECKUP)
+                    .count();
+            float emergencyVal = mYearMedicalAttentions.where()
+                    .equalTo(RealmTable.MedicalAttention.MONTH, month)
+                    .equalTo(RealmTable.MedicalAttention.TYPE, MedicalAttention.TYPE_EMERGENCY)
+                    .count();
+            if (checkupVal + emergencyVal > DEFAULT_YEAR_CHART_AXIS_LEFT_MAX_VALUE) {
+                mYearBarChart.getAxisLeft().resetAxisMaxValue();
+            }
+            yVals.add(new BarEntry(new float[]{checkupVal, emergencyVal}, month));
         }
+
+        ChartUtils.addDataToBarChart(
+                getContext()
+                , mYearBarChart
+                , getResources().getStringArray(R.array.months_alt)
+                , yVals
+                , new int[]{R.color.md_blue_600, R.color.md_deep_orange_600}
+                , getResources().getStringArray(R.array.medical_attention_type)
+        );
     }
 
 }

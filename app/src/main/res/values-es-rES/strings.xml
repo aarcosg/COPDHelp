@@ -25,11 +25,14 @@
     <string name="list">Lista</string>
     <string name="charts">Gráficas</string>
     <string name="this_week">Esta semana</string>
+    <string name="this_month">Este mes</string>
+    <string name="this_year">Este año</string>
+    <string name="zoom">Ampliar</string>
+    <string name="share">Compartir</string>
 
     <string name="ask_delete_medical_attention">¿Desea eliminar la atención sanitaria?</string>
     <string name="medical_attention_remove_realm_success">Atención sanitaria eliminada</string>
     <string name="medical_attention_remove_realm_error">Error al eliminar la atención sanitaria</string>
-
 
     <!-- Toast & Snackbars messages -->
     <string name="medical_attention_save_realm_success">Atención sanitaria guardada</string>
@@ -40,6 +43,8 @@
     <!-- Arrays -->
     <string name="medical_attention_type_checkup">Revisión</string>
     <string name="medical_attention_type_emergency">Urgencia</string>
+
+    <!-- Week days -->
     <string name="monday">Lunes</string>
     <string name="tuesday">Martes</string>
     <string name="wednesday">Miércoles</string>
@@ -47,12 +52,40 @@
     <string name="friday">Viernes</string>
     <string name="saturday">Sábado</string>
     <string name="sunday">Domingo</string>
-    <string name="monday_alt">lun.</string>
-    <string name="tuesday_alt">mar.</string>
-    <string name="wednesday_alt">mié.</string>
-    <string name="thursday_alt">jue.</string>
-    <string name="friday_alt">vie.</string>
-    <string name="saturday_alt">sáb.</string>
-    <string name="sunday_alt">dom.</string>
+
+    <string name="monday_alt">Lun</string>
+    <string name="tuesday_alt">Mar</string>
+    <string name="wednesday_alt">Mié</string>
+    <string name="thursday_alt">Jue</string>
+    <string name="friday_alt">Vie</string>
+    <string name="saturday_alt">Sáb</string>
+    <string name="sunday_alt">Dom</string>
+
+    <!-- Months -->
+    <string name="january">Enero</string>
+    <string name="february">Febrero</string>
+    <string name="march">Marzo</string>
+    <string name="april">Abril</string>
+    <string name="may">Mayo</string>
+    <string name="june">Junio</string>
+    <string name="july">Julio</string>
+    <string name="august">Agosto</string>
+    <string name="september">Septiembre</string>
+    <string name="october">Octubre</string>
+    <string name="november">Noviembre</string>
+    <string name="december">Diciembre</string>
+
+    <string name="january_alt">Ene</string>
+    <string name="february_alt">Feb</string>
+    <string name="march_alt">Mar</string>
+    <string name="april_alt">Abr</string>
+    <string name="may_alt">May</string>
+    <string name="june_alt">Jun</string>
+    <string name="july_alt">Jul</string>
+    <string name="august_alt">Ago</string>
+    <string name="september_alt">Sep</string>
+    <string name="october_alt">Oct</string>
+    <string name="november_alt">Nov</string>
+    <string name="december_alt">Dic</string>
 
 </resources>

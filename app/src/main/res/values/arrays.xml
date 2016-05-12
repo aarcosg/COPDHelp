@@ -30,4 +30,32 @@
         <item>@string/saturday_alt</item>
         <item>@string/sunday_alt</item>
     </string-array>
+    <string-array name="months">
+        <item>@string/january</item>
+        <item>@string/february</item>
+        <item>@string/march</item>
+        <item>@string/april</item>
+        <item>@string/may</item>
+        <item>@string/june</item>
+        <item>@string/july</item>
+        <item>@string/august</item>
+        <item>@string/september</item>
+        <item>@string/october</item>
+        <item>@string/november</item>
+        <item>@string/december</item>
+    </string-array>
+    <string-array name="months_alt">
+        <item>@string/january_alt</item>
+        <item>@string/february_alt</item>
+        <item>@string/march_alt</item>
+        <item>@string/april_alt</item>
+        <item>@string/may_alt</item>
+        <item>@string/june_alt</item>
+        <item>@string/july_alt</item>
+        <item>@string/august_alt</item>
+        <item>@string/september_alt</item>
+        <item>@string/october_alt</item>
+        <item>@string/november_alt</item>
+        <item>@string/december_alt</item>
+    </string-array>
 </resources>

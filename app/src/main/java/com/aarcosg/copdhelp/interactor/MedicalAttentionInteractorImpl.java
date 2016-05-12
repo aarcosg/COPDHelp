@@ -64,7 +64,7 @@ public class MedicalAttentionInteractorImpl implements MedicalAttentionInteracto
         realmMedicalAttention.setType(medicalAttention.getType());
         realmMedicalAttention.setTimestamp(medicalAttention.getTimestamp());
         realmMedicalAttention.setNote(medicalAttention.getNote());
-        realmMedicalAttention.setDay(calendar.get(Calendar.DAY_OF_YEAR));
+        realmMedicalAttention.setDay(calendar.get(Calendar.DAY_OF_MONTH));
         realmMedicalAttention.setMonth(calendar.get(Calendar.MONTH));
         realmMedicalAttention.setYear(calendar.get(Calendar.YEAR));
         realmMedicalAttention.setDayOfWeek(calendar.get(Calendar.DAY_OF_WEEK));
@@ -84,7 +84,7 @@ public class MedicalAttentionInteractorImpl implements MedicalAttentionInteracto
         realmMedicalAttention.setType(medicalAttention.getType());
         realmMedicalAttention.setTimestamp(medicalAttention.getTimestamp());
         realmMedicalAttention.setNote(medicalAttention.getNote());
-        realmMedicalAttention.setDay(calendar.get(Calendar.DAY_OF_YEAR));
+        realmMedicalAttention.setDay(calendar.get(Calendar.DAY_OF_MONTH));
         realmMedicalAttention.setMonth(calendar.get(Calendar.MONTH));
         realmMedicalAttention.setYear(calendar.get(Calendar.YEAR));
         realmMedicalAttention.setDayOfWeek(calendar.get(Calendar.DAY_OF_WEEK));

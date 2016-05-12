@@ -9,15 +9,14 @@ import java.util.Calendar;
 
 import javax.inject.Inject;
 
-import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.subscriptions.Subscriptions;
+import rx.subscriptions.CompositeSubscription;
 
 public class MedicalAttentionChartPresenterImpl implements MedicalAttentionChartPresenter {
 
     private MedicalAttentionChartView mMedicalAttentionChartView;
     private final MedicalAttentionInteractor mMedicalAttentionInteractor;
-    private Subscription mSubscription = Subscriptions.empty();
+    private CompositeSubscription mSubscriptions = new CompositeSubscription();
 
     @Inject
     public MedicalAttentionChartPresenterImpl(MedicalAttentionInteractor medicalAttentionInteractor){
@@ -31,14 +30,14 @@ public class MedicalAttentionChartPresenterImpl implements MedicalAttentionChart
 
     @Override
     public void onPause() {
-        if(!mSubscription.isUnsubscribed()){
-            mSubscription.unsubscribe();
+        if(!mSubscriptions.isUnsubscribed()){
+            mSubscriptions.unsubscribe();
         }
     }
 
     @Override
     public void loadWeekMedicalAttentions() {
-        mSubscription = mMedicalAttentionInteractor.realmFindAll(
+        mSubscriptions.add(mMedicalAttentionInteractor.realmFindAll(
                 realmQuery ->
                         realmQuery.equalTo(
                                 RealmTable.MedicalAttention.WEEK_OF_YEAR
@@ -51,6 +50,45 @@ public class MedicalAttentionChartPresenterImpl implements MedicalAttentionChart
                                 mMedicalAttentionChartView.bindWeekMedicalAttentions(medicalAttentions)
                         ,throwable ->
                                 mMedicalAttentionChartView.showLoadWeekRealmErrorMessage()
-                );
+                )
+        );
+    }
+
+    @Override
+    public void loadMonthMedicalAttentions() {
+        mSubscriptions.add(mMedicalAttentionInteractor.realmFindAll(
+                realmQuery ->
+                        realmQuery.equalTo(
+                                RealmTable.MedicalAttention.MONTH
+                                ,Calendar.getInstance().get(Calendar.MONTH))
+                ,null
+                ,null)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        medicalAttentions ->
+                                mMedicalAttentionChartView.bindMonthMedicalAttentions(medicalAttentions)
+                        ,throwable ->
+                                mMedicalAttentionChartView.showLoadWeekRealmErrorMessage()
+                )
+        );
+    }
+
+    @Override
+    public void loadYearMedicalAttentions() {
+        mSubscriptions.add(mMedicalAttentionInteractor.realmFindAll(
+                realmQuery ->
+                        realmQuery.equalTo(
+                                RealmTable.MedicalAttention.YEAR
+                                ,Calendar.getInstance().get(Calendar.YEAR))
+                ,null
+                ,null)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        medicalAttentions ->
+                                mMedicalAttentionChartView.bindYearMedicalAttentions(medicalAttentions)
+                        ,throwable ->
+                                mMedicalAttentionChartView.showLoadWeekRealmErrorMessage()
+                )
+        );
     }
 }

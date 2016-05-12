@@ -20,4 +20,6 @@
     <dimen name="appbar_background_image_height">256dp</dimen>
     <dimen name="toolbar_elevation">4dp</dimen>
     <dimen name="default_chart_height">180dp</dimen>
+
+    <dimen name="chart_value_text_size">3dp</dimen>
 </resources>

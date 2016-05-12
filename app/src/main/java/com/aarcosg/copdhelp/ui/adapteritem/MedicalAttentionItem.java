@@ -39,18 +39,19 @@ public class MedicalAttentionItem extends GenericAbstractItem<MedicalAttention, 
     public void bindView(ViewHolder viewHolder) {
         super.bindView(viewHolder);
         IconicsDrawable iconDrawable = new IconicsDrawable(viewHolder.itemView.getContext())
-                .icon(CommunityMaterial.Icon.cmd_stethoscope)
                 .sizeDp(20);
         switch (getModel().getType()){
             case MedicalAttention.TYPE_CHECKUP:
-                iconDrawable.color(
-                        ContextCompat.getColor(viewHolder.itemView.getContext(),
-                                R.color.md_blue_600));
+                iconDrawable
+                        .icon(CommunityMaterial.Icon.cmd_stethoscope)
+                        .color(ContextCompat.getColor(viewHolder.itemView.getContext()
+                                , R.color.md_blue_600));
                 break;
             case MedicalAttention.TYPE_EMERGENCY:
-                iconDrawable.color(
-                        ContextCompat.getColor(viewHolder.itemView.getContext(),
-                                R.color.md_deep_orange_600));
+                iconDrawable
+                        .icon(CommunityMaterial.Icon.cmd_ambulance)
+                        .color(ContextCompat.getColor(viewHolder.itemView.getContext()
+                                , R.color.md_deep_orange_600));
                 break;
         }
         viewHolder.iconIv.setImageDrawable(iconDrawable);
