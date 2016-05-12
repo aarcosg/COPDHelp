@@ -135,7 +135,7 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
         if (mMedicalAttention != null) {
             mTypeSpinner.setSelection(mMedicalAttention.getType());
             mNoteEt.setText(mMedicalAttention.getNote());
-            mMedicalAttentionTime.setTimeInMillis(mMedicalAttention.getDate().getTime());
+            mMedicalAttentionTime.setTimeInMillis(mMedicalAttention.getTimestamp().getTime());
             setupDatePickerDialog();
             setupDateTextView();
         }

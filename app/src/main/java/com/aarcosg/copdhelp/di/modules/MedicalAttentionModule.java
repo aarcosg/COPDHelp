@@ -2,6 +2,8 @@ package com.aarcosg.copdhelp.di.modules;
 
 import com.aarcosg.copdhelp.di.scopes.PerActivity;
 import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractor;
+import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionChartPresenter;
+import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionChartPresenterImpl;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionDetailsPresenter;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionDetailsPresenterImpl;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionEditPresenter;
@@ -17,8 +19,14 @@ public class MedicalAttentionModule {
 
     @Provides
     @PerActivity
-    public MedicalAttentionListPresenter provideMedicalAttentionMainPresenter(MedicalAttentionInteractor medicalAttentionInteractor) {
+    public MedicalAttentionListPresenter provideMedicalAttentionListPresenter(MedicalAttentionInteractor medicalAttentionInteractor) {
         return new MedicalAttentionListPresenterImpl(medicalAttentionInteractor);
+    }
+
+    @Provides
+    @PerActivity
+    public MedicalAttentionChartPresenter provideMedicalAttentionChartPresenter(MedicalAttentionInteractor medicalAttentionInteractor) {
+        return new MedicalAttentionChartPresenterImpl(medicalAttentionInteractor);
     }
 
     @Provides

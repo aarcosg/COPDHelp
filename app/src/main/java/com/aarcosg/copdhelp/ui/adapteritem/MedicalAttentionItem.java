@@ -42,14 +42,12 @@ public class MedicalAttentionItem extends GenericAbstractItem<MedicalAttention, 
                 .icon(CommunityMaterial.Icon.cmd_stethoscope)
                 .sizeDp(20);
         switch (getModel().getType()){
-            //Check up
-            case 0:
+            case MedicalAttention.TYPE_CHECKUP:
                 iconDrawable.color(
                         ContextCompat.getColor(viewHolder.itemView.getContext(),
                                 R.color.md_blue_600));
                 break;
-            //Emergency
-            case 1:
+            case MedicalAttention.TYPE_EMERGENCY:
                 iconDrawable.color(
                         ContextCompat.getColor(viewHolder.itemView.getContext(),
                                 R.color.md_deep_orange_600));
@@ -61,7 +59,7 @@ public class MedicalAttentionItem extends GenericAbstractItem<MedicalAttention, 
                         .getStringArray(R.array.medical_attention_type)[getModel().getType()]
         );
         viewHolder.dateTv.setText(DateUtils.getRelativeTimeSpanString(
-                getModel().getDate().getTime(),System.currentTimeMillis(),DateUtils.DAY_IN_MILLIS)
+                getModel().getTimestamp().getTime(),System.currentTimeMillis(),DateUtils.DAY_IN_MILLIS)
         );
         viewHolder.noteTv.setText(getModel().getNote());
         viewHolder.itemView.setTag(getModel());

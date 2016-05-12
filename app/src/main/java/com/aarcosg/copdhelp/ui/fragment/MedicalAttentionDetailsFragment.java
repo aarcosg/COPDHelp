@@ -111,7 +111,7 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
             mTypeTv.setText(getResources().getStringArray(
                     R.array.medical_attention_type)[medicalAttention.getType()]);
             Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(medicalAttention.getDate().getTime());
+            calendar.setTimeInMillis(medicalAttention.getTimestamp().getTime());
             mDateTv.setText(getString(R.string.date_string,
                     calendar.get(Calendar.DAY_OF_MONTH),
                     String.format("%02d",

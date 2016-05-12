@@ -21,6 +21,15 @@
     <string name="edit">Editar</string>
     <string name="retry">Reintentar</string>
     <string name="empty_data">No hay datos registrados</string>
+    <string name="delete">Eliminar</string>
+    <string name="list">Lista</string>
+    <string name="charts">Gráficas</string>
+    <string name="this_week">Esta semana</string>
+
+    <string name="ask_delete_medical_attention">¿Desea eliminar la atención sanitaria?</string>
+    <string name="medical_attention_remove_realm_success">Atención sanitaria eliminada</string>
+    <string name="medical_attention_remove_realm_error">Error al eliminar la atención sanitaria</string>
+
 
     <!-- Toast & Snackbars messages -->
     <string name="medical_attention_save_realm_success">Atención sanitaria guardada</string>
@@ -31,12 +40,19 @@
     <!-- Arrays -->
     <string name="medical_attention_type_checkup">Revisión</string>
     <string name="medical_attention_type_emergency">Urgencia</string>
-    <string name="delete">Eliminar</string>
-    <string name="ask_delete_medical_attention">¿Desea eliminar la atención sanitaria?</string>
-    <string name="medical_attention_remove_realm_success">Atención sanitaria eliminada</string>
-    <string name="medical_attention_remove_realm_error">Error al eliminar la atención sanitaria</string>
-    <string name="list">Lista</string>
-    <string name="charts">Gráficas</string>
-
+    <string name="monday">Lunes</string>
+    <string name="tuesday">Martes</string>
+    <string name="wednesday">Miércoles</string>
+    <string name="thursday">Jueves</string>
+    <string name="friday">Viernes</string>
+    <string name="saturday">Sábado</string>
+    <string name="sunday">Domingo</string>
+    <string name="monday_alt">lun.</string>
+    <string name="tuesday_alt">mar.</string>
+    <string name="wednesday_alt">mié.</string>
+    <string name="thursday_alt">jue.</string>
+    <string name="friday_alt">vie.</string>
+    <string name="saturday_alt">sáb.</string>
+    <string name="sunday_alt">dom.</string>
 
 </resources>

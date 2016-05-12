@@ -1,11 +1,13 @@
 package com.aarcosg.copdhelp.mvp.presenter.medicalattention;
 
+import com.aarcosg.copdhelp.data.realm.RealmTable;
 import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractor;
 import com.aarcosg.copdhelp.mvp.view.View;
 import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionListView;
 
 import javax.inject.Inject;
 
+import io.realm.Sort;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.subscriptions.Subscriptions;
@@ -35,7 +37,10 @@ public class MedicalAttentionListPresenterImpl implements MedicalAttentionListPr
 
     @Override
     public void loadAllMedicalAttentions() {
-        mSubscription = mMedicalAttentionInteractor.realmFindAll()
+        mSubscription = mMedicalAttentionInteractor.realmFindAll(
+                    null
+                    ,RealmTable.MedicalAttention.TIMESTAMP
+                    ,Sort.DESCENDING)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                     medicalAttentions ->

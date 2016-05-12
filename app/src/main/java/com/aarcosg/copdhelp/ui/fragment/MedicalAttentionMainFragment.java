@@ -107,7 +107,7 @@ public class MedicalAttentionMainFragment extends BaseFragment{
                     fragment = MedicalAttentionListFragment.newInstance();
                     break;
                 case 1:
-                    fragment = MedicalAttentionListFragment.newInstance();
+                    fragment = MedicalAttentionChartFragment.newInstance();
                     break;
             }
             return fragment;
