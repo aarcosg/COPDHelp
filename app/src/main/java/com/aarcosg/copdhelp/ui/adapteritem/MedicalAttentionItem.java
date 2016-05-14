@@ -1,7 +1,9 @@
 package com.aarcosg.copdhelp.ui.adapteritem;
 
+import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -38,31 +40,31 @@ public class MedicalAttentionItem extends GenericAbstractItem<MedicalAttention, 
     @Override
     public void bindView(ViewHolder viewHolder) {
         super.bindView(viewHolder);
-        IconicsDrawable iconDrawable = new IconicsDrawable(viewHolder.itemView.getContext())
+        Context context = viewHolder.itemView.getContext();
+        IconicsDrawable iconDrawable = new IconicsDrawable(context)
                 .sizeDp(20);
         switch (getModel().getType()){
             case MedicalAttention.TYPE_CHECKUP:
                 iconDrawable
                         .icon(CommunityMaterial.Icon.cmd_stethoscope)
-                        .color(ContextCompat.getColor(viewHolder.itemView.getContext()
-                                , R.color.md_blue_600));
+                        .color(ContextCompat.getColor(context, R.color.md_blue_600));
                 break;
             case MedicalAttention.TYPE_EMERGENCY:
                 iconDrawable
                         .icon(CommunityMaterial.Icon.cmd_ambulance)
-                        .color(ContextCompat.getColor(viewHolder.itemView.getContext()
-                                , R.color.md_deep_orange_600));
+                        .color(ContextCompat.getColor(context, R.color.md_deep_orange_600));
                 break;
         }
         viewHolder.iconIv.setImageDrawable(iconDrawable);
         viewHolder.typeTv.setText(
-                viewHolder.itemView.getContext().getResources()
+                context.getResources()
                         .getStringArray(R.array.medical_attention_type)[getModel().getType()]
         );
         viewHolder.dateTv.setText(DateUtils.getRelativeTimeSpanString(
                 getModel().getTimestamp().getTime(),System.currentTimeMillis(),DateUtils.DAY_IN_MILLIS)
         );
-        viewHolder.noteTv.setText(getModel().getNote());
+        viewHolder.noteTv.setText(TextUtils.isEmpty(getModel().getNote()) ?
+                context.getString(R.string.empty_note) : getModel().getNote());
         viewHolder.itemView.setTag(getModel());
     }
 

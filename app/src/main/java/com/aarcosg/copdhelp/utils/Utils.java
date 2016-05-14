@@ -1,12 +1,18 @@
 package com.aarcosg.copdhelp.utils;
 
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Spinner;
+import android.widget.TextView;
+
+import com.aarcosg.copdhelp.data.realm.RealmTable;
 
 import java.util.Calendar;
+
+import io.realm.RealmResults;
 
 public class Utils {
 
@@ -50,5 +56,35 @@ public class Utils {
 
     public static Calendar getLastDayOfCurrentWeek(){
         return getLastDayOfWeek(Calendar.getInstance().get(Calendar.WEEK_OF_YEAR));
+    }
+
+    public static Double calculatePercentageChange(long oldValue, long newValue){
+        return oldValue == 0 ? 0 : (double)(newValue - oldValue) / oldValue * 100;
+    }
+
+    public static Double getPercentageChange(int calendarField, RealmResults realmResults){
+        Calendar calendar = Calendar.getInstance();
+        String tableField;
+        switch (calendarField){
+            case Calendar.WEEK_OF_YEAR: tableField = RealmTable.WEEK_OF_YEAR; break;
+            case Calendar.MONTH: tableField = RealmTable.MONTH; break;
+            case Calendar.YEAR: tableField = RealmTable.YEAR; break;
+            default: tableField = RealmTable.WEEK_OF_YEAR;
+        }
+        long previousCounter = realmResults.where()
+                .equalTo(tableField,calendar.get(calendarField) - 1)
+                .count();
+        long currentCounter = realmResults.where()
+                .equalTo(tableField,calendar.get(calendarField))
+                .count();
+        return calculatePercentageChange(previousCounter,currentCounter);
+    }
+
+    public static void animateNumberTextView(int initialValue, int finalValue, final TextView textView, final String format) {
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(initialValue, finalValue);
+        valueAnimator.setDuration(2000);
+        valueAnimator.addUpdateListener(animation ->
+                textView.setText(String.format(format,valueAnimator.getAnimatedValue().toString())));
+        valueAnimator.start();
     }
 }

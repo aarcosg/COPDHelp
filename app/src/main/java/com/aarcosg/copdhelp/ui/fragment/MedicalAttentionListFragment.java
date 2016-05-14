@@ -193,7 +193,8 @@ public class MedicalAttentionListFragment extends BaseFragment implements Medica
     private void setupRecyclerView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
+        mRecyclerView.addItemDecoration(
+                new SimpleDividerItemDecoration(getContext(),R.drawable.line_divider,0,0));
         mRecyclerView.setAdapter(mItemAdapter.wrap(mFastAdapter));
     }
 

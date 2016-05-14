@@ -14,5 +14,7 @@
     <color name="icon_light">@color/md_white_1000</color>
     <color name="icon_dark">@color/md_grey_700</color>
     <color name="chart_marker_background">#96000000</color>
+    <color name="change_percentage_positive">@color/md_red_700</color>
+    <color name="change_percentage_negative">@color/md_light_blue_500</color>
 
 </resources>

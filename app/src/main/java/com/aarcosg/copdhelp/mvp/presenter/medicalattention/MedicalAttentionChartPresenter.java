@@ -10,4 +10,5 @@ public interface MedicalAttentionChartPresenter extends Presenter {
     void loadMonthMedicalAttentions();
 
     void loadYearMedicalAttentions();
+
 }

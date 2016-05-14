@@ -37,30 +37,36 @@ public class MedicalAttentionChartPresenterImpl implements MedicalAttentionChart
 
     @Override
     public void loadWeekMedicalAttentions() {
+        Calendar calendar = Calendar.getInstance();
         mSubscriptions.add(mMedicalAttentionInteractor.realmFindAll(
-                realmQuery ->
-                        realmQuery.equalTo(
-                                RealmTable.MedicalAttention.WEEK_OF_YEAR
-                                ,Calendar.getInstance().get(Calendar.WEEK_OF_YEAR))
-                                ,null
-                                ,null)
+                realmQuery -> realmQuery
+                        .equalTo(RealmTable.MedicalAttention.YEAR,calendar.get(Calendar.YEAR))
+                        .between(RealmTable.MedicalAttention.WEEK_OF_YEAR
+                                ,calendar.get(Calendar.WEEK_OF_YEAR) - 1
+                                ,calendar.get(Calendar.WEEK_OF_YEAR)
+                        )
+                ,null
+                ,null)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         medicalAttentions ->
                                 mMedicalAttentionChartView.bindWeekMedicalAttentions(medicalAttentions)
                         ,throwable ->
-                                mMedicalAttentionChartView.showLoadWeekRealmErrorMessage()
+                                mMedicalAttentionChartView.showLoadRealmErrorMessage()
                 )
         );
     }
 
     @Override
     public void loadMonthMedicalAttentions() {
+        Calendar calendar = Calendar.getInstance();
         mSubscriptions.add(mMedicalAttentionInteractor.realmFindAll(
-                realmQuery ->
-                        realmQuery.equalTo(
-                                RealmTable.MedicalAttention.MONTH
-                                ,Calendar.getInstance().get(Calendar.MONTH))
+                realmQuery -> realmQuery
+                        .equalTo(RealmTable.MedicalAttention.YEAR,calendar.get(Calendar.YEAR))
+                        .between(RealmTable.MedicalAttention.MONTH
+                                ,calendar.get(Calendar.MONTH) - 1
+                                ,calendar.get(Calendar.MONTH)
+                        )
                 ,null
                 ,null)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -68,18 +74,20 @@ public class MedicalAttentionChartPresenterImpl implements MedicalAttentionChart
                         medicalAttentions ->
                                 mMedicalAttentionChartView.bindMonthMedicalAttentions(medicalAttentions)
                         ,throwable ->
-                                mMedicalAttentionChartView.showLoadWeekRealmErrorMessage()
+                                mMedicalAttentionChartView.showLoadRealmErrorMessage()
                 )
         );
     }
 
     @Override
     public void loadYearMedicalAttentions() {
+        Calendar calendar = Calendar.getInstance();
         mSubscriptions.add(mMedicalAttentionInteractor.realmFindAll(
-                realmQuery ->
-                        realmQuery.equalTo(
-                                RealmTable.MedicalAttention.YEAR
-                                ,Calendar.getInstance().get(Calendar.YEAR))
+                realmQuery -> realmQuery
+                        .between(RealmTable.MedicalAttention.YEAR
+                                ,calendar.get(Calendar.YEAR) - 1
+                                ,calendar.get(Calendar.YEAR)
+                        )
                 ,null
                 ,null)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -87,7 +95,7 @@ public class MedicalAttentionChartPresenterImpl implements MedicalAttentionChart
                         medicalAttentions ->
                                 mMedicalAttentionChartView.bindYearMedicalAttentions(medicalAttentions)
                         ,throwable ->
-                                mMedicalAttentionChartView.showLoadWeekRealmErrorMessage()
+                                mMedicalAttentionChartView.showLoadRealmErrorMessage()
                 )
         );
     }

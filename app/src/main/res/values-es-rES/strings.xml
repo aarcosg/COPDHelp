@@ -29,6 +29,7 @@
     <string name="this_year">Este año</string>
     <string name="zoom">Ampliar</string>
     <string name="share">Compartir</string>
+    <string name="empty_note">Sin nota</string>
 
     <string name="ask_delete_medical_attention">¿Desea eliminar la atención sanitaria?</string>
     <string name="medical_attention_remove_realm_success">Atención sanitaria eliminada</string>

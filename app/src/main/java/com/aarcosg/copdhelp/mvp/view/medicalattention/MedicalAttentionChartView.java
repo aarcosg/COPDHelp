@@ -13,9 +13,9 @@ public interface MedicalAttentionChartView extends View {
 
     void bindWeekMedicalAttentions(RealmResults<MedicalAttention> medicalAttentions);
 
-    void showLoadWeekRealmErrorMessage();
-
     void bindMonthMedicalAttentions(RealmResults<MedicalAttention> medicalAttentions);
 
     void bindYearMedicalAttentions(RealmResults<MedicalAttention> medicalAttentions);
+
+    void showLoadRealmErrorMessage();
 }

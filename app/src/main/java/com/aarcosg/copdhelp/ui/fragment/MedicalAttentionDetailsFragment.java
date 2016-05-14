@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -117,7 +118,8 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
                     String.format("%02d",
                             calendar.get(Calendar.MONTH) + 1),
                     calendar.get(Calendar.YEAR)));
-            mNoteTv.setText(mMedicalAttention.getNote());
+            mNoteTv.setText(TextUtils.isEmpty(mMedicalAttention.getNote()) ?
+                    getString(R.string.empty_note) : mMedicalAttention.getNote());
         }
     }
 
