@@ -41,7 +41,7 @@ public class ChartUtils {
 
         YAxis axisLeft = barChart.getAxisLeft();
         axisLeft.setAxisMinValue(0f);
-        axisLeft.setDrawGridLines(false);
+        axisLeft.setDrawGridLines(true);
 
         XAxis xAxis = barChart.getXAxis();
         xAxis.setDrawGridLines(false);

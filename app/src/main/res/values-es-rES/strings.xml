@@ -5,6 +5,7 @@
     <!-- Exception messages -->
     <string name="exception_message_generic">Se ha producido un error. Inténtelo más tarde.</string>
     <string name="exception_message_internet_not_available">No hay conexión a internet</string>
+    <string name="exception_message_share_image_error">No se pudo compartir la imagen</string>
 
     <!-- Fragment titles -->
     <string name="title_fragment_medical_attention">Atención sanitaria</string>
@@ -30,6 +31,7 @@
     <string name="zoom">Ampliar</string>
     <string name="share">Compartir</string>
     <string name="empty_note">Sin nota</string>
+    <string name="share_image">Compartir imagen</string>
 
     <string name="ask_delete_medical_attention">¿Desea eliminar la atención sanitaria?</string>
     <string name="medical_attention_remove_realm_success">Atención sanitaria eliminada</string>

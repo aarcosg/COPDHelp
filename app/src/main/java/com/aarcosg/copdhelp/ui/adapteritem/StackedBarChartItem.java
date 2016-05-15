@@ -3,10 +3,12 @@ package com.aarcosg.copdhelp.ui.adapteritem;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aarcosg.copdhelp.R;
 import com.aarcosg.copdhelp.utils.ChartUtils;
@@ -79,13 +81,21 @@ public class StackedBarChartItem extends AbstractItem<StackedBarChartItem, Stack
             data.setValueTextColor(Color.WHITE);
             data.setValueTextSize(context.getResources().getDimension(R.dimen.chart_value_text_size));
         }else{
-            data.setDrawValues(mDrawValues);
+            data.setDrawValues(false);
         }
 
         viewHolder.barChart.setData(data);
         viewHolder.barChart.animateY(2000);
 
         viewHolder.headerTv.setText(mHeader);
+
+        viewHolder.shareChartBtn.setOnClickListener(v -> {
+            viewHolder.shareChartBtn.setVisibility(View.GONE);
+            if(!Utils.shareView(context,viewHolder.containerCard)){
+                showShareErrorMessage(context);
+            }
+            viewHolder.shareChartBtn.setVisibility(View.VISIBLE);
+        });
 
         this.mTag = viewHolder;
     }
@@ -102,6 +112,8 @@ public class StackedBarChartItem extends AbstractItem<StackedBarChartItem, Stack
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.container_card)
+        CardView containerCard;
         @Bind(R.id.header_tv)
         TextView headerTv;
         @Bind(R.id.change_percentage_tv)
@@ -147,5 +159,11 @@ public class StackedBarChartItem extends AbstractItem<StackedBarChartItem, Stack
             format = "+%s%%";
         }
         Utils.animateNumberTextView(0,(int)Math.round(changePercentage),viewHolder.changePercentageTv,format);
+    }
+
+    private void showShareErrorMessage(Context context){
+        Toast.makeText(context,context.getString(R.string.exception_message_share_image_error)
+                ,Toast.LENGTH_LONG)
+                .show();
     }
 }
