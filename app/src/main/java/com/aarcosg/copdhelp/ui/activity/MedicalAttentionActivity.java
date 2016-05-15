@@ -11,8 +11,8 @@ import com.aarcosg.copdhelp.di.HasComponent;
 import com.aarcosg.copdhelp.di.components.DaggerMedicalAttentionComponent;
 import com.aarcosg.copdhelp.di.components.MedicalAttentionComponent;
 import com.aarcosg.copdhelp.di.modules.MedicalAttentionModule;
-import com.aarcosg.copdhelp.ui.fragment.MedicalAttentionDetailsFragment;
-import com.aarcosg.copdhelp.ui.fragment.MedicalAttentionEditFragment;
+import com.aarcosg.copdhelp.ui.fragment.medicalattention.MedicalAttentionDetailsFragment;
+import com.aarcosg.copdhelp.ui.fragment.medicalattention.MedicalAttentionEditFragment;
 
 import rx.Subscription;
 import rx.subscriptions.Subscriptions;

@@ -16,7 +16,9 @@ import com.aarcosg.copdhelp.di.components.DaggerMainComponent;
 import com.aarcosg.copdhelp.di.components.MainComponent;
 import com.aarcosg.copdhelp.mvp.presenter.MainPresenter;
 import com.aarcosg.copdhelp.mvp.view.MainView;
-import com.aarcosg.copdhelp.ui.fragment.MedicalAttentionMainFragment;
+import com.aarcosg.copdhelp.ui.fragment.bmi.BMIMainFragment;
+import com.aarcosg.copdhelp.ui.fragment.medicalattention.MedicalAttentionMainFragment;
+import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -33,6 +35,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
 
     private static final String TAG = MainActivity.class.getCanonicalName();
     private static final int MEDICAL_ATTENTION_MAIN_ID = 1;
+    private static final int BMI_MAIN_ID = 2;
 
     @Inject
     MainPresenter mMainPresenter;
@@ -115,6 +118,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 .withAccountHeader(accountHeader)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(getString(R.string.medical_attention)).withIcon(GoogleMaterial.Icon.gmd_local_hospital).withIdentifier(MEDICAL_ATTENTION_MAIN_ID)
+                        ,new PrimaryDrawerItem().withName(getString(R.string.bmi)).withIcon(CommunityMaterial.Icon.cmd_scale_bathroom).withIdentifier(BMI_MAIN_ID)
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     if(drawerItem != null){
@@ -132,6 +136,11 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 setAppBarElevation(0);
                 setTitle(getString(R.string.title_fragment_medical_attention));
                 fragment = MedicalAttentionMainFragment.newInstance();
+                break;
+            case BMI_MAIN_ID:
+                setAppBarElevation(0);
+                setTitle(getString(R.string.title_fragment_bmi));
+                fragment = BMIMainFragment.newInstance();
                 break;
             default:
                 setTitle(getString(R.string.title_fragment_medical_attention));
@@ -155,7 +164,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
 
     private void setAppBarElevation(float elevation){
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mAppBarLayout.setElevation(0);
+            mAppBarLayout.setElevation(elevation);
         }
     }
 

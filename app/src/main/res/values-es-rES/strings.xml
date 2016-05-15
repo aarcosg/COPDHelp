@@ -11,8 +11,11 @@
     <string name="title_fragment_medical_attention">Atención sanitaria</string>
     <string name="title_fragment_medical_attention_add">Nueva atención sanitaria</string>
     <string name="title_fragment_medical_attention_edit">Editar atención sanitaria</string>
+    <string name="title_fragment_bmi">Índice Masa Corporal</string>
 
     <string name="medical_attention">Atención sanitaria</string>
+    <string name="bmi_abbr">IMC</string>
+    <string name="bmi">Índice Masa Corporal</string>
     <string name="add_date">Añadir día</string>
     <string name="add_time">Añadir hora</string>
     <string name="add_note">Añadir nota</string>
@@ -33,15 +36,21 @@
     <string name="empty_note">Sin nota</string>
     <string name="share_image">Compartir imagen</string>
 
-    <string name="ask_delete_medical_attention">¿Desea eliminar la atención sanitaria?</string>
-    <string name="medical_attention_remove_realm_success">Atención sanitaria eliminada</string>
-    <string name="medical_attention_remove_realm_error">Error al eliminar la atención sanitaria</string>
-
     <!-- Toast & Snackbars messages -->
     <string name="medical_attention_save_realm_success">Atención sanitaria guardada</string>
     <string name="medical_attention_save_realm_error">Error al guardar la atención sanitaria</string>
     <string name="medical_attention_load_realm_error">Error al cargar las asistencias médicas</string>
     <string name="medical_attention_not_found_realm_error">Asistencia médica no encontrada</string>
+    <string name="medical_attention_ask_delete">¿Desea eliminar la atención sanitaria?</string>
+    <string name="medical_attention_remove_realm_success">Atención sanitaria eliminada</string>
+    <string name="medical_attention_remove_realm_error">Error al eliminar la atención sanitaria</string>
+    <string name="bmi_save_realm_success">Índice de masa corporal guardado</string>
+    <string name="bmi_save_realm_error">Error al guardar el índice de masa corporal</string>
+    <string name="bmi_load_realm_error">Error al cargar los índices de masa corporal registrados</string>
+    <string name="bmi_not_found_realm_error">Registro de índice de masa corporal no encontrado</string>
+    <string name="bmi_ask_delete">¿Desea eliminar este registro?</string>
+    <string name="bmi_remove_realm_success">Registro eliminado</string>
+    <string name="bmi_remove_realm_error">Error al eliminar el registro</string>
 
     <!-- Arrays -->
     <string name="medical_attention_type_checkup">Revisión</string>

@@ -1,4 +1,4 @@
-package com.aarcosg.copdhelp.ui.fragment;
+package com.aarcosg.copdhelp.ui.fragment.medicalattention;
 
 
 import android.app.DatePickerDialog;
@@ -26,6 +26,7 @@ import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
 import com.aarcosg.copdhelp.di.components.MedicalAttentionComponent;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionEditPresenter;
 import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionEditView;
+import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
 

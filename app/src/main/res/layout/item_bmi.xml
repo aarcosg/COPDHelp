@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/activity_vertical_margin"
+    android:background="?selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/icon_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/mid_space"
+        android:layout_marginRight="@dimen/mid_space"/>
+
+    <TextView
+        android:id="@+id/height_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/icon_iv"
+        android:layout_toEndOf="@id/icon_iv"
+        android:textStyle="bold"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/medical_attention_type_checkup"/>
+
+    <TextView
+        android:id="@+id/weight_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/height_tv"
+        android:layout_toRightOf="@id/icon_iv"
+        android:layout_toEndOf="@id/icon_iv"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:fontFamily="sans-serif-light"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="@string/note"/>
+
+    <TextView
+        android:id="@+id/bmi_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weight_tv"
+        android:layout_toRightOf="@id/icon_iv"
+        android:layout_toEndOf="@id/icon_iv"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:fontFamily="sans-serif-light"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="@string/note"/>
+
+    <TextView
+        android:id="@+id/date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/md_teal_500"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:fontFamily="sans-serif-condensed"/>
+
+</RelativeLayout>

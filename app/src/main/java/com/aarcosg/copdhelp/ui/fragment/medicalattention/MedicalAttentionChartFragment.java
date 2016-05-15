@@ -1,4 +1,4 @@
-package com.aarcosg.copdhelp.ui.fragment;
+package com.aarcosg.copdhelp.ui.fragment.medicalattention;
 
 
 import android.os.Bundle;
@@ -20,6 +20,7 @@ import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionChart
 import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionChartView;
 import com.aarcosg.copdhelp.ui.adapteritem.StackedBarChartItem;
 import com.aarcosg.copdhelp.ui.decorator.VerticalSpaceItemDecoration;
+import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
 import com.aarcosg.copdhelp.utils.ChartUtils;
 import com.aarcosg.copdhelp.utils.Utils;
 import com.github.mikephil.charting.data.BarEntry;

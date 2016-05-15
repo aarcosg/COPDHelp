@@ -1,4 +1,4 @@
-package com.aarcosg.copdhelp.ui.fragment;
+package com.aarcosg.copdhelp.ui.fragment.medicalattention;
 
 
 import android.os.Bundle;
@@ -22,6 +22,7 @@ import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
 import com.aarcosg.copdhelp.di.components.MedicalAttentionComponent;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionDetailsPresenter;
 import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionDetailsView;
+import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
 
 import java.util.Calendar;
 

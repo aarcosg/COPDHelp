@@ -8,6 +8,7 @@ import com.aarcosg.copdhelp.di.modules.ApplicationModule;
 import com.aarcosg.copdhelp.di.modules.InteractorsModule;
 import com.aarcosg.copdhelp.di.modules.NetworkModule;
 import com.aarcosg.copdhelp.di.scopes.PerApp;
+import com.aarcosg.copdhelp.interactor.BMIInteractor;
 import com.aarcosg.copdhelp.interactor.MainInteractor;
 import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractor;
 import com.aarcosg.copdhelp.ui.activity.BaseActivity;
@@ -39,5 +40,6 @@ public interface ApplicationComponent {
 
     MainInteractor getMainInteractor();
     MedicalAttentionInteractor getMedicalAttentionInteractor();
+    BMIInteractor getBMIInteractor();
 
 }

@@ -1,4 +1,4 @@
-package com.aarcosg.copdhelp.ui.fragment;
+package com.aarcosg.copdhelp.ui.fragment.medicalattention;
 
 
 import android.app.AlertDialog;
@@ -25,6 +25,7 @@ import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionListView;
 import com.aarcosg.copdhelp.ui.activity.MedicalAttentionActivity;
 import com.aarcosg.copdhelp.ui.adapteritem.MedicalAttentionItem;
 import com.aarcosg.copdhelp.ui.decorator.SimpleDividerItemDecoration;
+import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
 import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.GenericItemAdapter;
@@ -46,7 +47,7 @@ public class MedicalAttentionListFragment extends BaseFragment implements Medica
 
     @Bind(R.id.progress_bar)
     ProgressBar mProgressBar;
-    @Bind(R.id.medical_attention_rv)
+    @Bind(R.id.recycler_view)
     RecyclerView mRecyclerView;
     @Bind(R.id.fab)
     FloatingActionButton mFab;
@@ -90,7 +91,7 @@ public class MedicalAttentionListFragment extends BaseFragment implements Medica
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mMedicalAttentionListPresenter.loadAllMedicalAttentions();
+        mMedicalAttentionListPresenter.loadAllFromRealm();
     }
 
     @Override
@@ -114,7 +115,7 @@ public class MedicalAttentionListFragment extends BaseFragment implements Medica
     }
 
     @Override
-    public void bindAllMedicalAttentions(RealmResults<MedicalAttention> medicalAttentions) {
+    public void bindAll(RealmResults<MedicalAttention> medicalAttentions) {
         mMedicalAttentions = medicalAttentions;
         checkEmptyResults();
         mMedicalAttentions.addChangeListener(element -> {
@@ -150,7 +151,7 @@ public class MedicalAttentionListFragment extends BaseFragment implements Medica
                 , R.string.medical_attention_load_realm_error
                 , Snackbar.LENGTH_LONG)
                 .setAction(R.string.retry,
-                        v -> mMedicalAttentionListPresenter.loadAllMedicalAttentions())
+                        v -> mMedicalAttentionListPresenter.loadAllFromRealm())
                 .show();
     }
 
@@ -210,9 +211,9 @@ public class MedicalAttentionListFragment extends BaseFragment implements Medica
     private void showRemoveMedicalAttentionDialog(Long id) {
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
         dialogBuilder.setTitle(getResources().getString(R.string.delete));
-        dialogBuilder.setMessage(getResources().getString(R.string.ask_delete_medical_attention));
+        dialogBuilder.setMessage(getResources().getString(R.string.medical_attention_ask_delete));
         dialogBuilder.setPositiveButton(android.R.string.ok,(dialog, which) -> {
-            mMedicalAttentionListPresenter.removeMedicalAttention(id);
+            mMedicalAttentionListPresenter.removeFromRealm(id);
         });
         dialogBuilder.setNegativeButton(android.R.string.cancel,(dialog, which) -> dialog.dismiss());
         dialogBuilder.show();

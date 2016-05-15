@@ -15,8 +15,20 @@ public interface RealmTable {
 
     interface MedicalAttention{
         String TYPE = "type";
-        String TIMESTAMP = "timestamp";
         String NOTE = "note";
+        String TIMESTAMP = RealmTable.TIMESTAMP;
+        String DAY = RealmTable.DAY;
+        String MONTH = RealmTable.MONTH;
+        String YEAR = RealmTable.YEAR;
+        String DAY_OF_WEEK = RealmTable.DAY_OF_WEEK;
+        String WEEK_OF_YEAR = RealmTable.WEEK_OF_YEAR;
+    }
+
+    interface BMI{
+        String HEIGHT = "height";
+        String WEIGHT = "weight";
+        String BMI = "bmi";
+        String TIMESTAMP = RealmTable.TIMESTAMP;
         String DAY = RealmTable.DAY;
         String MONTH = RealmTable.MONTH;
         String YEAR = RealmTable.YEAR;

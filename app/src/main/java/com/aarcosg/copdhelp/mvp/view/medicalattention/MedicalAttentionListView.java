@@ -1,25 +1,8 @@
 package com.aarcosg.copdhelp.mvp.view.medicalattention;
 
 import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
-import com.aarcosg.copdhelp.mvp.view.View;
+import com.aarcosg.copdhelp.mvp.view.ListView;
 
-import io.realm.RealmResults;
+public interface MedicalAttentionListView extends ListView<MedicalAttention> {
 
-public interface MedicalAttentionListView extends View {
-
-    void showProgressBar();
-
-    void hideProgressBar();
-
-    void bindAllMedicalAttentions(RealmResults<MedicalAttention> medicalAttentions);
-
-    void showEmptyView();
-
-    void hideEmptyView();
-
-    void showLoadAllRealmErrorMessage();
-
-    void showRemoveRealmSuccessMessage();
-
-    void showRemoveRealmErrorMessage();
 }

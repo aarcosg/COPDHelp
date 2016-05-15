@@ -1,7 +1,6 @@
-package com.aarcosg.copdhelp.ui.fragment;
+package com.aarcosg.copdhelp.ui.fragment.medicalattention;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,12 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.aarcosg.copdhelp.R;
+import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
 import com.mikepenz.iconics.IconicsDrawable;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MedicalAttentionMainFragment extends BaseFragment{
+public class MedicalAttentionMainFragment extends BaseFragment {
 
     private static final String TAG = MedicalAttentionMainFragment.class.getCanonicalName();
 
@@ -72,9 +72,9 @@ public class MedicalAttentionMainFragment extends BaseFragment{
                     .icon(mPagerAdapter.getTabIconAt(i))
                     .sizeDp(24);
             if(i == position){
-                iconDrawable.color(Color.WHITE);
+                iconDrawable.color(ContextCompat.getColor(getContext(),R.color.icon_tab_selected));
             }else{
-                iconDrawable.color(ContextCompat.getColor(getContext(),R.color.md_green_200));
+                iconDrawable.color(ContextCompat.getColor(getContext(),R.color.icon_tab_unselected));
             }
             mTabLayout.getTabAt(i).setIcon(iconDrawable);
         }

@@ -7,8 +7,8 @@ import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionChart
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionDetailsPresenter;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionEditPresenter;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionListPresenter;
-import com.aarcosg.copdhelp.ui.fragment.MedicalAttentionDetailsFragment;
-import com.aarcosg.copdhelp.ui.fragment.MedicalAttentionEditFragment;
+import com.aarcosg.copdhelp.ui.fragment.medicalattention.MedicalAttentionDetailsFragment;
+import com.aarcosg.copdhelp.ui.fragment.medicalattention.MedicalAttentionEditFragment;
 
 import dagger.Component;
 

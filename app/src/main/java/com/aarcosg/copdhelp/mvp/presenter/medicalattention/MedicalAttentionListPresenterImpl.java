@@ -36,7 +36,7 @@ public class MedicalAttentionListPresenterImpl implements MedicalAttentionListPr
     }
 
     @Override
-    public void loadAllMedicalAttentions() {
+    public void loadAllFromRealm() {
         mSubscription = mMedicalAttentionInteractor.realmFindAll(
                     null
                     ,RealmTable.MedicalAttention.TIMESTAMP
@@ -44,7 +44,7 @@ public class MedicalAttentionListPresenterImpl implements MedicalAttentionListPr
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                     medicalAttentions ->
-                            mMedicalAttentionListView.bindAllMedicalAttentions(medicalAttentions)
+                            mMedicalAttentionListView.bindAll(medicalAttentions)
 
                     ,throwable ->
                             mMedicalAttentionListView.showLoadAllRealmErrorMessage()
@@ -52,7 +52,7 @@ public class MedicalAttentionListPresenterImpl implements MedicalAttentionListPr
     }
 
     @Override
-    public void removeMedicalAttention(Long id) {
+    public void removeFromRealm(Long id) {
         mSubscription = mMedicalAttentionInteractor.realmRemove(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
