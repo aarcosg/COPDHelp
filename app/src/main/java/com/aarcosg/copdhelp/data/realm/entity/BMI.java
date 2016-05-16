@@ -9,7 +9,7 @@ public class BMI extends RealmObject{
 
     @PrimaryKey
     private Long id;
-    private Integer height;
+    private Double height;
     private Double weight;
     private Double bmi;
     private Date timestamp;
@@ -22,14 +22,14 @@ public class BMI extends RealmObject{
     public BMI() {
     }
 
-    public BMI(Integer height, Double weight, Double bmi, Date timestamp) {
+    public BMI(Double height, Double weight, Double bmi, Date timestamp) {
         this.height = height;
         this.weight = weight;
         this.bmi = bmi;
         this.timestamp = timestamp;
     }
 
-    public BMI(Long id, Integer height, Double weight, Double bmi, Date timestamp) {
+    public BMI(Long id, Double height, Double weight, Double bmi, Date timestamp) {
         this.id = id;
         this.height = height;
         this.weight = weight;
@@ -45,11 +45,11 @@ public class BMI extends RealmObject{
         this.id = id;
     }
 
-    public Integer getHeight() {
+    public Double getHeight() {
         return height;
     }
 
-    public void setHeight(Integer height) {
+    public void setHeight(Double height) {
         this.height = height;
     }
 

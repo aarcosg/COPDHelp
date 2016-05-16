@@ -2,6 +2,10 @@ package com.aarcosg.copdhelp.di.modules;
 
 import com.aarcosg.copdhelp.di.scopes.PerActivity;
 import com.aarcosg.copdhelp.interactor.BMIInteractor;
+import com.aarcosg.copdhelp.mvp.presenter.bmi.BMIDetailsPresenter;
+import com.aarcosg.copdhelp.mvp.presenter.bmi.BMIDetailsPresenterImpl;
+import com.aarcosg.copdhelp.mvp.presenter.bmi.BMIEditPresenter;
+import com.aarcosg.copdhelp.mvp.presenter.bmi.BMIEditPresenterImpl;
 import com.aarcosg.copdhelp.mvp.presenter.bmi.BMIListPresenter;
 import com.aarcosg.copdhelp.mvp.presenter.bmi.BMIListPresenterImpl;
 
@@ -21,7 +25,7 @@ public class BMIModule {
     @PerActivity
     public BMIChartPresenter provideBMIChartPresenter(BMIInteractor BMIInteractor) {
         return new BMIChartPresenterImpl(BMIInteractor);
-    }
+    }*/
 
     @Provides
     @PerActivity
@@ -33,5 +37,5 @@ public class BMIModule {
     @PerActivity
     public BMIEditPresenter provideBMIEditPresenter(BMIInteractor BMIInteractor) {
         return new BMIEditPresenterImpl(BMIInteractor);
-    }*/
+    }
 }

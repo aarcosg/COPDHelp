@@ -1,15 +1,8 @@
 package com.aarcosg.copdhelp.mvp.view.medicalattention;
 
 import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
-import com.aarcosg.copdhelp.mvp.view.View;
+import com.aarcosg.copdhelp.mvp.view.DetailsView;
 
-public interface MedicalAttentionDetailsView extends View {
+public interface MedicalAttentionDetailsView extends DetailsView<MedicalAttention> {
 
-    void showProgressBar();
-
-    void hideProgressBar();
-
-    void bindMedicalAttention(MedicalAttention medicalAttention);
-
-    void showMedicalAttentionNotFoundError();
 }

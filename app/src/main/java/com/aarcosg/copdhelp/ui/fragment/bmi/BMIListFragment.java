@@ -22,6 +22,7 @@ import com.aarcosg.copdhelp.data.realm.entity.BMI;
 import com.aarcosg.copdhelp.di.components.MainComponent;
 import com.aarcosg.copdhelp.mvp.presenter.bmi.BMIListPresenter;
 import com.aarcosg.copdhelp.mvp.view.bmi.BMIListView;
+import com.aarcosg.copdhelp.ui.activity.BMIActivity;
 import com.aarcosg.copdhelp.ui.adapteritem.BMIItem;
 import com.aarcosg.copdhelp.ui.decorator.SimpleDividerItemDecoration;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
@@ -172,15 +173,15 @@ public class BMIListFragment extends BaseFragment implements BMIListView {
 
     @OnClick(R.id.fab)
     public void onFabClick(){
-        //BMIActivity.launch(getActivity());
+        BMIActivity.launch(getActivity());
     }
 
     private void setupAdapter() {
         mItemAdapter = new GenericItemAdapter<>(BMIItem.class, BMI.class);
         mFastAdapter = new FastAdapter();
         mFastAdapter.withOnClickListener((v, adapter, item, position) -> {
-            /*BMIActivity.launch(
-                    getActivity(), ((BMI)v.getTag()).getId());*/
+            BMIActivity.launch(
+                    getActivity(), ((BMI)v.getTag()).getId());
             return false;
         });
         mFastAdapter.withOnLongClickListener((v, adapter, item, position) -> {

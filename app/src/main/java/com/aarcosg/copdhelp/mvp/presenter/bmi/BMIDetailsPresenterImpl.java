@@ -1,8 +1,8 @@
-package com.aarcosg.copdhelp.mvp.presenter.medicalattention;
+package com.aarcosg.copdhelp.mvp.presenter.bmi;
 
-import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractor;
+import com.aarcosg.copdhelp.interactor.BMIInteractor;
 import com.aarcosg.copdhelp.mvp.view.View;
-import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionDetailsView;
+import com.aarcosg.copdhelp.mvp.view.bmi.BMIDetailsView;
 
 import javax.inject.Inject;
 
@@ -11,21 +11,21 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.subjects.PublishSubject;
 import rx.subscriptions.Subscriptions;
 
-public class MedicalAttentionDetailsPresenterImpl implements MedicalAttentionDetailsPresenter {
+public class BMIDetailsPresenterImpl implements BMIDetailsPresenter {
 
-    private MedicalAttentionDetailsView mMedicalAttentionDetailsView;
-    private final MedicalAttentionInteractor mMedicalAttentionInteractor;
+    private BMIDetailsView mBMIDetailsView;
+    private final BMIInteractor mBMIInteractor;
     private Subscription mSubscription = Subscriptions.empty();
     private PublishSubject<Long> onEditButtonClickSubject = PublishSubject.create();
 
     @Inject
-    public MedicalAttentionDetailsPresenterImpl(MedicalAttentionInteractor medicalAttentionInteractor){
-        this.mMedicalAttentionInteractor = medicalAttentionInteractor;
+    public BMIDetailsPresenterImpl(BMIInteractor BMIInteractor){
+        this.mBMIInteractor = BMIInteractor;
     }
 
     @Override
     public void setView(View v) {
-        mMedicalAttentionDetailsView = (MedicalAttentionDetailsView) v;
+        mBMIDetailsView = (BMIDetailsView) v;
     }
 
     @Override
@@ -37,13 +37,13 @@ public class MedicalAttentionDetailsPresenterImpl implements MedicalAttentionDet
 
     @Override
     public void loadRealmObject(Long id) {
-        mSubscription = mMedicalAttentionInteractor.realmFindById(id)
+        mSubscription = mBMIInteractor.realmFindById(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        medicalAttention ->
-                                mMedicalAttentionDetailsView.bindRealmObject(medicalAttention)
+                        bmi ->
+                                mBMIDetailsView.bindRealmObject(bmi)
                         ,throwable ->
-                                mMedicalAttentionDetailsView.showRealmObjectNotFoundError()
+                                mBMIDetailsView.showRealmObjectNotFoundError()
                 );
     }
 

@@ -66,4 +66,25 @@
         <item>@string/november_alt</item>
         <item>@string/december_alt</item>
     </string-array>
+    <array name="bmi_colors">
+        <item>@color/bmi_state_default</item>
+        <item>@color/bmi_state_warning</item>
+        <item>@color/bmi_state_ok</item>
+        <item>@color/bmi_state_warning</item>
+        <item>@color/bmi_state_danger</item>
+    </array>
+    <string-array name="bmi_texts">
+        <item>@string/not_calculated</item>
+        <item>@string/bmi_state_thinness</item>
+        <item>@string/bmi_state_normal</item>
+        <item>@string/bmi_state_overweight</item>
+        <item>@string/bmi_state_obesity</item>
+    </string-array>
+    <string-array name="bmi_icons">
+        <item>gmd_sentiment_neutral</item>
+        <item>gmd_sentiment_dissatisfied</item>
+        <item>gmd_sentiment_satisfied</item>
+        <item>gmd_sentiment_dissatisfied</item>
+        <item>gmd_sentiment_very_dissatisfied</item>
+    </string-array>
 </resources>

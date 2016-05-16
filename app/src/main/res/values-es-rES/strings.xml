@@ -35,6 +35,13 @@
     <string name="share">Compartir</string>
     <string name="empty_note">Sin nota</string>
     <string name="share_image">Compartir imagen</string>
+    <string name="centimeters_abbr">cm</string>
+    <string name="kilograms_abbr">kg</string>
+    <string name="bmi_tip">El IMC influye gravemente en la salud de los pacientes con EPOC a largo plazo. Los pacientes con un IMC menor a 21 tienen peor pronóstico.</string>
+    <string name="height">Altura</string>
+    <string name="weight">Peso</string>
+    <string name="your_bmi_is">Tu IMC es</string>
+    <string name="not_calculated">No calculado</string>
 
     <!-- Toast & Snackbars messages -->
     <string name="medical_attention_save_realm_success">Atención sanitaria guardada</string>
@@ -99,5 +106,11 @@
     <string name="october_alt">Oct</string>
     <string name="november_alt">Nov</string>
     <string name="december_alt">Dic</string>
+
+    <!-- BMI States -->
+    <string name="bmi_state_normal">Peso normal</string>
+    <string name="bmi_state_overweight">Sobrepeso</string>
+    <string name="bmi_state_obesity">Obesidad</string>
+    <string name="bmi_state_thinness">Delgadez</string>
 
 </resources>

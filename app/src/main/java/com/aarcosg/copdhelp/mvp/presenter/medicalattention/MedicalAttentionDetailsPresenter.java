@@ -1,15 +1,9 @@
 package com.aarcosg.copdhelp.mvp.presenter.medicalattention;
 
 
-import com.aarcosg.copdhelp.mvp.presenter.Presenter;
+import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
+import com.aarcosg.copdhelp.mvp.presenter.DetailsPresenter;
 
-import rx.subjects.PublishSubject;
+public interface MedicalAttentionDetailsPresenter extends DetailsPresenter<MedicalAttention> {
 
-public interface MedicalAttentionDetailsPresenter extends Presenter {
-
-    void loadMedicalAttention(Long id);
-
-    void onEditButtonClick(Long id);
-
-    PublishSubject<Long> getOnEditButtonClickSubject();
 }

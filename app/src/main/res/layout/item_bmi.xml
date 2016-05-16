@@ -15,41 +15,71 @@
         android:layout_marginRight="@dimen/mid_space"/>
 
     <TextView
+        android:id="@+id/bmi_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/icon_iv"
+        android:layout_toEndOf="@id/icon_iv"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:fontFamily="sans-serif-light"
+        android:text="15"/>
+
+    <TextView
+        android:id="@+id/bmi_label_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/bmi_tv"
+        android:layout_toEndOf="@id/bmi_tv"
+        android:layout_alignBottom="@id/bmi_tv"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:fontFamily="sans-serif-light"
+        android:text="%"/>
+
+    <TextView
         android:id="@+id/height_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/icon_iv"
         android:layout_toEndOf="@id/icon_iv"
-        android:textStyle="bold"
+        android:layout_below="@id/bmi_tv"
         style="@style/TextAppearance.AppCompat.Medium"
         android:fontFamily="sans-serif-light"
-        android:text="@string/medical_attention_type_checkup"/>
+        android:text="180"/>
+
+    <TextView
+        android:id="@+id/height_label_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/height_tv"
+        android:layout_toEndOf="@id/height_tv"
+        android:layout_below="@id/bmi_tv"
+        android:layout_alignBottom="@id/height_tv"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/centimeters_abbr"/>
 
     <TextView
         android:id="@+id/weight_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/height_tv"
-        android:layout_toRightOf="@id/icon_iv"
-        android:layout_toEndOf="@id/icon_iv"
-        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_below="@id/bmi_tv"
+        android:layout_toRightOf="@id/height_label_tv"
+        android:layout_toEndOf="@id/height_label_tv"
+        style="@style/TextAppearance.AppCompat.Medium"
         android:fontFamily="sans-serif-light"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:text="@string/note"/>
+        android:text="75"/>
 
     <TextView
-        android:id="@+id/bmi_tv"
+        android:id="@+id/weight_label_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/weight_tv"
-        android:layout_toRightOf="@id/icon_iv"
-        android:layout_toEndOf="@id/icon_iv"
+        android:layout_toRightOf="@id/weight_tv"
+        android:layout_toEndOf="@id/weight_tv"
+        android:layout_below="@id/bmi_tv"
+        android:layout_alignBottom="@id/weight_tv"
         style="@style/TextAppearance.AppCompat.Small"
         android:fontFamily="sans-serif-light"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:text="@string/note"/>
+        android:text="@string/kilograms_abbr"/>
 
     <TextView
         android:id="@+id/date_tv"

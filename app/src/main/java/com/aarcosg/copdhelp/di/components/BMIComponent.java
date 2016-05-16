@@ -3,7 +3,11 @@ package com.aarcosg.copdhelp.di.components;
 import com.aarcosg.copdhelp.di.modules.ActivityModule;
 import com.aarcosg.copdhelp.di.modules.BMIModule;
 import com.aarcosg.copdhelp.di.scopes.PerActivity;
+import com.aarcosg.copdhelp.mvp.presenter.bmi.BMIDetailsPresenter;
+import com.aarcosg.copdhelp.mvp.presenter.bmi.BMIEditPresenter;
 import com.aarcosg.copdhelp.mvp.presenter.bmi.BMIListPresenter;
+import com.aarcosg.copdhelp.ui.fragment.bmi.BMIDetailsFragment;
+import com.aarcosg.copdhelp.ui.fragment.bmi.BMIEditFragment;
 
 import dagger.Component;
 
@@ -16,12 +20,12 @@ import dagger.Component;
         })
 public interface BMIComponent extends ActivityComponent {
 
-    /*void inject(BMIEditFragment bMIEditFragment);
-    void inject(BMIDetailsFragment bMIDetailsFragment);*/
+    void inject(BMIEditFragment bMIEditFragment);
+    void inject(BMIDetailsFragment bMIDetailsFragment);
 
     BMIListPresenter getBMIListPresenter();
-    /*BMIChartPresenter getBMIChartPresenter();
+    //BMIChartPresenter getBMIChartPresenter();
     BMIDetailsPresenter getBMIDetailsPresenter();
-    BMIEditPresenter getBMIEditPresenter();*/
+    BMIEditPresenter getBMIEditPresenter();
 
 }

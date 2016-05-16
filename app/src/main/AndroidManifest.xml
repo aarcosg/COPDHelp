@@ -22,6 +22,10 @@
             android:name=".ui.activity.MedicalAttentionActivity"
             android:configChanges="orientation|screenSize">
         </activity>
+        <activity
+            android:name=".ui.activity.BMIActivity"
+            android:configChanges="orientation|screenSize">
+        </activity>
     </application>
 
 </manifest>

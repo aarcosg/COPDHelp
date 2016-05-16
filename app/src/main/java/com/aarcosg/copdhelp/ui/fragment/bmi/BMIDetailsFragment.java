@@ -1,4 +1,4 @@
-package com.aarcosg.copdhelp.ui.fragment.medicalattention;
+package com.aarcosg.copdhelp.ui.fragment.bmi;
 
 
 import android.os.Bundle;
@@ -18,10 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aarcosg.copdhelp.R;
-import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
-import com.aarcosg.copdhelp.di.components.MedicalAttentionComponent;
-import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionDetailsPresenter;
-import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionDetailsView;
+import com.aarcosg.copdhelp.data.realm.entity.BMI;
+import com.aarcosg.copdhelp.di.components.BMIComponent;
+import com.aarcosg.copdhelp.mvp.presenter.bmi.BMIDetailsPresenter;
+import com.aarcosg.copdhelp.mvp.view.bmi.BMIDetailsView;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
 
 import java.util.Calendar;
@@ -32,13 +32,13 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MedicalAttentionDetailsFragment extends BaseFragment implements MedicalAttentionDetailsView {
+public class BMIDetailsFragment extends BaseFragment implements BMIDetailsView {
 
-    private static final String TAG = MedicalAttentionDetailsFragment.class.getCanonicalName();
-    private static final String EXTRA_MEDICAL_ATTENTION = "extra_medical_attention_id";
+    private static final String TAG = BMIDetailsFragment.class.getCanonicalName();
+    private static final String EXTRA_BMI = "extra_bmi_id";
 
     @Inject
-    MedicalAttentionDetailsPresenter mMedicalAttentionDetailsPresenter;
+    BMIDetailsPresenter mBMIDetailsPresenter;
 
     @Bind(R.id.progress_bar)
     ProgressBar mProgressBar;
@@ -55,25 +55,25 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
     @Bind(R.id.appbar)
     AppBarLayout mAppBar;
 
-    private MedicalAttention mMedicalAttention;
+    private BMI mBMI;
 
-    public static MedicalAttentionDetailsFragment newInstance(Long medicalAttentionId) {
-        MedicalAttentionDetailsFragment fragment = new MedicalAttentionDetailsFragment();
+    public static BMIDetailsFragment newInstance(Long BMIId) {
+        BMIDetailsFragment fragment = new BMIDetailsFragment();
         Bundle args = new Bundle();
-        args.putLong(EXTRA_MEDICAL_ATTENTION, medicalAttentionId);
+        args.putLong(EXTRA_BMI, BMIId);
         fragment.setArguments(args);
         return fragment;
     }
 
-    public MedicalAttentionDetailsFragment() {
+    public BMIDetailsFragment() {
         setRetainInstance(true);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getComponent(MedicalAttentionComponent.class).inject(this);
-        mMedicalAttentionDetailsPresenter.setView(this);
+        getComponent(BMIComponent.class).inject(this);
+        mBMIDetailsPresenter.setView(this);
     }
 
     @Override
@@ -88,16 +88,16 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setupToolbar();
-        if (!getArguments().isEmpty() && getArguments().containsKey(EXTRA_MEDICAL_ATTENTION)) {
-            mMedicalAttentionDetailsPresenter.loadRealmObject(
-                    getArguments().getLong(EXTRA_MEDICAL_ATTENTION));
+        if (!getArguments().isEmpty() && getArguments().containsKey(EXTRA_BMI)) {
+            mBMIDetailsPresenter.loadRealmObject(
+                    getArguments().getLong(EXTRA_BMI));
         }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mMedicalAttentionDetailsPresenter.onPause();
+        mBMIDetailsPresenter.onPause();
     }
 
     @Override
@@ -107,21 +107,21 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
     }
 
     @Override
-    public void bindRealmObject(MedicalAttention medicalAttention) {
-        mMedicalAttention = medicalAttention;
-        if (mMedicalAttention != null) {
+    public void bindRealmObject(BMI BMI) {
+        mBMI = BMI;
+       /* if (mBMI != null) {
             mTypeTv.setText(getResources().getStringArray(
-                    R.array.medical_attention_type)[medicalAttention.getType()]);
+                    R.array.medical_attention_type)[BMI.getType()]);
             Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(medicalAttention.getTimestamp().getTime());
+            calendar.setTimeInMillis(BMI.getTimestamp().getTime());
             mDateTv.setText(getString(R.string.date_string,
                     calendar.get(Calendar.DAY_OF_MONTH),
                     String.format("%02d",
                             calendar.get(Calendar.MONTH) + 1),
                     calendar.get(Calendar.YEAR)));
-            mNoteTv.setText(TextUtils.isEmpty(mMedicalAttention.getNote()) ?
-                    getString(R.string.empty_note) : mMedicalAttention.getNote());
-        }
+            mNoteTv.setText(TextUtils.isEmpty(mBMI.getNote()) ?
+                    getString(R.string.empty_note) : mBMI.getNote());
+        }*/
     }
 
     @Override
@@ -154,7 +154,7 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_edit:
-                mMedicalAttentionDetailsPresenter.onEditButtonClick(mMedicalAttention.getId());
+                mBMIDetailsPresenter.onEditButtonClick(mBMI.getId());
                 break;
             case android.R.id.home:
                 getActivity().onBackPressed();
@@ -165,7 +165,7 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
 
     @OnClick(R.id.fab)
     public void onFabClick(){
-        mMedicalAttentionDetailsPresenter.onEditButtonClick(mMedicalAttention.getId());
+        mBMIDetailsPresenter.onEditButtonClick(mBMI.getId());
     }
 
     private void setupToolbar() {

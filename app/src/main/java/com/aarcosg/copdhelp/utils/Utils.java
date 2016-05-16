@@ -143,4 +143,26 @@ public class Utils {
 
         return isSuccessful;
     }
+
+    public static double calculateBMI(double height, double weight){
+        double result = 0;
+        if(height > 0 && weight > 0){
+            result = weight / Math.pow(height / 100, 2);
+        }
+        return result;
+    }
+
+    public static int getBMIStateArrayIndex(double bmi){
+        int index = 0;
+        if(bmi < 21){
+            index = 1;
+        }else if(bmi >= 21 && bmi < 25){
+            index = 2;
+        }else if(bmi >= 25 && bmi < 30){
+            index = 3;
+        }else if(bmi >= 30){
+            index = 4;
+        }
+        return index;
+    }
 }

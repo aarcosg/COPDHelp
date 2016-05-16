@@ -35,38 +35,38 @@ public class MedicalAttentionEditPresenterImpl implements MedicalAttentionEditPr
     }
 
     @Override
-    public void loadMedicalAttention(Long id) {
+    public void loadRealmObject(Long id) {
         mSubscription = mMedicalAttentionInteractor.realmFindById(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         medicalAttention ->
-                                mMedicalAttentionEditView.bindMedicalAttention(medicalAttention)
+                                mMedicalAttentionEditView.bindRealmObject(medicalAttention)
                         ,throwable ->
-                                mMedicalAttentionEditView.showMedicalAttentionNotFoundError()
+                                mMedicalAttentionEditView.showRealmObjectNotFoundError()
                 );
     }
 
     @Override
-    public void addMedicalAttention(MedicalAttention medicalAttention) {
+    public void addRealmObject(MedicalAttention medicalAttention) {
         mSubscription = mMedicalAttentionInteractor.realmCreate(medicalAttention)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         realmMedicalAttention ->
-                                mMedicalAttentionEditView.showSaveRealmSuccessMessage()
+                                mMedicalAttentionEditView.showSaveSuccessMessage()
                         ,throwable ->
-                                mMedicalAttentionEditView.showSaveRealmErrorMessage()
+                                mMedicalAttentionEditView.showSaveErrorMessage()
                 );
     }
 
     @Override
-    public void editMedicalAttention(Long id, MedicalAttention medicalAttention) {
+    public void editRealmObject(Long id, MedicalAttention medicalAttention) {
         mSubscription = mMedicalAttentionInteractor.realmUpdate(id,medicalAttention)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         realmMedicalAttention ->
-                                mMedicalAttentionEditView.showSaveRealmSuccessMessage()
+                                mMedicalAttentionEditView.showSaveSuccessMessage()
                         ,throwable ->
-                                mMedicalAttentionEditView.showSaveRealmErrorMessage()
+                                mMedicalAttentionEditView.showSaveErrorMessage()
                 );
     }
 }
