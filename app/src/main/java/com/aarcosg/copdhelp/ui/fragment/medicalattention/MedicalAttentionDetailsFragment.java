@@ -7,6 +7,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,8 +24,6 @@ import com.aarcosg.copdhelp.di.components.MedicalAttentionComponent;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionDetailsPresenter;
 import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionDetailsView;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
-
-import java.util.Calendar;
 
 import javax.inject.Inject;
 
@@ -111,14 +110,9 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
         mMedicalAttention = medicalAttention;
         if (mMedicalAttention != null) {
             mTypeTv.setText(getResources().getStringArray(
-                    R.array.medical_attention_type)[medicalAttention.getType()]);
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(medicalAttention.getTimestamp().getTime());
-            mDateTv.setText(getString(R.string.date_string,
-                    calendar.get(Calendar.DAY_OF_MONTH),
-                    String.format("%02d",
-                            calendar.get(Calendar.MONTH) + 1),
-                    calendar.get(Calendar.YEAR)));
+                    R.array.medical_attention_type)[mMedicalAttention.getType()]);
+            mDateTv.setText(DateUtils.getRelativeTimeSpanString(
+                    mMedicalAttention.getTimestamp().getTime(),System.currentTimeMillis(),DateUtils.DAY_IN_MILLIS));
             mNoteTv.setText(TextUtils.isEmpty(mMedicalAttention.getNote()) ?
                     getString(R.string.empty_note) : mMedicalAttention.getNote());
         }

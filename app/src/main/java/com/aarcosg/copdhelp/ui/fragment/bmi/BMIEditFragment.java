@@ -11,6 +11,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,6 +31,7 @@ import com.aarcosg.copdhelp.di.components.BMIComponent;
 import com.aarcosg.copdhelp.mvp.presenter.bmi.BMIEditPresenter;
 import com.aarcosg.copdhelp.mvp.view.bmi.BMIEditView;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
+import com.aarcosg.copdhelp.utils.Utils;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
 
@@ -73,6 +76,8 @@ public class BMIEditFragment extends BaseFragment implements BMIEditView {
     private Calendar mBMITime;
     private DatePickerDialog mDatePickerDialog;
     private BMI mBMI;
+    private Double mBMIValue;
+    private int mBMIStateIndex;
 
     public static BMIEditFragment newInstance() {
         BMIEditFragment fragment = new BMIEditFragment();
@@ -142,13 +147,16 @@ public class BMIEditFragment extends BaseFragment implements BMIEditView {
     @Override
     public void bindRealmObject(BMI bmi) {
         mBMI = bmi;
-        /*if (mBMI != null) {
-            mTypeSpinner.setSelection(mBMI.getType());
-            mNoteEt.setText(mBMI.getNote());
+        if (mBMI != null) {
+            mBMIValue = mBMI.getBmi();
+            mBMIStateIndex = Utils.getBMIStateArrayIndex(mBMIValue);
+            mHeightEt.setText(mBMI.getHeight().toString());
+            mWeightEt.setText(mBMI.getWeight().toString());
             mBMITime.setTimeInMillis(mBMI.getTimestamp().getTime());
             setupDatePickerDialog();
             setupDateTextView();
-        }*/
+            bindBMICalcResult(mBMIValue,mBMIStateIndex);
+        }
     }
 
     @Override
@@ -194,6 +202,8 @@ public class BMIEditFragment extends BaseFragment implements BMIEditView {
         TypedArray ta = getContext().getResources().obtainTypedArray(R.array.bmi_colors);
         int colorId = ContextCompat.getColor(getContext(), ta.getResourceId(bmiStateArrayIndex, 0));
         ta.recycle();
+        mBMIValue = bmiResult;
+        mBMIStateIndex = bmiStateArrayIndex;
         mBMIValTv.setText(String.format("%.2f", Double.valueOf(bmiResult)));
         mBMIValTv.setTextColor(colorId);
         mBMIValTextTv.setText(getResources().getStringArray(R.array.bmi_texts)[bmiStateArrayIndex]);
@@ -206,7 +216,7 @@ public class BMIEditFragment extends BaseFragment implements BMIEditView {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.medical_attention_edit, menu);
+        inflater.inflate(R.menu.bmi_edit, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -257,34 +267,45 @@ public class BMIEditFragment extends BaseFragment implements BMIEditView {
         mDatePickerDialog = new DatePickerDialog(
                 getContext()
                 , (view, year, monthOfYear, dayOfMonth) -> {
-            mBMITime.set(Calendar.YEAR, year);
-            mBMITime.set(Calendar.MONTH, monthOfYear);
-            mBMITime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            setupDateTextView();
-        }
+                    mBMITime.set(Calendar.YEAR, year);
+                    mBMITime.set(Calendar.MONTH, monthOfYear);
+                    mBMITime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    setupDateTextView();
+                }
                 , mBMITime.get(Calendar.YEAR)
                 , mBMITime.get(Calendar.MONTH)
                 , mBMITime.get(Calendar.DAY_OF_MONTH));
     }
 
     private void setupDateTextView() {
-        mDateTv.setText(getString(R.string.date_string,
-                mBMITime.get(Calendar.DAY_OF_MONTH),
-                String.format("%02d", mBMITime.get(Calendar.MONTH) + 1),
-                mBMITime.get(Calendar.YEAR))
-        );
+        mDateTv.setText(DateUtils.formatDateTime(getContext()
+                ,mBMITime.getTimeInMillis()
+                ,DateUtils.FORMAT_SHOW_DATE
+                        | DateUtils.FORMAT_SHOW_WEEKDAY
+                        | DateUtils.FORMAT_SHOW_YEAR
+                        | DateUtils.FORMAT_ABBREV_MONTH
+                        | DateUtils.FORMAT_ABBREV_WEEKDAY));
     }
 
     private void saveBMI() {
-        /*BMI BMI = new BMI(
-                mTypeSpinner.getSelectedItemPosition(),
-                mBMITime.getTime(),
-                mNoteEt.getText().toString());
-        if (mBMI == null) {
-            mBMIEditPresenter.addBMI(BMI);
-        } else {
-            mBMIEditPresenter.editBMI(mBMI.getId(), BMI);
-        }*/
+        if(TextUtils.isEmpty(mHeightEt.getText())){
+            mHeightEt.setError(getString(R.string.required_field));
+            mHeightEt.requestFocus();
+        }else if(TextUtils.isEmpty(mWeightEt.getText())){
+            mWeightEt.setError(getString(R.string.required_field));
+            mWeightEt.requestFocus();
+        }else{
+            BMI bmi = new BMI(
+                    Double.valueOf(mHeightEt.getText().toString())
+                    ,Double.valueOf(mWeightEt.getText().toString())
+                    ,mBMIValue
+                    ,mBMITime.getTime());
+            if (mBMI == null) {
+                mBMIEditPresenter.addRealmObject(bmi);
+            } else {
+                mBMIEditPresenter.editRealmObject(mBMI.getId(), bmi);
+            }
+        }
     }
 
 }

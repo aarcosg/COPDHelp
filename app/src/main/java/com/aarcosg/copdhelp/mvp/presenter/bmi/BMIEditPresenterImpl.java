@@ -50,8 +50,8 @@ public class BMIEditPresenterImpl implements BMIEditPresenter {
     }
 
     @Override
-    public void addRealmObject(BMI BMI) {
-        mSubscription = mBMIInteractor.realmCreate(BMI)
+    public void addRealmObject(BMI bmi) {
+        mSubscription = mBMIInteractor.realmCreate(bmi)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         realmBMI ->
@@ -62,8 +62,8 @@ public class BMIEditPresenterImpl implements BMIEditPresenter {
     }
 
     @Override
-    public void editRealmObject(Long id, BMI BMI) {
-        mSubscription = mBMIInteractor.realmUpdate(id,BMI)
+    public void editRealmObject(Long id, BMI bmi) {
+        mSubscription = mBMIInteractor.realmUpdate(id,bmi)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         realmBMI ->

@@ -35,10 +35,10 @@ public class BMIActivity extends BaseActivity implements HasComponent<BMICompone
         }else{
             addCreateFragment();
         }
-       /* mSubscription = mBMIComponent
+        mSubscription = mBMIComponent
                 .getBMIDetailsPresenter()
                 .getOnEditButtonClickSubject()
-                .subscribe(this::addEditFragment);*/
+                .subscribe(this::addEditFragment);
     }
 
     @Override
@@ -73,12 +73,12 @@ public class BMIActivity extends BaseActivity implements HasComponent<BMICompone
     }
 
     private void addEditFragment(Long id){
-        /*getSupportFragmentManager()
+        getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container,
                         BMIEditFragment.newInstance(id))
                 .addToBackStack(null)
-                .commit();*/
+                .commit();
     }
 
     public static void launch(Activity activity) {

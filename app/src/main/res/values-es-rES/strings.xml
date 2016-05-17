@@ -37,7 +37,7 @@
     <string name="share_image">Compartir imagen</string>
     <string name="centimeters_abbr">cm</string>
     <string name="kilograms_abbr">kg</string>
-    <string name="bmi_tip">El IMC influye gravemente en la salud de los pacientes con EPOC a largo plazo. Los pacientes con un IMC menor a 21 tienen peor pronóstico.</string>
+    <string name="bmi_tip">Un IMC menor que 21 influye gravemente en la salud de los pacientes de EPOC a largo plazo.</string>
     <string name="height">Altura</string>
     <string name="weight">Peso</string>
     <string name="your_bmi_is">Tu IMC es</string>
@@ -112,5 +112,6 @@
     <string name="bmi_state_overweight">Sobrepeso</string>
     <string name="bmi_state_obesity">Obesidad</string>
     <string name="bmi_state_thinness">Delgadez</string>
+    <string name="required_field">Campo obligatorio</string>
 
 </resources>

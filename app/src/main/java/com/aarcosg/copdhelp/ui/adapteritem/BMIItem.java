@@ -1,6 +1,7 @@
 package com.aarcosg.copdhelp.ui.adapteritem;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.aarcosg.copdhelp.R;
 import com.aarcosg.copdhelp.data.realm.entity.BMI;
+import com.aarcosg.copdhelp.utils.Utils;
 import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.fastadapter.items.GenericAbstractItem;
 import com.mikepenz.fastadapter.utils.ViewHolderFactory;
@@ -42,16 +44,19 @@ public class BMIItem extends GenericAbstractItem<BMI, BMIItem, BMIItem.ViewHolde
         super.bindView(viewHolder);
         Context context = viewHolder.itemView.getContext();
 
+        int bmiStateArrayIndex = Utils.getBMIStateArrayIndex(getModel().getBmi());
+        TypedArray ta = context.getResources().obtainTypedArray(R.array.bmi_colors);
+        int colorId = ContextCompat.getColor(context, ta.getResourceId(bmiStateArrayIndex, 0));
+        ta.recycle();
         IconicsDrawable iconDrawable = new IconicsDrawable(context)
-                .sizeDp(20);
-        iconDrawable
+                .sizeDp(20)
                 .icon(CommunityMaterial.Icon.cmd_scale_bathroom)
-                .color(ContextCompat.getColor(context, R.color.md_blue_600));
+                .color(colorId);
         viewHolder.iconIv.setImageDrawable(iconDrawable);
 
         viewHolder.bmiTv.setText(String.format(DECIMAL_FORMAT,getModel().getBmi()));
-        viewHolder.heightTv.setText(getModel().getHeight().toString());
-        viewHolder.weightTv.setText(String.format(DECIMAL_FORMAT,getModel().getWeight()));
+        viewHolder.heightTv.setText(String.valueOf(Math.round(getModel().getHeight())));
+        viewHolder.weightTv.setText(String.valueOf(Math.round(getModel().getWeight())));
         viewHolder.dateTv.setText(DateUtils.getRelativeTimeSpanString(
                 getModel().getTimestamp().getTime(), System.currentTimeMillis(), DateUtils.DAY_IN_MILLIS)
         );

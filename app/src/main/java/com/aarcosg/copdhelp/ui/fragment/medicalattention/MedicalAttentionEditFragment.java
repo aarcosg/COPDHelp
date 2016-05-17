@@ -9,6 +9,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -234,11 +235,13 @@ public class MedicalAttentionEditFragment extends BaseFragment implements Medica
     }
 
     private void setupDateTextView() {
-        mDateTv.setText(getString(R.string.date_string,
-                mMedicalAttentionTime.get(Calendar.DAY_OF_MONTH),
-                String.format("%02d", mMedicalAttentionTime.get(Calendar.MONTH) + 1),
-                mMedicalAttentionTime.get(Calendar.YEAR))
-        );
+        mDateTv.setText(DateUtils.formatDateTime(getContext()
+                ,mMedicalAttentionTime.getTimeInMillis()
+                ,DateUtils.FORMAT_SHOW_DATE
+                        | DateUtils.FORMAT_SHOW_WEEKDAY
+                        | DateUtils.FORMAT_SHOW_YEAR
+                        | DateUtils.FORMAT_ABBREV_MONTH
+                        | DateUtils.FORMAT_ABBREV_WEEKDAY));
     }
 
     private void saveMedicalAttention() {

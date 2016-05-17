@@ -21,5 +21,6 @@
     <dimen name="toolbar_elevation">4dp</dimen>
     <dimen name="min_chart_height">180dp</dimen>
     <dimen name="chart_value_text_size">3dp</dimen>
+    <dimen name="measurement_unit_margin">4dp</dimen>
 
 </resources>
