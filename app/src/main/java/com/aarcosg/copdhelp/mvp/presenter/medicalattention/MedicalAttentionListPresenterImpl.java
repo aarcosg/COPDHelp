@@ -45,7 +45,6 @@ public class MedicalAttentionListPresenterImpl implements MedicalAttentionListPr
                 .subscribe(
                     medicalAttentions ->
                             mMedicalAttentionListView.bindAll(medicalAttentions)
-
                     ,throwable ->
                             mMedicalAttentionListView.showLoadAllRealmErrorMessage()
                 );

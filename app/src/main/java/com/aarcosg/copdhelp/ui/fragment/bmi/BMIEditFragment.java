@@ -123,10 +123,10 @@ public class BMIEditFragment extends BaseFragment implements BMIEditView {
             mAppBar.setExpanded(false, true);
             mWeightEt.requestFocus();
         } else {
+            mBMIEditPresenter.loadLastHeightSaved();
             setupDatePickerDialog();
             setupDateTextView();
         }
-
     }
 
     @Override
@@ -150,7 +150,7 @@ public class BMIEditFragment extends BaseFragment implements BMIEditView {
         if (mBMI != null) {
             mBMIValue = mBMI.getBmi();
             mBMIStateIndex = Utils.getBMIStateArrayIndex(mBMIValue);
-            mHeightEt.setText(mBMI.getHeight().toString());
+            mHeightEt.setText(String.valueOf(Math.round(mBMI.getHeight())));
             mWeightEt.setText(mBMI.getWeight().toString());
             mBMITime.setTimeInMillis(mBMI.getTimestamp().getTime());
             setupDatePickerDialog();
@@ -172,7 +172,7 @@ public class BMIEditFragment extends BaseFragment implements BMIEditView {
     @Override
     public void showSaveSuccessMessage() {
         Toast.makeText(getContext()
-                , R.string.medical_attention_save_realm_success
+                , R.string.bmi_save_realm_success
                 , Toast.LENGTH_LONG)
                 .show();
         getActivity().onBackPressed();
@@ -181,7 +181,7 @@ public class BMIEditFragment extends BaseFragment implements BMIEditView {
     @Override
     public void showSaveErrorMessage() {
         Snackbar.make(mFab
-                , R.string.medical_attention_save_realm_error
+                , R.string.bmi_save_realm_error
                 , Snackbar.LENGTH_LONG)
                 .setAction(R.string.retry, v -> saveBMI())
                 .show();
@@ -190,7 +190,7 @@ public class BMIEditFragment extends BaseFragment implements BMIEditView {
     @Override
     public void showRealmObjectNotFoundError() {
         Toast.makeText(getContext()
-                , R.string.medical_attention_not_found_realm_error
+                , R.string.bmi_not_found_realm_error
                 , Toast.LENGTH_LONG)
                 .show();
         getSupportFragmentManager().beginTransaction().remove(this).commit();
@@ -212,6 +212,11 @@ public class BMIEditFragment extends BaseFragment implements BMIEditView {
                 , getResources().getStringArray(R.array.bmi_icons)[bmiStateArrayIndex])
                 .sizeDp(30)
                 .color(colorId));
+    }
+
+    @Override
+    public void bindLastHeightSaved(Double height) {
+        mHeightEt.setText(String.valueOf(Math.round(height)));
     }
 
     @Override

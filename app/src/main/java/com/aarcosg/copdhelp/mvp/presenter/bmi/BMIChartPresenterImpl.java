@@ -1,9 +1,9 @@
-package com.aarcosg.copdhelp.mvp.presenter.medicalattention;
+package com.aarcosg.copdhelp.mvp.presenter.bmi;
 
 import com.aarcosg.copdhelp.data.realm.RealmTable;
-import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractor;
+import com.aarcosg.copdhelp.interactor.BMIInteractor;
 import com.aarcosg.copdhelp.mvp.view.View;
-import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionChartView;
+import com.aarcosg.copdhelp.mvp.view.bmi.BMIChartView;
 
 import java.util.Calendar;
 
@@ -12,20 +12,20 @@ import javax.inject.Inject;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.subscriptions.CompositeSubscription;
 
-public class MedicalAttentionChartPresenterImpl implements MedicalAttentionChartPresenter {
+public class BMIChartPresenterImpl implements BMIChartPresenter {
 
-    private MedicalAttentionChartView mMedicalAttentionChartView;
-    private final MedicalAttentionInteractor mMedicalAttentionInteractor;
+    private BMIChartView mBMIChartView;
+    private final BMIInteractor mBMIInteractor;
     private CompositeSubscription mSubscriptions = new CompositeSubscription();
 
     @Inject
-    public MedicalAttentionChartPresenterImpl(MedicalAttentionInteractor medicalAttentionInteractor){
-        this.mMedicalAttentionInteractor = medicalAttentionInteractor;
+    public BMIChartPresenterImpl(BMIInteractor BMIInteractor){
+        this.mBMIInteractor = BMIInteractor;
     }
 
     @Override
     public void setView(View v) {
-        mMedicalAttentionChartView = (MedicalAttentionChartView) v;
+        mBMIChartView = (BMIChartView) v;
     }
 
     @Override
@@ -43,10 +43,10 @@ public class MedicalAttentionChartPresenterImpl implements MedicalAttentionChart
     @Override
     public void loadWeekData() {
         Calendar calendar = Calendar.getInstance();
-        mSubscriptions.add(mMedicalAttentionInteractor.realmFindAll(
+        mSubscriptions.add(mBMIInteractor.realmFindAll(
                 realmQuery -> realmQuery
-                        .equalTo(RealmTable.MedicalAttention.YEAR,calendar.get(Calendar.YEAR))
-                        .between(RealmTable.MedicalAttention.WEEK_OF_YEAR
+                        .equalTo(RealmTable.BMI.YEAR,calendar.get(Calendar.YEAR))
+                        .between(RealmTable.BMI.WEEK_OF_YEAR
                                 ,calendar.get(Calendar.WEEK_OF_YEAR) - 1
                                 ,calendar.get(Calendar.WEEK_OF_YEAR)
                         )
@@ -54,10 +54,10 @@ public class MedicalAttentionChartPresenterImpl implements MedicalAttentionChart
                 ,null)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        medicalAttentions ->
-                                mMedicalAttentionChartView.bindWeekData(medicalAttentions)
+                        BMIs ->
+                                mBMIChartView.bindWeekData(BMIs)
                         ,throwable ->
-                                mMedicalAttentionChartView.showLoadRealmErrorMessage()
+                                mBMIChartView.showLoadRealmErrorMessage()
                 )
         );
     }
@@ -65,10 +65,10 @@ public class MedicalAttentionChartPresenterImpl implements MedicalAttentionChart
     @Override
     public void loadMonthData() {
         Calendar calendar = Calendar.getInstance();
-        mSubscriptions.add(mMedicalAttentionInteractor.realmFindAll(
+        mSubscriptions.add(mBMIInteractor.realmFindAll(
                 realmQuery -> realmQuery
-                        .equalTo(RealmTable.MedicalAttention.YEAR,calendar.get(Calendar.YEAR))
-                        .between(RealmTable.MedicalAttention.MONTH
+                        .equalTo(RealmTable.BMI.YEAR,calendar.get(Calendar.YEAR))
+                        .between(RealmTable.BMI.MONTH
                                 ,calendar.get(Calendar.MONTH) - 1
                                 ,calendar.get(Calendar.MONTH)
                         )
@@ -76,10 +76,10 @@ public class MedicalAttentionChartPresenterImpl implements MedicalAttentionChart
                 ,null)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        medicalAttentions ->
-                                mMedicalAttentionChartView.bindMonthData(medicalAttentions)
+                        BMIs ->
+                                mBMIChartView.bindMonthData(BMIs)
                         ,throwable ->
-                                mMedicalAttentionChartView.showLoadRealmErrorMessage()
+                                mBMIChartView.showLoadRealmErrorMessage()
                 )
         );
     }
@@ -87,9 +87,9 @@ public class MedicalAttentionChartPresenterImpl implements MedicalAttentionChart
     @Override
     public void loadYearData() {
         Calendar calendar = Calendar.getInstance();
-        mSubscriptions.add(mMedicalAttentionInteractor.realmFindAll(
+        mSubscriptions.add(mBMIInteractor.realmFindAll(
                 realmQuery -> realmQuery
-                        .between(RealmTable.MedicalAttention.YEAR
+                        .between(RealmTable.BMI.YEAR
                                 ,calendar.get(Calendar.YEAR) - 1
                                 ,calendar.get(Calendar.YEAR)
                         )
@@ -97,10 +97,10 @@ public class MedicalAttentionChartPresenterImpl implements MedicalAttentionChart
                 ,null)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        medicalAttentions ->
-                                mMedicalAttentionChartView.bindYearData(medicalAttentions)
+                        BMIs ->
+                                mBMIChartView.bindYearData(BMIs)
                         ,throwable ->
-                                mMedicalAttentionChartView.showLoadRealmErrorMessage()
+                                mBMIChartView.showLoadRealmErrorMessage()
                 )
         );
     }

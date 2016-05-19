@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
@@ -53,6 +55,8 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
     TextView mDateTv;
     @Bind(R.id.appbar)
     AppBarLayout mAppBar;
+    @Bind(R.id.type_cardview)
+    CardView mTypeCardView;
 
     private MedicalAttention mMedicalAttention;
 
@@ -109,10 +113,13 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
     public void bindRealmObject(MedicalAttention medicalAttention) {
         mMedicalAttention = medicalAttention;
         if (mMedicalAttention != null) {
+            int typeColor = medicalAttention.getType() == MedicalAttention.TYPE_CHECKUP ?
+                    R.color.md_blue_600 : R.color.md_deep_orange_600;
             mTypeTv.setText(getResources().getStringArray(
                     R.array.medical_attention_type)[mMedicalAttention.getType()]);
+            mTypeCardView.setBackgroundColor(ContextCompat.getColor(getContext(), typeColor));
             mDateTv.setText(DateUtils.getRelativeTimeSpanString(
-                    mMedicalAttention.getTimestamp().getTime(),System.currentTimeMillis(),DateUtils.DAY_IN_MILLIS));
+                    mMedicalAttention.getTimestamp().getTime(), System.currentTimeMillis(), DateUtils.DAY_IN_MILLIS));
             mNoteTv.setText(TextUtils.isEmpty(mMedicalAttention.getNote()) ?
                     getString(R.string.empty_note) : mMedicalAttention.getNote());
         }
@@ -158,7 +165,7 @@ public class MedicalAttentionDetailsFragment extends BaseFragment implements Med
     }
 
     @OnClick(R.id.fab)
-    public void onFabClick(){
+    public void onFabClick() {
         mMedicalAttentionDetailsPresenter.onEditButtonClick(mMedicalAttention.getId());
     }
 

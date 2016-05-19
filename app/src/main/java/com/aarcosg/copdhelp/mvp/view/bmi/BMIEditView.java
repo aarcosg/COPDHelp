@@ -7,4 +7,5 @@ public interface BMIEditView extends EditView<BMI> {
 
     void bindBMICalcResult(double bmiResult, int bmiStateArrayIndex);
 
+    void bindLastHeightSaved(Double height);
 }

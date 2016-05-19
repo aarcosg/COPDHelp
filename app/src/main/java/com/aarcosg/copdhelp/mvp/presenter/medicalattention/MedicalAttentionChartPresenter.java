@@ -1,14 +1,9 @@
 package com.aarcosg.copdhelp.mvp.presenter.medicalattention;
 
 
-import com.aarcosg.copdhelp.mvp.presenter.Presenter;
+import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
+import com.aarcosg.copdhelp.mvp.presenter.ChartPresenter;
 
-public interface MedicalAttentionChartPresenter extends Presenter {
-
-    void loadWeekMedicalAttentions();
-
-    void loadMonthMedicalAttentions();
-
-    void loadYearMedicalAttentions();
+public interface MedicalAttentionChartPresenter extends ChartPresenter<MedicalAttention> {
 
 }

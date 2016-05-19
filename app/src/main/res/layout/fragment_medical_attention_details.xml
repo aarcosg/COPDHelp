@@ -55,8 +55,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/narrow_space">
+            android:orientation="vertical">
 
             <include layout="@layout/progress_bar" />
 
@@ -64,31 +63,127 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_margin="@dimen/mid_space">
+                android:weightSum="2">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:ico_color="@color/icon_dark"
-                    app:ico_icon="cmd_stethoscope"
-                    app:ico_size="@dimen/icon_default_size"/>
-
-                <TextView
-                    android:id="@+id/type_tv"
-                    android:layout_width="wrap_content"
+                <android.support.v7.widget.CardView
+                    android:id="@+id/type_cardview"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/left_margin_list_after_icon"
-                    android:layout_marginStart="@dimen/left_margin_list_after_icon"
-                    style="@style/Base.TextAppearance.AppCompat.Medium" />
+                    android:layout_margin="@dimen/narrow_space"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/activity_horizontal_margin">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/DetailsCardHeaderText"
+                            android:textColor="@color/md_white_1000"
+                            android:text="@string/type"/>
+
+                        <TextView
+                            android:id="@+id/type_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/DetailsCardBodyText"
+                            android:textColor="@color/md_white_1000"/>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/narrow_space"
+                    android:layout_marginRight="@dimen/narrow_space"
+                    android:layout_marginEnd="@dimen/narrow_space"
+                    android:layout_marginBottom="@dimen/narrow_space"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/activity_horizontal_margin">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/DetailsCardHeaderText"
+                            android:text="@string/date"/>
+
+                        <TextView
+                            android:id="@+id/date_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/DetailsCardBodyText"/>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
 
             </LinearLayout>
 
-            <View
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/divider_height"
-                style="@style/ListDivider"/>
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/narrow_space"
+                android:layout_marginEnd="@dimen/narrow_space"
+                android:layout_marginLeft="@dimen/narrow_space"
+                android:layout_marginStart="@dimen/narrow_space"
+                android:layout_marginBottom="@dimen/activity_vertical_margin">
 
-            <LinearLayout
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/activity_horizontal_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/DetailsCardHeaderText"
+                        android:text="@string/note"/>
+
+                    <TextView
+                        android:id="@+id/note_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/DetailsCardBodyText"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+<!--            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/type_icon_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:ico_color="@color/icon_dark"
+                    app:ico_icon="cmd_stethoscope"
+                    app:ico_size="30dp"/>
+
+
+
+            </LinearLayout>-->
+
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -109,14 +204,9 @@
                     android:layout_marginStart="@dimen/left_margin_list_after_icon"
                     style="@style/Base.TextAppearance.AppCompat.Medium"/>
 
-            </LinearLayout>
+            </LinearLayout>-->
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/divider_height"
-                style="@style/ListDivider"/>
-
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -138,12 +228,7 @@
                     android:background="@android:color/transparent"
                     style="@style/Base.TextAppearance.AppCompat.Medium"/>
 
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/divider_height"
-                style="@style/ListDivider"/>
+            </LinearLayout>-->
 
         </LinearLayout>
 

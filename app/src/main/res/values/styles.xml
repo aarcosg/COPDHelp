@@ -21,4 +21,10 @@
         <item name="android:background">@color/divider</item>
     </style>
 
+    <style name="DetailsCardHeaderText" parent="TextAppearance.AppCompat.Small"/>
+
+    <style name="DetailsCardBodyText" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
 </resources>

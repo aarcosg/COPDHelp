@@ -6,4 +6,6 @@ import com.aarcosg.copdhelp.mvp.presenter.EditPresenter;
 public interface BMIEditPresenter extends EditPresenter<BMI> {
 
     void onHeightOrWeightChanged(String height, String weight);
+
+    void loadLastHeightSaved();
 }

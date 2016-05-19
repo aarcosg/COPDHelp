@@ -25,8 +25,8 @@
             android:textStyle="bold"
             android:fontFamily="sans-serif-light"/>
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/barchart"
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/linechart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="@dimen/min_chart_height"/>
@@ -58,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="@dimen/narrow_space"
             android:gravity="end">
 
             <Button

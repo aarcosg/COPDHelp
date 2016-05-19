@@ -14,6 +14,7 @@
     <string name="title_fragment_bmi">Índice Masa Corporal</string>
 
     <string name="medical_attention">Atención sanitaria</string>
+    <string name="medical_attention_type">Tipo de atención sanitaria</string>
     <string name="bmi_abbr">IMC</string>
     <string name="bmi">Índice Masa Corporal</string>
     <string name="add_date">Añadir día</string>
@@ -31,6 +32,9 @@
     <string name="this_week">Esta semana</string>
     <string name="this_month">Este mes</string>
     <string name="this_year">Este año</string>
+    <string name="weekly_progress">Progreso semanal</string>
+    <string name="monthly_progress">Progreso mensual</string>
+    <string name="yearly_progress">Progreso anual</string>
     <string name="zoom">Ampliar</string>
     <string name="share">Compartir</string>
     <string name="empty_note">Sin nota</string>
@@ -42,6 +46,9 @@
     <string name="weight">Peso</string>
     <string name="your_bmi_is">Tu IMC es</string>
     <string name="not_calculated">No calculado</string>
+    <string name="required_field">Campo obligatorio</string>
+    <string name="type">Tipo</string>
+    <string name="date">Fecha</string>
 
     <!-- Toast & Snackbars messages -->
     <string name="medical_attention_save_realm_success">Atención sanitaria guardada</string>
@@ -112,6 +119,5 @@
     <string name="bmi_state_overweight">Sobrepeso</string>
     <string name="bmi_state_obesity">Obesidad</string>
     <string name="bmi_state_thinness">Delgadez</string>
-    <string name="required_field">Campo obligatorio</string>
 
 </resources>

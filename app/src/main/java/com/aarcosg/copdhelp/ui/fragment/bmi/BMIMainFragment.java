@@ -106,9 +106,9 @@ public class BMIMainFragment extends BaseFragment {
                 case 0:
                     fragment = BMIListFragment.newInstance();
                     break;
-                /*case 1:
+                case 1:
                     fragment = BMIChartFragment.newInstance();
-                    break;*/
+                    break;
             }
             return fragment;
         }

@@ -2,6 +2,7 @@ package com.aarcosg.copdhelp.mvp.presenter.bmi;
 
 import android.text.TextUtils;
 
+import com.aarcosg.copdhelp.data.realm.RealmTable;
 import com.aarcosg.copdhelp.data.realm.entity.BMI;
 import com.aarcosg.copdhelp.interactor.BMIInteractor;
 import com.aarcosg.copdhelp.mvp.view.View;
@@ -10,6 +11,7 @@ import com.aarcosg.copdhelp.utils.Utils;
 
 import javax.inject.Inject;
 
+import io.realm.Sort;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.subscriptions.Subscriptions;
@@ -82,5 +84,23 @@ public class BMIEditPresenterImpl implements BMIEditPresenter {
             mBMIEditView.bindBMICalcResult(bmiResult,bmiStateArrayIndex);
 
         }
+    }
+
+    @Override
+    public void loadLastHeightSaved() {
+        mSubscription = mBMIInteractor.realmFindAll(
+                null
+                ,RealmTable.ID
+                ,Sort.DESCENDING)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        realmBMI -> {
+                            if(!realmBMI.isEmpty()){
+                                mBMIEditView.bindLastHeightSaved(realmBMI.get(0).getHeight());
+                            }
+                        }
+                        ,throwable ->
+                                mBMIEditView.showRealmObjectNotFoundError()
+                );
     }
 }
