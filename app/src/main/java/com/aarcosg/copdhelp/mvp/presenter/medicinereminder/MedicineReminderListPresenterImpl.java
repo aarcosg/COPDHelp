@@ -56,7 +56,7 @@ public class MedicineReminderListPresenterImpl implements MedicineReminderListPr
         mSubscription = mMedicineReminderInteractor.realmCreate(medicineReminder)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        realmBMI ->
+                        realmMedicineReminder ->
                                 mMedicineReminderListView.showSaveSuccessMessage()
                         ,throwable ->
                                 mMedicineReminderListView.showSaveErrorMessage()
@@ -68,8 +68,13 @@ public class MedicineReminderListPresenterImpl implements MedicineReminderListPr
         mSubscription = mMedicineReminderInteractor.realmUpdate(id,medicineReminder)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        realmBMI ->
-                                mMedicineReminderListView.showSaveSuccessMessage()
+                        realmMedicineReminder -> {
+                            if(realmMedicineReminder.isEnabled()){
+                                mMedicineReminderListView.disableReminderAlarm(realmMedicineReminder);
+                                mMedicineReminderListView.enableReminderAlarm(realmMedicineReminder);
+                            }
+                            mMedicineReminderListView.showSaveSuccessMessage();
+                        }
                         ,throwable ->
                                 mMedicineReminderListView.showSaveErrorMessage()
                 );

@@ -56,8 +56,12 @@ public class MedicineReminderInteractorImpl implements MedicineReminderInteracto
     @RxLogObservable
     @Override
     public Observable<MedicineReminder> realmCreate(MedicineReminder medicineReminder) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(medicineReminder.getTimestamp());
+        Calendar now = Calendar.getInstance();
+        Calendar reminderTime = Calendar.getInstance();
+        reminderTime.setTime(medicineReminder.getTimestamp());
+        if(reminderTime.before(now)){
+            reminderTime.add(Calendar.HOUR_OF_DAY,medicineReminder.getFrequency());
+        }
         getRealm().beginTransaction();
         MedicineReminder realmMedicineReminder = getRealm().createObject(MedicineReminder.class,
                 PrimaryKeyFactory.getInstance().nextKey(MedicineReminder.class));
@@ -65,12 +69,12 @@ public class MedicineReminderInteractorImpl implements MedicineReminderInteracto
         realmMedicineReminder.setMedicine(medicineReminder.getMedicine());
         realmMedicineReminder.setDose(medicineReminder.getDose());
         realmMedicineReminder.setFrequency(medicineReminder.getFrequency());
-        realmMedicineReminder.setTimestamp(medicineReminder.getTimestamp());
-        realmMedicineReminder.setDay(calendar.get(Calendar.DAY_OF_MONTH));
-        realmMedicineReminder.setMonth(calendar.get(Calendar.MONTH));
-        realmMedicineReminder.setYear(calendar.get(Calendar.YEAR));
-        realmMedicineReminder.setDayOfWeek(calendar.get(Calendar.DAY_OF_WEEK));
-        realmMedicineReminder.setWeekOfYear(calendar.get(Calendar.WEEK_OF_YEAR));
+        realmMedicineReminder.setTimestamp(reminderTime.getTime());
+        realmMedicineReminder.setDay(reminderTime.get(Calendar.DAY_OF_MONTH));
+        realmMedicineReminder.setMonth(reminderTime.get(Calendar.MONTH));
+        realmMedicineReminder.setYear(reminderTime.get(Calendar.YEAR));
+        realmMedicineReminder.setDayOfWeek(reminderTime.get(Calendar.DAY_OF_WEEK));
+        realmMedicineReminder.setWeekOfYear(reminderTime.get(Calendar.WEEK_OF_YEAR));
         getRealm().commitTransaction();
         return Observable.just(realmMedicineReminder);
     }
@@ -78,20 +82,24 @@ public class MedicineReminderInteractorImpl implements MedicineReminderInteracto
     @RxLogObservable
     @Override
     public Observable<MedicineReminder> realmUpdate(Long id, MedicineReminder medicineReminder) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(medicineReminder.getTimestamp());
+        Calendar now = Calendar.getInstance();
+        Calendar reminderTime = Calendar.getInstance();
+        reminderTime.setTime(medicineReminder.getTimestamp());
+        if(reminderTime.before(now)){
+            reminderTime.add(Calendar.HOUR_OF_DAY,medicineReminder.getFrequency());
+        }
         getRealm().beginTransaction();
         MedicineReminder realmMedicineReminder = getRealm().where(MedicineReminder.class)
                 .equalTo("id",id).findFirst();
         realmMedicineReminder.setMedicine(medicineReminder.getMedicine());
         realmMedicineReminder.setDose(medicineReminder.getDose());
         realmMedicineReminder.setFrequency(medicineReminder.getFrequency());
-        realmMedicineReminder.setTimestamp(medicineReminder.getTimestamp());
-        realmMedicineReminder.setDay(calendar.get(Calendar.DAY_OF_MONTH));
-        realmMedicineReminder.setMonth(calendar.get(Calendar.MONTH));
-        realmMedicineReminder.setYear(calendar.get(Calendar.YEAR));
-        realmMedicineReminder.setDayOfWeek(calendar.get(Calendar.DAY_OF_WEEK));
-        realmMedicineReminder.setWeekOfYear(calendar.get(Calendar.WEEK_OF_YEAR));
+        realmMedicineReminder.setTimestamp(reminderTime.getTime());
+        realmMedicineReminder.setDay(reminderTime.get(Calendar.DAY_OF_MONTH));
+        realmMedicineReminder.setMonth(reminderTime.get(Calendar.MONTH));
+        realmMedicineReminder.setYear(reminderTime.get(Calendar.YEAR));
+        realmMedicineReminder.setDayOfWeek(reminderTime.get(Calendar.DAY_OF_WEEK));
+        realmMedicineReminder.setWeekOfYear(reminderTime.get(Calendar.WEEK_OF_YEAR));
         getRealm().commitTransaction();
         return Observable.just(realmMedicineReminder);
     }
