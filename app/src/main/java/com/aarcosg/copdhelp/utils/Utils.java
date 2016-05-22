@@ -53,6 +53,17 @@ public class Utils {
         return index;
     }
 
+    public static int getSpinnerIndex(Spinner spinner, Integer value) {
+        int index = 0;
+        for (int i=0;i<spinner.getCount();i++){
+            if (Integer.valueOf(spinner.getItemAtPosition(i).toString()).equals(value)){
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
     public static Calendar getFirstDayOfWeek(int weekOfYear){
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.WEEK_OF_YEAR,weekOfYear);

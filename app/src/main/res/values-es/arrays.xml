@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="medicine_dose">
+        <item>4,5 microgramos</item>
+        <item>5 microgramos</item>
+        <item>6 microgramos</item>
+        <item>10 microgramos</item>
+        <item>12 microgramos</item>
+        <item>18 microgramos</item>
+        <item>22 microgramos</item>
+        <item>25 microgramos</item>
+        <item>50 microgramos</item>
+        <item>62,5 microgramos</item>
+        <item>80 microgramos</item>
+        <item>92 microgramos</item>
+        <item>100 microgramos</item>
+        <item>125 microgramos</item>
+        <item>150 microgramos</item>
+        <item>160 microgramos</item>
+        <item>184 microgramos</item>
+        <item>200 microgramos</item>
+        <item>250 microgramos</item>
+        <item>300 microgramos</item>
+        <item>400 microgramos</item>
+        <item>500 microgramos</item>
+        <item>600 microgramos</item>
+        <item>700 microgramos</item>
+        <item>800 microgramos</item>
+        <item>900 microgramos</item>
+        <item>1 gramo</item>
+        <item>1,5 gramos</item>
+    </string-array>
+</resources>

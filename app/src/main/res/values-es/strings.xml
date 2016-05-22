@@ -12,6 +12,7 @@
     <string name="title_fragment_medical_attention_add">Nueva atención sanitaria</string>
     <string name="title_fragment_medical_attention_edit">Editar atención sanitaria</string>
     <string name="title_fragment_bmi">Índice Masa Corporal</string>
+    <string name="title_fragment_medicine_reminder">Recordatorio de dosis</string>
 
     <string name="medical_attention">Atención sanitaria</string>
     <string name="medical_attention_type">Tipo de atención sanitaria</string>
@@ -65,6 +66,12 @@
     <string name="bmi_ask_delete">¿Desea eliminar este registro?</string>
     <string name="bmi_remove_realm_success">Registro eliminado</string>
     <string name="bmi_remove_realm_error">Error al eliminar el registro</string>
+    <string name="medicine_reminder_save_realm_success">Recordatorio de medicamento guardado</string>
+    <string name="medicine_reminder_save_realm_error">Error al guardar el recordatorio de medicamento</string>
+    <string name="medicine_reminder_ask_delete">¿Desea eliminar el recordatorio?</string>
+    <string name="medicine_reminder_load_realm_error">Error al cargar los recordatorios</string>
+    <string name="medicine_reminder_remove_realm_success">Recordatorio eliminado</string>
+    <string name="medicine_reminder_remove_realm_error">Error al eliminar el recordatorio</string>
 
     <!-- Arrays -->
     <string name="medical_attention_type_checkup">Revisión</string>
@@ -119,5 +126,19 @@
     <string name="bmi_state_overweight">Sobrepeso</string>
     <string name="bmi_state_obesity">Obesidad</string>
     <string name="bmi_state_thinness">Delgadez</string>
+
+    <string name="next_medicine_dose">Próxima dosis:</string>
+    <string name="take_every">Tomar cada</string>
+    <string name="medicine_frecuency">Cada: %1$s</string>
+    <string name="medicine">Medicamento</string>
+    <string name="hours">horas</string>
+    <string name="first_take">Primera toma</string>
+    <string name="medicine_reminder">Recordatorio de medicamentos</string>
+    <string name="dose_reminder">Recordatorio de dosis</string>
+    <string name="add_reminder">Añadir recordatorio</string>
+    <string name="dose">Dosis</string>
+    <string name="medicine_reminder_on">Recordatorio activado</string>
+    <string name="medicine_reminder_off">Recordatorio desactivado</string>
+    <string name="medicine_reminder_notification">Tomar medicamento %1$s</string>
 
 </resources>

@@ -87,4 +87,35 @@
         <item>gmd_sentiment_dissatisfied</item>
         <item>gmd_sentiment_very_dissatisfied</item>
     </string-array>
+    <string-array name="medicine">
+        <item>Azitromicina</item>
+        <item>Budesonide</item>
+        <item>Carboximetilcisteína</item>
+        <item>Eritromicina</item>
+        <item>Fenoterol</item>
+        <item>Fluticasona Furoato</item>
+        <item>Fluticasona propionato</item>
+        <item>Formoterol</item>
+        <item>Glicopirronio</item>
+        <item>Indacaterol</item>
+        <item>Ipratropio</item>
+        <item>Mometasona</item>
+        <item>N-Acetilcisteína</item>
+        <item>Olodaterol</item>
+        <item>Roflumilast</item>
+        <item>Salbutamol</item>
+        <item>Salmeterol</item>
+        <item>Teofilina</item>
+        <item>Tiotropio</item>
+        <item>Umeclidinium</item>
+        <item>Vilanterol</item>
+    </string-array>
+    <string-array name="medicine_frequency">
+        <item>2</item>
+        <item>4</item>
+        <item>6</item>
+        <item>8</item>
+        <item>12</item>
+        <item>24</item>
+    </string-array>
 </resources>

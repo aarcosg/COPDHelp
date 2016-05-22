@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/dialog_padding"
+        android:layout_marginRight="@dimen/dialog_padding"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/medicine"/>
+
+        <Spinner
+            android:id="@+id/medicine_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dialog_spinner_margin_left"
+            android:layout_marginStart="@dimen/dialog_spinner_margin_left"
+            android:entries="@array/medicine"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/dose"/>
+
+        <Spinner
+            android:id="@+id/dose_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dialog_spinner_margin_left"
+            android:layout_marginStart="@dimen/dialog_spinner_margin_left"
+            android:entries="@array/medicine_dose"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/take_every"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/frequency_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dialog_spinner_margin_left"
+                android:layout_marginStart="@dimen/dialog_spinner_margin_left"
+                android:entries="@array/medicine_frequency"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/measurement_unit_margin"
+                android:layout_marginStart="@dimen/measurement_unit_margin"
+                style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
+                android:text="@string/hours"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/first_take"/>
+
+        <TextView
+            android:id="@+id/first_time_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
+            android:clickable="true"
+            android:background="?selectableItemBackground"
+            android:text="@string/add_time"/>
+
+    </LinearLayout>
+
+</ScrollView>

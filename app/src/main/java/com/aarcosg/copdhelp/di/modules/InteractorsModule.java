@@ -7,6 +7,8 @@ import com.aarcosg.copdhelp.interactor.MainInteractor;
 import com.aarcosg.copdhelp.interactor.MainInteractorImpl;
 import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractor;
 import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractorImpl;
+import com.aarcosg.copdhelp.interactor.MedicineReminderInteractor;
+import com.aarcosg.copdhelp.interactor.MedicineReminderInteractorImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -30,5 +32,11 @@ public class InteractorsModule {
     @PerApp
     public BMIInteractor provideBMIInteractor() {
         return new BMIInteractorImpl();
+    }
+
+    @Provides
+    @PerApp
+    public MedicineReminderInteractor provideMedicineReminderInteractor() {
+        return new MedicineReminderInteractorImpl();
     }
 }

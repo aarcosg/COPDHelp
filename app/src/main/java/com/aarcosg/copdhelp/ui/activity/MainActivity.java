@@ -18,6 +18,8 @@ import com.aarcosg.copdhelp.mvp.presenter.MainPresenter;
 import com.aarcosg.copdhelp.mvp.view.MainView;
 import com.aarcosg.copdhelp.ui.fragment.bmi.BMIMainFragment;
 import com.aarcosg.copdhelp.ui.fragment.medicalattention.MedicalAttentionMainFragment;
+import com.aarcosg.copdhelp.ui.fragment.medicinereminder.MedicineReminderListFragment;
+import com.aarcosg.copdhelp.ui.receiver.Reminders;
 import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -36,6 +38,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
     private static final String TAG = MainActivity.class.getCanonicalName();
     private static final int MEDICAL_ATTENTION_MAIN_ID = 1;
     private static final int BMI_MAIN_ID = 2;
+    private static final int MEDICINE_REMINDER_MAIN_ID = 3;
 
     @Inject
     MainPresenter mMainPresenter;
@@ -57,7 +60,12 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
         ButterKnife.bind(this);
         setupToolbar();
         setupNavigationDrawer(savedInstanceState);
-        selectDrawerItem(MEDICAL_ATTENTION_MAIN_ID);
+        if(getIntent().hasExtra(Reminders.EXTRA_ID)){
+            mDrawer.setSelection(MEDICINE_REMINDER_MAIN_ID,true);
+        }else{
+            mDrawer.setSelection(MEDICAL_ATTENTION_MAIN_ID,true);
+        }
+
     }
 
     @Override
@@ -119,6 +127,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(getString(R.string.medical_attention)).withIcon(GoogleMaterial.Icon.gmd_local_hospital).withIdentifier(MEDICAL_ATTENTION_MAIN_ID)
                         ,new PrimaryDrawerItem().withName(getString(R.string.bmi)).withIcon(CommunityMaterial.Icon.cmd_scale_bathroom).withIdentifier(BMI_MAIN_ID)
+                        ,new PrimaryDrawerItem().withName(getString(R.string.dose_reminder)).withIcon(CommunityMaterial.Icon.cmd_pill).withIdentifier(MEDICINE_REMINDER_MAIN_ID)
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     if(drawerItem != null){
@@ -141,6 +150,11 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 setAppBarElevation(0);
                 setTitle(getString(R.string.title_fragment_bmi));
                 fragment = BMIMainFragment.newInstance();
+                break;
+            case MEDICINE_REMINDER_MAIN_ID:
+                setAppBarElevation(getResources().getDimension(R.dimen.toolbar_elevation));
+                setTitle(getString(R.string.title_fragment_medicine_reminder));
+                fragment = MedicineReminderListFragment.newInstance();
                 break;
             default:
                 setTitle(getString(R.string.title_fragment_medical_attention));
