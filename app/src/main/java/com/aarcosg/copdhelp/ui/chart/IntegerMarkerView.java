@@ -7,20 +7,19 @@ import com.aarcosg.copdhelp.R;
 import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.utils.Utils;
 
-public class LineChartMarkerView extends MarkerView {
+public class IntegerMarkerView extends MarkerView {
 
     private TextView mTextView;
 
-    public LineChartMarkerView(Context context, int layoutResource) {
+    public IntegerMarkerView(Context context, int layoutResource) {
         super(context, layoutResource);
         mTextView = (TextView) findViewById(R.id.marker_tv);
     }
 
     @Override
     public void refreshContent(Entry e, Highlight highlight) {
-        mTextView.setText(Utils.formatNumber(e.getVal(), 2, true));
+        mTextView.setText(String.valueOf(Math.round(e.getVal())));
     }
 
     @Override

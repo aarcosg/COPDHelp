@@ -20,6 +20,14 @@
         <item>@string/tab_list_icon_id</item>
         <item>@string/tab_charts_icon_id</item>
     </string-array>
+    <string-array name="smoke_tab_titles">
+        <item>@string/list</item>
+        <item>@string/charts</item>
+    </string-array>
+    <string-array name="smoke_tab_icons">
+        <item>@string/tab_list_icon_id</item>
+        <item>@string/tab_charts_icon_id</item>
+    </string-array>
     <string-array name="week_days">
         <item>@string/monday</item>
         <item>@string/tuesday</item>

@@ -24,7 +24,9 @@ import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
 import com.aarcosg.copdhelp.utils.ChartUtils;
 import com.aarcosg.copdhelp.utils.Utils;
 import com.github.mikephil.charting.data.BarEntry;
+import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.FastItemAdapter;
+import com.mikepenz.fastadapter.helpers.ClickListenerHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -172,6 +174,25 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
         mFastItemAdapter = new FastItemAdapter<>();
         int[] dataSetColors = new int[]{R.color.md_blue_600, R.color.md_deep_orange_600};
         String[] stackLabels = getResources().getStringArray(R.array.medical_attention_type);
+
+        ClickListenerHelper<StackedBarChartItem> clickListenerHelper = new ClickListenerHelper<StackedBarChartItem>(mFastItemAdapter);
+        mFastItemAdapter.withOnCreateViewHolderListener(new FastAdapter.OnCreateViewHolderListener() {
+
+            @Override
+            public RecyclerView.ViewHolder onPreCreateViewHolder(ViewGroup parent, int viewType) {
+                return mFastItemAdapter.getTypeInstance(viewType).getViewHolder(parent);
+            }
+
+            @Override
+            public RecyclerView.ViewHolder onPostCreateViewHolder(RecyclerView.ViewHolder viewHolder) {
+                clickListenerHelper.listen(viewHolder,((StackedBarChartItem.ViewHolder) viewHolder).shareChartBtn, (v, position, item) -> {
+                    Utils.shareView(getContext(),((StackedBarChartItem.ViewHolder) viewHolder).containerCard);
+                });
+                return viewHolder;
+            }
+
+        });
+
         mFastItemAdapter.add(
                 new StackedBarChartItem(
                         ChartUtils.CHART_TYPE_WEEK
@@ -222,7 +243,7 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
 
     private void bindWeekData() {
         Double changePercentage = Utils.getCountPercentageChange(Calendar.WEEK_OF_YEAR,mWeekMedicalAttentions);
-        List<BarEntry> yVals = new ArrayList<>(31);
+        List<BarEntry> yVals = new ArrayList<>(7);
         for (int dayOfWeek = Calendar.SUNDAY; dayOfWeek <= Calendar.SATURDAY; dayOfWeek++) {
             float checkupVal = mWeekMedicalAttentions.where()
                     .equalTo(RealmTable.MedicalAttention.WEEK_OF_YEAR, mCalendar.get(Calendar.WEEK_OF_YEAR))

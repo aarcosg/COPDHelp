@@ -128,6 +128,24 @@ public class Utils {
         return calculatePercentageChange(previousAvg,currentAvg);
     }
 
+    public static Double getSumPercentageChange(int calendarField, String realmField, RealmResults realmResults){
+        Calendar calendar = Calendar.getInstance();
+        String tableField;
+        switch (calendarField){
+            case Calendar.WEEK_OF_YEAR: tableField = RealmTable.WEEK_OF_YEAR; break;
+            case Calendar.MONTH: tableField = RealmTable.MONTH; break;
+            case Calendar.YEAR: tableField = RealmTable.YEAR; break;
+            default: tableField = RealmTable.WEEK_OF_YEAR;
+        }
+        double previousAvg = realmResults.where()
+                .equalTo(tableField,calendar.get(calendarField) - 1)
+                .sum(realmField).doubleValue();
+        double currentAvg = realmResults.where()
+                .equalTo(tableField,calendar.get(calendarField))
+                .sum(realmField).doubleValue();
+        return calculatePercentageChange(previousAvg,currentAvg);
+    }
+
     public static void animateNumberTextView(int initialValue, int finalValue, final TextView textView, final String format) {
         ValueAnimator valueAnimator = ValueAnimator.ofInt(initialValue, finalValue);
         valueAnimator.setDuration(2000);

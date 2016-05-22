@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ui.fragment.bmi.BMIEditFragment">
+    tools:context=".ui.fragment.smoke.SmokeEditFragment">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -26,11 +26,11 @@
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Headline">
 
-           <ImageView
+            <ImageView
                 android:id="@+id/toolbar_background_iv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/bmi_header"
+                android:src="@drawable/smoke_header"
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
                 app:layout_collapseMode="parallax" />
@@ -59,7 +59,7 @@
             <include layout="@layout/progress_bar" />
 
             <android.support.v7.widget.CardView
-                android:id="@+id/bmi_tip_cardview"
+                android:id="@+id/smoking_tip_cardview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/md_amber_600">
@@ -79,14 +79,14 @@
                         app:ico_size="@dimen/icon_default_size"/>
 
                     <TextView
-                        android:id="@+id/bmi_tip_tv"
+                        android:id="@+id/smoking_tip_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/left_margin_list_after_icon"
                         android:layout_marginStart="@dimen/left_margin_list_after_icon"
                         style="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@android:color/white"
-                        android:text="@string/bmi_tip"/>
+                        android:text="@string/smoking_tip"/>
 
                 </LinearLayout>
 
@@ -96,77 +96,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="@dimen/mid_space"
-                android:layout_marginStart="@dimen/mid_space"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginBottom="@dimen/narrow_space">
+                android:layout_margin="@dimen/mid_space">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     app:ico_color="@color/icon_dark"
-                    app:ico_icon="gmd_accessibility"
+                    app:ico_icon="cmd_smoking_off"
                     app:ico_size="@dimen/icon_default_size"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <EditText
+                    android:id="@+id/quantity_et"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginLeft="@dimen/left_margin_list_after_icon"
                     android:layout_marginStart="@dimen/left_margin_list_after_icon"
-                    android:layout_marginTop="@dimen/mid_space"
-                    android:weightSum="2">
+                    android:inputType="number"
+                    android:hint="@string/cigarettes_quantity_hint"/>
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/height_et"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:inputType="number"
-                            android:hint="@string/height"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/centimeters_abbr"
-                            android:layout_marginLeft="@dimen/measurement_unit_margin"
-                            android:layout_marginStart="@dimen/measurement_unit_margin"
-                            style="@style/TextAppearance.AppCompat.Small"
-                            android:fontFamily="sans-serif-condensed" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/weight_et"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:inputType="numberDecimal"
-                            android:hint="@string/weight"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/kilograms_abbr"
-                            android:layout_marginLeft="@dimen/measurement_unit_margin"
-                            android:layout_marginStart="@dimen/measurement_unit_margin"
-                            style="@style/TextAppearance.AppCompat.Small"
-                            android:fontFamily="sans-serif-condensed" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cigarettes"
+                    android:layout_marginLeft="@dimen/measurement_unit_margin"
+                    android:layout_marginStart="@dimen/measurement_unit_margin"
+                    style="@style/TextAppearance.AppCompat.Small"
+                    android:fontFamily="sans-serif-condensed" />
 
             </LinearLayout>
 
@@ -205,67 +160,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider_height"
                 style="@style/ListDivider"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                style="@style/TextAppearance.AppCompat.Medium"
-                android:fontFamily="sans-serif-light"
-                android:text="@string/your_bmi_is"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:weightSum="2">
-
-                <TextView
-                    android:id="@+id/bmi_val_tv"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TextAppearance.AppCompat.Display3"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:text="0"/>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_gravity="center"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:id="@+id/bmi_val_icon_iv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        app:ico_color="@color/icon_dark"
-                        app:ico_icon="gmd_sentiment_neutral"
-                        app:ico_size="30dp"/>
-
-                    <TextView
-                        android:id="@+id/bmi_val_text_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextAppearance.AppCompat.Medium"
-                        android:fontFamily="sans-serif-light"
-                        android:gravity="center"
-                        android:text="@string/not_calculated"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
 
         </LinearLayout>
 

@@ -3,7 +3,8 @@ package com.aarcosg.copdhelp.utils;
 import android.content.Context;
 
 import com.aarcosg.copdhelp.R;
-import com.aarcosg.copdhelp.ui.chart.LineChartMarkerView;
+import com.aarcosg.copdhelp.ui.chart.DoubleMarkerView;
+import com.aarcosg.copdhelp.ui.chart.IntegerMarkerView;
 import com.aarcosg.copdhelp.ui.chart.StackedBarChartMarkerView;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
@@ -32,7 +33,7 @@ public class ChartUtils {
     public static final float BMI_YEAR_AXIS_MIN_VALUE = 10;
     public static final float BMI_YEAR_AXIS_MAX_VALUE = 35;
     
-    public static void setupBarChart(Context context, BarChart barChart, int type){
+    public static void setupStackedBarChart(Context context, BarChart barChart, int type){
         barChart.setDescription("");
         barChart.setNoDataText(context.getString(R.string.empty_data));
         barChart.setDragEnabled(false);
@@ -42,7 +43,7 @@ public class ChartUtils {
         barChart.setDrawGridBackground(false);
         barChart.setDrawBarShadow(false);
         barChart.setDrawValueAboveBar(false);
-        barChart.setMarkerView(new StackedBarChartMarkerView(context, R.layout.stacked_barchart_marker_view));
+        barChart.setMarkerView(new StackedBarChartMarkerView(context, R.layout.marker_view));
 
         YAxis axisRight = barChart.getAxisRight();
         axisRight.setDrawGridLines(false);
@@ -87,7 +88,7 @@ public class ChartUtils {
         lineChart.setPinchZoom(false);
         lineChart.setDoubleTapToZoomEnabled(false);
         lineChart.setDrawGridBackground(false);
-        lineChart.setMarkerView(new LineChartMarkerView(context, R.layout.linechart_marker_view));
+        lineChart.setMarkerView(new DoubleMarkerView(context, R.layout.marker_view));
 
         YAxis axisRight = lineChart.getAxisRight();
         axisRight.setDrawGridLines(false);
@@ -126,6 +127,53 @@ public class ChartUtils {
                 //axisLeft.setAxisMaxValue(BMI_YEAR_AXIS_MAX_VALUE);
                 xAxis.setLabelsToSkip(1);
                 legend.setEnabled(false);
+                break;
+        }
+    }
+
+    public static void setupBarChart(Context context, BarChart barChart, int type){
+        barChart.setDescription("");
+        barChart.setNoDataText(context.getString(R.string.empty_data));
+        barChart.setDragEnabled(false);
+        barChart.setScaleEnabled(false);
+        barChart.setPinchZoom(false);
+        barChart.setDoubleTapToZoomEnabled(false);
+        barChart.setDrawGridBackground(false);
+        barChart.setDrawBarShadow(false);
+        barChart.setDrawValueAboveBar(false);
+        barChart.setMarkerView(new IntegerMarkerView(context, R.layout.marker_view));
+
+        YAxis axisRight = barChart.getAxisRight();
+        axisRight.setDrawGridLines(false);
+        axisRight.setDrawLabels(false);
+
+        YAxis axisLeft = barChart.getAxisLeft();
+        axisLeft.setAxisMinValue(0f);
+        axisLeft.setDrawGridLines(true);
+
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setDrawGridLines(false);
+        xAxis.setLabelsToSkip(0);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+        Legend legend = barChart.getLegend();
+        legend.setPosition(Legend.LegendPosition.ABOVE_CHART_RIGHT);
+        legend.setTextSize(12f);
+        legend.setFormSize(8f);
+        legend.setFormToTextSpace(4f);
+        legend.setXEntrySpace(6f);
+
+        switch (type){
+            case CHART_TYPE_WEEK:
+                legend.setEnabled(false);
+                break;
+            case CHART_TYPE_MONTH:
+                legend.setEnabled(false);
+                xAxis.setLabelsToSkip(1);
+                break;
+            case CHART_TYPE_YEAR:
+                legend.setEnabled(false);
+                xAxis.setLabelsToSkip(1);
                 break;
         }
     }

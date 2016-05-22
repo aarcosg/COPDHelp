@@ -19,6 +19,7 @@ import com.aarcosg.copdhelp.mvp.view.MainView;
 import com.aarcosg.copdhelp.ui.fragment.bmi.BMIMainFragment;
 import com.aarcosg.copdhelp.ui.fragment.medicalattention.MedicalAttentionMainFragment;
 import com.aarcosg.copdhelp.ui.fragment.medicinereminder.MedicineReminderListFragment;
+import com.aarcosg.copdhelp.ui.fragment.smoke.SmokeMainFragment;
 import com.aarcosg.copdhelp.ui.receiver.Reminders;
 import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
@@ -27,6 +28,7 @@ import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 
 import javax.inject.Inject;
 
@@ -39,6 +41,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
     private static final int MEDICAL_ATTENTION_MAIN_ID = 1;
     private static final int BMI_MAIN_ID = 2;
     private static final int MEDICINE_REMINDER_MAIN_ID = 3;
+    private static final int SMOKE_MAIN_ID = 4;
 
     @Inject
     MainPresenter mMainPresenter;
@@ -125,9 +128,11 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 .withTranslucentStatusBar(true)
                 .withAccountHeader(accountHeader)
                 .addDrawerItems(
+                        new SectionDrawerItem().withName(R.string.drawer_item_section_patient),
                         new PrimaryDrawerItem().withName(getString(R.string.medical_attention)).withIcon(GoogleMaterial.Icon.gmd_local_hospital).withIdentifier(MEDICAL_ATTENTION_MAIN_ID)
                         ,new PrimaryDrawerItem().withName(getString(R.string.bmi)).withIcon(CommunityMaterial.Icon.cmd_scale_bathroom).withIdentifier(BMI_MAIN_ID)
                         ,new PrimaryDrawerItem().withName(getString(R.string.dose_reminder)).withIcon(CommunityMaterial.Icon.cmd_pill).withIdentifier(MEDICINE_REMINDER_MAIN_ID)
+                        ,new PrimaryDrawerItem().withName(getString(R.string.smoking)).withIcon(GoogleMaterial.Icon.gmd_smoke_free).withIdentifier(SMOKE_MAIN_ID)
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     if(drawerItem != null){
@@ -155,6 +160,11 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 setAppBarElevation(getResources().getDimension(R.dimen.toolbar_elevation));
                 setTitle(getString(R.string.title_fragment_medicine_reminder));
                 fragment = MedicineReminderListFragment.newInstance();
+                break;
+            case SMOKE_MAIN_ID:
+                setAppBarElevation(0);
+                setTitle(getString(R.string.title_fragment_smoke));
+                fragment = SmokeMainFragment.newInstance();
                 break;
             default:
                 setTitle(getString(R.string.title_fragment_medical_attention));

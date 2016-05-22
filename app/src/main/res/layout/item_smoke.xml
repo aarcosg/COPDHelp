@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/activity_vertical_margin"
+    android:background="?selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/icon_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/mid_space"
+        android:layout_marginRight="@dimen/mid_space"
+        app:ico_color="@color/md_deep_orange_600"
+        app:ico_icon="cmd_smoking_off"
+        app:ico_size="20dp"/>
+
+    <TextView
+        android:id="@+id/quantity_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/icon_iv"
+        android:layout_toEndOf="@id/icon_iv"
+        android:textStyle="bold"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:fontFamily="sans-serif-light"/>
+
+    <TextView
+        android:id="@+id/quantity_lbl_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/measurement_unit_margin"
+        android:layout_marginStart="@dimen/measurement_unit_margin"
+        android:layout_toRightOf="@id/quantity_tv"
+        android:layout_toEndOf="@id/quantity_tv"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/cigarettes"/>
+
+    <TextView
+        android:id="@+id/date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/md_teal_500"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:fontFamily="sans-serif-condensed"/>
+
+</RelativeLayout>

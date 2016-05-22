@@ -38,7 +38,7 @@ public class MedicineReminderBroadcastReceiver extends WakefulBroadcastReceiver 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(context.getString(R.string.app_name))
-                .setContentText(String.format(context.getString(R.string.medicine_reminder_notification),reminder.getMedicine()))
+                .setContentText(context.getString(R.string.medicine_reminder_notification,reminder.getMedicine()))
                 .setContentIntent(pendingIntent)
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setAutoCancel(true);

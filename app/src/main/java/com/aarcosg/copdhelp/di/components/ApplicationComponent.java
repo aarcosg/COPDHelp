@@ -12,6 +12,7 @@ import com.aarcosg.copdhelp.interactor.BMIInteractor;
 import com.aarcosg.copdhelp.interactor.MainInteractor;
 import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractor;
 import com.aarcosg.copdhelp.interactor.MedicineReminderInteractor;
+import com.aarcosg.copdhelp.interactor.SmokeInteractor;
 import com.aarcosg.copdhelp.ui.activity.BaseActivity;
 import com.aarcosg.copdhelp.utils.RxNetwork;
 import com.google.gson.Gson;
@@ -43,5 +44,6 @@ public interface ApplicationComponent {
     MedicalAttentionInteractor getMedicalAttentionInteractor();
     BMIInteractor getBMIInteractor();
     MedicineReminderInteractor getMedicineReminderInteractor();
+    SmokeInteractor getSmokeInteractor();
 
 }

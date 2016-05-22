@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.aarcosg.copdhelp.R;
 import com.aarcosg.copdhelp.utils.ChartUtils;
-import com.aarcosg.copdhelp.utils.Utils;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -56,12 +55,12 @@ public class StackedBarChartItem extends AbstractItem<StackedBarChartItem, Stack
 
     @Override
     public int getType() {
-        return R.id.fastadapter_medical_attention_item_id;
+        return R.id.fastadapter_medical_attention_chart_item_id;
     }
 
     @Override
     public int getLayoutRes() {
-        return R.layout.item_card_barchart;
+        return R.layout.item_card_stackedbarchart;
     }
 
     @Override
@@ -71,7 +70,7 @@ public class StackedBarChartItem extends AbstractItem<StackedBarChartItem, Stack
         Context context = viewHolder.itemView.getContext();
         BarChart barChart = viewHolder.barChart;
 
-        ChartUtils.setupBarChart(context,barChart,mType);
+        ChartUtils.setupStackedBarChart(context,barChart,mType);
 
         BarDataSet dataSet = new BarDataSet(mYVals, "");
         dataSet.setStackLabels(mStackLabels);
@@ -106,12 +105,6 @@ public class StackedBarChartItem extends AbstractItem<StackedBarChartItem, Stack
         }
         viewHolder.changePercentageTv.setText(String.format(format,Math.round(mChangePercentage)));
 
-        viewHolder.shareChartBtn.setOnClickListener(v -> {
-            viewHolder.shareChartBtn.setVisibility(View.GONE);
-            Utils.shareView(context,viewHolder.containerCard);
-            viewHolder.shareChartBtn.setVisibility(View.VISIBLE);
-        });
-
         this.mTag = viewHolder;
     }
 
@@ -126,9 +119,9 @@ public class StackedBarChartItem extends AbstractItem<StackedBarChartItem, Stack
         }
     }
 
-    protected static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.container_card)
-        CardView containerCard;
+        public CardView containerCard;
         @Bind(R.id.header_tv)
         TextView headerTv;
         @Bind(R.id.change_percentage_lbl_tv)
@@ -140,7 +133,7 @@ public class StackedBarChartItem extends AbstractItem<StackedBarChartItem, Stack
         @Bind(R.id.zoom_chart_btn)
         Button zoomChartBtn;
         @Bind(R.id.share_chart_btn)
-        Button shareChartBtn;
+        public Button shareChartBtn;
 
         public ViewHolder(View itemView) {
             super(itemView);

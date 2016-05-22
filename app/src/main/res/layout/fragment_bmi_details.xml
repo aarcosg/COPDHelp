@@ -268,7 +268,7 @@
                 android:layout_marginRight="@dimen/narrow_space"
                 android:layout_marginEnd="@dimen/narrow_space"
                 android:layout_marginBottom="@dimen/narrow_space"
-                app:cardBackgroundColor="@color/primary">
+                app:cardBackgroundColor="@color/md_amber_600">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -280,7 +280,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         app:ico_color="@color/icon_light"
-                        app:ico_icon="gmd_info"
+                        app:ico_icon="gmd_warning"
                         app:ico_size="@dimen/icon_default_size"/>
 
                     <TextView

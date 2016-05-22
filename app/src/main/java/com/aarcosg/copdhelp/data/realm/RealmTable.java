@@ -48,4 +48,14 @@ public interface RealmTable {
         String DAY_OF_WEEK = RealmTable.DAY_OF_WEEK;
         String WEEK_OF_YEAR = RealmTable.WEEK_OF_YEAR;
     }
+
+    interface Smoke{
+        String QUANTITY = "quantity";
+        String TIMESTAMP = RealmTable.TIMESTAMP;
+        String DAY = RealmTable.DAY;
+        String MONTH = RealmTable.MONTH;
+        String YEAR = RealmTable.YEAR;
+        String DAY_OF_WEEK = RealmTable.DAY_OF_WEEK;
+        String WEEK_OF_YEAR = RealmTable.WEEK_OF_YEAR;
+    }
 }

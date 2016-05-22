@@ -1,6 +1,7 @@
 package com.aarcosg.copdhelp.ui.adapteritem;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,13 +11,12 @@ import android.widget.TextView;
 
 import com.aarcosg.copdhelp.R;
 import com.aarcosg.copdhelp.utils.ChartUtils;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.LimitLine;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.StackedValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.mikepenz.fastadapter.items.AbstractItem;
 import com.mikepenz.fastadapter.utils.ViewHolderFactory;
 
@@ -26,7 +26,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class LineChartItem extends AbstractItem<LineChartItem, LineChartItem.ViewHolder> {
+public class BarChartItem extends AbstractItem<BarChartItem, BarChartItem.ViewHolder> {
 
     private static final ViewHolderFactory<? extends ViewHolder> FACTORY = new ItemFactory();
 
@@ -35,12 +35,12 @@ public class LineChartItem extends AbstractItem<LineChartItem, LineChartItem.Vie
     private String mProgressLabel;
     private Double mChangePercentage;
     private List<String> mXVals;
-    private List<Entry> mYVals;
+    private List<BarEntry> mYVals;
     private int[] mDataSetColors;
     private boolean mDrawValues;
 
-    public LineChartItem(int type, String header, String progressLabel, Double changePercentage, List<String> xVals, List<Entry> yVals,
-                         int[] dataSetColors, boolean drawValues) {
+    public BarChartItem(int type, String header, String progressLabel, Double changePercentage, List<String> xVals, List<BarEntry> yVals,
+                        int[] dataSetColors, boolean drawValues) {
         this.mType = type;
         this.mHeader = header;
         this.mProgressLabel = progressLabel;
@@ -53,12 +53,12 @@ public class LineChartItem extends AbstractItem<LineChartItem, LineChartItem.Vie
 
     @Override
     public int getType() {
-        return R.id.fastadapter_bmi_chart_item_id;
+        return R.id.fastadapter_smoke_chart_item_id;
     }
 
     @Override
     public int getLayoutRes() {
-        return R.layout.item_card_linechart;
+        return R.layout.item_card_barchart;
     }
 
     @Override
@@ -66,29 +66,27 @@ public class LineChartItem extends AbstractItem<LineChartItem, LineChartItem.Vie
         super.bindView(viewHolder);
 
         Context context = viewHolder.itemView.getContext();
-        LineChart lineChart = viewHolder.lineChart;
-        ChartUtils.setupLineChart(context,lineChart,mType);
-        setupLineLimits(context, lineChart);
-        LineDataSet dataSet = new LineDataSet(mYVals, "");
-        dataSet.setColors(mDataSetColors);
-        dataSet.setCircleColors(mDataSetColors);
-        dataSet.setDrawCircleHole(true);
-        dataSet.setCircleColorHole(mDataSetColors[0]);
-        dataSet.setCircleRadius(3f);
-        dataSet.setLineWidth(2f);
+        BarChart barChart = viewHolder.barChart;
 
-        List<ILineDataSet> dataSets = new ArrayList<>();
+        ChartUtils.setupBarChart(context,barChart,mType);
+
+        BarDataSet dataSet = new BarDataSet(mYVals, "");
+        dataSet.setColors(mDataSetColors,context);
+
+        List<IBarDataSet> dataSets = new ArrayList<>();
         dataSets.add(dataSet);
 
-        LineData data = new LineData(mXVals, dataSets);
+        BarData data = new BarData(mXVals, dataSets);
         if(mDrawValues){
+            data.setValueFormatter(new StackedValueFormatter(true,"",0));
+            data.setValueTextColor(Color.WHITE);
             data.setValueTextSize(context.getResources().getDimension(R.dimen.chart_value_text_size));
         }else{
             data.setDrawValues(false);
         }
 
-        lineChart.setData(data);
-        lineChart.animateX(2000);
+        barChart.setData(data);
+        barChart.animateY(2000);
 
         viewHolder.headerTv.setText(mHeader);
         viewHolder.progressLblTv.setText(mProgressLabel);
@@ -127,8 +125,8 @@ public class LineChartItem extends AbstractItem<LineChartItem, LineChartItem.Vie
         TextView progressLblTv;
         @Bind(R.id.change_percentage_tv)
         TextView changePercentageTv;
-        @Bind(R.id.linechart)
-        LineChart lineChart;
+        @Bind(R.id.barchart)
+        BarChart barChart;
         @Bind(R.id.zoom_chart_btn)
         Button zoomChartBtn;
         @Bind(R.id.share_chart_btn)
@@ -140,30 +138,12 @@ public class LineChartItem extends AbstractItem<LineChartItem, LineChartItem.Vie
         }
     }
 
-    private void setupLineLimits(Context context, LineChart lineChart) {
-        LimitLine upperLimitLine = new LimitLine(30f, context.getString(R.string.bmi_state_obesity));
-        upperLimitLine.setLineWidth(2f);
-        upperLimitLine.enableDashedLine(10f, 10f, 0f);
-        upperLimitLine.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);
-        upperLimitLine.setTextSize(10f);
-
-        LimitLine lowerLimitLine = new LimitLine(21f, context.getString(R.string.bmi_state_thinness));
-        lowerLimitLine.setLineWidth(2f);
-        lowerLimitLine.enableDashedLine(10f, 10f, 0f);
-        lowerLimitLine.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
-        lowerLimitLine.setTextSize(10f);
-
-        YAxis leftAxis = lineChart.getAxisLeft();
-        leftAxis.removeAllLimitLines();
-        leftAxis.addLimitLine(upperLimitLine);
-        leftAxis.addLimitLine(lowerLimitLine);
-    }
-
-    public void setChartYVals(List<Entry> yVals){
+    public void setChartYVals(List<BarEntry> yVals){
         this.mYVals = yVals;
     }
 
     public void setChangePercentage(Double changePercentage) {
         this.mChangePercentage = changePercentage;
     }
+
 }

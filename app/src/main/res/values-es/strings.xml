@@ -13,6 +13,7 @@
     <string name="title_fragment_medical_attention_edit">Editar atención sanitaria</string>
     <string name="title_fragment_bmi">Índice Masa Corporal</string>
     <string name="title_fragment_medicine_reminder">Recordatorio de dosis</string>
+    <string name="title_fragment_smoke">Tabaquismo</string>
 
     <string name="medical_attention">Atención sanitaria</string>
     <string name="medical_attention_type">Tipo de atención sanitaria</string>
@@ -72,10 +73,17 @@
     <string name="medicine_reminder_load_realm_error">Error al cargar los recordatorios</string>
     <string name="medicine_reminder_remove_realm_success">Recordatorio eliminado</string>
     <string name="medicine_reminder_remove_realm_error">Error al eliminar el recordatorio</string>
+    <string name="smoke_save_realm_success">Registrado guardado</string>
+    <string name="smoke_save_realm_error">Error al guardar el registro</string>
+    <string name="smoke_ask_delete">¿Desea eliminar el registro?</string>
+    <string name="smoke_load_realm_error">Error al cargar los registros</string>
+    <string name="smoke_remove_realm_success">Registro eliminado</string>
+    <string name="smoke_remove_realm_error">Error al eliminar el registro</string>
+    <string name="smoke_not_found_realm_error">Registro no encontrado</string>
 
     <!-- Arrays -->
     <string name="medical_attention_type_checkup">Revisión</string>
-    <string name="medical_attention_type_emergency">Urgencia</string>
+    <string name="medical_attention_type_emergency">Exacerbación</string>
 
     <!-- Week days -->
     <string name="monday">Lunes</string>
@@ -140,5 +148,15 @@
     <string name="medicine_reminder_on">Recordatorio activado</string>
     <string name="medicine_reminder_off">Recordatorio desactivado</string>
     <string name="medicine_reminder_notification">Tomar medicamento %1$s</string>
+    <string name="tobacco">Tabaco</string>
+    <string name="smoke">Fumar</string>
+    <string name="smoking">Tabaquismo</string>
+    <string name="ask_feelings">Cómo te sientes</string>
+    <string name="cigarettes_quantity">%1$d cigarros</string>
+    <string name="cigarettes_quantity_hint">Nº cigarros</string>
+    <string name="smoking_tip">El tabaquismo es la principal causa de la EPOC. Fumar es un factor desencadenante para muchas personas con EPOC y puede causar una exacerbación, o reagudización, de sus síntomas.</string>
+    <string name="cigarettes_quantity_number">Número de cigarros</string>
+    <string name="cigarettes">cigarros</string>
+    <string name="drawer_item_section_patient">Paciente</string>
 
 </resources>
