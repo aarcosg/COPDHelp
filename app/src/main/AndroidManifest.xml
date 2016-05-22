@@ -31,6 +31,9 @@
         <activity
             android:name=".ui.activity.SmokeActivity"
             android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".ui.activity.ExerciseActivity"
+            android:configChanges="orientation|screenSize"/>
 
         <receiver
             android:name=".ui.receiver.MedicineReminderBroadcastReceiver"

@@ -24,4 +24,9 @@
     <color name="bmi_state_warning">@color/md_orange_500</color>
     <color name="bmi_state_danger">@color/md_red_700</color>
 
+    <color name="exercise_type_walk">@color/md_brown_500</color>
+    <color name="exercise_type_stationary_bicycle">@color/md_deep_purple_300</color>
+    <color name="exercise_type_breathing">@color/md_teal_300</color>
+    <color name="exercise_type_arms">@color/md_orange_300</color>
+
 </resources>

@@ -7,4 +7,5 @@
     <item name="fastadapter_medicine_reminder_item_id" type="id" />
     <item name="fastadapter_smoke_item_id" type="id" />
     <item name="fastadapter_smoke_chart_item_id" type="id" />
+    <item name="fastadapter_exercise_item_id" type="id" />
 </resources>

@@ -1,4 +1,4 @@
-package com.aarcosg.copdhelp.ui.fragment.medicalattention;
+package com.aarcosg.copdhelp.ui.fragment.exercise;
 
 
 import android.os.Bundle;
@@ -14,10 +14,10 @@ import android.widget.ProgressBar;
 
 import com.aarcosg.copdhelp.R;
 import com.aarcosg.copdhelp.data.realm.RealmTable;
-import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
+import com.aarcosg.copdhelp.data.realm.entity.Exercise;
 import com.aarcosg.copdhelp.di.components.MainComponent;
-import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionChartPresenter;
-import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionChartView;
+import com.aarcosg.copdhelp.mvp.presenter.exercise.ExerciseChartPresenter;
+import com.aarcosg.copdhelp.mvp.view.exercise.ExerciseChartView;
 import com.aarcosg.copdhelp.ui.adapteritem.StackedBarChartItem;
 import com.aarcosg.copdhelp.ui.decorator.VerticalSpaceItemDecoration;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
@@ -39,12 +39,12 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.realm.RealmResults;
 
-public class MedicalAttentionChartFragment extends BaseFragment implements MedicalAttentionChartView {
+public class ExerciseChartFragment extends BaseFragment implements ExerciseChartView {
 
-    private static final String TAG = MedicalAttentionChartFragment.class.getCanonicalName();
+    private static final String TAG = ExerciseChartFragment.class.getCanonicalName();
 
     @Inject
-    MedicalAttentionChartPresenter mMedicalAttentionChartPresenter;
+    ExerciseChartPresenter mExerciseChartPresenter;
 
     @Bind(R.id.progress_bar)
     ProgressBar mProgressBar;
@@ -53,18 +53,18 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
 
     private Calendar mCalendar;
     private FastItemAdapter<StackedBarChartItem> mFastItemAdapter;
-    private RealmResults<MedicalAttention> mWeekMedicalAttentions;
-    private RealmResults<MedicalAttention> mMonthMedicalAttentions;
-    private RealmResults<MedicalAttention> mYearMedicalAttentions;
+    private RealmResults<Exercise> mWeekExercises;
+    private RealmResults<Exercise> mMonthExercises;
+    private RealmResults<Exercise> mYearExercises;
 
-    public static MedicalAttentionChartFragment newInstance() {
-        MedicalAttentionChartFragment fragment = new MedicalAttentionChartFragment();
+    public static ExerciseChartFragment newInstance() {
+        ExerciseChartFragment fragment = new ExerciseChartFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
     }
 
-    public MedicalAttentionChartFragment() {
+    public ExerciseChartFragment() {
         setRetainInstance(true);
     }
 
@@ -72,17 +72,17 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getComponent(MainComponent.class).inject(this);
-        mMedicalAttentionChartPresenter.setView(this);
+        mExerciseChartPresenter.setView(this);
         mCalendar = Calendar.getInstance();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View fragmentView = inflater.inflate(R.layout.fragment_medical_attention_chart, container, false);
+        final View fragmentView = inflater.inflate(R.layout.fragment_exercise_chart, container, false);
         ButterKnife.bind(this, fragmentView);
         setupAdapter();
         setupRecyclerView();
-        mMedicalAttentionChartPresenter.onCreateView();
+        mExerciseChartPresenter.onCreateView();
         return fragmentView;
     }
 
@@ -100,7 +100,7 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
     @Override
     public void onPause() {
         super.onPause();
-        mMedicalAttentionChartPresenter.onPause();
+        mExerciseChartPresenter.onPause();
     }
 
     @Override
@@ -112,40 +112,40 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (mWeekMedicalAttentions != null) {
-            mWeekMedicalAttentions.removeChangeListeners();
+        if (mWeekExercises != null) {
+            mWeekExercises.removeChangeListeners();
         }
-        if (mMonthMedicalAttentions != null) {
-            mMonthMedicalAttentions.removeChangeListeners();
+        if (mMonthExercises != null) {
+            mMonthExercises.removeChangeListeners();
         }
-        if (mYearMedicalAttentions != null) {
-            mYearMedicalAttentions.removeChangeListeners();
+        if (mYearExercises != null) {
+            mYearExercises.removeChangeListeners();
         }
     }
 
     @Override
-    public void bindWeekData(RealmResults<MedicalAttention> medicalAttentions) {
-        mWeekMedicalAttentions = medicalAttentions;
-        mWeekMedicalAttentions.addChangeListener(element -> bindWeekData());
-        if (!mWeekMedicalAttentions.isEmpty()) {
+    public void bindWeekData(RealmResults<Exercise> exercises) {
+        mWeekExercises = exercises;
+        mWeekExercises.addChangeListener(element -> bindWeekData());
+        if (!mWeekExercises.isEmpty()) {
             bindWeekData();
         }
     }
 
     @Override
-    public void bindMonthData(RealmResults<MedicalAttention> medicalAttentions) {
-        mMonthMedicalAttentions = medicalAttentions;
-        mMonthMedicalAttentions.addChangeListener(element -> bindMonthData());
-        if (!mMonthMedicalAttentions.isEmpty()) {
+    public void bindMonthData(RealmResults<Exercise> exercises) {
+        mMonthExercises = exercises;
+        mMonthExercises.addChangeListener(element -> bindMonthData());
+        if (!mMonthExercises.isEmpty()) {
             bindMonthData();
         }
     }
 
     @Override
-    public void bindYearData(RealmResults<MedicalAttention> medicalAttentions) {
-        mYearMedicalAttentions = medicalAttentions;
-        mYearMedicalAttentions.addChangeListener(element -> bindYearData());
-        if (!mYearMedicalAttentions.isEmpty()) {
+    public void bindYearData(RealmResults<Exercise> exercises) {
+        mYearExercises = exercises;
+        mYearExercises.addChangeListener(element -> bindYearData());
+        if (!mYearExercises.isEmpty()) {
             bindYearData();
         }
     }
@@ -163,7 +163,7 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
     @Override
     public void showLoadRealmErrorMessage() {
         Snackbar.make(mProgressBar.getRootView()
-                , R.string.medical_attention_load_realm_error
+                , R.string.exercise_load_realm_error
                 , Snackbar.LENGTH_LONG)
                 .setAction(R.string.retry,
                         v -> loadChartsData())
@@ -172,8 +172,12 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
 
     private void setupAdapter() {
         mFastItemAdapter = new FastItemAdapter<>();
-        int[] dataSetColors = new int[]{R.color.md_blue_600,R.color.md_deep_orange_600};
-        String[] stackLabels = getResources().getStringArray(R.array.medical_attention_type);
+        int[] dataSetColors = new int[]{
+                R.color.exercise_type_walk
+                ,R.color.exercise_type_stationary_bicycle
+                ,R.color.exercise_type_breathing
+                ,R.color.exercise_type_arms};
+        String[] stackLabels = getResources().getStringArray(R.array.exercise_type);
 
         ClickListenerHelper<StackedBarChartItem> clickListenerHelper = new ClickListenerHelper<StackedBarChartItem>(mFastItemAdapter);
         mFastItemAdapter.withOnCreateViewHolderListener(new FastAdapter.OnCreateViewHolderListener() {
@@ -236,22 +240,22 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
     }
 
     private void loadChartsData(){
-        mMedicalAttentionChartPresenter.loadWeekData();
-        mMedicalAttentionChartPresenter.loadMonthData();
-        mMedicalAttentionChartPresenter.loadYearData();
+        mExerciseChartPresenter.loadWeekData();
+        mExerciseChartPresenter.loadMonthData();
+        mExerciseChartPresenter.loadYearData();
     }
 
     private void bindWeekData() {
-        Double changePercentage = Utils.getCountPercentageChange(Calendar.WEEK_OF_YEAR,mWeekMedicalAttentions);
+        Double changePercentage = Utils.getSumPercentageChange(Calendar.WEEK_OF_YEAR, RealmTable.Exercise.DURATION, mWeekExercises);
         List<BarEntry> yVals = new ArrayList<>(7);
-        float[] values = new float[getResources().getStringArray(R.array.medical_attention_type).length];
+        float[] values = new float[getResources().getStringArray(R.array.exercise_type).length];
         for (int dayOfWeek = Calendar.SUNDAY; dayOfWeek <= Calendar.SATURDAY; dayOfWeek++) {
             for(int i = 0; i < values.length ; i++){
-                float value =  mWeekMedicalAttentions.where()
-                        .equalTo(RealmTable.MedicalAttention.WEEK_OF_YEAR, mCalendar.get(Calendar.WEEK_OF_YEAR))
-                        .equalTo(RealmTable.MedicalAttention.DAY_OF_WEEK, dayOfWeek)
-                        .equalTo(RealmTable.MedicalAttention.TYPE, i)
-                        .count();
+                int value =  mWeekExercises.where()
+                        .equalTo(RealmTable.Exercise.WEEK_OF_YEAR, mCalendar.get(Calendar.WEEK_OF_YEAR))
+                        .equalTo(RealmTable.Exercise.DAY_OF_WEEK, dayOfWeek)
+                        .equalTo(RealmTable.Exercise.TYPE, i)
+                        .sum(RealmTable.Exercise.DURATION).intValue();
                 values[i] = value;
             }
             if (dayOfWeek == Calendar.SUNDAY) {
@@ -267,16 +271,16 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
     }
 
     private void bindMonthData() {
-        Double changePercentage = Utils.getCountPercentageChange(Calendar.MONTH,mMonthMedicalAttentions);
+        Double changePercentage = Utils.getSumPercentageChange(Calendar.MONTH, RealmTable.Exercise.DURATION, mMonthExercises);
         List<BarEntry> yVals = new ArrayList<>(31);
-        float[] values = new float[getResources().getStringArray(R.array.medical_attention_type).length];
+        float[] values = new float[getResources().getStringArray(R.array.exercise_type).length];
         for (int dayOfMonth = 1; dayOfMonth <= 31; dayOfMonth++) {
             for(int i = 0; i < values.length ; i++){
-                float value =  mMonthMedicalAttentions.where()
-                        .equalTo(RealmTable.MedicalAttention.MONTH, mCalendar.get(Calendar.MONTH))
-                        .equalTo(RealmTable.MedicalAttention.DAY, dayOfMonth)
-                        .equalTo(RealmTable.MedicalAttention.TYPE, i)
-                        .count();
+                int value =  mMonthExercises.where()
+                        .equalTo(RealmTable.Exercise.MONTH, mCalendar.get(Calendar.MONTH))
+                        .equalTo(RealmTable.Exercise.DAY, dayOfMonth)
+                        .equalTo(RealmTable.Exercise.TYPE, i)
+                        .sum(RealmTable.Exercise.DURATION).intValue();
                 values[i] = value;
             }
             yVals.add(new BarEntry(values, dayOfMonth - 1));
@@ -288,16 +292,16 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
     }
 
     private void bindYearData() {
-        Double changePercentage = Utils.getCountPercentageChange(Calendar.YEAR,mYearMedicalAttentions);
+        Double changePercentage = Utils.getSumPercentageChange(Calendar.YEAR, RealmTable.Exercise.DURATION, mYearExercises);
         List<BarEntry> yVals = new ArrayList<>(12);
-        float[] values = new float[getResources().getStringArray(R.array.medical_attention_type).length];
+        float[] values = new float[getResources().getStringArray(R.array.exercise_type).length];
         for (int month = Calendar.JANUARY; month <= Calendar.DECEMBER; month++) {
             for(int i = 0; i < values.length ; i++){
-                float value =  mYearMedicalAttentions.where()
-                        .equalTo(RealmTable.MedicalAttention.YEAR, mCalendar.get(Calendar.YEAR))
-                        .equalTo(RealmTable.MedicalAttention.MONTH, month)
-                        .equalTo(RealmTable.MedicalAttention.TYPE, i)
-                        .count();
+                int value =  mYearExercises.where()
+                        .equalTo(RealmTable.Exercise.YEAR, mCalendar.get(Calendar.YEAR))
+                        .equalTo(RealmTable.Exercise.MONTH, month)
+                        .equalTo(RealmTable.Exercise.TYPE, i)
+                        .sum(RealmTable.Exercise.DURATION).intValue();
                 values[i] = value;
             }
             yVals.add(new BarEntry(values, month));

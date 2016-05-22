@@ -14,6 +14,7 @@
     <string name="title_fragment_bmi">Índice Masa Corporal</string>
     <string name="title_fragment_medicine_reminder">Recordatorio de dosis</string>
     <string name="title_fragment_smoke">Tabaquismo</string>
+    <string name="title_fragment_exercise">Ejercicios</string>
 
     <string name="medical_attention">Atención sanitaria</string>
     <string name="medical_attention_type">Tipo de atención sanitaria</string>
@@ -80,6 +81,14 @@
     <string name="smoke_remove_realm_success">Registro eliminado</string>
     <string name="smoke_remove_realm_error">Error al eliminar el registro</string>
     <string name="smoke_not_found_realm_error">Registro no encontrado</string>
+
+    <string name="exercise_save_realm_success">Ejercicio guardado</string>
+    <string name="exercise_save_realm_error">Error al guardar el ejercicio</string>
+    <string name="exercise_ask_delete">¿Desea eliminar el ejercicio?</string>
+    <string name="exercise_load_realm_error">Error al cargar los ejercicios</string>
+    <string name="exercise_remove_realm_success">Ejercicio eliminado</string>
+    <string name="exercise_remove_realm_error">Error al eliminar el ejercicio</string>
+    <string name="exercise_not_found_realm_error">Ejercicio no encontrado</string>
 
     <!-- Arrays -->
     <string name="medical_attention_type_checkup">Revisión</string>
@@ -158,5 +167,16 @@
     <string name="cigarettes_quantity_number">Número de cigarros</string>
     <string name="cigarettes">cigarros</string>
     <string name="drawer_item_section_patient">Paciente</string>
+    <string name="exercise_type_walking">Caminar</string>
+    <string name="exercise_type_stationary_bicycle">Bicicleta estática</string>
+    <string name="exercise_type_breathing">Ejercicios respiratorios</string>
+    <string name="exercise_type_arms">Ejercicios de brazos</string>
+    <string name="duration">Duración</string>
+    <string name="minutes">minutos</string>
+    <string name="note_alt">Observación</string>
+    <string name="add_note_alt">Añadir observación</string>
+    <string name="minutes_abbr">min</string>
+    <string name="empty_note_alt">Ninguna observación</string>
+    <string name="exercise">Ejercicio</string>
 
 </resources>

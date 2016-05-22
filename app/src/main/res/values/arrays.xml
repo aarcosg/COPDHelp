@@ -28,6 +28,20 @@
         <item>@string/tab_list_icon_id</item>
         <item>@string/tab_charts_icon_id</item>
     </string-array>
+    <string-array name="exercise_tab_titles">
+        <item>@string/list</item>
+        <item>@string/charts</item>
+    </string-array>
+    <string-array name="exercise_tab_icons">
+        <item>@string/tab_list_icon_id</item>
+        <item>@string/tab_charts_icon_id</item>
+    </string-array>
+    <string-array name="exercise_type">
+        <item>@string/exercise_type_walking</item>
+        <item>@string/exercise_type_stationary_bicycle</item>
+        <item>@string/exercise_type_breathing</item>
+        <item>@string/exercise_type_arms</item>
+    </string-array>
     <string-array name="week_days">
         <item>@string/monday</item>
         <item>@string/tuesday</item>
@@ -126,4 +140,16 @@
         <item>12</item>
         <item>24</item>
     </string-array>
+    <string-array name="exercise_type_icons">
+        <item>gmd_directions_walk</item>
+        <item>gmd_directions_bike</item>
+        <item>cmd_weather_windy</item>
+        <item>gmd_fitness_center</item>
+    </string-array>
+    <array name="exercise_type_colors">
+        <item>@color/exercise_type_walk</item>
+        <item>@color/exercise_type_stationary_bicycle</item>
+        <item>@color/exercise_type_breathing</item>
+        <item>@color/exercise_type_arms</item>
+    </array>
 </resources>

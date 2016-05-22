@@ -9,6 +9,7 @@ import com.aarcosg.copdhelp.di.modules.InteractorsModule;
 import com.aarcosg.copdhelp.di.modules.NetworkModule;
 import com.aarcosg.copdhelp.di.scopes.PerApp;
 import com.aarcosg.copdhelp.interactor.BMIInteractor;
+import com.aarcosg.copdhelp.interactor.ExerciseInteractor;
 import com.aarcosg.copdhelp.interactor.MainInteractor;
 import com.aarcosg.copdhelp.interactor.MedicalAttentionInteractor;
 import com.aarcosg.copdhelp.interactor.MedicineReminderInteractor;
@@ -45,5 +46,6 @@ public interface ApplicationComponent {
     BMIInteractor getBMIInteractor();
     MedicineReminderInteractor getMedicineReminderInteractor();
     SmokeInteractor getSmokeInteractor();
+    ExerciseInteractor getExerciseInteractor();
 
 }
