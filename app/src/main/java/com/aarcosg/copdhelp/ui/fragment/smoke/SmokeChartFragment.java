@@ -18,7 +18,7 @@ import com.aarcosg.copdhelp.data.realm.entity.Smoke;
 import com.aarcosg.copdhelp.di.components.MainComponent;
 import com.aarcosg.copdhelp.mvp.presenter.smoke.SmokeChartPresenter;
 import com.aarcosg.copdhelp.mvp.view.smoke.SmokeChartView;
-import com.aarcosg.copdhelp.ui.adapteritem.BarChartItem;
+import com.aarcosg.copdhelp.ui.adapteritem.SmokeBarChartItem;
 import com.aarcosg.copdhelp.ui.decorator.VerticalSpaceItemDecoration;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
 import com.aarcosg.copdhelp.utils.ChartUtils;
@@ -31,6 +31,7 @@ import com.mikepenz.fastadapter.helpers.ClickListenerHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -52,7 +53,7 @@ public class SmokeChartFragment extends BaseFragment implements SmokeChartView {
     RecyclerView mRecyclerView;
 
     private Calendar mCalendar;
-    private FastItemAdapter<BarChartItem> mFastItemAdapter;
+    private FastItemAdapter<SmokeBarChartItem> mFastItemAdapter;
     private RealmResults<Smoke> mWeekSmokeList;
     private RealmResults<Smoke> mMonthSmokeList;
     private RealmResults<Smoke> mYearSmokeList;
@@ -174,7 +175,7 @@ public class SmokeChartFragment extends BaseFragment implements SmokeChartView {
         mFastItemAdapter = new FastItemAdapter<>();
         int[] dataSetColors = new int[]{R.color.md_orange_500};
 
-        ClickListenerHelper<BarChartItem> clickListenerHelper = new ClickListenerHelper<BarChartItem>(mFastItemAdapter);
+        ClickListenerHelper<SmokeBarChartItem> clickListenerHelper = new ClickListenerHelper<SmokeBarChartItem>(mFastItemAdapter);
         mFastItemAdapter.withOnCreateViewHolderListener(new FastAdapter.OnCreateViewHolderListener() {
 
             @Override
@@ -184,8 +185,8 @@ public class SmokeChartFragment extends BaseFragment implements SmokeChartView {
 
             @Override
             public RecyclerView.ViewHolder onPostCreateViewHolder(RecyclerView.ViewHolder viewHolder) {
-                clickListenerHelper.listen(viewHolder,((BarChartItem.ViewHolder) viewHolder).shareChartBtn, (v, position, item) -> {
-                    Utils.shareView(getContext(),((BarChartItem.ViewHolder) viewHolder).containerCard);
+                clickListenerHelper.listen(viewHolder,((SmokeBarChartItem.ViewHolder) viewHolder).shareChartBtn, (v, position, item) -> {
+                    Utils.shareView(getContext(),((SmokeBarChartItem.ViewHolder) viewHolder).containerCard);
                 });
                 return viewHolder;
             }
@@ -193,7 +194,7 @@ public class SmokeChartFragment extends BaseFragment implements SmokeChartView {
         });
 
         mFastItemAdapter.add(
-                new BarChartItem(
+                new SmokeBarChartItem(
                         ChartUtils.CHART_TYPE_WEEK
                         , getString(R.string.this_week)
                         , getString(R.string.weekly_progress)
@@ -202,7 +203,7 @@ public class SmokeChartFragment extends BaseFragment implements SmokeChartView {
                         , new ArrayList<>(7)
                         , dataSetColors
                         , false)
-                , new BarChartItem(
+                , new SmokeBarChartItem(
                         ChartUtils.CHART_TYPE_MONTH
                         , getString(R.string.this_month)
                         , getString(R.string.monthly_progress)
@@ -211,7 +212,7 @@ public class SmokeChartFragment extends BaseFragment implements SmokeChartView {
                         , new ArrayList<>(31)
                         , dataSetColors
                         , false)
-                , new BarChartItem(
+                , new SmokeBarChartItem(
                         ChartUtils.CHART_TYPE_YEAR
                         , getString(R.string.this_year)
                         , getString(R.string.yearly_progress)
@@ -239,16 +240,16 @@ public class SmokeChartFragment extends BaseFragment implements SmokeChartView {
 
     private void bindWeekData() {
         Double changePercentage = Utils.getSumPercentageChange(Calendar.WEEK_OF_YEAR, RealmTable.Smoke.QUANTITY, mWeekSmokeList);
-        List<BarEntry> yVals = new ArrayList<>(7);
+        List<BarEntry> yVals = new LinkedList<>(Arrays.asList(new BarEntry[7]));
         for (int dayOfWeek = Calendar.SUNDAY; dayOfWeek <= Calendar.SATURDAY; dayOfWeek++) {
             int quantityVal = mWeekSmokeList.where()
                     .equalTo(RealmTable.Smoke.WEEK_OF_YEAR, mCalendar.get(Calendar.WEEK_OF_YEAR))
                     .equalTo(RealmTable.Smoke.DAY_OF_WEEK, dayOfWeek)
                     .sum(RealmTable.Smoke.QUANTITY).intValue();
             if (dayOfWeek == Calendar.SUNDAY) {
-                yVals.add(new BarEntry(quantityVal, 6));
+                yVals.set(6, new BarEntry(quantityVal, 6));
             } else {
-                yVals.add(new BarEntry(quantityVal, dayOfWeek - 2));
+                yVals.set(dayOfWeek - 2, new BarEntry(quantityVal, dayOfWeek - 2));
             }
         }
 

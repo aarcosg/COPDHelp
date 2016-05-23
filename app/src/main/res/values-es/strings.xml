@@ -178,5 +178,8 @@
     <string name="minutes_abbr">min</string>
     <string name="empty_note_alt">Ninguna observación</string>
     <string name="exercise">Ejercicio</string>
+    <string name="exercise_type_stationary_bicycle_alt">Bicicleta</string>
+    <string name="exercise_type_breathing_alt">Respiratorios</string>
+    <string name="exercise_type_arms_alt">Brazos</string>
 
 </resources>

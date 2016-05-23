@@ -18,7 +18,7 @@ import com.aarcosg.copdhelp.data.realm.entity.Exercise;
 import com.aarcosg.copdhelp.di.components.MainComponent;
 import com.aarcosg.copdhelp.mvp.presenter.exercise.ExerciseChartPresenter;
 import com.aarcosg.copdhelp.mvp.view.exercise.ExerciseChartView;
-import com.aarcosg.copdhelp.ui.adapteritem.StackedBarChartItem;
+import com.aarcosg.copdhelp.ui.adapteritem.ExerciseStackedBarChartItem;
 import com.aarcosg.copdhelp.ui.decorator.VerticalSpaceItemDecoration;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
 import com.aarcosg.copdhelp.utils.ChartUtils;
@@ -31,6 +31,7 @@ import com.mikepenz.fastadapter.helpers.ClickListenerHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -52,7 +53,7 @@ public class ExerciseChartFragment extends BaseFragment implements ExerciseChart
     RecyclerView mRecyclerView;
 
     private Calendar mCalendar;
-    private FastItemAdapter<StackedBarChartItem> mFastItemAdapter;
+    private FastItemAdapter<ExerciseStackedBarChartItem> mFastItemAdapter;
     private RealmResults<Exercise> mWeekExercises;
     private RealmResults<Exercise> mMonthExercises;
     private RealmResults<Exercise> mYearExercises;
@@ -177,9 +178,9 @@ public class ExerciseChartFragment extends BaseFragment implements ExerciseChart
                 ,R.color.exercise_type_stationary_bicycle
                 ,R.color.exercise_type_breathing
                 ,R.color.exercise_type_arms};
-        String[] stackLabels = getResources().getStringArray(R.array.exercise_type);
+        String[] stackLabels = getResources().getStringArray(R.array.exercise_type_alt);
 
-        ClickListenerHelper<StackedBarChartItem> clickListenerHelper = new ClickListenerHelper<StackedBarChartItem>(mFastItemAdapter);
+        ClickListenerHelper<ExerciseStackedBarChartItem> clickListenerHelper = new ClickListenerHelper<ExerciseStackedBarChartItem>(mFastItemAdapter);
         mFastItemAdapter.withOnCreateViewHolderListener(new FastAdapter.OnCreateViewHolderListener() {
 
             @Override
@@ -189,8 +190,8 @@ public class ExerciseChartFragment extends BaseFragment implements ExerciseChart
 
             @Override
             public RecyclerView.ViewHolder onPostCreateViewHolder(RecyclerView.ViewHolder viewHolder) {
-                clickListenerHelper.listen(viewHolder,((StackedBarChartItem.ViewHolder) viewHolder).shareChartBtn, (v, position, item) -> {
-                    Utils.shareView(getContext(),((StackedBarChartItem.ViewHolder) viewHolder).containerCard);
+                clickListenerHelper.listen(viewHolder,((ExerciseStackedBarChartItem.ViewHolder) viewHolder).shareChartBtn, (v, position, item) -> {
+                    Utils.shareView(getContext(),((ExerciseStackedBarChartItem.ViewHolder) viewHolder).containerCard);
                 });
                 return viewHolder;
             }
@@ -198,7 +199,7 @@ public class ExerciseChartFragment extends BaseFragment implements ExerciseChart
         });
 
         mFastItemAdapter.add(
-                new StackedBarChartItem(
+                new ExerciseStackedBarChartItem(
                         ChartUtils.CHART_TYPE_WEEK
                         , getString(R.string.this_week)
                         , getString(R.string.weekly_progress)
@@ -208,7 +209,7 @@ public class ExerciseChartFragment extends BaseFragment implements ExerciseChart
                         , dataSetColors
                         , stackLabels
                         , false)
-                , new StackedBarChartItem(
+                , new ExerciseStackedBarChartItem(
                         ChartUtils.CHART_TYPE_MONTH
                         , getString(R.string.this_month)
                         , getString(R.string.monthly_progress)
@@ -218,7 +219,7 @@ public class ExerciseChartFragment extends BaseFragment implements ExerciseChart
                         , dataSetColors
                         , stackLabels
                         , false)
-                , new StackedBarChartItem(
+                , new ExerciseStackedBarChartItem(
                         ChartUtils.CHART_TYPE_YEAR
                         , getString(R.string.this_year)
                         , getString(R.string.yearly_progress)
@@ -247,10 +248,12 @@ public class ExerciseChartFragment extends BaseFragment implements ExerciseChart
 
     private void bindWeekData() {
         Double changePercentage = Utils.getSumPercentageChange(Calendar.WEEK_OF_YEAR, RealmTable.Exercise.DURATION, mWeekExercises);
-        List<BarEntry> yVals = new ArrayList<>(7);
-        float[] values = new float[getResources().getStringArray(R.array.exercise_type).length];
+        List<BarEntry> yVals = new LinkedList<>(Arrays.asList(new BarEntry[7]));
+        int typesLength = getResources().getStringArray(R.array.exercise_type).length;
+        float[] values;
         for (int dayOfWeek = Calendar.SUNDAY; dayOfWeek <= Calendar.SATURDAY; dayOfWeek++) {
-            for(int i = 0; i < values.length ; i++){
+            values = new float[typesLength];
+            for(int i = 0; i < typesLength ; i++){
                 int value =  mWeekExercises.where()
                         .equalTo(RealmTable.Exercise.WEEK_OF_YEAR, mCalendar.get(Calendar.WEEK_OF_YEAR))
                         .equalTo(RealmTable.Exercise.DAY_OF_WEEK, dayOfWeek)
@@ -259,9 +262,9 @@ public class ExerciseChartFragment extends BaseFragment implements ExerciseChart
                 values[i] = value;
             }
             if (dayOfWeek == Calendar.SUNDAY) {
-                yVals.add(new BarEntry(values, 6));
+                yVals.set(6, new BarEntry(values, 6));
             } else {
-                yVals.add(new BarEntry(values, dayOfWeek - 2));
+                yVals.set(dayOfWeek - 2, new BarEntry(values, dayOfWeek - 2));
             }
         }
 
@@ -273,9 +276,11 @@ public class ExerciseChartFragment extends BaseFragment implements ExerciseChart
     private void bindMonthData() {
         Double changePercentage = Utils.getSumPercentageChange(Calendar.MONTH, RealmTable.Exercise.DURATION, mMonthExercises);
         List<BarEntry> yVals = new ArrayList<>(31);
-        float[] values = new float[getResources().getStringArray(R.array.exercise_type).length];
+        int typesLength = getResources().getStringArray(R.array.exercise_type).length;
+        float[] values;
         for (int dayOfMonth = 1; dayOfMonth <= 31; dayOfMonth++) {
-            for(int i = 0; i < values.length ; i++){
+            values = new float[typesLength];
+            for(int i = 0; i < typesLength ; i++){
                 int value =  mMonthExercises.where()
                         .equalTo(RealmTable.Exercise.MONTH, mCalendar.get(Calendar.MONTH))
                         .equalTo(RealmTable.Exercise.DAY, dayOfMonth)
@@ -294,8 +299,10 @@ public class ExerciseChartFragment extends BaseFragment implements ExerciseChart
     private void bindYearData() {
         Double changePercentage = Utils.getSumPercentageChange(Calendar.YEAR, RealmTable.Exercise.DURATION, mYearExercises);
         List<BarEntry> yVals = new ArrayList<>(12);
-        float[] values = new float[getResources().getStringArray(R.array.exercise_type).length];
+        int typesLength = getResources().getStringArray(R.array.exercise_type).length;
+        float[] values;
         for (int month = Calendar.JANUARY; month <= Calendar.DECEMBER; month++) {
+            values = new float[typesLength];
             for(int i = 0; i < values.length ; i++){
                 int value =  mYearExercises.where()
                         .equalTo(RealmTable.Exercise.YEAR, mCalendar.get(Calendar.YEAR))

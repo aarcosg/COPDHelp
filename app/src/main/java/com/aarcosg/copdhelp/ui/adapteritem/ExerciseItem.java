@@ -1,6 +1,8 @@
 package com.aarcosg.copdhelp.ui.adapteritem;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
@@ -39,11 +41,14 @@ public class ExerciseItem extends GenericAbstractItem<Exercise, ExerciseItem, Ex
     public void bindView(ViewHolder viewHolder) {
         super.bindView(viewHolder);
         Context context = viewHolder.itemView.getContext();
+        TypedArray ta = context.getResources().obtainTypedArray(R.array.exercise_type_colors);
+        int colorId = ContextCompat.getColor(context, ta.getResourceId(getModel().getType(), 0));
+        ta.recycle();
         viewHolder.iconIv.setImageDrawable(
                 new IconicsDrawable(context
                         , context.getResources()
                             .getStringArray(R.array.exercise_type_icons)[getModel().getType()])
-                        .colorRes(R.color.icon_dark)
+                        .color(colorId)
                         .sizeDp(20)
         );
         viewHolder.typeTv.setText(

@@ -18,7 +18,7 @@ import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
 import com.aarcosg.copdhelp.di.components.MainComponent;
 import com.aarcosg.copdhelp.mvp.presenter.medicalattention.MedicalAttentionChartPresenter;
 import com.aarcosg.copdhelp.mvp.view.medicalattention.MedicalAttentionChartView;
-import com.aarcosg.copdhelp.ui.adapteritem.StackedBarChartItem;
+import com.aarcosg.copdhelp.ui.adapteritem.MedicalAttentionStackedBarChartItem;
 import com.aarcosg.copdhelp.ui.decorator.VerticalSpaceItemDecoration;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
 import com.aarcosg.copdhelp.utils.ChartUtils;
@@ -31,6 +31,7 @@ import com.mikepenz.fastadapter.helpers.ClickListenerHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -52,7 +53,7 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
     RecyclerView mRecyclerView;
 
     private Calendar mCalendar;
-    private FastItemAdapter<StackedBarChartItem> mFastItemAdapter;
+    private FastItemAdapter<MedicalAttentionStackedBarChartItem> mFastItemAdapter;
     private RealmResults<MedicalAttention> mWeekMedicalAttentions;
     private RealmResults<MedicalAttention> mMonthMedicalAttentions;
     private RealmResults<MedicalAttention> mYearMedicalAttentions;
@@ -175,7 +176,7 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
         int[] dataSetColors = new int[]{R.color.md_blue_600,R.color.md_deep_orange_600};
         String[] stackLabels = getResources().getStringArray(R.array.medical_attention_type);
 
-        ClickListenerHelper<StackedBarChartItem> clickListenerHelper = new ClickListenerHelper<StackedBarChartItem>(mFastItemAdapter);
+        ClickListenerHelper<MedicalAttentionStackedBarChartItem> clickListenerHelper = new ClickListenerHelper<MedicalAttentionStackedBarChartItem>(mFastItemAdapter);
         mFastItemAdapter.withOnCreateViewHolderListener(new FastAdapter.OnCreateViewHolderListener() {
 
             @Override
@@ -185,8 +186,8 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
 
             @Override
             public RecyclerView.ViewHolder onPostCreateViewHolder(RecyclerView.ViewHolder viewHolder) {
-                clickListenerHelper.listen(viewHolder,((StackedBarChartItem.ViewHolder) viewHolder).shareChartBtn, (v, position, item) -> {
-                    Utils.shareView(getContext(),((StackedBarChartItem.ViewHolder) viewHolder).containerCard);
+                clickListenerHelper.listen(viewHolder,((MedicalAttentionStackedBarChartItem.ViewHolder) viewHolder).shareChartBtn, (v, position, item) -> {
+                    Utils.shareView(getContext(),((MedicalAttentionStackedBarChartItem.ViewHolder) viewHolder).containerCard);
                 });
                 return viewHolder;
             }
@@ -194,7 +195,7 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
         });
 
         mFastItemAdapter.add(
-                new StackedBarChartItem(
+                new MedicalAttentionStackedBarChartItem(
                         ChartUtils.CHART_TYPE_WEEK
                         , getString(R.string.this_week)
                         , getString(R.string.weekly_progress)
@@ -204,7 +205,7 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
                         , dataSetColors
                         , stackLabels
                         , false)
-                , new StackedBarChartItem(
+                , new MedicalAttentionStackedBarChartItem(
                         ChartUtils.CHART_TYPE_MONTH
                         , getString(R.string.this_month)
                         , getString(R.string.monthly_progress)
@@ -214,7 +215,7 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
                         , dataSetColors
                         , stackLabels
                         , false)
-                , new StackedBarChartItem(
+                , new MedicalAttentionStackedBarChartItem(
                         ChartUtils.CHART_TYPE_YEAR
                         , getString(R.string.this_year)
                         , getString(R.string.yearly_progress)
@@ -243,10 +244,12 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
 
     private void bindWeekData() {
         Double changePercentage = Utils.getCountPercentageChange(Calendar.WEEK_OF_YEAR,mWeekMedicalAttentions);
-        List<BarEntry> yVals = new ArrayList<>(7);
-        float[] values = new float[getResources().getStringArray(R.array.medical_attention_type).length];
+        List<BarEntry> yVals = new LinkedList<>(Arrays.asList(new BarEntry[7]));
+        int typesLength = getResources().getStringArray(R.array.medical_attention_type).length;
+        float[] values;
         for (int dayOfWeek = Calendar.SUNDAY; dayOfWeek <= Calendar.SATURDAY; dayOfWeek++) {
-            for(int i = 0; i < values.length ; i++){
+            values = new float[typesLength];
+            for(int i = 0; i < typesLength ; i++){
                 float value =  mWeekMedicalAttentions.where()
                         .equalTo(RealmTable.MedicalAttention.WEEK_OF_YEAR, mCalendar.get(Calendar.WEEK_OF_YEAR))
                         .equalTo(RealmTable.MedicalAttention.DAY_OF_WEEK, dayOfWeek)
@@ -255,9 +258,9 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
                 values[i] = value;
             }
             if (dayOfWeek == Calendar.SUNDAY) {
-                yVals.add(new BarEntry(values, 6));
+                yVals.set(6, new BarEntry(values, 6));
             } else {
-                yVals.add(new BarEntry(values, dayOfWeek - 2));
+                yVals.set(dayOfWeek - 2, new BarEntry(values, dayOfWeek - 2));
             }
         }
 
@@ -269,10 +272,12 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
     private void bindMonthData() {
         Double changePercentage = Utils.getCountPercentageChange(Calendar.MONTH,mMonthMedicalAttentions);
         List<BarEntry> yVals = new ArrayList<>(31);
-        float[] values = new float[getResources().getStringArray(R.array.medical_attention_type).length];
+        int typesLength = getResources().getStringArray(R.array.medical_attention_type).length;
+        float[] values;
         for (int dayOfMonth = 1; dayOfMonth <= 31; dayOfMonth++) {
-            for(int i = 0; i < values.length ; i++){
-                float value =  mMonthMedicalAttentions.where()
+            values = new float[typesLength];
+            for(int i = 0; i < typesLength ; i++){
+                float value = mMonthMedicalAttentions.where()
                         .equalTo(RealmTable.MedicalAttention.MONTH, mCalendar.get(Calendar.MONTH))
                         .equalTo(RealmTable.MedicalAttention.DAY, dayOfMonth)
                         .equalTo(RealmTable.MedicalAttention.TYPE, i)
@@ -290,9 +295,11 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
     private void bindYearData() {
         Double changePercentage = Utils.getCountPercentageChange(Calendar.YEAR,mYearMedicalAttentions);
         List<BarEntry> yVals = new ArrayList<>(12);
-        float[] values = new float[getResources().getStringArray(R.array.medical_attention_type).length];
+        int typesLength = getResources().getStringArray(R.array.medical_attention_type).length;
+        float[] values;
         for (int month = Calendar.JANUARY; month <= Calendar.DECEMBER; month++) {
-            for(int i = 0; i < values.length ; i++){
+            values = new float[typesLength];
+            for(int i = 0; i < typesLength ; i++){
                 float value =  mYearMedicalAttentions.where()
                         .equalTo(RealmTable.MedicalAttention.YEAR, mCalendar.get(Calendar.YEAR))
                         .equalTo(RealmTable.MedicalAttention.MONTH, month)

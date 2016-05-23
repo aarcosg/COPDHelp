@@ -19,7 +19,7 @@ import com.aarcosg.copdhelp.data.realm.entity.BMI;
 import com.aarcosg.copdhelp.di.components.MainComponent;
 import com.aarcosg.copdhelp.mvp.presenter.bmi.BMIChartPresenter;
 import com.aarcosg.copdhelp.mvp.view.bmi.BMIChartView;
-import com.aarcosg.copdhelp.ui.adapteritem.LineChartItem;
+import com.aarcosg.copdhelp.ui.adapteritem.BMILineChartItem;
 import com.aarcosg.copdhelp.ui.decorator.VerticalSpaceItemDecoration;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
 import com.aarcosg.copdhelp.utils.ChartUtils;
@@ -53,7 +53,7 @@ public class BMIChartFragment extends BaseFragment implements BMIChartView {
     RecyclerView mRecyclerView;
 
     private Calendar mCalendar;
-    private FastItemAdapter<LineChartItem> mFastItemAdapter;
+    private FastItemAdapter<BMILineChartItem> mFastItemAdapter;
     private RealmResults<BMI> mWeekBMIs;
     private RealmResults<BMI> mMonthBMIs;
     private RealmResults<BMI> mYearBMIs;
@@ -170,7 +170,7 @@ public class BMIChartFragment extends BaseFragment implements BMIChartView {
         mFastItemAdapter = new FastItemAdapter<>();
         int[] dataSetColors = new int[]{ContextCompat.getColor(getContext(),R.color.md_orange_500)};
 
-        ClickListenerHelper<LineChartItem> clickListenerHelper = new ClickListenerHelper<LineChartItem>(mFastItemAdapter);
+        ClickListenerHelper<BMILineChartItem> clickListenerHelper = new ClickListenerHelper<BMILineChartItem>(mFastItemAdapter);
         mFastItemAdapter.withOnCreateViewHolderListener(new FastAdapter.OnCreateViewHolderListener() {
 
             @Override
@@ -180,8 +180,8 @@ public class BMIChartFragment extends BaseFragment implements BMIChartView {
 
             @Override
             public RecyclerView.ViewHolder onPostCreateViewHolder(RecyclerView.ViewHolder viewHolder) {
-                clickListenerHelper.listen(viewHolder,((LineChartItem.ViewHolder) viewHolder).shareChartBtn, (v, position, item) -> {
-                    Utils.shareView(getContext(),((LineChartItem.ViewHolder) viewHolder).containerCard);
+                clickListenerHelper.listen(viewHolder,((BMILineChartItem.ViewHolder) viewHolder).shareChartBtn, (v, position, item) -> {
+                    Utils.shareView(getContext(),((BMILineChartItem.ViewHolder) viewHolder).containerCard);
                 });
                 return viewHolder;
             }
@@ -189,7 +189,7 @@ public class BMIChartFragment extends BaseFragment implements BMIChartView {
         });
 
         mFastItemAdapter.add(
-                new LineChartItem(
+                new BMILineChartItem(
                         ChartUtils.CHART_TYPE_WEEK
                         , getString(R.string.this_week)
                         , getString(R.string.weekly_progress)
@@ -198,7 +198,7 @@ public class BMIChartFragment extends BaseFragment implements BMIChartView {
                         , new ArrayList<>(7)
                         , dataSetColors
                         , false)
-                , new LineChartItem(
+                , new BMILineChartItem(
                         ChartUtils.CHART_TYPE_MONTH
                         , getString(R.string.this_month)
                         , getString(R.string.monthly_progress)
@@ -207,7 +207,7 @@ public class BMIChartFragment extends BaseFragment implements BMIChartView {
                         , new ArrayList<>(31)
                         , dataSetColors
                         , false)
-                , new LineChartItem(
+                , new BMILineChartItem(
                         ChartUtils.CHART_TYPE_YEAR
                         , getString(R.string.this_year)
                         , getString(R.string.yearly_progress)

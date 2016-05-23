@@ -139,7 +139,7 @@
                     android:layout_marginLeft="@dimen/left_margin_list_after_icon"
                     android:layout_marginStart="@dimen/left_margin_list_after_icon"
                     android:inputType="textMultiLine"
-                    android:hint="@string/ask_feelings"
+                    android:hint="@string/add_note_alt"
                     android:background="@android:color/transparent"/>
 
             </LinearLayout>

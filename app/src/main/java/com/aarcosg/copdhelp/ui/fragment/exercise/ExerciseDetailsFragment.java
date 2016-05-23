@@ -1,10 +1,12 @@
 package com.aarcosg.copdhelp.ui.fragment.exercise;
 
 
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -127,7 +129,12 @@ public class ExerciseDetailsFragment extends BaseFragment implements ExerciseDet
                     getString(R.string.empty_note_alt) : mExercise.getNote());
             mTypeIconIv.setImageDrawable(new IconicsDrawable(getContext()
                     , getResources().getStringArray(R.array.exercise_type_icons)[mExercise.getType()])
+                    .colorRes(R.color.md_white_1000)
                     .sizeDp(20));
+            TypedArray ta = getContext().getResources().obtainTypedArray(R.array.exercise_type_colors);
+            int colorId = ContextCompat.getColor(getContext(), ta.getResourceId(exercise.getType(), 0));
+            ta.recycle();
+            mTypeCardView.setBackgroundColor(colorId);
         }
     }
 

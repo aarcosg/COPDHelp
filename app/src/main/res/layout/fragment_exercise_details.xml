@@ -75,7 +75,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="@style/DetailsCardHeaderText"
-                        android:text="@string/type"/>
+                        android:text="@string/type"
+                        android:textColor="@color/md_white_1000"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -87,9 +88,9 @@
                             android:id="@+id/type_icon_iv"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginRight="@dimen/narrow_space"
-                            android:layout_marginEnd="@dimen/narrow_space"
-                            app:ico_color="@color/icon_dark"
+                            android:layout_marginRight="@dimen/mid_space"
+                            android:layout_marginEnd="@dimen/mid_space"
+                            app:ico_color="@color/md_white_1000"
                             app:ico_icon="gmd_fitness_center"
                             app:ico_size="@dimen/icon_default_size"/>
 
@@ -97,7 +98,8 @@
                             android:id="@+id/type_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/DetailsCardBodyText"/>
+                            style="@style/DetailsCardBodyText"
+                            android:textColor="@color/md_white_1000"/>
 
                     </LinearLayout>
 
