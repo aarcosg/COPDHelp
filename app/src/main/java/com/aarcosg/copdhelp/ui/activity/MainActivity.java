@@ -43,6 +43,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
     private static final int MEDICINE_REMINDER_MAIN_ID = 3;
     private static final int SMOKE_MAIN_ID = 4;
     private static final int EXERCISE_MAIN_ID = 5;
+    private static final int COPDPS_MAIN_ID = 6;
 
     @Inject
     MainPresenter mMainPresenter;
@@ -135,6 +136,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                         , new PrimaryDrawerItem().withName(getString(R.string.dose_reminder)).withIcon(CommunityMaterial.Icon.cmd_pill).withIdentifier(MEDICINE_REMINDER_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.smoking)).withIcon(GoogleMaterial.Icon.gmd_smoke_free).withIdentifier(SMOKE_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.exercise)).withIcon(GoogleMaterial.Icon.gmd_directions_walk).withIdentifier(EXERCISE_MAIN_ID)
+                        , new PrimaryDrawerItem().withName(getString(R.string.copdps)).withIcon(CommunityMaterial.Icon.cmd_stethoscope).withIdentifier(COPDPS_MAIN_ID).withSelectable(false)
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     if(drawerItem != null){
@@ -146,7 +148,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
     }
 
     private boolean selectDrawerItem(int fragmentId) {
-        Fragment fragment;
+        Fragment fragment = null;
         switch (fragmentId){
             case MEDICAL_ATTENTION_MAIN_ID:
                 setAppBarElevation(0);
@@ -172,6 +174,9 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 setAppBarElevation(0);
                 setTitle(getString(R.string.title_fragment_exercise));
                 fragment = ExerciseMainFragment.newInstance();
+                break;
+            case COPDPS_MAIN_ID:
+                COPDPSActivity.launch(this);
                 break;
             default:
                 setTitle(getString(R.string.title_fragment_medical_attention));

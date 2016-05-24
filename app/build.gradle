@@ -122,6 +122,15 @@ dependencies {
     //Floating Action Button
     compile 'com.github.clans:fab:1.6.3'
 
+    //AppIntro
+    compile 'com.github.PaoloRotolo:AppIntro:-SNAPSHOT'
+
+    //Text Justify
+    compile 'com.github.bluejamesbond:textjustify-android:2.1.6'
+
+    //Circle Image View
+    compile 'de.hdodenhof:circleimageview:2.0.0'
+
     //Stetho
     compile 'com.facebook.stetho:stetho:1.3.1'
     compile 'com.uphyca:stetho_realm:0.8.0'

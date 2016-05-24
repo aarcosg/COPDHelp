@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import io.realm.RealmResults;
 import rx.android.schedulers.AndroidSchedulers;
@@ -222,5 +223,13 @@ public class Utils {
             index = 4;
         }
         return index;
+    }
+
+    public static int sum(List<Integer> ints){
+        int sum = 0;
+        for(Integer i : ints){
+            sum += i;
+        }
+        return sum;
     }
 }

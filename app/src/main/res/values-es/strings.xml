@@ -181,5 +181,37 @@
     <string name="exercise_type_stationary_bicycle_alt">Bicicleta</string>
     <string name="exercise_type_breathing_alt">Respiratorios</string>
     <string name="exercise_type_arms_alt">Brazos</string>
+    <string name="copdps_intro_title">COPD-PS</string>
+    <string name="copdps_intro_description">En esta encuesta se le hacen preguntas sobre usted, su respiración y su capacidad para realizar algunas actividades.</string>
+    <string name="copdps">COPD-PS</string>
+    <string name="skip">Saltar</string>
+    <string name="done">Hecho</string>
+    <string name="copdps_question1">1. Durante las últimas 4 semanas, ¿cuántas veces sintió que le faltaba el aliento?</string>
+    <string name="copdps_question1_answer1">Nunca o pocas veces</string>
+    <string name="copdps_question1_answer2">Algunas veces</string>
+    <string name="copdps_question1_answer3">La mayoría de las veces</string>
+    <string name="copdps_question1_answer4">Todo el tiempo</string>
+    <string name="copdps_question2">2. ¿Alguna vez expulsa algo al toser, como mucosidad o flema?</string>
+    <string name="copdps_question2_answer1">Nunca</string>
+    <string name="copdps_question2_answer2">Sólo con resfriados o infecciones</string>
+    <string name="copdps_question2_answer3">Algunos días del mes</string>
+    <string name="copdps_question2_answer4">Casi todos los días de la semana</string>
+    <string name="copdps_question2_answer5">Todos los días</string>
+    <string name="copdps_question3">3. Durante el último año ¿ha reducido sus actividades cotidianas debido a sus problemas respiratorios?</string>
+    <string name="copdps_question3_answer1">No o casi nada</string>
+    <string name="copdps_question3_answer2">No estoy seguro/a</string>
+    <string name="copdps_question3_answer3">Sí</string>
+    <string name="copdps_question3_answer4">Sí, mucho</string>
+    <string name="copdps_question4">4. ¿Ha fumado al menos 100 cigarrillos en TODA SU VIDA?</string>
+    <string name="copdps_question4_answer1">No</string>
+    <string name="copdps_question4_answer2">Sí</string>
+    <string name="copdps_question4_answer3">No sé</string>
+    <string name="copdps_question5">5. ¿Cuántos años tiene?</string>
+    <string name="copdps_question5_answer1">De 35 a 49 años</string>
+    <string name="copdps_question5_answer2">De 50 a 59 años</string>
+    <string name="copdps_question5_answer3">De 60 a 69 años</string>
+    <string name="copdps_question5_answer4">De 70 en adelante</string>
+    <string name="copdps_result_copd">Es probable que tenga enfermedad pulmonar obstructiva crónica (EPOC). Consulte con su médico.</string>
+    <string name="copdps_result_no_copd">Si tiene problemas respiratorios consulte con su médico.</string>
 
 </resources>
