@@ -24,5 +24,6 @@
     <dimen name="measurement_unit_margin">4dp</dimen>
     <dimen name="dialog_padding">24dp</dimen>
     <dimen name="dialog_spinner_margin_left">-8dp</dimen>
+    <dimen name="answer_above_radio_max_width">120dp</dimen>
 
 </resources>

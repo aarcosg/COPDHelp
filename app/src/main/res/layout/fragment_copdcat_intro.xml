@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/copdps_fragment_background"
+    android:background="@color/copdcat_fragment_background"
     android:layout_weight="10">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:layout_weight="3"
         style="@style/QuizTitleText"
-        android:text="@string/copdps_intro_title"/>
+        android:text="@string/copdcat_intro_title"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:ico_color="@color/copdps_fragment_background"
+            app:ico_color="@color/copdcat_fragment_background"
             app:ico_icon="cmd_stethoscope"
             app:ico_size="120dp"
             app:ico_background_color="@color/md_white_1000"
@@ -37,17 +37,18 @@
 
     </LinearLayout>
 
-    <TextView
+    <com.bluejamesbond.text.DocumentView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="4"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        android:paddingLeft="48dp"
-        android:paddingRight="48dp"
-        android:textSize="16sp"
-        android:text="@string/copdps_intro_description"/>
+        app:documentView_offsetY="@dimen/wide_space"
+        app:documentView_cacheConfig="auto_quality"
+        app:documentView_insetPadding="@dimen/wide_space"
+        app:documentView_text="@string/copdcat_intro_description"
+        app:documentView_textAlignment="justified"
+        app:documentView_textColor="@android:color/white"
+        app:documentView_textFormat="plain"
+        app:documentView_textSize="16sp" />
 
     <View
         android:layout_width="match_parent"

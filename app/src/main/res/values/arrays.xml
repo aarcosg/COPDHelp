@@ -158,4 +158,10 @@
         <item>@color/exercise_type_breathing</item>
         <item>@color/exercise_type_arms</item>
     </array>
+    <string-array name="copd_cat_impact_scale">
+        <item>@string/copd_cat_low_impact</item>
+        <item>@string/copd_cat_moderate_impact</item>
+        <item>@string/copd_cat_high_impact</item>
+        <item>@string/copd_cat_very_high_impact</item>
+    </string-array>
 </resources>

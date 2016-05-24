@@ -26,9 +26,9 @@ import com.aarcosg.copdhelp.ui.activity.MedicalAttentionActivity;
 import com.aarcosg.copdhelp.ui.adapteritem.MedicalAttentionItem;
 import com.aarcosg.copdhelp.ui.decorator.SimpleDividerItemDecoration;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
-import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.GenericItemAdapter;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 
 import javax.inject.Inject;
@@ -202,7 +202,7 @@ public class MedicalAttentionListFragment extends BaseFragment implements Medica
     private void setupEmptyView(){
         mEmptyViewIcon.setImageDrawable(
                 new IconicsDrawable(getContext())
-                .icon(CommunityMaterial.Icon.cmd_stethoscope)
+                .icon(FontAwesome.Icon.faw_hospital_o)
                 .color(Color.GRAY)
                 .sizeDp(70)
         );

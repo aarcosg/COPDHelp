@@ -32,10 +32,10 @@ import com.aarcosg.copdhelp.ui.decorator.VerticalSpaceItemDecoration;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
 import com.aarcosg.copdhelp.ui.receiver.Reminders;
 import com.aarcosg.copdhelp.utils.Utils;
-import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.GenericItemAdapter;
 import com.mikepenz.fastadapter.helpers.ClickListenerHelper;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 
 import java.util.Calendar;
@@ -269,7 +269,7 @@ public class MedicineReminderListFragment extends BaseFragment implements Medici
     private void setupEmptyView() {
         mEmptyViewIcon.setImageDrawable(
                 new IconicsDrawable(getContext())
-                        .icon(CommunityMaterial.Icon.cmd_pill)
+                        .icon(FontAwesome.Icon.faw_medkit)
                         .color(Color.GRAY)
                         .sizeDp(70)
         );

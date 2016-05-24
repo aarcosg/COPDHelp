@@ -23,6 +23,7 @@ import com.aarcosg.copdhelp.ui.fragment.medicinereminder.MedicineReminderListFra
 import com.aarcosg.copdhelp.ui.fragment.smoke.SmokeMainFragment;
 import com.aarcosg.copdhelp.ui.receiver.Reminders;
 import com.mikepenz.community_material_typeface_library.CommunityMaterial;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -44,6 +45,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
     private static final int SMOKE_MAIN_ID = 4;
     private static final int EXERCISE_MAIN_ID = 5;
     private static final int COPDPS_MAIN_ID = 6;
+    private static final int COPDCAT_MAIN_ID = 7;
 
     @Inject
     MainPresenter mMainPresenter;
@@ -131,12 +133,13 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 .withAccountHeader(accountHeader)
                 .addDrawerItems(
                         //new SectionDrawerItem().withName(R.string.drawer_item_section_patient),
-                        new PrimaryDrawerItem().withName(getString(R.string.medical_attention)).withIcon(GoogleMaterial.Icon.gmd_local_hospital).withIdentifier(MEDICAL_ATTENTION_MAIN_ID)
+                        new PrimaryDrawerItem().withName(getString(R.string.medical_attention)).withIcon(FontAwesome.Icon.faw_hospital_o).withIdentifier(MEDICAL_ATTENTION_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.bmi)).withIcon(CommunityMaterial.Icon.cmd_scale_bathroom).withIdentifier(BMI_MAIN_ID)
-                        , new PrimaryDrawerItem().withName(getString(R.string.dose_reminder)).withIcon(CommunityMaterial.Icon.cmd_pill).withIdentifier(MEDICINE_REMINDER_MAIN_ID)
+                        , new PrimaryDrawerItem().withName(getString(R.string.dose_reminder)).withIcon(FontAwesome.Icon.faw_medkit).withIdentifier(MEDICINE_REMINDER_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.smoking)).withIcon(GoogleMaterial.Icon.gmd_smoke_free).withIdentifier(SMOKE_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.exercise)).withIcon(GoogleMaterial.Icon.gmd_directions_walk).withIdentifier(EXERCISE_MAIN_ID)
-                        , new PrimaryDrawerItem().withName(getString(R.string.copdps)).withIcon(CommunityMaterial.Icon.cmd_stethoscope).withIdentifier(COPDPS_MAIN_ID).withSelectable(false)
+                        , new PrimaryDrawerItem().withName(getString(R.string.copdps)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDPS_MAIN_ID).withSelectable(false)
+                        , new PrimaryDrawerItem().withName(getString(R.string.copdcat)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDCAT_MAIN_ID).withSelectable(false)
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     if(drawerItem != null){
@@ -177,6 +180,9 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 break;
             case COPDPS_MAIN_ID:
                 COPDPSActivity.launch(this);
+                break;
+            case COPDCAT_MAIN_ID:
+                COPDCATActivity.launch(this);
                 break;
             default:
                 setTitle(getString(R.string.title_fragment_medical_attention));

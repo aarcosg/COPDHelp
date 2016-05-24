@@ -55,4 +55,25 @@
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
+    <style name="CustomRadioButtonTextAbove" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableBottom">?android:listChoiceIndicatorSingle</item>
+        <item name="android:gravity">center_horizontal|bottom</item>
+    </style>
+
+    <style name="QuizAnswerAboveRadioGroup">
+        <item name="android:maxWidth">@dimen/answer_above_radio_max_width</item>
+    </style>
+
+    <style name="QuizAnswerAboveRadioGroup.Left" parent="QuizAnswerAboveRadioGroup">
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="QuizAnswerAboveRadioGroup.Right" parent="QuizAnswerAboveRadioGroup">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:gravity">right</item>
+    </style>
+
 </resources>

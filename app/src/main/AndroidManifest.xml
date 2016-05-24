@@ -37,6 +37,9 @@
         <activity
             android:name=".ui.activity.COPDPSActivity"
             android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".ui.activity.COPDCATActivity"
+            android:configChanges="orientation|screenSize"/>
 
         <receiver
             android:name=".ui.receiver.MedicineReminderBroadcastReceiver"

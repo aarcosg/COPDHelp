@@ -213,5 +213,36 @@
     <string name="copdps_question5_answer4">De 70 en adelante</string>
     <string name="copdps_result_copd">Es probable que tenga enfermedad pulmonar obstructiva crónica (EPOC). Consulte con su médico.</string>
     <string name="copdps_result_no_copd">Si tiene problemas respiratorios consulte con su médico.</string>
+    <string name="copdcat_intro_title">COPD Assessment Test\n(CAT)</string>
+    <string name="copdcat_intro_description">Este cuestionario le ayudará a medir el impacto que la EPOC está teniendo en su bienestar y su vida diaria. Sus respuestas pueden ser utilizadas por usted y por el profesional sanitario encargado de tratarle para mejorar su calidad de vida.</string>
+    <string name="copdcat">CAT</string>
+    <string name="copdcat_question1_answer0">Nunca</string>
+    <string name="copdcat_question1_answer5">Siempre</string>
+    <string name="copdcat_question2_answer0">No tengo</string>
+    <string name="copdcat_question2_answer5">Completamente lleno</string>
+    <string name="copdcat_question3_answer0">Ninguna</string>
+    <string name="copdcat_question3_answer5">Mucha</string>
+    <string name="copdcat_question4_answer0">Nada</string>
+    <string name="copdcat_question4_answer5">Mucho</string>
+    <string name="copdcat_question5_answer0">No</string>
+    <string name="copdcat_question5_answer5">Muy limitado/a</string>
+    <string name="copdcat_question6_answer0">Seguro</string>
+    <string name="copdcat_question6_answer5">Nada seguro</string>
+    <string name="copdcat_question7_answer0">Ninguno</string>
+    <string name="copdcat_question7_answer5">Tengo problemas</string>
+    <string name="copdcat_question8_answer0">Mucha</string>
+    <string name="copdcat_question8_answer5">Ninguna</string>
+    <string name="copdcat_question1">¿Tose con asiduidad?</string>
+    <string name="copdcat_question2">¿Qué cantidad de flema (mucosidad) tiene en el pecho?</string>
+    <string name="copdcat_question3">¿Cuánta opresión siente en el pecho?</string>
+    <string name="copdcat_question4">¿Qué cantidad de aire le falta cuando sube una pendiente o un tramo de escaleras?</string>
+    <string name="copdcat_question5">¿Se siente limitado/a para realizar actividades domésticas?</string>
+    <string name="copdcat_question6">¿Cómo se siente al salir de casa a pesar de la afección pulmonar?</string>
+    <string name="copdcat_question7">¿Tiene problemas para dormir?</string>
+    <string name="copdcat_question8">¿Cuánta energía tiene?</string>
+    <string name="copd_cat_low_impact">Una puntuación entre 0 y 10 indica un bajo impacto. Se debe interpretar y actuar a partir de esta puntuación en colaboración con su profesional sanitario.</string>
+    <string name="copd_cat_moderate_impact">Una puntuación entre 11 y 20 indica un impacto medio. Se debe interpretar y actuar a partir de esta puntuación en colaboración con su profesional sanitario.</string>
+    <string name="copd_cat_high_impact">Una puntuación entre 21 y 30 indica un impacto alto. Se debe interpretar y actuar a partir de esta puntuación en colaboración con su profesional sanitario.</string>
+    <string name="copd_cat_very_high_impact">Una puntuación entre 31 y 40 indica un impacto muy alto. Se debe interpretar y actuar a partir de esta puntuación en colaboración con su profesional sanitario.</string>
 
 </resources>
