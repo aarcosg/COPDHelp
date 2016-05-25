@@ -1,0 +1,67 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_copdbodex_question4"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/copdbode_fragment_background"
+    android:layout_weight="10">
+
+    <TextView
+        android:id="@+id/quiz_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        style="@style/QuizTitleText"
+        android:text="@string/copdbode_intro_title"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        style="@style/QuizQuestionText"
+        android:text="@string/copdbodex_question4"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_weight="4"
+        android:background="@android:color/white">
+
+        <RadioGroup
+            android:id="@+id/answer_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/answer1_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/CustomRadioButton"
+                android:text="@string/copdbodex_question4_answer1"/>
+
+            <RadioButton
+                android:id="@+id/answer2_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/CustomRadioButton"
+                android:text="@string/copdbodex_question4_answer2"/>
+
+            <RadioButton
+                android:id="@+id/answer3_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/CustomRadioButton"
+                android:text="@string/copdbodex_question4_answer3"/>
+
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="64dp" />
+
+</LinearLayout>

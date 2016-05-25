@@ -1,0 +1,61 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_copdbodex_result"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/copdbode_fragment_background"
+    android:layout_weight="10">
+
+    <TextView
+        android:id="@+id/quiz_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        style="@style/QuizTitleText"
+        android:text="@string/copdbodex_intro_title"/>
+
+    <TextView
+        android:id="@+id/result_tv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="3"
+        android:textColor="@android:color/white"
+        style="@style/TextAppearance.AppCompat.Display4"
+        android:fontFamily="sans-serif-light" />
+
+    <TextView
+        android:id="@+id/result_description_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:paddingLeft="@dimen/wide_space"
+        android:paddingRight="@dimen/wide_space"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:lineSpacingMultiplier="1.5"
+        android:fontFamily="sans-serif-light"/>
+
+    <TextView
+        android:id="@+id/result_bode_recommended_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:paddingLeft="@dimen/wide_space"
+        android:paddingRight="@dimen/wide_space"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/copdbodex_result_bode_recommended"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="64dp" />
+
+</LinearLayout>

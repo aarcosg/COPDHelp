@@ -7,6 +7,10 @@ public class User extends RealmObject{
 
     @PrimaryKey
     private Long id;
+    private Integer indexCOPDPS;
+    private Integer indexCAT;
+    private Integer indexBODE;
+    private Integer indexBODEx;
 
     public User() {
     }
@@ -21,5 +25,37 @@ public class User extends RealmObject{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getIndexCOPDPS() {
+        return indexCOPDPS;
+    }
+
+    public void setIndexCOPDPS(Integer indexCOPDPS) {
+        this.indexCOPDPS = indexCOPDPS;
+    }
+
+    public Integer getIndexCAT() {
+        return indexCAT;
+    }
+
+    public void setIndexCAT(Integer indexCAT) {
+        this.indexCAT = indexCAT;
+    }
+
+    public Integer getIndexBODE() {
+        return indexBODE;
+    }
+
+    public void setIndexBODE(Integer indexBODE) {
+        this.indexBODE = indexBODE;
+    }
+
+    public Integer getIndexBODEx() {
+        return indexBODEx;
+    }
+
+    public void setIndexBODEx(Integer indexBODEx) {
+        this.indexBODEx = indexBODEx;
     }
 }

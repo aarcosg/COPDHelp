@@ -46,6 +46,8 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
     private static final int EXERCISE_MAIN_ID = 5;
     private static final int COPDPS_MAIN_ID = 6;
     private static final int COPDCAT_MAIN_ID = 7;
+    private static final int COPDBODE_MAIN_ID = 8;
+    private static final int COPDBODEX_MAIN_ID = 9;
 
     @Inject
     MainPresenter mMainPresenter;
@@ -140,6 +142,8 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                         , new PrimaryDrawerItem().withName(getString(R.string.exercise)).withIcon(GoogleMaterial.Icon.gmd_directions_walk).withIdentifier(EXERCISE_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.copdps)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDPS_MAIN_ID).withSelectable(false)
                         , new PrimaryDrawerItem().withName(getString(R.string.copdcat)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDCAT_MAIN_ID).withSelectable(false)
+                        , new PrimaryDrawerItem().withName(getString(R.string.bode)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDBODE_MAIN_ID).withSelectable(false)
+                        , new PrimaryDrawerItem().withName(getString(R.string.bodex)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDBODEX_MAIN_ID).withSelectable(false)
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     if(drawerItem != null){
@@ -183,6 +187,12 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 break;
             case COPDCAT_MAIN_ID:
                 COPDCATActivity.launch(this);
+                break;
+            case COPDBODE_MAIN_ID:
+                COPDBODEActivity.launch(this);
+                break;
+            case COPDBODEX_MAIN_ID:
+                COPDBODEXActivity.launch(this);
                 break;
             default:
                 setTitle(getString(R.string.title_fragment_medical_attention));

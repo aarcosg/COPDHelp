@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 
 import com.aarcosg.copdhelp.R;
+import com.aarcosg.copdhelp.data.realm.RealmTable;
 import com.aarcosg.copdhelp.ui.fragment.copdcat.COPDCATIntroFragment;
 import com.aarcosg.copdhelp.ui.fragment.copdcat.COPDCATQuestionFragment;
 import com.aarcosg.copdhelp.ui.fragment.copdcat.COPDCATResultFragment;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class COPDCATActivity extends BaseAppIntroActivity implements COPDCATQuestionFragment.OnAnswerSelectedListener {
+public class COPDCATActivity extends BaseCOPDIndexActivity implements COPDCATQuestionFragment.OnAnswerSelectedListener {
 
     private Map<Integer,Integer> mPointsMap = new HashMap<>();
 
@@ -51,7 +52,9 @@ public class COPDCATActivity extends BaseAppIntroActivity implements COPDCATQues
             int newFragmentIndex = getSlides().indexOf(newFragment);
             if(newFragmentIndex == getSlides().size() - 1){
                 COPDCATResultFragment resultFragment = (COPDCATResultFragment) newFragment;
-                resultFragment.bindPoints(Utils.sum(new ArrayList<>(mPointsMap.values())));
+                int totalPoints = Utils.sum(new ArrayList<>(mPointsMap.values()));
+                resultFragment.bindPoints(totalPoints);
+                updateCOPDIndex(RealmTable.User.INDEX_CAT,totalPoints);
             }else{
                 if(mPointsMap.containsKey(newFragmentIndex)){
                     setNextPageSwipeLock(false);

@@ -11,6 +11,10 @@ public interface RealmTable {
     String WEEK_OF_YEAR = "weekOfYear";
 
     interface User {
+        String INDEX_COPDPS = "indexCOPDPS";
+        String INDEX_CAT = "indexCAT";
+        String INDEX_BODE = "indexBODE";
+        String INDEX_BODEX = "indexBODEx";
     }
 
     interface MedicalAttention{
