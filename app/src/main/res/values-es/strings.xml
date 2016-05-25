@@ -12,6 +12,7 @@
     <string name="title_fragment_medical_attention_add">Nueva atención sanitaria</string>
     <string name="title_fragment_medical_attention_edit">Editar atención sanitaria</string>
     <string name="title_fragment_bmi">Índice Masa Corporal</string>
+    <string name="title_fragment_nutrition">Nutrición</string>
     <string name="title_fragment_medicine_reminder">Recordatorio de dosis</string>
     <string name="title_fragment_smoke">Tabaquismo</string>
     <string name="title_fragment_exercise">Ejercicios</string>
@@ -283,5 +284,6 @@
     <string name="copdbodex_question4_answer3">3 o más exacerbaciones</string>
     <string name="copdbodex_intro_title">Índice BODEx</string>
     <string name="copdbodex_result_bode_recommended">La puntuación es mayor 5. Se recomiendo la utilización del índice de BODE.</string>
+    <string name="nutrition">Nutrición</string>
 
 </resources>

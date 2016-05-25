@@ -22,7 +22,6 @@ import com.aarcosg.copdhelp.ui.fragment.medicalattention.MedicalAttentionMainFra
 import com.aarcosg.copdhelp.ui.fragment.medicinereminder.MedicineReminderListFragment;
 import com.aarcosg.copdhelp.ui.fragment.smoke.SmokeMainFragment;
 import com.aarcosg.copdhelp.ui.receiver.Reminders;
-import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -136,8 +135,8 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 .addDrawerItems(
                         //new SectionDrawerItem().withName(R.string.drawer_item_section_patient),
                         new PrimaryDrawerItem().withName(getString(R.string.medical_attention)).withIcon(FontAwesome.Icon.faw_hospital_o).withIdentifier(MEDICAL_ATTENTION_MAIN_ID)
-                        , new PrimaryDrawerItem().withName(getString(R.string.bmi)).withIcon(CommunityMaterial.Icon.cmd_scale_bathroom).withIdentifier(BMI_MAIN_ID)
-                        , new PrimaryDrawerItem().withName(getString(R.string.dose_reminder)).withIcon(FontAwesome.Icon.faw_medkit).withIdentifier(MEDICINE_REMINDER_MAIN_ID)
+                        , new PrimaryDrawerItem().withName(getString(R.string.nutrition)).withIcon(GoogleMaterial.Icon.gmd_restaurant_menu).withIdentifier(BMI_MAIN_ID)
+                        , new PrimaryDrawerItem().withName(getString(R.string.dose_reminder)).withIcon(GoogleMaterial.Icon.gmd_alarm).withIdentifier(MEDICINE_REMINDER_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.smoking)).withIcon(GoogleMaterial.Icon.gmd_smoke_free).withIdentifier(SMOKE_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.exercise)).withIcon(GoogleMaterial.Icon.gmd_directions_walk).withIdentifier(EXERCISE_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.copdps)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDPS_MAIN_ID).withSelectable(false)
@@ -164,7 +163,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 break;
             case BMI_MAIN_ID:
                 setAppBarElevation(0);
-                setTitle(getString(R.string.title_fragment_bmi));
+                setTitle(getString(R.string.title_fragment_nutrition));
                 fragment = BMIMainFragment.newInstance();
                 break;
             case MEDICINE_REMINDER_MAIN_ID:
