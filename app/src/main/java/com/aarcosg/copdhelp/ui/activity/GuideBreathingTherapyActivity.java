@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 
 import com.aarcosg.copdhelp.R;
-import com.aarcosg.copdhelp.ui.fragment.guides.breathingtherapy.BreathingTherapyMainFragment;
+import com.aarcosg.copdhelp.ui.fragment.guides.BreathingTherapyMainFragment;
 
 public class GuideBreathingTherapyActivity extends BaseActivity{
 

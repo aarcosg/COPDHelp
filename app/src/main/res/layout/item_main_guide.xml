@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="false"
-        android:scaleType="centerCrop"
-        android:src="@drawable/exercise_header"/>
+        android:scaleType="centerCrop"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -22,7 +21,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="72dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
@@ -31,12 +30,15 @@
 
             <TextView
                 android:id="@+id/name_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingBottom="@dimen/narrow_space"
+                android:gravity="center_vertical"
                 android:ellipsize="end"
                 style="@style/TextAppearance.AppCompat.Large"
                 android:fontFamily="sans-serif-light"
-                android:lines="1"
+                android:lines="2"
                 android:shadowColor="#AA000000"
                 android:shadowDx="1"
                 android:shadowDy="1"

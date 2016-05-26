@@ -351,6 +351,9 @@
         En cualquiera de estos casos, ACUDA A SU MÉDICO/A.
     </string>
     <string name="app_exercise_help_tip">Esta aplicación, Ayuda EPOC, le permite llevar un control exhaustivo de todos los ejercicios que realice</string>
+    <string name="what_is_copd">¿Qué es la Enfermedad Pulmonar Obstructiva Crónica (EPOC)?</string>
+    <string name="what_is_copd_title1">¿Qué es la enfermedad  pulmonar obstructiva crónica (EPOC)?</string>
+    <string name="what_is_copd_desc1">La EPOC es una enfermedad crónica en la que los bronquios se obstruyen como consecuencia de respirar humo de tabaco u otras sustancias dañinas. Esta obstrucción hace más difícil la respiración.</string>
 
 
 </resources>

@@ -1,4 +1,4 @@
-package com.aarcosg.copdhelp.ui.fragment.guides.breathingtherapy;
+package com.aarcosg.copdhelp.ui.fragment.guides;
 
 
 import android.os.Bundle;
@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 
 import com.aarcosg.copdhelp.R;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
-import com.aarcosg.copdhelp.ui.fragment.guides.GuideContentFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
