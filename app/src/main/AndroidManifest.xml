@@ -52,6 +52,9 @@
         <activity
             android:name=".ui.activity.GuideWhatIsCOPDActivity"
             android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".ui.activity.GuideLivingBetterActivity"
+            android:configChanges="orientation|screenSize"/>
 
         <receiver
             android:name=".ui.receiver.MedicineReminderBroadcastReceiver"

@@ -359,12 +359,103 @@
     <string name="what_is_copd_title5">¿Por qué el tabaco causa EPOC?</string>
     <string name="what_is_copd_title6">¿Es lo mismo EPOC que bronquitis crónica?</string>
     <string name="what_is_copd_desc1">La EPOC es una enfermedad crónica en la que los bronquios se obstruyen como consecuencia de respirar humo de tabaco u otras sustancias dañinas. Esta obstrucción hace más difícil la respiración.</string>
-    <string name="what_is_copd_desc2"><strong>Sí</strong>. En España, las investigaciones demuestran que el 9,1% de la población general entre 40 y 69 años padece esta enfermedad. Es la cuarta causa de muerte por enfermedad a nivel mundial.</string>
+    <string name="what_is_copd_desc2"><b>Sí</b>. En España, las investigaciones demuestran que el 9,1% de la población general entre 40 y 69 años padece esta enfermedad. Es la cuarta causa de muerte por enfermedad a nivel mundial.</string>
     <string name="what_is_copd_desc3">Inicialmente puede no tener síntomas. A medida que la enfermedad avanza puede ocasionar tos, esputos y ahogo. En fases más avanzadas los síntomas se agravan, perdiendo calidad de vida. Es habitual que, en el curso de su enfermedad, sufra descompensaciones que agraven sus síntomas.</string>
-    <string name="what_is_copd_desc4">La única forma de saber si usted padece una EPOC es <strong>mediante una prueba que se llama espirometría</strong>. La espirometría mide objetivamente si los bronquios están obstruidos. Se hace mediante un aparato que mide el aire que se expulsa después de una inspiración profunda.</string>
+    <string name="what_is_copd_desc4">La única forma de saber si usted padece una EPOC es <b>mediante una prueba que se llama espirometría</b>. La espirometría mide objetivamente si los bronquios están obstruidos. Se hace mediante un aparato que mide el aire que se expulsa después de una inspiración profunda.</string>
     <string name="what_is_copd_desc5">Fumar o respirar humo de tabaco provoca inflamación bronquial crónica, obstrucción progresiva de los bronquios y destrucción del pulmón.\n\n Aunque el tabaco es la causa fundamental, no es la única. Respirar humos en determinados trabajos, en la cocina o calentando el hogar con combustibles fósiles, puede favorecer o incluso causar una EPOC.</string>
-    <string name="what_is_copd_desc6"><strong>No</strong>. En la EPOC los bronquios están obstruidos. La bronquitis crónica también suele ser habitual en personas fumadoras, pero sólo hay tos y expectoración durante varios meses al año. <strong>La realización de la espirometría aclara la diferencia.</strong></string>
-
-
+    <string name="what_is_copd_desc6"><b>No</b>. En la EPOC los bronquios están obstruidos. La bronquitis crónica también suele ser habitual en personas fumadoras, pero sólo hay tos y expectoración durante varios meses al año. <b>La realización de la espirometría aclara la diferencia.</b></string>
+    <string name="living_better_copd">Vivir mejor con la EPOC</string>
+    <string name="living_better_subtitle_copd">Usted <b>vivirá mejor y más años</b> si sigue las recomendaciones de esta guía.</string>
+    <string name="living_better_smoking">1. Evitar tabaco</string>
+    <string name="living_better_nutrition">2. Cuidar alimentación</string>
+    <string name="living_better_exercise">3. Realizar ejercicio</string>
+    <string name="living_better_smoking_title">1. Evite el tabaco y ambientes contaminados</string>
+    <string name="living_better_smoking_desc1"><b>Lo más beneficioso para usted es abandonar el tabaco absolutamente</b>. Procure que otras personas no fumen en su casa. <b>También es importante evitar ambientes contaminados</b> (bares o zonas donde se fume, trabajos con inhalación de humos, etc.).</string>
+    <string name="living_better_smoking_question1">¿Puedo fumar algo, aunque sea unos cigarrillos al día?</string>
+    <string name="living_better_smoking_answer1"><b>No</b>, no debe fumar nada, (cigarrillos, cigarros-puros, pipas, etc…). Aunque sólo sea uno, le perjudica, por su EPOC y por las muchas enfermedades que provoca el tabaco (cáncer, infartos de corazón, etc.).</string>
+    <string name="living_better_smoking_question2">¿Cómo puedo dejar de fumar?</string>
+    <string name="living_better_smoking_answer2">Hay algunas personas que pueden abandonar el tabaco por sí mismas. No obstante, <b>la mayoría necesita ayuda. No dude en consultar al personal sanitario</b>, buscarán la mejor forma de ayudarle. También puede consultar en el Programa de Deshabituación Tabáquica vía telefónica: 900 85 03 00 ó 902 50 50 60.\n<b>Dejar de fumar es posible, muchas personas como usted lo han conseguido</b>.</string>
+    <string name="living_better_nutrition_title">2. Cuide su alimentación</string>
+    <string name="living_better_nutrition_desc1">En la EPOC, <b>una alimentación correcta favorece el mantenimiento de una mejor calidad de vida</b>. Es muy recomendable que se mantenga en su peso adecuado. Tanto el sobrepeso como la desnutrición van a influir desfavorablemente en la evolución de su enfermedad.</string>
+    <string name="living_better_nutrition_question1">¿Qué alimentos son los más recomendables?</string>
+    <string name="living_better_nutrition_answer1">Es recomendable realizar <b>comidas ligeras y poco abundantes, varias veces al día</b> (4 – 6 tomas al día), <b>con alimentos de fácil masticación</b>. La mejor bebida es el agua, siendo preciso ingerir una cantidad aproximada de 1,5 litros al día. Se deben instaurar medidas para prevenir el estreñimiento, aumentando el consumo de cereales integrales, frutas y vegetales.</string>
+    <string name="living_better_nutrition_question2">¿Qué alimentos debo evitar?</string>
+    <string name="living_better_nutrition_answer2">Deberá <b>evitar alimentos que precisen una masticación prolongada y fuerte</b>, así como aquellos que <b>causan flatulencia y/o digestiones pesadas</b> (col, coliflor, cebolla, etc.). Evite la ingesta excesiva de hidratos de carbono (pan, patatas, pastas, arroz, etc.), así como las bebidas gaseosas. También deberá evitar tomar alimentos muy fríos, muy calientes o aquellos que le provoquen, por su experiencia, irritación faríngea, porque pueden provocar la aparición de tos.</string>
+    <string name="living_better_exercise_title">3. Realice ejercicio físico regularmente</string>
+    <string name="living_better_exercise_desc1">
+        El ejercicio físico desempeña un papel muy importante en la vida de cualquier persona. A personas con su enfermedad, <b>la actividad física regular les ayuda a sentirse bien y respirar mejor</b>.\n\n
+        Si practica ejercicio de forma regular, obtendrá los siguientes beneficios:\n
+        {gmd-check} Mayor nivel de funcionalidad, consiguiendo independencia de la familia, de su entorno social y del personal sanitario.\n
+        {gmd-check} Mejorará su sensación de ahogo y tendrá mayor tolerancia al ejercicio.\n
+        {gmd-check} Reducirá su aislamiento y estrés, ya que notará mejoría en su bienestar emocional y mental.\n
+        {gmd-check} Reducirá descompensaciones, al ayudar a su organismo a mantenerse sano y luchar contra las infecciones.\n
+        {gmd-check} Le ayudará a descansar mejor durante la noche.\n
+    </string>
+    <string name="living_better_exercise_question1">¿Qué tipo de ejercicio me conviene?</string>
+    <string name="living_better_exercise_answer1">En función de sus preferencias, hay muchos ejercicios que puede practicar. Natación, bicicleta, cinta continua, baile, son todos adecuados. <b>Le recomendamos que trate de CAMINAR. ¡Es una de las mejores opciones posibles!</b></string>
+    <string name="living_better_exercise_question2">¿Puede perjudicarme tener sensación de ahogo mientras hago ejercicio?</string>
+    <string name="living_better_exercise_answer2">Un poco de falta de aire, mientras hace ejercicio, no le hará daño. Le aconsejamos, eso sí, que la mantenga en un nivel moderado.</string>
+    <string name="living_better_vaccine_title">4. Vacúnese</string>
+    <string name="living_better_vaccine_desc1">Todos los años, salvo contraindicación médica, debe administrarse la <b>vacuna antigripal</b>. El virus de la gripe puede provocarle un empeoramiento de su enfermedad.\n\n
+        La vacuna evita, en la mayoría de los casos, que usted sufra la gripe o, al menos, hace que sea menos grave. Acuda a su centro de salud a primeros de otoño, donde la informarán de la fecha de comienzo de la vacunación.\n\n
+        La <b>vacuna neumocócica</b> está indicada en determinados pacientes con EPOC. Pregunte a su médica/o que le indicará sobre la necesidad o no de administrarse esta vacuna.
+    </string>
+    <string name="living_better_vaccine_question1">¿Me puede sentar mal la vacuna antigripal?</string>
+    <string name="living_better_vaccine_answer1">Es raro que pueda provocarle alguna reacción. La mayoría de las reacciones se producen en la zona de la inyección y son leves. A veces, puede dar fiebre y malestar general que suelen ser leves y durar menos de 48 horas. Los beneficios que puede obtener de la vacuna son muy superiores a las molestias.</string>
+    <string name="living_better_vaccine_question2">¿Puedo acatarrarme aunque me vacune de la gripe?</string>
+    <string name="living_better_vaccine_answer2">La vacuna de la gripe protege de la infección por el virus de la gripe en un alto porcentaje de casos, pero no previene de otros muchos virus que pueden afectarle. <b>Es habitual que tenga otros catarros durante el invierno</b>, se haya vacunado o no de la gripe.</string>
+    <string name="living_better_medication_title">5. Utilice adecuadamente la medicación y conozca sus efectos</string>
+    <string name="living_better_medication_desc1">En el caso de la EPOC no sólo es importante que use la medicación que le han prescrito, además <b>conviene conocer para qué sirve y cómo debe utilizarla</b>.</string>
+    <string name="living_better_medication_question1">¿Qué medicamentos se utilizan en el tratamiento de la EPOC?</string>
+    <string name="living_better_medication_answer1">Hay dos tipos principales de medicamentos de uso habitual en el tratamiento de la EPOC: <b>los broncodilatadores y los corticoides inhalados</b>. Se decide por un tratamiento u otro según la gravedad de la enfermedad, la alteración de las actividades de la vida diaria que produce y los efectos secundarios de los mismos.</string>
+    <string name="living_better_medication_question2">¿Qué son los Broncodilatadores?</string>
+    <string name="living_better_medication_answer2">Son fármacos que <b>permiten que los bronquios se ensanchen y facilitan la respiración</b>. Fundamentalmente, son usados por vía inhalada. Hay diferentes medicamentos broncodilatadores, según la rapidez de su inicio y la duración de su efecto:\n\n
+        {faw-medkit} Broncodilatadores de corta duración:\n
+        Estos fármacos son llamados “de rescate” por su inicio rápido y se usan cuando se agravan síntomas. Su efecto dura entre 4-8 horas.\n\n
+        {faw-medkit} Broncodilatadores de larga duración:\n
+        Su acción dura (12-24h.) Se indican cuando siente ahogo a diario.
+    </string>
+    <string name="living_better_medication_question3">¿Qué son los Corticoides?</string>
+    <string name="living_better_medication_answer3">Los corticoides son medicamentos utilizados <b>para reducir la inflamación de las vías respiratorias</b>. Suelen tomarse por vía inhalada y, a veces, en comprimidos. Los corticoides inhalados pueden combinarse con un broncodilatador.</string>
+    <string name="living_better_medication_question4">¿Por qué se usan los medicamentos inhalados?</string>
+    <string name="living_better_medication_answer4">De esta forma, el medicamento <b>actúa directamente sobre el bronquio</b>. Hay que utilizar adecuadamente los dispositivos de inhalación. El personal sanitario le ayudará a elegir el más adecuado y le enseñarán a usarlo. <b>Acuda siempre a consulta con su inhalador para revisar periódicamente la técnica</b>.</string>
+    <string name="living_better_medication_question5">¿Cómo debo tomar los inhaladores?</string>
+    <string name="living_better_medication_answer5">Procure realizar la toma de los inhaladores como le han indicado. <b>El uso incorrecto equivale a no tomar la medicación</b>. Acuda a su Centro de Salud u Hospital siempre con los inhaladores que esté utilizando, si es necesario el personal sanitario le realizará una prueba para comprobar su técnica inhalatoria y ayudarle a mejorarla.</string>
+    <string name="living_better_medication_question6">¿Cuáles son los efectos secundarios de la medicación para EPOC?</string>
+    <string name="living_better_medication_answer6">Los medicamentos inhalados para el tratamiento de la EPOC <b>son muy seguros</b>. No obstante, en algunos casos, pueden provocar efectos secundarios. Con los broncodilatadores pueden aparecer temblor de manos, sequedad de boca y palpitaciones. Los corticoides inhalados pueden provocar irritación de la faringe y ronquera, que puede evitarse con enjuagues bucales tras su uso. Si estos síntomas persisten o aparecen otros nuevos consulte a su médica/o.\n\n
+        El uso prolongado de corticoides orales (comprimidos) sin control médico puede favorecer la aparición a largo plazo de algunas enfermedades.
+    </string>
+    <string name="living_better_medication_question7">¿Hay otros medicamentos para el tratamiento de la EPOC?</string>
+    <string name="living_better_medication_answer7">Algunas personas con esputo viscoso, difícil de expectorar, se pueden beneficiar del uso de mucolíticos.</string>
+    <string name="living_better_medication_question8">¿Qué medicamentos pueden hacerme daño?</string>
+    <string name="living_better_medication_answer8">Hay pacientes con EPOC a quienes pueden perjudicar medicamentos como los antitusígenos, sedantes y relajantes.</string>
+    <string name="living_better_getting_worse_title">6. Reconozca las descompensaciones</string>
+    <string name="living_better_getting_worse_question1">¿Qué es una descompensación?</string>
+    <string name="living_better_getting_worse_answer1">Una descompensación es un empeoramiento mantenido de su situación clínica, generalmente de inicio rápido, que se manifiesta con <b>aumento de la tos, del esputo y el ahogo. Esta situación puede ocurrir a lo largo de su enfermedad</b>.</string>
+    <string name="living_better_getting_worse_question2">¿Qué causa una descompensación?</string>
+    <string name="living_better_getting_worse_answer2"><b>La principal causa es una infección respiratoria</b> (virus y/o bacterias). Otros factores que pueden empeorarle son: contaminación ambiental o abandono del tratamiento, entre otros.</string>
+    <string name="living_better_getting_worse_question3">¿Qué tengo que hacer en caso de descompensación?</string>
+    <string name="living_better_getting_worse_answer3">
+        Si nota un aumento de sus síntomas, <b>no se alarme y haga lo siguiente</b>:\n
+        {gmd-check} Tómese la medicación de rescate sin sobrepasar los límites que le hayan indicado.\n
+        {gmd-check} Evite cambios bruscos de temperatura y ambientes contaminados.\n
+        {gmd-check} Reduzca su actividad física.\n
+        {gmd-check} Aumente la ingesta de líquidos (agua e infusiones).\n
+        {gmd-check} Haga comidas ligeras, poco abundantes y frecuentes (4-6 al día).\n
+        {gmd-check} Póngase el termómetro y compruebe su temperatura.\n
+        {gmd-check} Si su médica/o le ha facilitado un plan de actuación para estos casos, póngalo en marcha.
+    </string>
+    <string name="living_better_getting_worse_question4">¿Cuándo debo buscar atención sanitaria?</string>
+    <string name="living_better_getting_worse_answer4">
+        {gmd-check} Tiene fiebre mayor de 38ºC.\n
+        {gmd-check} Aparece o aumenta la hinchazón de los tobillos o de las piernas.\n
+        {gmd-check} Tiene dolor en el pecho.\n
+        {gmd-check} Está irritable.\n
+        {gmd-check} Tiene desorientación.\n
+        {gmd-check} Le duele la cabeza.\n
+        {gmd-check} Tiene más sueño de lo habitual.
+    </string>
+    <string name="living_better_getting_worse_question5">Tras una descompensación ¿hasta cuándo debo mantener el tratamiento?</string>
+    <string name="living_better_getting_worse_answer5"><b>Es muy importante que siga el tratamiento indicado</b> en su Centro de Salud, en el Servicio de Urgencias o en el informe médico de alta hospitalaria. Los reajustes en el tratamiento deberán ser realizados por su médica/o de Atención Primaria o su especialista en Neumología.</string>
 
 </resources>

@@ -38,9 +38,10 @@ public class BarChartItem extends AbstractItem<BarChartItem, BarChartItem.ViewHo
     private List<BarEntry> mYVals;
     private int[] mDataSetColors;
     private boolean mDrawValues;
+    private boolean mPositiveIsBetter;
 
     public BarChartItem(int type, String header, String progressLabel, Double changePercentage, List<String> xVals, List<BarEntry> yVals,
-                        int[] dataSetColors, boolean drawValues) {
+                        int[] dataSetColors, boolean drawValues, boolean positiveIsBetter) {
         this.mType = type;
         this.mHeader = header;
         this.mProgressLabel = progressLabel;
@@ -49,6 +50,7 @@ public class BarChartItem extends AbstractItem<BarChartItem, BarChartItem.ViewHo
         this.mYVals = yVals;
         this.mDataSetColors = dataSetColors;
         this.mDrawValues = drawValues;
+        this.mPositiveIsBetter = positiveIsBetter;
     }
 
     @Override
@@ -94,10 +96,12 @@ public class BarChartItem extends AbstractItem<BarChartItem, BarChartItem.ViewHo
         String format = "%s%%";
         if(mChangePercentage < 0){
             viewHolder.changePercentageTv.setTextColor(
-                    ContextCompat.getColor(context,R.color.change_percentage_negative));
+                    ContextCompat.getColor(context,
+                            mPositiveIsBetter ? R.color.change_percentage_positive : R.color.change_percentage_negative));
         }else if(mChangePercentage > 0){
             viewHolder.changePercentageTv.setTextColor(
-                    ContextCompat.getColor(context,R.color.change_percentage_positive));
+                    ContextCompat.getColor(context,
+                            mPositiveIsBetter ? R.color.change_percentage_positive : R.color.change_percentage_negative));
             format = "+%s%%";
         }
         viewHolder.changePercentageTv.setText(String.format(format,Math.round(mChangePercentage)));

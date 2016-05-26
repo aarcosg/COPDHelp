@@ -29,7 +29,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/name_tv"
+                android:id="@+id/title_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -44,6 +44,21 @@
                 android:shadowDy="1"
                 android:shadowRadius="1"
                 android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/subtitle_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:paddingBottom="@dimen/narrow_space"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:fontFamily="sans-serif-light"
+                android:lines="2"
+                android:shadowColor="#AA000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:textColor="@android:color/white"/>
 
         </LinearLayout>
 

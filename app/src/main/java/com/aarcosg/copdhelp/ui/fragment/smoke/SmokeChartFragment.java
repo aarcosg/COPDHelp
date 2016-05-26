@@ -202,6 +202,7 @@ public class SmokeChartFragment extends BaseFragment implements SmokeChartView {
                         , Arrays.asList(getResources().getStringArray(R.array.week_days_alt))
                         , new ArrayList<>(7)
                         , dataSetColors
+                        , false
                         , false)
                 , new SmokeBarChartItem(
                         ChartUtils.CHART_TYPE_MONTH
@@ -211,6 +212,7 @@ public class SmokeChartFragment extends BaseFragment implements SmokeChartView {
                         , ChartUtils.getMonthXVals()
                         , new ArrayList<>(31)
                         , dataSetColors
+                        , false
                         , false)
                 , new SmokeBarChartItem(
                         ChartUtils.CHART_TYPE_YEAR
@@ -220,6 +222,7 @@ public class SmokeChartFragment extends BaseFragment implements SmokeChartView {
                         , Arrays.asList(getResources().getStringArray(R.array.months_alt))
                         , new ArrayList<>(12)
                         , dataSetColors
+                        , false
                         , false)
         );
     }

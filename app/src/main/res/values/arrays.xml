@@ -172,4 +172,12 @@
         <item>@string/exercise_type_breathing</item>
         <item>@string/exercise_type_arms</item>
     </string-array>
+    <string-array name="living_better_tab_titles">
+        <item>@string/living_better_smoking</item>
+        <item>@string/living_better_nutrition</item>
+        <item>@string/living_better_exercise</item>
+        <item>@string/living_better_vaccine</item>
+        <item>@string/living_better_medication</item>
+        <item>@string/living_better_getting_worse</item>
+    </string-array>
 </resources>

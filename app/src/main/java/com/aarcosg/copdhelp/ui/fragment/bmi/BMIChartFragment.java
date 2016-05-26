@@ -197,7 +197,8 @@ public class BMIChartFragment extends BaseFragment implements BMIChartView {
                         , Arrays.asList(getResources().getStringArray(R.array.week_days_alt))
                         , new ArrayList<>(7)
                         , dataSetColors
-                        , false)
+                        , false
+                        , true)
                 , new BMILineChartItem(
                         ChartUtils.CHART_TYPE_MONTH
                         , getString(R.string.this_month)
@@ -206,7 +207,8 @@ public class BMIChartFragment extends BaseFragment implements BMIChartView {
                         , ChartUtils.getMonthXVals()
                         , new ArrayList<>(31)
                         , dataSetColors
-                        , false)
+                        , false
+                        , true)
                 , new BMILineChartItem(
                         ChartUtils.CHART_TYPE_YEAR
                         , getString(R.string.this_year)
@@ -215,7 +217,8 @@ public class BMIChartFragment extends BaseFragment implements BMIChartView {
                         , Arrays.asList(getResources().getStringArray(R.array.months_alt))
                         , new ArrayList<>(12)
                         , dataSetColors
-                        , false)
+                        , false
+                        , true)
         );
     }
 

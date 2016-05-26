@@ -204,6 +204,7 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
                         , new ArrayList<>(7)
                         , dataSetColors
                         , stackLabels
+                        , false
                         , false)
                 , new MedicalAttentionStackedBarChartItem(
                         ChartUtils.CHART_TYPE_MONTH
@@ -214,6 +215,7 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
                         , new ArrayList<>(31)
                         , dataSetColors
                         , stackLabels
+                        , false
                         , false)
                 , new MedicalAttentionStackedBarChartItem(
                         ChartUtils.CHART_TYPE_YEAR
@@ -224,6 +226,7 @@ public class MedicalAttentionChartFragment extends BaseFragment implements Medic
                         , new ArrayList<>(12)
                         , dataSetColors
                         , stackLabels
+                        , false
                         , false)
         );
     }

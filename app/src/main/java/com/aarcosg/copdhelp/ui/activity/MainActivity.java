@@ -135,7 +135,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 .withTranslucentStatusBar(true)
                 .withAccountHeader(accountHeader)
                 .addDrawerItems(
-                        //new SectionDrawerItem().withName(R.string.drawer_item_section_patient),
+                        //new SectionDrawerItem().withTitle(R.string.drawer_item_section_patient),
                         new PrimaryDrawerItem().withName(getString(R.string.medical_attention)).withIcon(FontAwesome.Icon.faw_hospital_o).withIdentifier(MEDICAL_ATTENTION_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.nutrition)).withIcon(GoogleMaterial.Icon.gmd_restaurant_menu).withIdentifier(BMI_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.dose_reminder)).withIcon(GoogleMaterial.Icon.gmd_alarm).withIdentifier(MEDICINE_REMINDER_MAIN_ID)

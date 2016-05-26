@@ -6,8 +6,8 @@ import java.util.List;
 
 public class SmokeBarChartItem extends BarChartItem {
 
-    public SmokeBarChartItem(int type, String header, String progressLabel, Double changePercentage, List<String> xVals, List<BarEntry> yVals, int[] dataSetColors, boolean drawValues) {
-        super(type, header, progressLabel, changePercentage, xVals, yVals, dataSetColors, drawValues);
+    public SmokeBarChartItem(int type, String header, String progressLabel, Double changePercentage, List<String> xVals, List<BarEntry> yVals, int[] dataSetColors, boolean drawValues, boolean positiveIsBetter) {
+        super(type, header, progressLabel, changePercentage, xVals, yVals, dataSetColors, drawValues, positiveIsBetter);
     }
 
     @Override

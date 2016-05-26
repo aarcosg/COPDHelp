@@ -39,9 +39,10 @@ public class StackedBarChartItem extends AbstractItem<StackedBarChartItem, Stack
     private int[] mDataSetColors;
     private String[] mStackLabels;
     private boolean mDrawValues;
+    private boolean mPositiveIsBetter;
 
     public StackedBarChartItem(int type, String header, String progressLabel, Double changePercentage, List<String> xVals, List<BarEntry> yVals,
-                               int[] dataSetColors, String[] stackLabels, boolean drawValues) {
+                               int[] dataSetColors, String[] stackLabels, boolean drawValues, boolean positiveIsBetter) {
         this.mType = type;
         this.mHeader = header;
         this.mProgressLabel = progressLabel;
@@ -51,6 +52,7 @@ public class StackedBarChartItem extends AbstractItem<StackedBarChartItem, Stack
         this.mDataSetColors = dataSetColors;
         this.mStackLabels = stackLabels;
         this.mDrawValues = drawValues;
+        this.mPositiveIsBetter = positiveIsBetter;
     }
 
     @Override
@@ -97,10 +99,12 @@ public class StackedBarChartItem extends AbstractItem<StackedBarChartItem, Stack
         String format = "%s%%";
         if(mChangePercentage < 0){
             viewHolder.changePercentageTv.setTextColor(
-                    ContextCompat.getColor(context,R.color.change_percentage_negative));
+                    ContextCompat.getColor(context,
+                            mPositiveIsBetter ? R.color.change_percentage_positive : R.color.change_percentage_negative));
         }else if(mChangePercentage > 0){
             viewHolder.changePercentageTv.setTextColor(
-                    ContextCompat.getColor(context,R.color.change_percentage_positive));
+                    ContextCompat.getColor(context,
+                            mPositiveIsBetter ? R.color.change_percentage_positive : R.color.change_percentage_negative));
             format = "+%s%%";
         }
         viewHolder.changePercentageTv.setText(String.format(format,Math.round(mChangePercentage)));

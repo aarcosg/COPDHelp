@@ -6,8 +6,8 @@ import java.util.List;
 
 public class BMILineChartItem extends LineChartItem {
 
-    public BMILineChartItem(int type, String header, String progressLabel, Double changePercentage, List<String> xVals, List<Entry> yVals, int[] dataSetColors, boolean drawValues) {
-        super(type, header, progressLabel, changePercentage, xVals, yVals, dataSetColors, drawValues);
+    public BMILineChartItem(int type, String header, String progressLabel, Double changePercentage, List<String> xVals, List<Entry> yVals, int[] dataSetColors, boolean drawValues, boolean positiveIsBetter) {
+        super(type, header, progressLabel, changePercentage, xVals, yVals, dataSetColors, drawValues, positiveIsBetter);
     }
 
     @Override

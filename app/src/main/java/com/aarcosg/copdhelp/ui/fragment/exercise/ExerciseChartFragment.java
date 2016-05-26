@@ -208,7 +208,8 @@ public class ExerciseChartFragment extends BaseFragment implements ExerciseChart
                         , new ArrayList<>(7)
                         , dataSetColors
                         , stackLabels
-                        , false)
+                        , false
+                        , true)
                 , new ExerciseStackedBarChartItem(
                         ChartUtils.CHART_TYPE_MONTH
                         , getString(R.string.this_month)
@@ -218,7 +219,8 @@ public class ExerciseChartFragment extends BaseFragment implements ExerciseChart
                         , new ArrayList<>(31)
                         , dataSetColors
                         , stackLabels
-                        , false)
+                        , false
+                        , true)
                 , new ExerciseStackedBarChartItem(
                         ChartUtils.CHART_TYPE_YEAR
                         , getString(R.string.this_year)
@@ -228,7 +230,8 @@ public class ExerciseChartFragment extends BaseFragment implements ExerciseChart
                         , new ArrayList<>(12)
                         , dataSetColors
                         , stackLabels
-                        , false)
+                        , false
+                        , true)
         );
     }
 

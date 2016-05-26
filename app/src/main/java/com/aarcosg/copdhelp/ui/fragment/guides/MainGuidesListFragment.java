@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.aarcosg.copdhelp.R;
 import com.aarcosg.copdhelp.ui.activity.GuideBreathingTherapyActivity;
+import com.aarcosg.copdhelp.ui.activity.GuideLivingBetterActivity;
 import com.aarcosg.copdhelp.ui.activity.GuideWhatIsCOPDActivity;
 import com.aarcosg.copdhelp.ui.adapteritem.MainGuideItem;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
@@ -27,7 +28,8 @@ public class MainGuidesListFragment extends BaseFragment{
 
     private static final String TAG = MainGuidesListFragment.class.getCanonicalName();
     private static final int GUIDE_WHAT_IS_COPD = 1;
-    private static final int GUIDE_BREATHING_THERAPY = 2;
+    private static final int GUIDE_LIVING_BETTER = 2;
+    private static final int GUIDE_BREATHING_THERAPY = 3;
 
     @Bind(R.id.recycler_view)
     RecyclerView mRecyclerView;
@@ -73,6 +75,9 @@ public class MainGuidesListFragment extends BaseFragment{
                 case GUIDE_WHAT_IS_COPD:
                     GuideWhatIsCOPDActivity.launch(getActivity());
                     break;
+                case GUIDE_LIVING_BETTER:
+                    GuideLivingBetterActivity.launch(getActivity());
+                    break;
                 case GUIDE_BREATHING_THERAPY:
                     GuideBreathingTherapyActivity.launch(getActivity());
                     break;
@@ -90,10 +95,13 @@ public class MainGuidesListFragment extends BaseFragment{
     private List<MainGuideItem> getGuideItems() {
         return toList(
                 new MainGuideItem().withIdentifier(GUIDE_WHAT_IS_COPD)
-                        .withName(getString(R.string.what_is_copd))
+                        .withTitle(getString(R.string.what_is_copd))
                         .withImage(ResourcesCompat.getDrawable(getResources(),R.drawable.guide_what_is_copd_header,null)),
+                new MainGuideItem().withIdentifier(GUIDE_LIVING_BETTER)
+                        .withTitle(getString(R.string.living_better_copd))
+                        .withImage(ResourcesCompat.getDrawable(getResources(),R.drawable.guide_living_better_header,null)),
                 new MainGuideItem().withIdentifier(GUIDE_BREATHING_THERAPY)
-                        .withName(getString(R.string.breathing_therapy))
+                        .withTitle(getString(R.string.breathing_therapy))
                         .withImage(ResourcesCompat.getDrawable(getResources(),R.drawable.guide_breathing_therapy_header,null))
         );
     }

@@ -3,6 +3,7 @@ package com.aarcosg.copdhelp.ui.adapteritem;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,18 +16,25 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainGuideItem extends AbstractItem<MainGuideItem, MainGuideItem.ViewHolder> {
+    
     private static final ViewHolderFactory<? extends ViewHolder> FACTORY = new ItemFactory();
 
-    public Drawable mImage;
-    public String mName;
+    private Drawable mImage;
+    private String mTitle;
+    private String mSubTitle;
 
     public MainGuideItem withImage(Drawable image) {
         this.mImage = image;
         return this;
     }
 
-    public MainGuideItem withName(String name) {
-        this.mName = name;
+    public MainGuideItem withTitle(String title) {
+        this.mTitle = title;
+        return this;
+    }
+
+    public MainGuideItem withSubTitle(String subTitle) {
+        this.mSubTitle = subTitle;
         return this;
     }
 
@@ -46,8 +54,13 @@ public class MainGuideItem extends AbstractItem<MainGuideItem, MainGuideItem.Vie
         super.bindView(viewHolder);
 
         Context context = viewHolder.itemView.getContext();
-        viewHolder.imageName.setText(mName);
-        viewHolder.imageView.setImageDrawable(mImage);
+        viewHolder.title.setText(mTitle);
+        viewHolder.image.setImageDrawable(mImage);
+        if(TextUtils.isEmpty(mSubTitle)){
+            viewHolder.subtitle.setVisibility(View.GONE);
+        }else{
+            viewHolder.subtitle.setText(mSubTitle);
+        }
 
     }
 
@@ -65,9 +78,11 @@ public class MainGuideItem extends AbstractItem<MainGuideItem, MainGuideItem.Vie
     public static class ViewHolder extends RecyclerView.ViewHolder {
         protected View view;
         @Bind(R.id.image_iv)
-        protected ImageView imageView;
-        @Bind(R.id.name_tv)
-        protected TextView imageName;
+        protected ImageView image;
+        @Bind(R.id.title_tv)
+        protected TextView title;
+        @Bind(R.id.subtitle_tv)
+        protected TextView subtitle;
 
         public ViewHolder(View view) {
             super(view);
