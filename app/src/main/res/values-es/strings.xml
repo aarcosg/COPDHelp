@@ -351,9 +351,20 @@
         En cualquiera de estos casos, ACUDA A SU MÉDICO/A.
     </string>
     <string name="app_exercise_help_tip">Esta aplicación, Ayuda EPOC, le permite llevar un control exhaustivo de todos los ejercicios que realice</string>
-    <string name="what_is_copd">¿Qué es la Enfermedad Pulmonar Obstructiva Crónica (EPOC)?</string>
+    <string name="what_is_copd">¿Qué es la EPOC?</string>
     <string name="what_is_copd_title1">¿Qué es la enfermedad  pulmonar obstructiva crónica (EPOC)?</string>
+    <string name="what_is_copd_title2">¿Es frecuente la EPOC?</string>
+    <string name="what_is_copd_title3">¿Cómo se manifiesta?</string>
+    <string name="what_is_copd_title4">¿Cómo se diagnostica la EPOC?</string>
+    <string name="what_is_copd_title5">¿Por qué el tabaco causa EPOC?</string>
+    <string name="what_is_copd_title6">¿Es lo mismo EPOC que bronquitis crónica?</string>
     <string name="what_is_copd_desc1">La EPOC es una enfermedad crónica en la que los bronquios se obstruyen como consecuencia de respirar humo de tabaco u otras sustancias dañinas. Esta obstrucción hace más difícil la respiración.</string>
+    <string name="what_is_copd_desc2"><strong>Sí</strong>. En España, las investigaciones demuestran que el 9,1% de la población general entre 40 y 69 años padece esta enfermedad. Es la cuarta causa de muerte por enfermedad a nivel mundial.</string>
+    <string name="what_is_copd_desc3">Inicialmente puede no tener síntomas. A medida que la enfermedad avanza puede ocasionar tos, esputos y ahogo. En fases más avanzadas los síntomas se agravan, perdiendo calidad de vida. Es habitual que, en el curso de su enfermedad, sufra descompensaciones que agraven sus síntomas.</string>
+    <string name="what_is_copd_desc4">La única forma de saber si usted padece una EPOC es <strong>mediante una prueba que se llama espirometría</strong>. La espirometría mide objetivamente si los bronquios están obstruidos. Se hace mediante un aparato que mide el aire que se expulsa después de una inspiración profunda.</string>
+    <string name="what_is_copd_desc5">Fumar o respirar humo de tabaco provoca inflamación bronquial crónica, obstrucción progresiva de los bronquios y destrucción del pulmón.\n\n Aunque el tabaco es la causa fundamental, no es la única. Respirar humos en determinados trabajos, en la cocina o calentando el hogar con combustibles fósiles, puede favorecer o incluso causar una EPOC.</string>
+    <string name="what_is_copd_desc6"><strong>No</strong>. En la EPOC los bronquios están obstruidos. La bronquitis crónica también suele ser habitual en personas fumadoras, pero sólo hay tos y expectoración durante varios meses al año. <strong>La realización de la espirometría aclara la diferencia.</strong></string>
+
 
 
 </resources>

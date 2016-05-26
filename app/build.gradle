@@ -125,6 +125,11 @@ dependencies {
     //AppIntro
     compile 'com.github.PaoloRotolo:AppIntro:-SNAPSHOT'
 
+    //CardsLib
+    compile 'com.github.gabrielemariotti.cards:cardslib-core:2.1.0'
+    compile 'com.github.gabrielemariotti.cards:cardslib-cards:2.1.0'
+    compile 'com.github.gabrielemariotti.cards:cardslib-recyclerview:2.1.0'
+
     //Text Justify
     compile 'com.github.bluejamesbond:textjustify-android:2.1.6'
 

@@ -46,10 +46,11 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <it.gmariotti.cardslib.library.recyclerview.view.CardRecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:list_card_layout_resourceID="@layout/native_recyclerview_card_layout"/>
 
 </android.support.design.widget.CoordinatorLayout>
