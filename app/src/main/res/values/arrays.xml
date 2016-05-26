@@ -164,4 +164,12 @@
         <item>@string/copd_cat_high_impact</item>
         <item>@string/copd_cat_very_high_impact</item>
     </string-array>
+    <string-array name="breathing_therapy_tab_titles">
+        <item>@string/general</item>
+        <item>@string/recommendations</item>
+        <item>@string/exercise_type_walking</item>
+        <item>@string/exercise_type_stationary_bicycle</item>
+        <item>@string/exercise_type_breathing</item>
+        <item>@string/exercise_type_arms</item>
+    </string-array>
 </resources>

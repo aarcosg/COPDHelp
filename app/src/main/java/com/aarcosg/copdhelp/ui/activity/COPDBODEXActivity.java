@@ -9,9 +9,9 @@ import android.support.v4.app.Fragment;
 
 import com.aarcosg.copdhelp.R;
 import com.aarcosg.copdhelp.data.realm.RealmTable;
-import com.aarcosg.copdhelp.ui.fragment.bodex.COPDBODEXIntroFragment;
-import com.aarcosg.copdhelp.ui.fragment.bodex.COPDBODEXQuestionFragment;
-import com.aarcosg.copdhelp.ui.fragment.bodex.COPDBODEXResultFragment;
+import com.aarcosg.copdhelp.ui.fragment.copdbodex.COPDBODEXIntroFragment;
+import com.aarcosg.copdhelp.ui.fragment.copdbodex.COPDBODEXQuestionFragment;
+import com.aarcosg.copdhelp.ui.fragment.copdbodex.COPDBODEXResultFragment;
 import com.aarcosg.copdhelp.utils.Utils;
 
 import java.util.ArrayList;

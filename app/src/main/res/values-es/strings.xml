@@ -15,7 +15,7 @@
     <string name="title_fragment_nutrition">Nutrición</string>
     <string name="title_fragment_medicine_reminder">Recordatorio de dosis</string>
     <string name="title_fragment_smoke">Tabaquismo</string>
-    <string name="title_fragment_exercise">Ejercicios</string>
+    <string name="title_fragment_exercise">Ejercicio</string>
 
     <string name="medical_attention">Atención sanitaria</string>
     <string name="medical_attention_type">Tipo de atención sanitaria</string>
@@ -285,5 +285,72 @@
     <string name="copdbodex_intro_title">Índice BODEx</string>
     <string name="copdbodex_result_bode_recommended">La puntuación es mayor 5. Se recomiendo la utilización del índice de BODE.</string>
     <string name="nutrition">Nutrición</string>
+    <string name="guides">Guías</string>
+    <string name="title_fragment_guides">Guías</string>
+    <string name="breathing_therapy">La rehabilitación respiratoria</string>
+    <string name="general">General</string>
+    <string name="breathing_therapy_intro">
+        Consiste en un programa de ejercicios que mejorarán su estado físico y, por tanto, su calidad de vida.\n\n
+        Los objetivos de estos ejercicios son:\n
+        {gmd-check} Aliviar su sensación de ahogo.\n
+        {gmd-check} Facilitar las actividades de su vida diaria (pasear, asearse, subir escaleras, viajar, etc.).\n
+        {gmd-check} Mejorar su estado de ánimo.\n\n
+        Las personas con EPOC, incluso si están en una fase avanzada, pueden realizar estos ejercicios. Los principales son caminar y utilizar la bicicleta estática. También es importante que realice ejercicios con los brazos y ejercicios respiratorios.
+    </string>
+    <string name="recommendations">Recomendaciones</string>
+    <string name="recommendations_exercise">Recomendaciones para hacer ejercicio</string>
+    <string name="breathing_therapy_recommendations">
+        {gmd-check} Use ropa cómoda, que no le apriete el abdomen y calzado cerrado que le cubra el talón y no le provoque molestias.\n
+        {gmd-check} Lo importante es que realice el ejercicio aunque sea muy despacio.\n
+        {gmd-check} Descanse 30 minutos cuando finalice los ejercicios.\n
+        {gmd-check} Evite los ejercicios en las 3 horas siguientes a la comida principal.\n
+    </string>
+    <string name="breathing_therapy_recommendations_tip1">Haga los ejercicios con una postura erguida, cogiendo aire por la nariz inflando la barriga y echándolo por la boca, como si soplara.</string>
+    <string name="breathing_therapy_recommendations_tip2">No olvide el inhalador: si tiene dificultad respiratoria, párese, aplique el inhalador, respire hondo y continúe con los descansos necesarios.</string>
+    <string name="breathing_therapy_recommendations_tip3">Todos los ejercicios hay que realizarlos de forma suave y progresiva</string>
+    <string name="how_to_walk">Cómo caminar</string>
+    <string name="breathing_therapy_walk">
+        Postura erguida con hombros relajados y moviendo los brazos con balanceo.\n\n
+        {gmd-check} Debe caminar despacio, por terreno llano, al ritmo que tolere, sin forzar.\n
+        {gmd-check} Evite los momentos del día de más calor o de frío intenso.\n
+        {gmd-check} El objetivo es caminar de 30 minutos a 1 hora diaria, de 3 a 7 días a la semana. Comience por 15 minutos al día y aumente 5 minutos más cada semana.\n
+    </string>
+    <string name="how_to_bicycle">Programa de bicicleta</string>
+    <string name="breathing_therapy_bicycle">
+        {gmd-check} Siga las mismas recomendaciones en cuanto al tipo de respiración, postura, ropa cómoda y uso de los inhaladores.\n
+        {gmd-check} Comience por 5 minutos por la mañana y 5 minutos por la tarde todos los días.\n
+        {gmd-check} Aumente 5 minutos cada semana.\n
+    </string>
+    <string name="breathing_therapy_common_tips">
+        {gmd-check} Realice los ejercicios en posición sentada, con el tronco erguido y los hombros relajados.\n
+        {gmd-check} Cada ejercicio se realiza en 2 tandas: primero se hace 5 veces, se descansa un minuto y se repite el ejercicio otras 5 veces.\n
+        {gmd-check} Todos los ejercicios hay que realizarlos de forma suave y progresiva.\n
+    </string>
+    <string name="breathing_therapy_breathing_goal"><b>Objetivo</b>: aumentar la entrada de aire en los pulmones</string>
+    <string name="breathing_exercise_title1">Respiración con labios fruncidos</string>
+    <string name="breathing_exercise_desc1">Coja el máximo de aire por la nariz, de forma lenta y profunda, inflando el abdomen y después échelo por la boca de forma suave, como si soplara.</string>
+    <string name="breathing_exercise_title2">Expansión costal</string>
+    <string name="breathing_exercise_desc2">Levante los brazos hasta la horizontal respirando por la nariz y baje los brazos echando el aire por la boca.</string>
+    <string name="breathing_therapy_arms_goal">
+        <b>Objetivo</b>: tonificar los brazos y facilitar la realización de las tareas diarias.\n
+        <b>Recuerde</b>: inspire por la nariz al subir y suelte el aire por la boca al bajar.\n\n
+        Todos los ejercicios de brazos se pueden realizar con pesas de 1 ó 2 kg si no provoca dificultad respiratoria.
+    </string>
+    <string name="arms_exercise_title1">Flexión de brazos</string>
+    <string name="arms_exercise_desc1">Levante los brazos por delante del tronco, hasta el máximo que pueda por encima de la cabeza, manténgalos 3 segundos y bájelos.</string>
+    <string name="arms_exercise_title2">Abducción de brazos</string>
+    <string name="arms_exercise_desc2">Abrir los brazos hasta la altura de los hombros, manténgalos de 3 a 5 segundos y bájelos.</string>
+    <string name="arms_exercise_title3">Flexo-extensión de codos</string>
+    <string name="arms_exercise_desc3">Con los brazos extendidos, flexione los codos, manténgalos de 3 a 5 segundos y extiéndalos nuevamente.</string>
+    <string name="exercise_careful_tip">
+        No debe hacer ejercicio en los siguientes casos:\n
+        {gmd-check} Si tiene dificultad respiratoria severa.\n
+        {gmd-check} Si la fiebre es superior a 38ºC.\n
+        {gmd-check} Si siente dolor torácico.\n
+        {gmd-check} Si se presenta inflamación articular.\n\n
+        En cualquiera de estos casos, ACUDA A SU MÉDICO/A.
+    </string>
+    <string name="app_exercise_help_tip">Esta aplicación, Ayuda EPOC, le permite llevar un control exhaustivo de todos los ejercicios que realice</string>
+
 
 </resources>

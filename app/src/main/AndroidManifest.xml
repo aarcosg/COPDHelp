@@ -44,7 +44,7 @@
             android:name=".ui.activity.COPDBODEActivity"
             android:configChanges="orientation|screenSize"/>
         <activity
-            android:name=".ui.activity.COPDBODEXActivity"
+            android:name=".ui.activity.GuideBreathingTherapyActivity"
             android:configChanges="orientation|screenSize"/>
 
         <receiver

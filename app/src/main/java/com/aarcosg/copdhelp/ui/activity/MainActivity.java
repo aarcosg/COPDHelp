@@ -18,6 +18,7 @@ import com.aarcosg.copdhelp.mvp.presenter.MainPresenter;
 import com.aarcosg.copdhelp.mvp.view.MainView;
 import com.aarcosg.copdhelp.ui.fragment.bmi.BMIMainFragment;
 import com.aarcosg.copdhelp.ui.fragment.exercise.ExerciseMainFragment;
+import com.aarcosg.copdhelp.ui.fragment.guides.MainGuidesListFragment;
 import com.aarcosg.copdhelp.ui.fragment.medicalattention.MedicalAttentionMainFragment;
 import com.aarcosg.copdhelp.ui.fragment.medicinereminder.MedicineReminderListFragment;
 import com.aarcosg.copdhelp.ui.fragment.smoke.SmokeMainFragment;
@@ -47,6 +48,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
     private static final int COPDCAT_MAIN_ID = 7;
     private static final int COPDBODE_MAIN_ID = 8;
     private static final int COPDBODEX_MAIN_ID = 9;
+    private static final int GUIDES_MAIN_ID = 10;
 
     @Inject
     MainPresenter mMainPresenter;
@@ -139,6 +141,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                         , new PrimaryDrawerItem().withName(getString(R.string.dose_reminder)).withIcon(GoogleMaterial.Icon.gmd_alarm).withIdentifier(MEDICINE_REMINDER_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.smoking)).withIcon(GoogleMaterial.Icon.gmd_smoke_free).withIdentifier(SMOKE_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.exercise)).withIcon(GoogleMaterial.Icon.gmd_directions_walk).withIdentifier(EXERCISE_MAIN_ID)
+                        , new PrimaryDrawerItem().withName(getString(R.string.guides)).withIcon(GoogleMaterial.Icon.gmd_local_library).withIdentifier(GUIDES_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.copdps)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDPS_MAIN_ID).withSelectable(false)
                         , new PrimaryDrawerItem().withName(getString(R.string.copdcat)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDCAT_MAIN_ID).withSelectable(false)
                         , new PrimaryDrawerItem().withName(getString(R.string.bode)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDBODE_MAIN_ID).withSelectable(false)
@@ -180,6 +183,11 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 setAppBarElevation(0);
                 setTitle(getString(R.string.title_fragment_exercise));
                 fragment = ExerciseMainFragment.newInstance();
+                break;
+            case GUIDES_MAIN_ID:
+                setAppBarElevation(getResources().getDimension(R.dimen.toolbar_elevation));
+                setTitle(getString(R.string.title_fragment_guides));
+                fragment = MainGuidesListFragment.newInstance();
                 break;
             case COPDPS_MAIN_ID:
                 COPDPSActivity.launch(this);

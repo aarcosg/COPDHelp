@@ -1,4 +1,4 @@
-package com.aarcosg.copdhelp.ui.fragment.bodex;
+package com.aarcosg.copdhelp.ui.fragment.copdbodex;
 
 import android.content.Context;
 import android.os.Bundle;
