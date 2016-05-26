@@ -86,7 +86,7 @@ public class MainGuidesListFragment extends BaseFragment{
         return toList(
                 new MainGuideItem().withIdentifier(GUIDE_BREATHING_THERAPY)
                         .withName(getString(R.string.breathing_therapy))
-                        .withImage(ResourcesCompat.getDrawable(getResources(),R.drawable.exercise_header,null))
+                        .withImage(ResourcesCompat.getDrawable(getResources(),R.drawable.breathing_therapy_header,null))
         );
     }
 

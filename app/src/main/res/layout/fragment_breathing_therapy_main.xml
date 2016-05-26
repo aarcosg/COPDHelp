@@ -28,9 +28,8 @@
                 android:id="@+id/toolbar_background_iv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/exercise_header"
+                android:src="@drawable/breathing_therapy_header"
                 android:scaleType="centerCrop"
-                android:tint="#3c000000"
                 android:fitsSystemWindows="true"
                 app:layout_collapseMode="parallax"/>
 
