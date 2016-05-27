@@ -11,6 +11,8 @@ public class User extends RealmObject{
     private Integer indexCAT;
     private Integer indexBODE;
     private Integer indexBODEx;
+    private Integer scaleMMRC;
+    private Double scaleBORG;
 
     public User() {
     }
@@ -57,5 +59,21 @@ public class User extends RealmObject{
 
     public void setIndexBODEx(Integer indexBODEx) {
         this.indexBODEx = indexBODEx;
+    }
+
+    public Integer getScaleMMRC() {
+        return scaleMMRC;
+    }
+
+    public void setScaleMMRC(Integer scaleMMRC) {
+        this.scaleMMRC = scaleMMRC;
+    }
+
+    public Double getScaleBORG() {
+        return scaleBORG;
+    }
+
+    public void setScaleBORG(Double scaleBORG) {
+        this.scaleBORG = scaleBORG;
     }
 }

@@ -30,7 +30,4 @@
         <item>1 gramo</item>
         <item>1,5 gramos</item>
     </string-array>
-    <string name="living_better_vaccine">4. Vacunas</string>
-    <string name="living_better_medication">5. Medicación</string>
-    <string name="living_better_getting_worse">6. Reconocer descompensaciones</string>
 </resources>

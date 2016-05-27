@@ -32,10 +32,10 @@ import com.aarcosg.copdhelp.ui.decorator.VerticalSpaceItemDecoration;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
 import com.aarcosg.copdhelp.ui.receiver.Reminders;
 import com.aarcosg.copdhelp.utils.Utils;
+import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.GenericItemAdapter;
 import com.mikepenz.fastadapter.helpers.ClickListenerHelper;
-import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 
 import java.util.Calendar;
@@ -64,6 +64,8 @@ public class MedicineReminderListFragment extends BaseFragment implements Medici
     FrameLayout mEmptyView;
     @Bind(R.id.empty_view_icon_iv)
     ImageView mEmptyViewIcon;
+    @Bind((R.id.empty_view_tv))
+    TextView mEmptyViewText;
 
     private FastAdapter mFastAdapter;
     private GenericItemAdapter<MedicineReminder, MedicineReminderItem> mItemAdapter;
@@ -269,10 +271,11 @@ public class MedicineReminderListFragment extends BaseFragment implements Medici
     private void setupEmptyView() {
         mEmptyViewIcon.setImageDrawable(
                 new IconicsDrawable(getContext())
-                        .icon(FontAwesome.Icon.faw_medkit)
+                        .icon(CommunityMaterial.Icon.cmd_alarm)
                         .color(Color.GRAY)
                         .sizeDp(70)
         );
+        mEmptyViewText.setText(getString(R.string.reminders_empty));
     }
 
     private void setupMedicineReminderFormDialog(){

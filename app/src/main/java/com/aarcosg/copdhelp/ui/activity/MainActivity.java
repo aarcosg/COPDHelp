@@ -21,8 +21,11 @@ import com.aarcosg.copdhelp.ui.fragment.exercise.ExerciseMainFragment;
 import com.aarcosg.copdhelp.ui.fragment.guides.MainGuidesListFragment;
 import com.aarcosg.copdhelp.ui.fragment.medicalattention.MedicalAttentionMainFragment;
 import com.aarcosg.copdhelp.ui.fragment.medicinereminder.MedicineReminderListFragment;
+import com.aarcosg.copdhelp.ui.fragment.scale.ScaleBORGFragment;
+import com.aarcosg.copdhelp.ui.fragment.scale.ScaleMMRCDyspneaFragment;
 import com.aarcosg.copdhelp.ui.fragment.smoke.SmokeMainFragment;
 import com.aarcosg.copdhelp.ui.receiver.Reminders;
+import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -49,6 +52,8 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
     private static final int COPDBODE_MAIN_ID = 8;
     private static final int COPDBODEX_MAIN_ID = 9;
     private static final int GUIDES_MAIN_ID = 10;
+    private static final int SCALE_MMRC_DYSPNEA_MAIN_ID = 11;
+    private static final int SCALE_BORG_MAIN_ID = 12;
 
     @Inject
     MainPresenter mMainPresenter;
@@ -142,6 +147,8 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                         , new PrimaryDrawerItem().withName(getString(R.string.smoking)).withIcon(GoogleMaterial.Icon.gmd_smoke_free).withIdentifier(SMOKE_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.exercise)).withIcon(GoogleMaterial.Icon.gmd_directions_walk).withIdentifier(EXERCISE_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.guides)).withIcon(GoogleMaterial.Icon.gmd_local_library).withIdentifier(GUIDES_MAIN_ID)
+                        , new PrimaryDrawerItem().withName(getString(R.string.scale_mmrc)).withIcon(CommunityMaterial.Icon.cmd_ruler).withIdentifier(SCALE_MMRC_DYSPNEA_MAIN_ID)
+                        , new PrimaryDrawerItem().withName(getString(R.string.scale_borg)).withIcon(CommunityMaterial.Icon.cmd_ruler).withIdentifier(SCALE_BORG_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.copdps)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDPS_MAIN_ID).withSelectable(false)
                         , new PrimaryDrawerItem().withName(getString(R.string.copdcat)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDCAT_MAIN_ID).withSelectable(false)
                         , new PrimaryDrawerItem().withName(getString(R.string.bode)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDBODE_MAIN_ID).withSelectable(false)
@@ -188,6 +195,16 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 setAppBarElevation(getResources().getDimension(R.dimen.toolbar_elevation));
                 setTitle(getString(R.string.title_fragment_guides));
                 fragment = MainGuidesListFragment.newInstance();
+                break;
+            case SCALE_MMRC_DYSPNEA_MAIN_ID:
+                setAppBarElevation(getResources().getDimension(R.dimen.toolbar_elevation));
+                setTitle(getString(R.string.scale_mmrc_dyspnea_title));
+                fragment = ScaleMMRCDyspneaFragment.newInstance();
+                break;
+            case SCALE_BORG_MAIN_ID:
+                setAppBarElevation(getResources().getDimension(R.dimen.toolbar_elevation));
+                setTitle(getString(R.string.scale_borg_title));
+                fragment = ScaleBORGFragment.newInstance();
                 break;
             case COPDPS_MAIN_ID:
                 COPDPSActivity.launch(this);

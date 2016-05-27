@@ -369,6 +369,9 @@
     <string name="living_better_smoking">1. Evitar tabaco</string>
     <string name="living_better_nutrition">2. Cuidar alimentación</string>
     <string name="living_better_exercise">3. Realizar ejercicio</string>
+    <string name="living_better_vaccine">4. Vacunas</string>
+    <string name="living_better_medication">5. Medicación</string>
+    <string name="living_better_getting_worse">6. Reconocer descompensaciones</string>
     <string name="living_better_smoking_title">1. Evite el tabaco y ambientes contaminados</string>
     <string name="living_better_smoking_desc1"><b>Lo más beneficioso para usted es abandonar el tabaco absolutamente</b>. Procure que otras personas no fumen en su casa. <b>También es importante evitar ambientes contaminados</b> (bares o zonas donde se fume, trabajos con inhalación de humos, etc.).</string>
     <string name="living_better_smoking_question1">¿Puedo fumar algo, aunque sea unos cigarrillos al día?</string>
@@ -457,5 +460,33 @@
     </string>
     <string name="living_better_getting_worse_question5">Tras una descompensación ¿hasta cuándo debo mantener el tratamiento?</string>
     <string name="living_better_getting_worse_answer5"><b>Es muy importante que siga el tratamiento indicado</b> en su Centro de Salud, en el Servicio de Urgencias o en el informe médico de alta hospitalaria. Los reajustes en el tratamiento deberán ser realizados por su médica/o de Atención Primaria o su especialista en Neumología.</string>
+    <string name="my_scale_grade_is">Mi grado es:</string>
+    <string name="scale_mmrc_dyspnea_title">Escala de disnea mMRC</string>
+    <string name="grade_of_dyspnea">Grado de disnea</string>
+    <string name="description">Descripción</string>
+    <string name="grade_of_dyspnea_desc0">Ausencia de disnea excepto al realizar ejercicio intenso.</string>
+    <string name="grade_of_dyspnea_desc1">Disnea al andar depresia en llano, o al andar subiendo una pendiente poco pronunciada.</string>
+    <string name="grade_of_dyspnea_desc2">La disnea le produce una incapacidad de mantener el paso de otras personas de la misma edad caminando en llano o tener que parar a descansar al andar en llano a su propio paso.</string>
+    <string name="grade_of_dyspnea_desc3">La disnea hace que tenga que parar a descansar al andar unos 100 m o pocos minutos después de andar en llano.</string>
+    <string name="grade_of_dyspnea_desc4">La disnea le impide al paciente salir de casa o aparece con actividades como vestirse o desvestirse.</string>
+    <string name="scale_mmrc">Escala mMRC</string>
+    <string name="grade">Grado</string>
+    <string name="scale_grade_save_realm_success">Grado de la escala guardado</string>
+    <string name="scale_borg_title">Escala de BORG</string>
+    <string name="scale_borg_description">La escala de BORG es la recomendada por la Sociedad Española de Neumología y Cirugía Torácica (SEPAR) durante la prueba de esfuerzo cardiopulmonar. Consta de 12 niveles numéricos de disnea (entre 0 y 10 puntos) con descriptores verbales para cada uno de ellos. </string>
+    <string name="scale_borg_grade_desc0">Nada</string>
+    <string name="scale_borg_grade_desc1">Muy, muy ligera</string>
+    <string name="scale_borg_grade_desc2">Muy ligera</string>
+    <string name="scale_borg_grade_desc3">Ligera</string>
+    <string name="scale_borg_grade_desc4">Moderada</string>
+    <string name="scale_borg_grade_desc5">Algo intensa</string>
+    <string name="scale_borg_grade_desc6">Intensa</string>
+    <string name="scale_borg_grade_desc7">Entre 5 y 7</string>
+    <string name="scale_borg_grade_desc8">Muy intensa</string>
+    <string name="scale_borg_grade_desc9">Entre 7 y 9</string>
+    <string name="scale_borg_grade_desc10">Muy, muy intensa (casi máxima)</string>
+    <string name="scale_borg_grade_desc11">Máxima</string>
+    <string name="scale_borg">BORG</string>
+    <string name="reminders_empty">No hay recordatorios configurados</string>
 
 </resources>

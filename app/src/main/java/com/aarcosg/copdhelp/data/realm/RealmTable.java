@@ -15,6 +15,8 @@ public interface RealmTable {
         String INDEX_CAT = "indexCAT";
         String INDEX_BODE = "indexBODE";
         String INDEX_BODEX = "indexBODEx";
+        String SCALE_MMRC = "scaleMMRC";
+        String SCALE_BORG = "scaleBORG";
     }
 
     interface MedicalAttention{

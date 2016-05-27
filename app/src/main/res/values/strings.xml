@@ -5,5 +5,4 @@
     <string name="date_string" translatable="false">%1$s/%2$s/%3$s</string>
     <string name="tab_list_icon_id">gmd_list</string>
     <string name="tab_charts_icon_id">cmd_chart_bar</string>
-    <string name="copdbode_question6">Indica si el paciente realiza poca actividad física o es sendentairo</string>
 </resources>

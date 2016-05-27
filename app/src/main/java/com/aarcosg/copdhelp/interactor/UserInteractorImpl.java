@@ -118,6 +118,25 @@ public class UserInteractorImpl implements UserInteractor {
         return Observable.just(realmUser);
     }
 
+    @RxLogObservable
+    @Override
+    public Observable<User> updateCOPDScaleGrade(Long id, String realmCOPDScaleTable, double grade) {
+        getRealm().beginTransaction();
+        User realmUser = getRealm().where(User.class)
+                .equalTo("id",id).findFirst();
+        if(realmUser == null){
+            realmUser = getRealm().createObject(User.class,
+                    PrimaryKeyFactory.getInstance().nextKey(User.class));
+        }
+        if(realmCOPDScaleTable.equals(RealmTable.User.SCALE_BORG)){
+            realmUser.setScaleBORG(grade);
+        }else if(realmCOPDScaleTable.equals(RealmTable.User.SCALE_MMRC)){
+            realmUser.setScaleMMRC((int)grade);
+        }
+        getRealm().commitTransaction();
+        return Observable.just(realmUser);
+    }
+
     private Realm getRealm(){
         if(mRealm == null || mRealm.isClosed()){
             mRealm = Realm.getDefaultInstance();
