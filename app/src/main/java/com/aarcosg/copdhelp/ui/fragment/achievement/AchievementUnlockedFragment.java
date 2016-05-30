@@ -31,6 +31,8 @@ import rx.subscriptions.Subscriptions;
 
 public class AchievementUnlockedFragment extends BaseFragment {
 
+    private static final String TAG = AchievementUnlockedFragment.class.getCanonicalName();
+
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
     @Bind(R.id.achievement_image)

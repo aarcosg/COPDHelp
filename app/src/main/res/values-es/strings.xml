@@ -488,7 +488,7 @@
     <string name="scale_borg_grade_desc9">Entre 7 y 9</string>
     <string name="scale_borg_grade_desc10">Muy, muy intensa (casi máxima)</string>
     <string name="scale_borg_grade_desc11">Máxima</string>
-    <string name="scale_borg">BORG</string>
+    <string name="scale_borg">Escala de Borg</string>
     <string name="reminders_empty">No hay recordatorios configurados</string>
     <string name="achievements">Logros</string>
     <string name="title_fragment_achievements">Logros</string>
@@ -499,5 +499,22 @@
     <string name="taken_medication">Tomado</string>
     <string name="videos">Vídeos</string>
     <string name="title_fragment_videos">Vídeos</string>
+    <string name="medical_attentions">Atenciones sanitarias</string>
+    <string name="exacerbations_this_year">Exacerbaciones anuales</string>
+    <string name="checkups_this_year">Revisiones médicas anuales</string>
+    <string name="not_registered">No registrado</string>
+    <string name="medication_taken_this_week">Medicamentos semanales</string>
+    <string name="exercise_this_week">Ejercicio semanal</string>
+    <string name="smoking_this_week">Tabaco semanal</string>
+    <string name="copd_diagnoses">Diagnósticos</string>
+    <string name="copdps_index">COPD-PS</string>
+    <string name="cat_index">CAT</string>
+    <string name="bode_index">BODE</string>
+    <string name="bodex_index">BODEx</string>
+    <string name="copd_scales">Escalas EPOC</string>
+    <string name="mmrc_scale">mMRC</string>
+    <string name="borg_scale">Borg</string>
+    <string name="my_copd">Mi EPOC</string>
+    <string name="title_fragment_my_copd">Mi EPOC</string>
 
 </resources>

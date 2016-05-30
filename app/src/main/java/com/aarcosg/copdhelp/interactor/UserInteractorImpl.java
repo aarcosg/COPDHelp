@@ -99,12 +99,7 @@ public class UserInteractorImpl implements UserInteractor {
     @Override
     public Observable<User> updateCOPDIndexResult(Long id, String realmCOPDIndexTable, int result) {
         getRealm().beginTransaction();
-        User realmUser = getRealm().where(User.class)
-                .equalTo("id",id).findFirst();
-        if(realmUser == null){
-            realmUser = getRealm().createObject(User.class,
-                    PrimaryKeyFactory.getInstance().nextKey(User.class));
-        }
+        User realmUser = realmCreateIfNotExists(id);
         if(realmCOPDIndexTable.equals(RealmTable.User.INDEX_COPDPS)){
             realmUser.setIndexCOPDPS(result);
         }else if(realmCOPDIndexTable.equals(RealmTable.User.INDEX_CAT)){
@@ -122,12 +117,7 @@ public class UserInteractorImpl implements UserInteractor {
     @Override
     public Observable<User> updateCOPDScaleGrade(Long id, String realmCOPDScaleTable, double grade) {
         getRealm().beginTransaction();
-        User realmUser = getRealm().where(User.class)
-                .equalTo("id",id).findFirst();
-        if(realmUser == null){
-            realmUser = getRealm().createObject(User.class,
-                    PrimaryKeyFactory.getInstance().nextKey(User.class));
-        }
+        User realmUser = realmCreateIfNotExists(id);
         if(realmCOPDScaleTable.equals(RealmTable.User.SCALE_BORG)){
             realmUser.setScaleBORG(grade);
         }else if(realmCOPDScaleTable.equals(RealmTable.User.SCALE_MMRC)){
@@ -135,6 +125,18 @@ public class UserInteractorImpl implements UserInteractor {
         }
         getRealm().commitTransaction();
         return Observable.just(realmUser);
+    }
+
+    @Override
+    public User realmCreateIfNotExists(Long id) {
+        User realmUser = getRealm().where(User.class)
+                .equalTo("id",id).findFirst();
+        if(realmUser == null){
+            getRealm().beginTransaction();
+            realmUser = getRealm().createObject(User.class,1L);
+            getRealm().commitTransaction();
+        }
+        return realmUser;
     }
 
     private Realm getRealm(){

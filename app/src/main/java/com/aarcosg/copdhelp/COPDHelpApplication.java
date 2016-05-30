@@ -7,6 +7,7 @@ import com.aarcosg.copdhelp.di.components.ApplicationComponent;
 import com.aarcosg.copdhelp.di.components.DaggerApplicationComponent;
 import com.aarcosg.copdhelp.di.modules.ApplicationModule;
 import com.aarcosg.copdhelp.di.modules.NetworkModule;
+import com.aarcosg.copdhelp.interactor.UserInteractor;
 
 public class COPDHelpApplication extends MultiDexApplication {
 
@@ -26,6 +27,7 @@ public class COPDHelpApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         this.initializeInjector();
+        createUser();
     }
 
     private void initializeInjector() {
@@ -37,5 +39,10 @@ public class COPDHelpApplication extends MultiDexApplication {
 
     public ApplicationComponent getApplicationComponent() {
         return this.mApplicationComponent;
+    }
+
+    private void createUser(){
+        UserInteractor userInteractor = getApplicationComponent().getUserInteractor();
+        userInteractor.realmCreateIfNotExists(1L);
     }
 }

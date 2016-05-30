@@ -12,4 +12,6 @@ public interface UserInteractor extends RealmInteractor<User> {
 
     @RxLogObservable
     Observable<User> updateCOPDScaleGrade(Long id, String realmCOPDScaleTable, double grade);
+
+    User realmCreateIfNotExists(Long id);
 }
