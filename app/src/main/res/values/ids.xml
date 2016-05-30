@@ -11,4 +11,6 @@
     <item name="fastadapter_main_guide_item_id" type="id"/>
     <item name="fastadapter_what_is_copd_guide_item_id" type="id"/>
     <item name="fastadapter_what_is_copd_desc_item_id" type="id"/>
+    <item name="fastadapter_achievement_item_id" type="id"/>
+    <item name="fastadapter_video_item_id" type="id"/>
 </resources>

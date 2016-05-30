@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aarcosg.copdhelp">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
@@ -55,18 +56,34 @@
         <activity
             android:name=".ui.activity.GuideLivingBetterActivity"
             android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".ui.activity.AchievementActivity"
+            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".ui.activity.YoutubePlayerActivity"
+            android:configChanges="orientation|screenSize"/>
 
         <receiver
-            android:name=".ui.receiver.MedicineReminderBroadcastReceiver"
+            android:name=".receiver.MedicineReminderBroadcastReceiver"
             android:enabled="true"
             android:exported="false"/>
-
-        <receiver android:name=".ui.receiver.OnBootReceiver"
+        <receiver android:name=".receiver.MedicineTakenBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.aarcosg.copdhelp.ACTION_TAKE_MEDICATION" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receiver.OnBootReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
+
+        <service
+            android:name=".service.COPDHelpService"
+            android:exported="false" />
 
     </application>
 

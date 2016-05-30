@@ -30,7 +30,7 @@ import com.aarcosg.copdhelp.mvp.view.medicinereminder.MedicineReminderListView;
 import com.aarcosg.copdhelp.ui.adapteritem.MedicineReminderItem;
 import com.aarcosg.copdhelp.ui.decorator.VerticalSpaceItemDecoration;
 import com.aarcosg.copdhelp.ui.fragment.BaseFragment;
-import com.aarcosg.copdhelp.ui.receiver.Reminders;
+import com.aarcosg.copdhelp.receiver.RemindersHelper;
 import com.aarcosg.copdhelp.utils.Utils;
 import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.fastadapter.FastAdapter;
@@ -217,12 +217,12 @@ public class MedicineReminderListFragment extends BaseFragment implements Medici
 
     @Override
     public void enableReminderAlarm(MedicineReminder medicineReminder) {
-        Reminders.getInstance(getContext().getApplicationContext()).setupReminder(medicineReminder);
+        RemindersHelper.getInstance(getContext().getApplicationContext()).setupReminder(medicineReminder);
     }
 
     @Override
     public void disableReminderAlarm(MedicineReminder medicineReminder) {
-        Reminders.getInstance(getContext().getApplicationContext()).cancelReminder(medicineReminder);
+        RemindersHelper.getInstance(getContext().getApplicationContext()).cancelReminder(medicineReminder);
     }
 
     @OnClick(R.id.fab)

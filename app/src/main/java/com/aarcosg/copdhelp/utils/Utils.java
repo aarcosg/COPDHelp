@@ -5,6 +5,8 @@ import android.Manifest;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
@@ -17,6 +19,9 @@ import android.widget.Toast;
 
 import com.aarcosg.copdhelp.R;
 import com.aarcosg.copdhelp.data.realm.RealmTable;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.youtube.YouTube;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
 import java.io.ByteArrayOutputStream;
@@ -242,5 +247,20 @@ public class Utils {
             sum += i;
         }
         return sum;
+    }
+
+    public static long getAppFirstInstallTime(Context context){
+        PackageInfo packageInfo;
+        try {
+            packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            return packageInfo.firstInstallTime;
+        } catch (PackageManager.NameNotFoundException e) {
+            return 0;
+        }
+    }
+
+    public static YouTube createDefaultYouTube(String applicationName) {
+        return new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), request -> {})
+                .setApplicationName(applicationName).build();
     }
 }

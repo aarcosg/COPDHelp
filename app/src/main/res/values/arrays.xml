@@ -122,7 +122,7 @@
         <item>Eritromicina</item>
         <item>Fenoterol</item>
         <item>Fluticasona Furoato</item>
-        <item>Fluticasona propionato</item>
+        <item>Fluticasona Propionato</item>
         <item>Formoterol</item>
         <item>Glicopirronio</item>
         <item>Indacaterol</item>
@@ -201,4 +201,52 @@
         <item>9</item>
         <item>10</item>
     </string-array>
+    <string-array name="achievement_tab_titles">
+        <item>@string/exercise</item>
+        <item>@string/smoking</item>
+    </string-array>
+    <integer-array name="medals_ids_exercise">
+        <item>@integer/medal_id_exercise_5_hours</item>
+        <item>@integer/medal_id_exercise_24_hours</item>
+        <item>@integer/medal_id_exercise_200_hours</item>
+        <item>@integer/medal_id_exercise_1000_hours</item>
+    </integer-array>
+    <integer-array name="medals_ids_no_smooking">
+        <item>@integer/medal_id_no_smoking_1_week</item>
+        <item>@integer/medal_id_no_smoking_1_month</item>
+        <item>@integer/medal_id_no_smoking_3_month</item>
+        <item>@integer/medal_id_no_smoking_1_year</item>
+    </integer-array>
+    <integer-array name="medals_ids_full">
+        <item>@integer/medal_id_exercise_5_hours</item>
+        <item>@integer/medal_id_exercise_24_hours</item>
+        <item>@integer/medal_id_exercise_200_hours</item>
+        <item>@integer/medal_id_exercise_1000_hours</item>
+        <item>@integer/medal_id_no_smoking_1_week</item>
+        <item>@integer/medal_id_no_smoking_1_month</item>
+        <item>@integer/medal_id_no_smoking_3_month</item>
+        <item>@integer/medal_id_no_smoking_1_year</item>
+    </integer-array>
+    <array name="medals_drawables_exercise">
+        <item>@drawable/medal_exercise_5_hours</item>
+        <item>@drawable/medal_exercise_24_hours</item>
+        <item>@drawable/medal_exercise_200_hours</item>
+        <item>@drawable/medal_exercise_1000_hours</item>
+    </array>
+    <array name="medals_drawables_no_smooking">
+        <item>@drawable/medal_no_smoking_1_week</item>
+        <item>@drawable/medal_no_smoking_1_month</item>
+        <item>@drawable/medal_no_smoking_3_month</item>
+        <item>@drawable/medal_no_smoking_1_year</item>
+    </array>
+    <array name="medals_drawables_full">
+        <item>@drawable/medal_exercise_5_hours</item>
+        <item>@drawable/medal_exercise_24_hours</item>
+        <item>@drawable/medal_exercise_200_hours</item>
+        <item>@drawable/medal_exercise_1000_hours</item>
+        <item>@drawable/medal_no_smoking_1_week</item>
+        <item>@drawable/medal_no_smoking_1_month</item>
+        <item>@drawable/medal_no_smoking_3_month</item>
+        <item>@drawable/medal_no_smoking_1_year</item>
+    </array>
 </resources>

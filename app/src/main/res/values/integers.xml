@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="medal_id_exercise_5_hours" type="id">1</integer>
+    <integer name="medal_id_exercise_24_hours" type="id">2</integer>
+    <integer name="medal_id_exercise_200_hours" type="id">3</integer>
+    <integer name="medal_id_exercise_1000_hours" type="id">4</integer>
+    <integer name="medal_id_no_smoking_1_week" type="id">5</integer>
+    <integer name="medal_id_no_smoking_1_month" type="id">6</integer>
+    <integer name="medal_id_no_smoking_3_month" type="id">7</integer>
+    <integer name="medal_id_no_smoking_1_year" type="id">8</integer>
+</resources>

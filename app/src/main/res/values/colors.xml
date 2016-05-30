@@ -33,4 +33,6 @@
     <color name="exercise_type_stationary_bicycle">@color/md_deep_purple_300</color>
     <color name="exercise_type_breathing">@color/md_teal_300</color>
     <color name="exercise_type_arms">@color/md_orange_300</color>
+    <color name="achievement_not_completed_tint">#e1000000</color>
+
 </resources>

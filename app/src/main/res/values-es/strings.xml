@@ -6,6 +6,8 @@
     <string name="exception_message_generic">Se ha producido un error. Inténtelo más tarde.</string>
     <string name="exception_message_internet_not_available">No hay conexión a internet</string>
     <string name="exception_message_share_image_error">No se pudo compartir la imagen</string>
+    <string name="exception_message_load_youtube_videos_error">No se pudieron cargar los vídeos</string>
+    <string name="exception_message_youtube_player_error">Error al inicializar el reproductor: (%1$s)</string>
 
     <!-- Fragment titles -->
     <string name="title_fragment_medical_attention">Atención sanitaria</string>
@@ -488,5 +490,14 @@
     <string name="scale_borg_grade_desc11">Máxima</string>
     <string name="scale_borg">BORG</string>
     <string name="reminders_empty">No hay recordatorios configurados</string>
+    <string name="achievements">Logros</string>
+    <string name="title_fragment_achievements">Logros</string>
+    <string name="locked">Bloqueado</string>
+    <string name="gratz_achievement_unlocked">¡Enhorabuena! Has desbloqueado un logro. ¡Sigue así!</string>
+    <string name="congratulations">¡Enhorabuena!</string>
+    <string name="new_achievement_unlocked">Has desbloqueado un nuevo logro. Compártelo con tus familiares y amigos.\n<b>¡Sigue así!</b></string>
+    <string name="taken_medication">Tomado</string>
+    <string name="videos">Vídeos</string>
+    <string name="title_fragment_videos">Vídeos</string>
 
 </resources>
