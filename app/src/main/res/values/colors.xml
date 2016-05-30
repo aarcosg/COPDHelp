@@ -34,5 +34,6 @@
     <color name="exercise_type_breathing">@color/md_teal_300</color>
     <color name="exercise_type_arms">@color/md_orange_300</color>
     <color name="achievement_not_completed_tint">#e1000000</color>
+    <color name="appintro_fragment_background">@color/md_teal_700</color>
 
 </resources>

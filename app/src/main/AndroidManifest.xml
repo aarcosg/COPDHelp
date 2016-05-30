@@ -62,6 +62,23 @@
         <activity
             android:name=".ui.activity.YoutubePlayerActivity"
             android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".ui.activity.AppIntroActivity"
+            android:parentActivityName=".ui.activity.MainActivity"
+            android:configChanges="orientation|screenSize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.activity.SettingsActivity"
+            android:label="@string/title_fragment_settings"
+            android:parentActivityName=".ui.activity.MainActivity"
+            android:configChanges="orientation|screenSize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activity.MainActivity" />
+        </activity>
 
         <receiver
             android:name=".receiver.MedicineReminderBroadcastReceiver"

@@ -40,7 +40,6 @@ public class COPDHelpService extends Service implements COPDHelpServiceView {
     public void onCreate() {
         super.onCreate();
         this.initializeInjector();
-        //GoogleFitHelper.initFitApi(this.getApplicationContext());
     }
 
     @Override
@@ -63,9 +62,8 @@ public class COPDHelpService extends Service implements COPDHelpServiceView {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(TAG,"@onStartCommand");
         if(intent != null){
-            /*this.mCOPDHelpServicePresenter.queryLocations();
-            this.mCOPDHelpServicePresenter.queryActivities();*/
             AchievementsHelper.getInstance(mContext).checkAchievements();
+            DailyFormHelper.getInstance(mContext).sendNotification();
         }
         return START_STICKY;
     }

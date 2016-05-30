@@ -58,6 +58,10 @@ public class UserInteractorImpl implements UserInteractor {
         getRealm().beginTransaction();
         User realmUser = getRealm().createObject(User.class,
                 PrimaryKeyFactory.getInstance().nextKey(User.class));
+        realmUser.setAge(user.getAge());
+        realmUser.setGenre(user.getGenre());
+        realmUser.setSmoker(user.isSmoker());
+        realmUser.setSmokingYears(user.getSmokingYears());
         realmUser.setIndexCOPDPS(user.getIndexCOPDPS());
         realmUser.setIndexCAT(user.getIndexCAT());
         realmUser.setIndexBODE(user.getIndexBODE());
@@ -76,6 +80,10 @@ public class UserInteractorImpl implements UserInteractor {
             realmUser = getRealm().createObject(User.class,
                     PrimaryKeyFactory.getInstance().nextKey(User.class));
         }
+        realmUser.setAge(user.getAge());
+        realmUser.setGenre(user.getGenre());
+        realmUser.setSmoker(user.isSmoker());
+        realmUser.setSmokingYears(user.getSmokingYears());
         realmUser.setIndexCOPDPS(user.getIndexCOPDPS());
         realmUser.setIndexCAT(user.getIndexCAT());
         realmUser.setIndexBODE(user.getIndexBODE());

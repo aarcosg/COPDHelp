@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:key="category_patient"
+        android:title="@string/patient">
+
+        <EditTextPreference
+            android:key="user_age"
+            android:title="@string/title_age_preference"
+            android:persistent="true"
+            android:dialogTitle="@string/title_age_preference"
+            android:dialogMessage="@string/age_preference_message"
+            android:inputType="number"/>
+
+        <ListPreference
+            android:key="user_genre"
+            android:title="@string/title_genre_preference"
+            android:dialogTitle="@string/title_genre_preference"
+            android:entries="@array/pref_genre_list_entries"
+            android:entryValues="@array/pref_genre_list_values"
+            android:persistent="true" />
+
+        <SwitchPreference
+            android:key="user_is_smoker"
+            android:title="@string/title_is_smoker_preference"
+            android:persistent="true"
+            android:summaryOn="@string/is_smoker_yes"
+            android:summaryOff="@string/is_smoker_no"/>
+
+        <EditTextPreference
+            android:key="user_smoking_years"
+            android:title="@string/title_smoking_years_preference"
+            android:persistent="true"
+            android:dialogTitle="@string/title_smoking_years_preference"
+            android:dialogMessage="@string/smoking_years_preference_message"
+            android:inputType="number"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/application">
+
+        <SwitchPreference
+            android:key="get_daily_form_notifications"
+            android:title="@string/title_get_daily_form_notifications_preference"
+            android:persistent="true"
+            android:summaryOn="@string/get_daily_form_notifications_yes"
+            android:summaryOff="@string/get_daily_form_notifications_no"/>
+
+        <SwitchPreference
+            android:key="send_anonymous_data"
+            android:title="@string/title_send_anonymous_data_preference"
+            android:persistent="true"
+            android:summaryOn="@string/send_anonymous_data_summary_yes"
+            android:summaryOff="@string/send_anonymous_data_summary_no"/>
+
+        <Preference
+            android:key="app_version"
+            android:title="@string/pref_title_version"
+            android:selectable="false"
+            android:summary=""/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

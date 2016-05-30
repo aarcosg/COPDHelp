@@ -13,10 +13,17 @@
 
         <include layout="@layout/progress_bar" />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/guide_what_is_copd_header"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/narrow_space"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             style="@style/TextAppearance.AppCompat.Medium"
@@ -54,7 +61,7 @@
                         android:id="@+id/exacerbations_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/DetailsCardBodyText.Bold"
+                        style="@style/DetailsCardBodyText.Colored"
                         android:text="0"/>
 
                 </LinearLayout>
@@ -89,7 +96,7 @@
                         android:id="@+id/checkups_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/DetailsCardBodyText.Bold"
+                        style="@style/DetailsCardBodyText.Colored"
                         android:text="0"/>
 
                 </LinearLayout>
@@ -133,7 +140,7 @@
                         android:id="@+id/bmi_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/DetailsCardBodyText.Bold"
+                        style="@style/DetailsCardBodyText.Colored"
                         android:text="@string/not_registered"/>
 
                 </LinearLayout>
@@ -165,7 +172,7 @@
                         android:id="@+id/doses_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/DetailsCardBodyText.Bold"
+                        style="@style/DetailsCardBodyText.Colored"
                         android:text="@string/not_registered"/>
 
                 </LinearLayout>
@@ -214,7 +221,7 @@
                             android:id="@+id/exercise_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/DetailsCardBodyText.Bold"
+                            style="@style/DetailsCardBodyText.Colored"
                             android:text="0"/>
 
                         <TextView
@@ -264,7 +271,7 @@
                             android:id="@+id/smoking_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/DetailsCardBodyText.Bold"
+                            style="@style/DetailsCardBodyText.Colored"
                             android:text="0"/>
 
                         <TextView
@@ -284,9 +291,17 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/medical_attention_header"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/narrow_space"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginBottom="@dimen/narrow_space"
@@ -329,7 +344,7 @@
                         android:id="@+id/copdps_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/DetailsCardBodyText.Bold"
+                        style="@style/DetailsCardBodyText.Colored"
                         android:text="@string/not_registered"/>
 
                 </LinearLayout>
@@ -363,7 +378,7 @@
                         android:id="@+id/cat_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/DetailsCardBodyText.Bold"
+                        style="@style/DetailsCardBodyText.Colored"
                         android:text="@string/not_registered"/>
 
                 </LinearLayout>
@@ -407,7 +422,7 @@
                         android:id="@+id/bode_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/DetailsCardBodyText.Bold"
+                        style="@style/DetailsCardBodyText.Colored"
                         android:text="@string/not_registered"/>
 
                 </LinearLayout>
@@ -441,7 +456,7 @@
                         android:id="@+id/bodex_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/DetailsCardBodyText.Bold"
+                        style="@style/DetailsCardBodyText.Colored"
                         android:text="@string/not_registered"/>
 
                 </LinearLayout>
@@ -495,7 +510,7 @@
                         android:id="@+id/mmrc_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/DetailsCardBodyText.Bold"
+                        style="@style/DetailsCardBodyText.Colored"
                         android:text="@string/not_registered"/>
 
                 </LinearLayout>
@@ -529,7 +544,7 @@
                         android:id="@+id/borg_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/DetailsCardBodyText.Bold"
+                        style="@style/DetailsCardBodyText.Colored"
                         android:text="@string/not_registered"/>
 
                 </LinearLayout>

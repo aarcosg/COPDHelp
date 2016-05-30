@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_vertical_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/mid_space"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/about_copdhelp_title"
+            android:textColor="@color/primary_dark"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/about_copdhelp_introduction"
+            android:textColor="@color/primary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_copdhelp_introduction_desc" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/narrow_space"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/about_copdhelp_responsibility"
+            android:textColor="@color/primary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_copdhelp_responsibility_desc" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/narrow_space"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/about_copdhelp_privacy"
+            android:textColor="@color/primary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_copdhelp_privacy_desc" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/narrow_space"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/about_copdhelp_authors"
+            android:textColor="@color/primary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_copdhelp_authors_desc" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/narrow_space"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/about_copdhelp_sources"
+            android:textColor="@color/primary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_copdhelp_sources_desc" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/narrow_space"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/about_copdhelp_image_resources"
+            android:textColor="@color/primary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_copdhelp_image_resources_desc" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/narrow_space"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/about_copdhelp_contact"
+            android:textColor="@color/primary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_copdhelp_contact_desc" />
+
+    </LinearLayout>
+
+</ScrollView>

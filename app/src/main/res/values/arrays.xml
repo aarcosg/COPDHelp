@@ -249,4 +249,12 @@
         <item>@drawable/medal_no_smoking_3_month</item>
         <item>@drawable/medal_no_smoking_1_year</item>
     </array>
+    <string-array name="pref_genre_list_entries">
+        <item>@string/woman</item>
+        <item>@string/man</item>
+    </string-array>
+    <string-array name="pref_genre_list_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
 </resources>

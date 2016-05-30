@@ -6,7 +6,6 @@ import android.support.multidex.MultiDexApplication;
 import com.aarcosg.copdhelp.di.components.ApplicationComponent;
 import com.aarcosg.copdhelp.di.components.DaggerApplicationComponent;
 import com.aarcosg.copdhelp.di.modules.ApplicationModule;
-import com.aarcosg.copdhelp.di.modules.NetworkModule;
 import com.aarcosg.copdhelp.interactor.UserInteractor;
 
 public class COPDHelpApplication extends MultiDexApplication {
@@ -33,7 +32,6 @@ public class COPDHelpApplication extends MultiDexApplication {
     private void initializeInjector() {
         mApplicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
-                .networkModule(new NetworkModule())
                 .build();
     }
 

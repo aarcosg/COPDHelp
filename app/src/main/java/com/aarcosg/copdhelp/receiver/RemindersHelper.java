@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 
 import com.aarcosg.copdhelp.R;
@@ -63,7 +64,8 @@ public class RemindersHelper {
         intent.putExtra(RemindersHelper.EXTRA_NOTIFICATION_ID, notificationId);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 1000, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.notification_small_copd_icon)
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
                 .setContentTitle(context.getString(R.string.app_name))
                 .setContentText(context.getString(R.string.medicine_reminder_notification,reminder.getMedicine()))
                 .setContentIntent(pendingIntent)

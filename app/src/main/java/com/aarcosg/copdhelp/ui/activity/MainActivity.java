@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -12,6 +13,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.aarcosg.copdhelp.BuildConfig;
+import com.aarcosg.copdhelp.Constants;
 import com.aarcosg.copdhelp.R;
 import com.aarcosg.copdhelp.di.HasComponent;
 import com.aarcosg.copdhelp.di.components.DaggerMainComponent;
@@ -21,6 +24,7 @@ import com.aarcosg.copdhelp.mvp.view.MainView;
 import com.aarcosg.copdhelp.receiver.RemindersHelper;
 import com.aarcosg.copdhelp.service.AchievementsHelper;
 import com.aarcosg.copdhelp.service.COPDHelpService;
+import com.aarcosg.copdhelp.ui.fragment.AboutFragment;
 import com.aarcosg.copdhelp.ui.fragment.achievement.AchievementMainFragment;
 import com.aarcosg.copdhelp.ui.fragment.bmi.BMIMainFragment;
 import com.aarcosg.copdhelp.ui.fragment.exercise.ExerciseMainFragment;
@@ -32,14 +36,19 @@ import com.aarcosg.copdhelp.ui.fragment.scale.ScaleBORGFragment;
 import com.aarcosg.copdhelp.ui.fragment.scale.ScaleMMRCDyspneaFragment;
 import com.aarcosg.copdhelp.ui.fragment.smoke.SmokeMainFragment;
 import com.aarcosg.copdhelp.ui.fragment.video.VideoListFragment;
+import com.aarcosg.copdhelp.utils.Utils;
 import com.mikepenz.community_material_typeface_library.CommunityMaterial;
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.ExpandableDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 
 import javax.inject.Inject;
 
@@ -49,6 +58,9 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity implements MainView, HasComponent<MainComponent>, MyCOPDMainFragment.OnMyCOPDCardSelectedListener {
 
     private static final String TAG = MainActivity.class.getCanonicalName();
+    private static final int MODE_NORMAL_RUN = 0;
+    private static final int MODE_FIRST_RUN = 1;
+    private static final int MODE_UPGRADE = 2;
     public static final int MEDICAL_ATTENTION_MAIN_ID = 1;
     public static final int BMI_MAIN_ID = 2;
     public static final int MEDICINE_REMINDER_MAIN_ID = 3;
@@ -64,6 +76,11 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
     public static final int ACHIEVEMENTS_MAIN_ID = 13;
     public static final int VIDEOS_MAIN_ID = 14;
     public static final int MY_COPD_MAIN_ID = 15;
+    private static final int SETTINGS_MAIN_ID = 16;
+    private static final int PATIENT_EXPANDABLE_ID = 17;
+    private static final int DIAGNOSES_EXPANDABLE_ID = 18;
+    private static final int SCALES_EXPANDABLE_ID = 19;
+    private static final int ABOUT_APP_MAIN_ID = 20;
 
     @Inject
     COPDHelpService mCOPDHelpService;
@@ -81,6 +98,18 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        switch (checkFirstRun()){
+            case MODE_FIRST_RUN:
+                AppIntroActivity.launch(this);
+                Utils.getSharedPreferences(this)
+                        .edit()
+                        .putBoolean(Constants.PROPERTY_GET_DAILY_NOTIFICATIONS,true)
+                        .commit();
+                finish();
+                return;
+            case MODE_NORMAL_RUN: break;
+            case MODE_UPGRADE: break;
+        }
         initializeInjector();
         mMainPresenter.setView(this);
         setupBackgroundService();
@@ -162,9 +191,15 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
     }
 
     private void setupNavigationDrawer(final Bundle savedInstanceState) {
+        IconicsDrawable headerIcon = new IconicsDrawable(this,"faw_user_md")
+                .colorRes(android.R.color.white)
+                .backgroundColorRes(R.color.accent);
         AccountHeader accountHeader = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.nav_drawer_header)
+                .withProfileImagesClickable(false)
+                .withSelectionListEnabled(false)
+                .addProfiles(new ProfileDrawerItem().withName(getString(R.string.app_name)).withEmail(getString(R.string.app_name_subtitle)).withIcon(headerIcon))
                 .withSavedInstance(savedInstanceState)
                 .build();
         mDrawer = new DrawerBuilder()
@@ -176,22 +211,26 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 .withTranslucentStatusBar(true)
                 .withAccountHeader(accountHeader)
                 .addDrawerItems(
-                        //new SectionDrawerItem().withTitle(R.string.drawer_item_section_patient),
                         new PrimaryDrawerItem().withName(getString(R.string.my_copd)).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(MY_COPD_MAIN_ID)
-                        , new PrimaryDrawerItem().withName(getString(R.string.medical_attention)).withIcon(FontAwesome.Icon.faw_hospital_o).withIdentifier(MEDICAL_ATTENTION_MAIN_ID)
-                        , new PrimaryDrawerItem().withName(getString(R.string.nutrition)).withIcon(GoogleMaterial.Icon.gmd_restaurant_menu).withIdentifier(BMI_MAIN_ID)
-                        , new PrimaryDrawerItem().withName(getString(R.string.dose_reminder)).withIcon(GoogleMaterial.Icon.gmd_alarm).withIdentifier(MEDICINE_REMINDER_MAIN_ID)
-                        , new PrimaryDrawerItem().withName(getString(R.string.smoking)).withIcon(GoogleMaterial.Icon.gmd_smoke_free).withIdentifier(SMOKE_MAIN_ID)
-                        , new PrimaryDrawerItem().withName(getString(R.string.exercise)).withIcon(GoogleMaterial.Icon.gmd_directions_walk).withIdentifier(EXERCISE_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.guides)).withIcon(GoogleMaterial.Icon.gmd_local_library).withIdentifier(GUIDES_MAIN_ID)
-                        , new PrimaryDrawerItem().withName(getString(R.string.achievements)).withIcon(CommunityMaterial.Icon.cmd_trophy).withIdentifier(ACHIEVEMENTS_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.videos)).withIcon(GoogleMaterial.Icon.gmd_video_library).withIdentifier(VIDEOS_MAIN_ID)
-                        , new PrimaryDrawerItem().withName(getString(R.string.scale_mmrc)).withIcon(CommunityMaterial.Icon.cmd_ruler).withIdentifier(SCALE_MMRC_DYSPNEA_MAIN_ID)
-                        , new PrimaryDrawerItem().withName(getString(R.string.scale_borg)).withIcon(CommunityMaterial.Icon.cmd_ruler).withIdentifier(SCALE_BORG_MAIN_ID)
-                        , new PrimaryDrawerItem().withName(getString(R.string.copdps)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDPS_MAIN_ID).withSelectable(false)
-                        , new PrimaryDrawerItem().withName(getString(R.string.copdcat)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDCAT_MAIN_ID).withSelectable(false)
-                        , new PrimaryDrawerItem().withName(getString(R.string.bode)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDBODE_MAIN_ID).withSelectable(false)
-                        , new PrimaryDrawerItem().withName(getString(R.string.bodex)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDBODEX_MAIN_ID).withSelectable(false)
+                        , new ExpandableDrawerItem().withName(R.string.drawer_item_expandable_patient).withIcon(GoogleMaterial.Icon.gmd_person).withIdentifier(PATIENT_EXPANDABLE_ID).withSelectable(false).withSubItems(
+                                new SecondaryDrawerItem().withName(getString(R.string.dose_reminder)).withIcon(GoogleMaterial.Icon.gmd_alarm).withIdentifier(MEDICINE_REMINDER_MAIN_ID).withLevel(2)
+                                , new SecondaryDrawerItem().withName(getString(R.string.medical_attention)).withIcon(FontAwesome.Icon.faw_hospital_o).withIdentifier(MEDICAL_ATTENTION_MAIN_ID).withLevel(2)
+                                , new SecondaryDrawerItem().withName(getString(R.string.nutrition)).withIcon(GoogleMaterial.Icon.gmd_restaurant_menu).withIdentifier(BMI_MAIN_ID).withLevel(2)
+                                , new SecondaryDrawerItem().withName(getString(R.string.exercise)).withIcon(GoogleMaterial.Icon.gmd_directions_walk).withIdentifier(EXERCISE_MAIN_ID).withLevel(2)
+                                , new SecondaryDrawerItem().withName(getString(R.string.smoking)).withIcon(GoogleMaterial.Icon.gmd_smoke_free).withIdentifier(SMOKE_MAIN_ID).withLevel(2)
+                                , new SecondaryDrawerItem().withName(getString(R.string.achievements)).withIcon(CommunityMaterial.Icon.cmd_trophy).withIdentifier(ACHIEVEMENTS_MAIN_ID).withLevel(2))
+                        , new ExpandableDrawerItem().withName(R.string.drawer_item_expandable_diagnoses).withIcon(CommunityMaterial.Icon.cmd_stethoscope).withIdentifier(DIAGNOSES_EXPANDABLE_ID).withSelectable(false).withSubItems(
+                                new SecondaryDrawerItem().withName(getString(R.string.copdps)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDPS_MAIN_ID).withSelectable(false).withLevel(2)
+                                , new SecondaryDrawerItem().withName(getString(R.string.copdcat)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDCAT_MAIN_ID).withSelectable(false).withLevel(2)
+                                , new SecondaryDrawerItem().withName(getString(R.string.bode)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDBODE_MAIN_ID).withSelectable(false).withLevel(2)
+                                , new SecondaryDrawerItem().withName(getString(R.string.bodex)).withIcon(FontAwesome.Icon.faw_user_md).withIdentifier(COPDBODEX_MAIN_ID).withSelectable(false).withLevel(2))
+                        , new ExpandableDrawerItem().withName(R.string.drawer_item_expandable_scales).withIcon(CommunityMaterial.Icon.cmd_ruler).withIdentifier(SCALES_EXPANDABLE_ID).withSelectable(false).withSubItems(
+                                new SecondaryDrawerItem().withName(getString(R.string.scale_mmrc)).withIcon(CommunityMaterial.Icon.cmd_ruler).withIdentifier(SCALE_MMRC_DYSPNEA_MAIN_ID).withLevel(2)
+                                , new SecondaryDrawerItem().withName(getString(R.string.scale_borg)).withIcon(CommunityMaterial.Icon.cmd_ruler).withIdentifier(SCALE_BORG_MAIN_ID).withLevel(2))
+                        , new PrimaryDrawerItem().withName(getString(R.string.settings)).withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(SETTINGS_MAIN_ID).withSelectable(false)
+                        , new PrimaryDrawerItem().withName(getString(R.string.about_application)).withIcon(GoogleMaterial.Icon.gmd_info_outline).withIdentifier(ABOUT_APP_MAIN_ID)
                 )
                 .withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     if(drawerItem != null){
@@ -260,6 +299,14 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 setTitle(getString(R.string.scale_borg_title));
                 fragment = ScaleBORGFragment.newInstance();
                 break;
+            case ABOUT_APP_MAIN_ID:
+                setAppBarElevation(getResources().getDimension(R.dimen.toolbar_elevation));
+                setTitle(getString(R.string.about_application));
+                fragment = AboutFragment.newInstance();
+                break;
+            case SETTINGS_MAIN_ID:
+                SettingsActivity.launch(this);
+                break;
             case COPDPS_MAIN_ID:
                 COPDPSActivity.launch(this);
                 break;
@@ -272,9 +319,6 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
             case COPDBODEX_MAIN_ID:
                 COPDBODEXActivity.launch(this);
                 break;
-            default:
-                setTitle(getString(R.string.title_fragment_medical_attention));
-                fragment = MedicalAttentionMainFragment.newInstance();
         }
 
         if(fragment != null){
@@ -296,6 +340,30 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mAppBarLayout.setElevation(elevation);
         }
+    }
+
+    private int checkFirstRun() {
+        final String PREF_VERSION_CODE_KEY = "version_code";
+        final int DOESNT_EXIST = -1;
+        int res = MODE_NORMAL_RUN;
+        int currentVersionCode = BuildConfig.VERSION_CODE;
+
+        // Get saved version code
+        SharedPreferences prefs = Utils.getSharedPreferences(this);
+        int savedVersionCode = prefs.getInt(PREF_VERSION_CODE_KEY, DOESNT_EXIST);
+        // Check for first run or upgrade
+        if (currentVersionCode == savedVersionCode) {
+            // This is just a normal run
+        } else if (savedVersionCode == DOESNT_EXIST) {
+            //This is a new install
+            res = MODE_FIRST_RUN;
+        } else if (currentVersionCode > savedVersionCode) {
+            //This is an upgrade
+            res = MODE_UPGRADE;
+        }
+        // Update the shared preferences with the current version code
+        prefs.edit().putInt(PREF_VERSION_CODE_KEY, currentVersionCode).commit();
+        return res;
     }
 
     public static void launch(Activity activity) {

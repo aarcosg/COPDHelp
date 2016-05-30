@@ -27,8 +27,8 @@
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
-    <style name="DetailsCardBodyText.Bold" parent="DetailsCardBodyText">
-        <item name="android:textStyle">bold</item>
+    <style name="DetailsCardBodyText.Colored" parent="DetailsCardBodyText">
+        <item name="android:textColor">@color/primary</item>
     </style>
 
     <style name="Widget.AppCompat.Button.Small.Borderless" parent="Widget.AppCompat.Button.Small">

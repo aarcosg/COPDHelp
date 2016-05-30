@@ -5,8 +5,15 @@ import io.realm.annotations.PrimaryKey;
 
 public class User extends RealmObject{
 
+    public static final int GENRE_WOMAN = 0;
+    public static final int GENRE_MAN = 1;
+
     @PrimaryKey
     private Long id;
+    private Integer age;
+    private Integer genre;
+    private boolean smoker;
+    private Integer smokingYears;
     private Integer indexCOPDPS;
     private Integer indexCAT;
     private Integer indexBODE;
@@ -75,5 +82,37 @@ public class User extends RealmObject{
 
     public void setScaleBORG(Double scaleBORG) {
         this.scaleBORG = scaleBORG;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Integer getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Integer genre) {
+        this.genre = genre;
+    }
+
+    public boolean isSmoker() {
+        return smoker;
+    }
+
+    public void setSmoker(boolean smoker) {
+        this.smoker = smoker;
+    }
+
+    public Integer getSmokingYears() {
+        return smokingYears;
+    }
+
+    public void setSmokingYears(Integer smokingYears) {
+        this.smokingYears = smokingYears;
     }
 }

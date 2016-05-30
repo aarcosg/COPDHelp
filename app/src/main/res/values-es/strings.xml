@@ -516,5 +516,104 @@
     <string name="borg_scale">Borg</string>
     <string name="my_copd">Mi EPOC</string>
     <string name="title_fragment_my_copd">Mi EPOC</string>
+    <string name="drawer_item_expandable_patient">Paciente</string>
+    <string name="drawer_item_expandable_diagnoses">Diagnósticos</string>
+    <string name="drawer_item_expandable_scales">Escalas</string>
+    <string name="pref_title_version">Versión</string>
+    <string name="settings">Ajustes</string>
+    <string name="title_fragment_settings">Ajustes</string>
+    <string name="age_preference_message">Indique su edad</string>
+    <string name="title_age_preference">Edad</string>
+    <string name="about_application">Sobre la aplicación</string>
+    <string name="years">años</string>
+    <string name="title_genre_preference">Género</string>
+    <string name="woman">Mujer</string>
+    <string name="man">Hombre</string>
+    <string name="patient">Paciente</string>
+    <string name="title_send_anonymous_data_preference">Enviar datos anónimos</string>
+    <string name="send_anonymous_data_summary_yes">Sí, enviar datos anónimos para que sean tratados en estudios científicos con el fin de mejorar la calidad de vida de los pacientes.</string>
+    <string name="send_anonymous_data_summary_no">No enviar datos anónimos para que sean tratados en estudios científicos con el fin de mejorar la calidad de vida de los pacientes.</string>
+    <string name="title_get_daily_form_notifications_preference">Recibir recordatorios</string>
+    <string name="get_daily_form_notifications_yes">Quiero que la aplicación me recuerde que tengo que registrar mi actividad diaria.</string>
+    <string name="get_daily_form_notifications_no">No quiero que la aplicación me recuerde que tengo que registrar mi actividad diaria.</string>
+    <string name="title_is_smoker_preference">¿Es fumador/a?</string>
+    <string name="is_smoker_yes">Sí, soy fumador/a o lo he sido en el pasado.</string>
+    <string name="is_smoker_no">No soy fumador/a ni lo he sido en el pasado.</string>
+    <string name="title_smoking_years_preference">Años fumando</string>
+    <string name="smoking_years_preference_message">Indique el número de años que lleva fumando</string>
+    <string name="app_name_subtitle">Vivir mejor con EPOC</string>
+    <string name="application">Aplicación</string>
+    <string name="appintro_slide1_title">Bienvenido/a</string>
+    <string name="appintro_slide1_description"><b>Ayuda EPOC</b> es un asistente destinado a los pacientes de EPOC cuyo objetivo principal es permiterles mejorar la adherencia al tratamiento y el autocontrol de la enfermedad.</string>
+    <string name="appintro_slide2_title">Guías y vídeos</string>
+    <string name="appintro_slide2_description">La aplicación pone a dispoción del paciente multitud de recursos visuales y de lectura para que aprenda los conceptos fundamentales de la EPOC.</string>
+    <string name="appintro_slide3_title">Controla la EPOC</string>
+    <string name="appintro_slide3_description">
+        Lleva un control total sobre los factores más importantes que influyen en la EPOC. Observa tus progresos y mejora el autocontrol de la EPOC minuto a minuto.
+    </string>
+    <string name="appintro_slide4_title">Desbloquea logros</string>
+    <string name="appintro_slide4_description">Desbloquea los logros de ejercicio y tabaquismo para que vivas mejor con la EPOC.\n<b>¡Alcanza el podio!</b></string>
+    <string name="appintro_slide5_title">Diagnósticos</string>
+    <string name="appintro_slide5_description">Utiliza las herramientas, escalas e indices para medir en primera instancia el grado de EPOC. <b>Consulta siempre a tu médico los resultados obtenidos</b>.</string>
+    <string name="appintro_slide6_title">Comenzar</string>
+    <string name="appintro_slide6_description">Deseamos que esta aplicación le ayude en su día a día y mejore en gran medida su calidad de vida.</string>
+    <string name="about_copdhelp_title">Acerca de Ayuda EPOC</string>
+    <string name="about_copdhelp_introduction">Introducción</string>
+    <string name="about_copdhelp_introduction_desc">
+        <b>Ayuda EPOC</b> es un asistente destinado a los pacientes de EPOC cuyo objetivo principal es permiterles mejorar la adherencia al tratamiento y el autocontrol de la enfermedad mediante los recursos que se describen a continuación:\n
+        {gmd-check} Guías: La aplicación dispone de varias guías que ayudarán al paciente a familiarizarse con la EPOC y conocer los aspectos fundamentales.\n
+        {gmd-check} Vídeos: Se han seleccionado distintos vídeos en los que se muestran casos reales de la vida diaria de pacientes con EPOC, cómo realizar los ejercicios recomendados, y cómo utilizar los inhaladores, entre otros.\n
+        {gmd-check} Registro y control total sobre aspectos fundamentales de la EPOC: El paciente puede llevar un registro diario de exacerbaciones, revisiones médicas ordinarias, índice de masa corporal, ejercicio realizado, tabaco, etc. Todos estos datos se pueden ver cómodamente mediante las gráficas semanales, mensuales y anuales integradas en la aplicación, que a su vez muestran el progreso respecto a la semana, mes o año anterior.\n
+        {gmd-check} Recordatorios de dosis: Se ofrece la posibilidad de establecer alarmas fácilmente para que la aplicación avise al paciente cuando tenga que tomarse una dosis de su medicación.\n
+        {gmd-check} Logros: El paciente puede desbloquear hasta 8 logros, 4 relacionados con el ejercicio físico y otros 4 relacionados con el tabaquismo. Estos conceptos de gamificación incentivan al paciente y pueden mejorar la adherencia al tratamiento de la EPOC.\n
+        {gmd-check} Diagnósticos: La aplicación integra 4 índices relacionados con el diagnóstico de la EPOC, que son: COPD-PS, CAT, BODE y BODEx. El paciente puede obtener un diagnóstico del grado de EPOC mediante la realización de los correspondientes cuestioanrios.\n
+        {gmd-check} Escalas: Del mismo modo que los diagnóstico, se incluyen dos escalas: la escala de disnea mMRC y la escala de disnea de Borg.\n
+        <b>Gracias por la confianza depositada en esta aplicación.</b>
+    </string>
+    <string name="about_copdhelp_responsibility">Responsabilidad</string>
+    <string name="about_copdhelp_responsibility_desc">
+        Los contenidos incorporados en esta aplicación no sustituyen el consejo médico y no deben ser considerados bajo ninguna circunstancia reemplazos del mismo. Debido a los constantes avances científicos que se producen en el ámbito del diagnóstico y tratamiento de la EPOC, los autores de esta aplicación no garantizan que la información ofrecida sea completa y precisa, por lo que se exime a los autores de cualquier responsabilidad derivada del uso de la aplicación. Esta aplicación debe ser utilizada como una guía y los profesionales médicos deben utilizar el juicio clínico e individualizar el tratamiento para cada paciente. Para preguntas relacionadas con su enfermedad, síntomas y tratamiento, usted debe buscar el consejo de un profesional de la salud.
+    </string>
+    <string name="about_copdhelp_privacy">Privacidad</string>
+    <string name="about_copdhelp_privacy_desc">
+        Todos los datos registrados de los usuaros son almacenados localmente en el dispositivo móvil. En ningún momento se envían a servidores externos sin el consentimiento previo del usuario.\n
+        La conexión a internet solamente es necesaria para mostrar y reproducir los vídeos.
+    </string>
+    <string name="about_copdhelp_authors">Autores</string>
+    <string name="about_copdhelp_authors_desc">
+        - <b>Álvaro Arcos García</b>. Encargado del desarrollo completo de la aplicación, desde la idea hasta la solución final, y de la adaptación y edición de los contenidos.\n
+        {faw_linkedin_square} https://es.linkedin.com/in/alvaroarcos \n
+        {faw_twitter_square} https://twitter.com/aarcosg \n
+        {faw_github_square} https://github.com/aarcosg \n
+    </string>
+    <string name="about_copdhelp_sources">Fuentes consultadas</string>
+    <string name="about_copdhelp_sources_desc" formatted="false">
+        La información que ofrece la aplicación está basada en las siguientes fuentes:\n
+        - Manual para personas con EPOC. Vivir con EPOC. Disponible en: http://www.juntadeandalucia.es/salud/sites/csalud/contenidos/Informacion_General/p_3_p_3_procesos_asistenciales_integrados/pai/epoc_v3 \n
+        - Manual sobre rehabilitación respiratoria para personas con EPOC. Disponible en: http://www.juntadeandalucia.es/agenciadecalidadsanitaria/reto-msspa/docs/Manual_de_Rehabilitacion_Respiratoria_para_personas_con_EPOC.pdf \n
+        - Enfermedad Pulmonar Obstructiva Crónica. Proceso Asistencial Integrado. Disponible en: http://www.juntadeandalucia.es/agenciadecalidadsanitaria/reto-msspa/docs/enfermedad_pulmonar_obstructiva_cronica.pdf \n
+        - CuidaEPOC. Soporte en el cuidado del paciente con EPOC. Disponible en: http://www.juntadeandalucia.es/agenciadecalidadsanitaria/reto-msspa/docs/manejo_de%20_la%20_terapia%20_inhalada.pdf \n
+        - Conozca cómo vivir con la EPOC. Disponible en: http://www.juntadeandalucia.es/agenciadecalidadsanitaria/reto-msspa/docs/Guia-pacientes.pdf \n
+        - COPD Assessment Test (CAT). Disponible en: http://www.thoracic.org/members/assemblies/assemblies/srn/questionaires/copd.php y http://www.catestonline.org/english/index_Spain.htm \n
+        - Validación de la versión traducida del Chronic Obstructive Pulmonary Disease-Population Screener (COPD-PS). Su utilidad y la del FEV1/FEV6 para el diagnóstico de enfermedad pulmonar obstructiva crónica. Disponible en: http://www.elsevier.es/es-revista-medicina-clinica-2-articulo-validacion-version-traducida-del-ichronic-90157453 \n
+        - The MRC breathlessness scale. Disponible en: http://occmed.oxfordjournals.org/content/58/3/226.full \n
+        - Validation of chronic obstructive pulmonary disease recording in the Clinical Practice Research Datalink (CPRD-GOLD). Disponible en: http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4120321/ \n
+        - Guía alimentaria para pacientes con EPOC. Disponible en: http://www.ms.gba.gov.ar/sitios/hcetrangolo/files/2013/02/Guia_EPOC.pdf \n
+        - Atención integral al paciente con EPOC. Guía de práctica clínica. Disponible en: http://www.guiasalud.es/GPC/GPC_468_EPOC_AP_AE.pdf \n
+        - Development and validation of a model to predict the risk of exacerbations in chronic obstructive pulmonary disease. Disponible en: http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3797610/ \n
+        - Predicting frequent COPD exacerbations using primary care data. Disponible en: http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4644169/ \n
+    </string>
+    <string name="about_copdhelp_image_resources">Recursos gráficos</string>
+    <string name="about_copdhelp_image_resources_desc">
+        Los recursos gráficos utilizados en la aplicación han sido extráidos principalmente de las fuentes consultadas provenientes de la Junta de Andalucía. Todos los derechos corresponden a sus respectivos autores.\n
+        Las imágenes utilizadas para los logros han sido diseñadas por Freepik.com y modificadas por los autores de la aplicación.
+        El resto de imágenes tienen licencia Creative Commons CC0.
+    </string>
+    <string name="about_copdhelp_contact">Contacto</string>
+    <string name="about_copdhelp_contact_desc">
+        Si detecta algún riesgo, incidente o error en la información ofrecida por la aplicación, o desea realizar alguna consulta, puede contactar conmigo enviando un correo electrónico a la dirección ayudaepocapp@gmail.com.
+    </string>
+    <string name="reminder_daily_form_notification">Introduzca su actividad diaria</string>
+    <string name="reminder_daily_form_notification_subtext">Recuerde dedicar 5 minutos a introducir su actividad diaria. Puede desactivar estas notificaciones en los ajustes de la aplicación.</string>
 
 </resources>

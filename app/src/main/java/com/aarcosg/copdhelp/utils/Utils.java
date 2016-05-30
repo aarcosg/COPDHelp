@@ -5,11 +5,13 @@ import android.Manifest;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -40,6 +42,10 @@ import rx.schedulers.Schedulers;
 public class Utils {
 
     private static final String TAG = Utils.class.getCanonicalName();
+
+    public static SharedPreferences getSharedPreferences(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+    }
 
     public static void hideKeyboard(final View view){
         view.post(() -> {
@@ -262,5 +268,14 @@ public class Utils {
     public static YouTube createDefaultYouTube(String applicationName) {
         return new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), request -> {})
                 .setApplicationName(applicationName).build();
+    }
+
+    public static String getAppVersion(Context context){
+        try {
+            return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }
