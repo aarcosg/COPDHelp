@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 
 import com.aarcosg.copdhelp.data.realm.entity.BMI;
 import com.aarcosg.copdhelp.utils.PrimaryKeyFactory;
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 
 import java.util.Calendar;
 
@@ -26,7 +25,7 @@ public class BMIInteractorImpl implements BMIInteractor {
     @Inject
     public BMIInteractorImpl(){}
 
-    @RxLogObservable
+
     @Override
     public Observable<RealmResults<BMI>> realmFindAll(
             @Nullable Func1<RealmQuery<BMI>, RealmQuery<BMI>> predicate
@@ -45,7 +44,7 @@ public class BMIInteractorImpl implements BMIInteractor {
         return Observable.just(results);
     }
 
-    @RxLogObservable
+
     @SuppressWarnings("unchecked")
     @Override
     public Observable<BMI> realmFindById(Long id) {
@@ -53,7 +52,7 @@ public class BMIInteractorImpl implements BMIInteractor {
                 .equalTo("id",id).findFirst());
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<BMI> realmCreate(BMI bmi) {
         Calendar calendar = Calendar.getInstance();
@@ -74,7 +73,7 @@ public class BMIInteractorImpl implements BMIInteractor {
         return Observable.just(realmBMI);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<BMI> realmUpdate(Long id, BMI bmi) {
         Calendar calendar = Calendar.getInstance();
@@ -95,7 +94,7 @@ public class BMIInteractorImpl implements BMIInteractor {
         return Observable.just(realmBMI);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<BMI> realmRemove(Long id) {
         getRealm().beginTransaction();

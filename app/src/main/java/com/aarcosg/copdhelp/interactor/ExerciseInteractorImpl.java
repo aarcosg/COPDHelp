@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 
 import com.aarcosg.copdhelp.data.realm.entity.Exercise;
 import com.aarcosg.copdhelp.utils.PrimaryKeyFactory;
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 
 import java.util.Calendar;
 
@@ -26,7 +25,7 @@ public class ExerciseInteractorImpl implements ExerciseInteractor {
     @Inject
     public ExerciseInteractorImpl(){}
 
-    @RxLogObservable
+
     @Override
     public Observable<RealmResults<Exercise>> realmFindAll(
             @Nullable Func1<RealmQuery<Exercise>, RealmQuery<Exercise>> predicate
@@ -45,7 +44,7 @@ public class ExerciseInteractorImpl implements ExerciseInteractor {
         return Observable.just(results);
     }
 
-    @RxLogObservable
+
     @SuppressWarnings("unchecked")
     @Override
     public Observable<Exercise> realmFindById(Long id) {
@@ -53,7 +52,7 @@ public class ExerciseInteractorImpl implements ExerciseInteractor {
                 .equalTo("id",id).findFirst());
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<Exercise> realmCreate(Exercise exercise) {
         Calendar calendar = Calendar.getInstance();
@@ -74,7 +73,7 @@ public class ExerciseInteractorImpl implements ExerciseInteractor {
         return Observable.just(realmExercise);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<Exercise> realmUpdate(Long id, Exercise exercise) {
         Calendar calendar = Calendar.getInstance();
@@ -95,7 +94,7 @@ public class ExerciseInteractorImpl implements ExerciseInteractor {
         return Observable.just(realmExercise);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<Exercise> realmRemove(Long id) {
         getRealm().beginTransaction();

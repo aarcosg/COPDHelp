@@ -102,6 +102,9 @@
             android:name=".service.COPDHelpService"
             android:exported="false" />
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="b0b2ed5db0e9494a966614032ad539d3ec02c360" />
     </application>
 
 </manifest>

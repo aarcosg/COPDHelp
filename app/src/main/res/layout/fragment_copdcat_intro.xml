@@ -37,18 +37,17 @@
 
     </LinearLayout>
 
-    <com.bluejamesbond.text.DocumentView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="4"
-        app:documentView_offsetY="@dimen/wide_space"
-        app:documentView_cacheConfig="auto_quality"
-        app:documentView_insetPadding="@dimen/wide_space"
-        app:documentView_text="@string/copdcat_intro_description"
-        app:documentView_textAlignment="justified"
-        app:documentView_textColor="@android:color/white"
-        app:documentView_textFormat="plain"
-        app:documentView_textSize="16sp" />
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:textSize="16sp"
+        android:text="@string/copdcat_intro_description"/>
 
     <View
         android:layout_width="match_parent"

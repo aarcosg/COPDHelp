@@ -25,18 +25,17 @@
         style="@style/TextAppearance.AppCompat.Display4"
         android:fontFamily="sans-serif-light" />
 
-    <com.bluejamesbond.text.DocumentView
+    <TextView
         android:id="@+id/result_description_tv"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="4"
-        app:documentView_offsetY="@dimen/wide_space"
-        app:documentView_cacheConfig="auto_quality"
-        app:documentView_insetPadding="@dimen/wide_space"
-        app:documentView_textAlignment="justified"
-        app:documentView_textColor="@android:color/white"
-        app:documentView_textFormat="plain"
-        app:documentView_textSize="18sp" />
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"/>
 
     <View
         android:layout_width="match_parent"

@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 
 import com.aarcosg.copdhelp.data.realm.entity.Medicine;
 import com.aarcosg.copdhelp.utils.PrimaryKeyFactory;
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 
 import java.util.Calendar;
 
@@ -26,7 +25,7 @@ public class MedicineInteractorImpl implements MedicineInteractor {
     @Inject
     public MedicineInteractorImpl(){}
 
-    @RxLogObservable
+
     @Override
     public Observable<RealmResults<Medicine>> realmFindAll(
             @Nullable Func1<RealmQuery<Medicine>, RealmQuery<Medicine>> predicate
@@ -45,7 +44,7 @@ public class MedicineInteractorImpl implements MedicineInteractor {
         return Observable.just(results);
     }
 
-    @RxLogObservable
+
     @SuppressWarnings("unchecked")
     @Override
     public Observable<Medicine> realmFindById(Long id) {
@@ -53,7 +52,7 @@ public class MedicineInteractorImpl implements MedicineInteractor {
                 .equalTo("id",id).findFirst());
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<Medicine> realmCreate(Medicine medicine) {
         Calendar calendar = Calendar.getInstance();
@@ -73,7 +72,7 @@ public class MedicineInteractorImpl implements MedicineInteractor {
         return Observable.just(realmMedicine);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<Medicine> realmUpdate(Long id, Medicine medicine) {
         Calendar calendar = Calendar.getInstance();
@@ -93,7 +92,7 @@ public class MedicineInteractorImpl implements MedicineInteractor {
         return Observable.just(realmMedicine);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<Medicine> realmRemove(Long id) {
         getRealm().beginTransaction();

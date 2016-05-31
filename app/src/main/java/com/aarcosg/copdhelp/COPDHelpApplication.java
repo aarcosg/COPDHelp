@@ -7,6 +7,8 @@ import com.aarcosg.copdhelp.di.components.ApplicationComponent;
 import com.aarcosg.copdhelp.di.components.DaggerApplicationComponent;
 import com.aarcosg.copdhelp.di.modules.ApplicationModule;
 import com.aarcosg.copdhelp.interactor.UserInteractor;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 public class COPDHelpApplication extends MultiDexApplication {
 

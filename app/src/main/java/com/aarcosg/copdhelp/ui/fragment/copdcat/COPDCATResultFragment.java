@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.aarcosg.copdhelp.R;
-import com.bluejamesbond.text.DocumentView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -23,7 +22,7 @@ public class COPDCATResultFragment extends Fragment {
     @Bind(R.id.result_tv)
     TextView mResultTv;
     @Bind(R.id.result_description_tv)
-    DocumentView mResultDescriptionTv;
+    TextView mResultDescriptionTv;
 
     public static COPDCATResultFragment newInstance(int answerPoints) {
         COPDCATResultFragment fragment = new COPDCATResultFragment();

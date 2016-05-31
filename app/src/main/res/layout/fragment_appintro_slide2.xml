@@ -38,13 +38,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                app:ico_color="@color/copdps_fragment_background"
+                app:ico_color="@color/accent"
                 app:ico_icon="gmd_local_library"
-                app:ico_size="120dp"
+                app:ico_size="100dp"
                 app:ico_background_color="@color/md_white_1000"
-                app:ico_offset_x="5dp"
-                app:ico_offset_y="5dp"
-                app:ico_padding="20dp"
+                app:ico_padding="30dp"
                 app:civ_border_color="@android:color/transparent"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -56,9 +54,7 @@
                 app:ico_icon="gmd_video_library"
                 app:ico_size="100dp"
                 app:ico_background_color="@color/md_white_1000"
-                app:ico_offset_x="5dp"
-                app:ico_offset_y="5dp"
-                app:ico_padding="20dp"
+                app:ico_padding="35dp"
                 app:civ_border_color="@android:color/transparent"/>
 
         </LinearLayout>

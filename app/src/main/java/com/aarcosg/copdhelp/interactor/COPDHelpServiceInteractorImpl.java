@@ -40,7 +40,7 @@ public class COPDHelpServiceInteractorImpl implements COPDHelpServiceInteractor 
         return builder;
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<List<LocationSampleFit>> queryLocationsToGoogleFit() {
 
@@ -63,7 +63,7 @@ public class COPDHelpServiceInteractorImpl implements COPDHelpServiceInteractor 
                         .observeOn(AndroidSchedulers.mainThread()));
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<List<ActivitySegmentFit>> queryActivitiesToGoogleFit() {
 
@@ -98,7 +98,7 @@ public class COPDHelpServiceInteractorImpl implements COPDHelpServiceInteractor 
         mPrefs.edit().putLong(Constants.PROPERTY_LAST_LOCATION_TIME_SENT,new Date().getTime()).commit();
     }
 
-    @RxLogObservable
+
     private void uploadLocationsToHermesCitizen(ItemsList<LocationSampleFit> items){
         mRxNetwork.checkInternetConnection()
             .andThen(mHermesCitizenApi.uploadLocations(items)
@@ -112,7 +112,7 @@ public class COPDHelpServiceInteractorImpl implements COPDHelpServiceInteractor 
                 throwable -> Log.e(TAG,"Locations not uploaded to Hermes Citizen server"));
     }
 
-    @RxLogObservable
+
     private void uploadLocationsToZtreamy(ItemsList<LocationSampleFit> items){
         Map<String,Object> map = new HashMap<>(1);
         map.put(ZtreamyApi.EVENT_TYPE_LOCATIONS,items.getItems());
@@ -144,7 +144,7 @@ public class COPDHelpServiceInteractorImpl implements COPDHelpServiceInteractor 
         mPrefs.edit().putLong(Constants.PROPERTY_LAST_ACTIVITY_TIME_SENT,new Date().getTime()).commit();
     }
 
-    @RxLogObservable
+
     private void uploadActivitiesToHermesCitizen(ItemsList<ActivitySegmentFit> items){
         mRxNetwork.checkInternetConnection()
                 .andThen(mHermesCitizenApi.uploadActivities(items)
@@ -158,7 +158,7 @@ public class COPDHelpServiceInteractorImpl implements COPDHelpServiceInteractor 
                 throwable -> Log.e(TAG,"Activities not uploaded to Hermes Citizen server"));
     }
 
-    @RxLogObservable
+
     private void uploadActivitiesToZtreamy(ItemsList<ActivitySegmentFit> items){
         Map<String,Object> map = new HashMap<>(1);
         map.put(ZtreamyApi.EVENT_TYPE_ACTIVITIES,items.getItems());

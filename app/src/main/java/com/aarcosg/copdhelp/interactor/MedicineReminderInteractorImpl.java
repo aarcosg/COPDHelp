@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 
 import com.aarcosg.copdhelp.data.realm.entity.MedicineReminder;
 import com.aarcosg.copdhelp.utils.PrimaryKeyFactory;
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 
 import java.util.Calendar;
 
@@ -26,7 +25,7 @@ public class MedicineReminderInteractorImpl implements MedicineReminderInteracto
     @Inject
     public MedicineReminderInteractorImpl(){}
 
-    @RxLogObservable
+
     @Override
     public Observable<RealmResults<MedicineReminder>> realmFindAll(
             @Nullable Func1<RealmQuery<MedicineReminder>, RealmQuery<MedicineReminder>> predicate
@@ -45,7 +44,7 @@ public class MedicineReminderInteractorImpl implements MedicineReminderInteracto
         return Observable.just(results);
     }
 
-    @RxLogObservable
+
     @SuppressWarnings("unchecked")
     @Override
     public Observable<MedicineReminder> realmFindById(Long id) {
@@ -53,7 +52,7 @@ public class MedicineReminderInteractorImpl implements MedicineReminderInteracto
                 .equalTo("id",id).findFirst());
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<MedicineReminder> realmCreate(MedicineReminder medicineReminder) {
         Calendar now = Calendar.getInstance();
@@ -79,7 +78,7 @@ public class MedicineReminderInteractorImpl implements MedicineReminderInteracto
         return Observable.just(realmMedicineReminder);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<MedicineReminder> realmUpdate(Long id, MedicineReminder medicineReminder) {
         Calendar now = Calendar.getInstance();
@@ -104,7 +103,7 @@ public class MedicineReminderInteractorImpl implements MedicineReminderInteracto
         return Observable.just(realmMedicineReminder);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<MedicineReminder> realmRemove(Long id) {
         getRealm().beginTransaction();
@@ -115,7 +114,7 @@ public class MedicineReminderInteractorImpl implements MedicineReminderInteracto
         return Observable.just(realmMedicineReminder);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<MedicineReminder> realmUpdateMedicineReminderState(Long id, boolean enable) {
         getRealm().beginTransaction();

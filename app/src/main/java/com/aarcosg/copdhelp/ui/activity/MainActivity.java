@@ -49,6 +49,7 @@ import com.mikepenz.materialdrawer.model.ExpandableDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import javax.inject.Inject;
 
@@ -128,11 +129,11 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
         if(intent.hasExtra(RemindersHelper.EXTRA_ID) && intent.hasExtra(RemindersHelper.EXTRA_NOTIFICATION_ID)){
             ((NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE))
                     .cancel(intent.getIntExtra(RemindersHelper.EXTRA_NOTIFICATION_ID,1));
-            mDrawer.setSelection(MEDICINE_REMINDER_MAIN_ID,true);
+            this.openFragment(MEDICINE_REMINDER_MAIN_ID);
         } else if (intent.hasExtra(AchievementsHelper.EXTRA_ID) && intent.hasExtra(AchievementsHelper.EXTRA_NOTIFICATION_ID)){
             ((NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE))
                     .cancel(intent.getIntExtra(AchievementsHelper.EXTRA_NOTIFICATION_ID,1));
-            mDrawer.setSelection(ACHIEVEMENTS_MAIN_ID,true);
+            this.openFragment(ACHIEVEMENTS_MAIN_ID);
             AchievementActivity.launch(this,intent.getLongExtra(AchievementsHelper.EXTRA_ID,0));
         }
     }
@@ -176,7 +177,23 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
 
     @Override
     public void openFragment(int fragmentId) {
-        mDrawer.setSelection(fragmentId,true);
+        boolean found = false;
+        for(IDrawerItem item : mDrawer.getDrawerItems()){
+            if(item instanceof ExpandableDrawerItem){
+                ExpandableDrawerItem expandable = (ExpandableDrawerItem) item;
+                for(IDrawerItem subitem : expandable.getSubItems()){
+                    if(subitem.getIdentifier() == fragmentId){
+                        mDrawer.getAdapter().expand(mDrawer.getPosition(expandable));
+                        mDrawer.setSelection(subitem,true);
+                        found = true;
+                        break;
+                    }
+                }
+                if(found){
+                    break;
+                }
+            }
+        }
     }
 
     private void setupToolbar() {
@@ -210,6 +227,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 .withDisplayBelowStatusBar(false)
                 .withTranslucentStatusBar(true)
                 .withAccountHeader(accountHeader)
+                .withShowDrawerOnFirstLaunch(true)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(getString(R.string.my_copd)).withIcon(GoogleMaterial.Icon.gmd_home).withIdentifier(MY_COPD_MAIN_ID)
                         , new PrimaryDrawerItem().withName(getString(R.string.guides)).withIcon(GoogleMaterial.Icon.gmd_local_library).withIdentifier(GUIDES_MAIN_ID)

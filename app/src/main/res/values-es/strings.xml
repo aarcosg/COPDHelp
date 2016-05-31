@@ -150,7 +150,6 @@
     <string name="next_medicine_dose">Próxima dosis:</string>
     <string name="take_every">Tomar cada</string>
     <string name="medicine_frecuency">Cada: %1$s</string>
-    <string name="medicine">Medicamento</string>
     <string name="hours">horas</string>
     <string name="first_take">Primera toma</string>
     <string name="medicine_reminder">Recordatorio de medicamentos</string>
@@ -615,5 +614,6 @@
     </string>
     <string name="reminder_daily_form_notification">Introduzca su actividad diaria</string>
     <string name="reminder_daily_form_notification_subtext">Recuerde dedicar 5 minutos a introducir su actividad diaria. Puede desactivar estas notificaciones en los ajustes de la aplicación.</string>
+    <string name="medication">Medicamento</string>
 
 </resources>

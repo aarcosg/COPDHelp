@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 
 import com.aarcosg.copdhelp.data.realm.entity.Smoke;
 import com.aarcosg.copdhelp.utils.PrimaryKeyFactory;
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 
 import java.util.Calendar;
 
@@ -26,7 +25,7 @@ public class SmokeInteractorImpl implements SmokeInteractor {
     @Inject
     public SmokeInteractorImpl(){}
 
-    @RxLogObservable
+
     @Override
     public Observable<RealmResults<Smoke>> realmFindAll(
             @Nullable Func1<RealmQuery<Smoke>, RealmQuery<Smoke>> predicate
@@ -45,7 +44,7 @@ public class SmokeInteractorImpl implements SmokeInteractor {
         return Observable.just(results);
     }
 
-    @RxLogObservable
+
     @SuppressWarnings("unchecked")
     @Override
     public Observable<Smoke> realmFindById(Long id) {
@@ -53,7 +52,7 @@ public class SmokeInteractorImpl implements SmokeInteractor {
                 .equalTo("id",id).findFirst());
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<Smoke> realmCreate(Smoke smoke) {
         Calendar calendar = Calendar.getInstance();
@@ -72,7 +71,7 @@ public class SmokeInteractorImpl implements SmokeInteractor {
         return Observable.just(realmSmoke);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<Smoke> realmUpdate(Long id, Smoke smoke) {
         Calendar calendar = Calendar.getInstance();
@@ -91,7 +90,7 @@ public class SmokeInteractorImpl implements SmokeInteractor {
         return Observable.just(realmSmoke);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<Smoke> realmRemove(Long id) {
         getRealm().beginTransaction();
