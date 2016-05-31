@@ -11,6 +11,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 
 import com.aarcosg.copdhelp.BuildConfig;
@@ -95,6 +96,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
 
     private MainComponent mMainComponent;
     private Drawer mDrawer;
+    private boolean mShowMyCOPDBeforeExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,6 +185,7 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                 ExpandableDrawerItem expandable = (ExpandableDrawerItem) item;
                 for(IDrawerItem subitem : expandable.getSubItems()){
                     if(subitem.getIdentifier() == fragmentId){
+                        mShowMyCOPDBeforeExit = true;
                         mDrawer.getAdapter().expand(mDrawer.getPosition(expandable));
                         mDrawer.setSelection(subitem,true);
                         found = true;
@@ -193,6 +196,17 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
                     break;
                 }
             }
+        }
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK && isTaskRoot() && mShowMyCOPDBeforeExit) {
+            mShowMyCOPDBeforeExit = false;
+            mDrawer.setSelection(MY_COPD_MAIN_ID,true);
+            return true;
+        }
+        else {
+            return super.onKeyDown(keyCode, event);
         }
     }
 

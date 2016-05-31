@@ -1,6 +1,5 @@
 package com.aarcosg.copdhelp.ui.fragment;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,7 +31,6 @@ public class SettingsFragment extends PreferenceFragment {
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
 
-    private Context mContext;
     private SharedPreferences mPrefs;
     private Realm mRealm;
     private User mUser;
@@ -52,15 +50,9 @@ public class SettingsFragment extends PreferenceFragment {
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mContext = context;
-    }
-
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPrefs = Utils.getSharedPreferences(mContext);
+        mPrefs = Utils.getSharedPreferences(getActivity().getApplicationContext());
         mRealm = getRealm();
         mUser = mRealm.where(User.class).findFirst();
 
@@ -117,7 +109,7 @@ public class SettingsFragment extends PreferenceFragment {
 
         mDailyFormNotificationsPreference = (SwitchPreference) findPreference(Constants.PROPERTY_GET_DAILY_NOTIFICATIONS);
 
-        findPreference(Constants.PROPERTY_APP_VERSION).setSummary("v. " + Utils.getAppVersion(mContext));
+        findPreference(Constants.PROPERTY_APP_VERSION).setSummary("v. " + Utils.getAppVersion(getActivity().getApplicationContext()));
 
     }
 
@@ -148,7 +140,7 @@ public class SettingsFragment extends PreferenceFragment {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mToolbar.setElevation(getResources().getDimension(R.dimen.toolbar_elevation));
         }
-        SettingsActivity activity = (SettingsActivity) mContext;
+        SettingsActivity activity = (SettingsActivity) getActivity();
         activity.setSupportActionBar(mToolbar);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
