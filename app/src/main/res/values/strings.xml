@@ -563,14 +563,14 @@
     <string name="about_copdhelp_title">Acerca de Ayuda EPOC</string>
     <string name="about_copdhelp_introduction">Introducción</string>
     <string name="about_copdhelp_introduction_desc">
-        <b>Ayuda EPOC</b> es un asistente destinado a los pacientes de EPOC cuyo objetivo principal es permiterles mejorar la adherencia al tratamiento y el autocontrol de la enfermedad mediante los recursos que se describen a continuación:\n
+        <b>Ayuda EPOC</b> es un asistente destinado a los pacientes de EPOC cuyo objetivo principal es permitirles mejorar la adherencia al tratamiento y el autocontrol de la enfermedad mediante los recursos que se describen a continuación:\n
         {gmd-check} Guías: La aplicación dispone de varias guías que ayudarán al paciente a familiarizarse con la EPOC y conocer los aspectos fundamentales.\n
         {gmd-check} Vídeos: Se han seleccionado distintos vídeos en los que se muestran casos reales de la vida diaria de pacientes con EPOC, cómo realizar los ejercicios recomendados, y cómo utilizar los inhaladores, entre otros.\n
         {gmd-check} Registro y control total sobre aspectos fundamentales de la EPOC: El paciente puede llevar un registro diario de exacerbaciones, revisiones médicas ordinarias, índice de masa corporal, ejercicio realizado, tabaco, etc. Todos estos datos se pueden ver cómodamente mediante las gráficas semanales, mensuales y anuales integradas en la aplicación, que a su vez muestran el progreso respecto a la semana, mes o año anterior.\n
         {gmd-check} Recordatorios de dosis: Se ofrece la posibilidad de establecer alarmas fácilmente para que la aplicación avise al paciente cuando tenga que tomarse una dosis de su medicación.\n
         {gmd-check} Logros: El paciente puede desbloquear hasta 8 logros, 4 relacionados con el ejercicio físico y otros 4 relacionados con el tabaquismo. Estos conceptos de gamificación incentivan al paciente y pueden mejorar la adherencia al tratamiento de la EPOC.\n
-        {gmd-check} Diagnósticos: La aplicación integra 4 índices relacionados con el diagnóstico de la EPOC, que son: COPD-PS, CAT, BODE y BODEx. El paciente puede obtener un diagnóstico del grado de EPOC mediante la realización de los correspondientes cuestioanrios.\n
-        {gmd-check} Escalas: Del mismo modo que los diagnóstico, se incluyen dos escalas: la escala de disnea mMRC y la escala de disnea de Borg.\n
+        {gmd-check} Diagnósticos: La aplicación integra 4 índices relacionados con el diagnóstico de la EPOC, que son: COPD-PS, CAT, BODE y BODEx. El paciente puede obtener un diagnóstico del grado de EPOC mediante la realización de los correspondientes cuestionarios.\n
+        {gmd-check} Escalas: Del mismo modo que los diagnósticos, se incluyen dos escalas: la escala de disnea mMRC y la escala de disnea de Borg.\n
         <b>Gracias por la confianza depositada en esta aplicación.</b>
     </string>
     <string name="about_copdhelp_responsibility">Responsabilidad</string>
