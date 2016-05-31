@@ -74,6 +74,7 @@ public class RemindersHelper {
 
         Intent takeMedicationIntent = new Intent(RemindersHelper.ACTION_TAKE_MEDICATION);
         takeMedicationIntent.putExtra(RemindersHelper.EXTRA_ID, reminder.getId());
+        takeMedicationIntent.putExtra(RemindersHelper.EXTRA_NOTIFICATION_ID, notificationId);
         PendingIntent takeMedicationPI = PendingIntent.getBroadcast(context,1001,takeMedicationIntent,PendingIntent.FLAG_UPDATE_CURRENT);
         builder.addAction(R.drawable.ic_done,context.getString(R.string.taken_medication),takeMedicationPI);
 
