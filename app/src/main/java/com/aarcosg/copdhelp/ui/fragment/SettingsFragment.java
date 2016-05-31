@@ -98,9 +98,15 @@ public class SettingsFragment extends PreferenceFragment {
         mSmokingYearsPreference = (EditTextPreference)findPreference(Constants.PROPERTY_SMOKING_YEARS);
         mSmokingYearsPreference.setSummary(mPrefs.getString(Constants.PROPERTY_SMOKING_YEARS,"0" + " " + getString(R.string.years)));
         mSmokingYearsPreference.setOnPreferenceChangeListener((preference, newValue) -> {
-            preference.setSummary(newValue.toString()+ " " + getString(R.string.years));
+            int years = 0;
+            try{
+                years = Integer.valueOf(newValue.toString());
+            }catch (NumberFormatException e){
+                years = 0;
+            }
+            preference.setSummary(years + " " + getString(R.string.years));
             getRealm().beginTransaction();
-            mUser.setSmokingYears(Integer.valueOf(newValue.toString()));
+            mUser.setSmokingYears(years);
             getRealm().commitTransaction();
             return true;
         });
