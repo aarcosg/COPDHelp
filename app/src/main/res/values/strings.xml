@@ -3,6 +3,622 @@
 
     <string name="time_string" translatable="false">%1$s:%2$s</string>
     <string name="date_string" translatable="false">%1$s/%2$s/%3$s</string>
-    <string name="tab_list_icon_id">gmd_list</string>
-    <string name="tab_charts_icon_id">cmd_chart_bar</string>
+    <string name="tab_list_icon_id" translatable="false">gmd_list</string>
+    <string name="tab_charts_icon_id" translatable="false">cmd_chart_bar</string>
+
+    <!-- Exception messages -->
+    <string name="exception_message_generic">Se ha producido un error. Inténtelo más tarde.</string>
+    <string name="exception_message_internet_not_available">No hay conexión a internet</string>
+    <string name="exception_message_share_image_error">No se pudo compartir la imagen</string>
+    <string name="exception_message_load_youtube_videos_error">No se pudieron cargar los vídeos</string>
+    <string name="exception_message_youtube_player_error">Error al inicializar el reproductor: (%1$s)</string>
+
+    <!-- Fragment titles -->
+    <string name="title_fragment_medical_attention">Atención sanitaria</string>
+    <string name="title_fragment_medical_attention_add">Nueva atención sanitaria</string>
+    <string name="title_fragment_medical_attention_edit">Editar atención sanitaria</string>
+    <string name="title_fragment_bmi">Índice Masa Corporal</string>
+    <string name="title_fragment_nutrition">Nutrición</string>
+    <string name="title_fragment_medicine_reminder">Recordatorio de dosis</string>
+    <string name="title_fragment_smoke">Tabaquismo</string>
+    <string name="title_fragment_exercise">Ejercicio</string>
+
+    <string name="medical_attention">Atención sanitaria</string>
+    <string name="medical_attention_type">Tipo de atención sanitaria</string>
+    <string name="bmi_abbr">IMC</string>
+    <string name="bmi">Índice Masa Corporal</string>
+    <string name="add_date">Añadir día</string>
+    <string name="add_time">Añadir hora</string>
+    <string name="add_note">Añadir nota</string>
+    <string name="note">Nota</string>
+    <string name="save">Guardar</string>
+    <string name="add">Añadir</string>
+    <string name="edit">Editar</string>
+    <string name="retry">Reintentar</string>
+    <string name="empty_data">No hay datos registrados</string>
+    <string name="delete">Eliminar</string>
+    <string name="list">Lista</string>
+    <string name="charts">Gráficas</string>
+    <string name="this_week">Esta semana</string>
+    <string name="this_month">Este mes</string>
+    <string name="this_year">Este año</string>
+    <string name="weekly_progress">Progreso semanal</string>
+    <string name="monthly_progress">Progreso mensual</string>
+    <string name="yearly_progress">Progreso anual</string>
+    <string name="zoom">Ampliar</string>
+    <string name="share">Compartir</string>
+    <string name="empty_note">Sin nota</string>
+    <string name="share_image">Compartir imagen</string>
+    <string name="centimeters_abbr">cm</string>
+    <string name="kilograms_abbr">kg</string>
+    <string name="bmi_tip">Un IMC menor que 21 influye gravemente en la salud de los pacientes de EPOC a largo plazo.</string>
+    <string name="height">Altura</string>
+    <string name="weight">Peso</string>
+    <string name="your_bmi_is">Tu IMC es</string>
+    <string name="not_calculated">No calculado</string>
+    <string name="required_field">Campo obligatorio</string>
+    <string name="type">Tipo</string>
+    <string name="date">Fecha</string>
+
+    <!-- Toast & Snackbars messages -->
+    <string name="medical_attention_save_realm_success">Atención sanitaria guardada</string>
+    <string name="medical_attention_save_realm_error">Error al guardar la atención sanitaria</string>
+    <string name="medical_attention_load_realm_error">Error al cargar las asistencias médicas</string>
+    <string name="medical_attention_not_found_realm_error">Asistencia médica no encontrada</string>
+    <string name="medical_attention_ask_delete">¿Desea eliminar la atención sanitaria?</string>
+    <string name="medical_attention_remove_realm_success">Atención sanitaria eliminada</string>
+    <string name="medical_attention_remove_realm_error">Error al eliminar la atención sanitaria</string>
+    <string name="bmi_save_realm_success">Índice de masa corporal guardado</string>
+    <string name="bmi_save_realm_error">Error al guardar el índice de masa corporal</string>
+    <string name="bmi_load_realm_error">Error al cargar los índices de masa corporal registrados</string>
+    <string name="bmi_not_found_realm_error">Registro de índice de masa corporal no encontrado</string>
+    <string name="bmi_ask_delete">¿Desea eliminar este registro?</string>
+    <string name="bmi_remove_realm_success">Registro eliminado</string>
+    <string name="bmi_remove_realm_error">Error al eliminar el registro</string>
+    <string name="medicine_reminder_save_realm_success">Recordatorio de medicamento guardado</string>
+    <string name="medicine_reminder_save_realm_error">Error al guardar el recordatorio de medicamento</string>
+    <string name="medicine_reminder_ask_delete">¿Desea eliminar el recordatorio?</string>
+    <string name="medicine_reminder_load_realm_error">Error al cargar los recordatorios</string>
+    <string name="medicine_reminder_remove_realm_success">Recordatorio eliminado</string>
+    <string name="medicine_reminder_remove_realm_error">Error al eliminar el recordatorio</string>
+    <string name="smoke_save_realm_success">Registrado guardado</string>
+    <string name="smoke_save_realm_error">Error al guardar el registro</string>
+    <string name="smoke_ask_delete">¿Desea eliminar el registro?</string>
+    <string name="smoke_load_realm_error">Error al cargar los registros</string>
+    <string name="smoke_remove_realm_success">Registro eliminado</string>
+    <string name="smoke_remove_realm_error">Error al eliminar el registro</string>
+    <string name="smoke_not_found_realm_error">Registro no encontrado</string>
+
+    <string name="exercise_save_realm_success">Ejercicio guardado</string>
+    <string name="exercise_save_realm_error">Error al guardar el ejercicio</string>
+    <string name="exercise_ask_delete">¿Desea eliminar el ejercicio?</string>
+    <string name="exercise_load_realm_error">Error al cargar los ejercicios</string>
+    <string name="exercise_remove_realm_success">Ejercicio eliminado</string>
+    <string name="exercise_remove_realm_error">Error al eliminar el ejercicio</string>
+    <string name="exercise_not_found_realm_error">Ejercicio no encontrado</string>
+
+    <!-- Arrays -->
+    <string name="medical_attention_type_checkup">Revisión</string>
+    <string name="medical_attention_type_emergency">Exacerbación</string>
+
+    <!-- Week days -->
+    <string name="monday">Lunes</string>
+    <string name="tuesday">Martes</string>
+    <string name="wednesday">Miércoles</string>
+    <string name="thursday">Jueves</string>
+    <string name="friday">Viernes</string>
+    <string name="saturday">Sábado</string>
+    <string name="sunday">Domingo</string>
+
+    <string name="monday_alt">Lun</string>
+    <string name="tuesday_alt">Mar</string>
+    <string name="wednesday_alt">Mié</string>
+    <string name="thursday_alt">Jue</string>
+    <string name="friday_alt">Vie</string>
+    <string name="saturday_alt">Sáb</string>
+    <string name="sunday_alt">Dom</string>
+
+    <!-- Months -->
+    <string name="january">Enero</string>
+    <string name="february">Febrero</string>
+    <string name="march">Marzo</string>
+    <string name="april">Abril</string>
+    <string name="may">Mayo</string>
+    <string name="june">Junio</string>
+    <string name="july">Julio</string>
+    <string name="august">Agosto</string>
+    <string name="september">Septiembre</string>
+    <string name="october">Octubre</string>
+    <string name="november">Noviembre</string>
+    <string name="december">Diciembre</string>
+
+    <string name="january_alt">Ene</string>
+    <string name="february_alt">Feb</string>
+    <string name="march_alt">Mar</string>
+    <string name="april_alt">Abr</string>
+    <string name="may_alt">May</string>
+    <string name="june_alt">Jun</string>
+    <string name="july_alt">Jul</string>
+    <string name="august_alt">Ago</string>
+    <string name="september_alt">Sep</string>
+    <string name="october_alt">Oct</string>
+    <string name="november_alt">Nov</string>
+    <string name="december_alt">Dic</string>
+
+    <!-- BMI States -->
+    <string name="bmi_state_normal">Peso normal</string>
+    <string name="bmi_state_overweight">Sobrepeso</string>
+    <string name="bmi_state_obesity">Obesidad</string>
+    <string name="bmi_state_thinness">Delgadez</string>
+
+    <string name="next_medicine_dose">Próxima dosis:</string>
+    <string name="take_every">Tomar cada</string>
+    <string name="medicine_frecuency">Cada: %1$s</string>
+    <string name="hours">horas</string>
+    <string name="first_take">Primera toma</string>
+    <string name="medicine_reminder">Recordatorio de medicamentos</string>
+    <string name="dose_reminder">Recordatorio de dosis</string>
+    <string name="add_reminder">Añadir recordatorio</string>
+    <string name="dose">Dosis</string>
+    <string name="medicine_reminder_on">Recordatorio activado</string>
+    <string name="medicine_reminder_off">Recordatorio desactivado</string>
+    <string name="medicine_reminder_notification">Tomar medicamento %1$s</string>
+    <string name="tobacco">Tabaco</string>
+    <string name="smoke">Fumar</string>
+    <string name="smoking">Tabaquismo</string>
+    <string name="ask_feelings">Cómo te sientes</string>
+    <string name="cigarettes_quantity">%1$d cigarros</string>
+    <string name="cigarettes_quantity_hint">Nº cigarros</string>
+    <string name="smoking_tip">El tabaquismo es la principal causa de la EPOC. Fumar es un factor desencadenante para muchas personas con EPOC y puede causar una exacerbación, o reagudización, de sus síntomas.</string>
+    <string name="cigarettes_quantity_number">Número de cigarros</string>
+    <string name="cigarettes">cigarros</string>
+    <string name="drawer_item_section_patient">Paciente</string>
+    <string name="exercise_type_walking">Caminar</string>
+    <string name="exercise_type_stationary_bicycle">Bicicleta estática</string>
+    <string name="exercise_type_breathing">Ejercicios respiratorios</string>
+    <string name="exercise_type_arms">Ejercicios de brazos</string>
+    <string name="duration">Duración</string>
+    <string name="minutes">minutos</string>
+    <string name="note_alt">Observación</string>
+    <string name="add_note_alt">Añadir observación</string>
+    <string name="minutes_abbr">min</string>
+    <string name="empty_note_alt">Ninguna observación</string>
+    <string name="exercise">Ejercicio</string>
+    <string name="exercise_type_stationary_bicycle_alt">Bicicleta</string>
+    <string name="exercise_type_breathing_alt">Respiratorios</string>
+    <string name="exercise_type_arms_alt">Brazos</string>
+    <string name="copdps_intro_title">COPD-PS</string>
+    <string name="copdps_intro_description">En esta encuesta se le hacen preguntas sobre usted, su respiración y su capacidad para realizar algunas actividades.</string>
+    <string name="copdps">COPD-PS</string>
+    <string name="skip">Saltar</string>
+    <string name="done">Hecho</string>
+    <string name="copdps_question1">1. Durante las últimas 4 semanas, ¿cuántas veces sintió que le faltaba el aliento?</string>
+    <string name="copdps_question1_answer1">Nunca o pocas veces</string>
+    <string name="copdps_question1_answer2">Algunas veces</string>
+    <string name="copdps_question1_answer3">La mayoría de las veces</string>
+    <string name="copdps_question1_answer4">Todo el tiempo</string>
+    <string name="copdps_question2">2. ¿Alguna vez expulsa algo al toser, como mucosidad o flema?</string>
+    <string name="copdps_question2_answer1">Nunca</string>
+    <string name="copdps_question2_answer2">Sólo con resfriados o infecciones</string>
+    <string name="copdps_question2_answer3">Algunos días del mes</string>
+    <string name="copdps_question2_answer4">Casi todos los días de la semana</string>
+    <string name="copdps_question2_answer5">Todos los días</string>
+    <string name="copdps_question3">3. Durante el último año ¿ha reducido sus actividades cotidianas debido a sus problemas respiratorios?</string>
+    <string name="copdps_question3_answer1">No o casi nada</string>
+    <string name="copdps_question3_answer2">No estoy seguro/a</string>
+    <string name="copdps_question3_answer3">Sí</string>
+    <string name="copdps_question3_answer4">Sí, mucho</string>
+    <string name="copdps_question4">4. ¿Ha fumado al menos 100 cigarrillos en TODA SU VIDA?</string>
+    <string name="copdps_question4_answer1">No</string>
+    <string name="copdps_question4_answer2">Sí</string>
+    <string name="copdps_question4_answer3">No sé</string>
+    <string name="copdps_question5">5. ¿Cuántos años tiene?</string>
+    <string name="copdps_question5_answer1">De 35 a 49 años</string>
+    <string name="copdps_question5_answer2">De 50 a 59 años</string>
+    <string name="copdps_question5_answer3">De 60 a 69 años</string>
+    <string name="copdps_question5_answer4">De 70 en adelante</string>
+    <string name="copdps_result_copd">Es probable que tenga enfermedad pulmonar obstructiva crónica (EPOC). Consulte con su médico.</string>
+    <string name="copdps_result_no_copd">Si tiene problemas respiratorios consulte con su médico.</string>
+    <string name="copdcat_intro_title">COPD Assessment Test\n(CAT)</string>
+    <string name="copdcat_intro_description">Este cuestionario le ayudará a medir el impacto que la EPOC está teniendo en su bienestar y su vida diaria. Sus respuestas pueden ser utilizadas por usted y por el profesional sanitario encargado de tratarle para mejorar su calidad de vida.</string>
+    <string name="copdcat">CAT</string>
+    <string name="copdcat_question1_answer0">Nunca</string>
+    <string name="copdcat_question1_answer5">Siempre</string>
+    <string name="copdcat_question2_answer0">No tengo</string>
+    <string name="copdcat_question2_answer5">Completamente lleno</string>
+    <string name="copdcat_question3_answer0">Ninguna</string>
+    <string name="copdcat_question3_answer5">Mucha</string>
+    <string name="copdcat_question4_answer0">Nada</string>
+    <string name="copdcat_question4_answer5">Mucho</string>
+    <string name="copdcat_question5_answer0">No</string>
+    <string name="copdcat_question5_answer5">Muy limitado/a</string>
+    <string name="copdcat_question6_answer0">Seguro</string>
+    <string name="copdcat_question6_answer5">Nada seguro</string>
+    <string name="copdcat_question7_answer0">Ninguno</string>
+    <string name="copdcat_question7_answer5">Tengo problemas</string>
+    <string name="copdcat_question8_answer0">Mucha</string>
+    <string name="copdcat_question8_answer5">Ninguna</string>
+    <string name="copdcat_question1">¿Tose con asiduidad?</string>
+    <string name="copdcat_question2">¿Qué cantidad de flema (mucosidad) tiene en el pecho?</string>
+    <string name="copdcat_question3">¿Cuánta opresión siente en el pecho?</string>
+    <string name="copdcat_question4">¿Qué cantidad de aire le falta cuando sube una pendiente o un tramo de escaleras?</string>
+    <string name="copdcat_question5">¿Se siente limitado/a para realizar actividades domésticas?</string>
+    <string name="copdcat_question6">¿Cómo se siente al salir de casa a pesar de la afección pulmonar?</string>
+    <string name="copdcat_question7">¿Tiene problemas para dormir?</string>
+    <string name="copdcat_question8">¿Cuánta energía tiene?</string>
+    <string name="copd_cat_low_impact">Una puntuación entre 0 y 10 indica un bajo impacto. Se debe interpretar y actuar a partir de esta puntuación en colaboración con su profesional sanitario.</string>
+    <string name="copd_cat_moderate_impact">Una puntuación entre 11 y 20 indica un impacto medio. Se debe interpretar y actuar a partir de esta puntuación en colaboración con su profesional sanitario.</string>
+    <string name="copd_cat_high_impact">Una puntuación entre 21 y 30 indica un impacto alto. Se debe interpretar y actuar a partir de esta puntuación en colaboración con su profesional sanitario.</string>
+    <string name="copd_cat_very_high_impact">Una puntuación entre 31 y 40 indica un impacto muy alto. Se debe interpretar y actuar a partir de esta puntuación en colaboración con su profesional sanitario.</string>
+    <string name="copdbode_intro_title">Índice BODE</string>
+    <string name="copdbode_intro_description">Escala útil en la clasificación de la gravedad de la EPOC con factor pronóstico</string>
+    <string name="copdbode_question1">Indique el índice de masa corporal (IMC) del paciente</string>
+    <string name="copdbode_question2">Indique el porcentaje de FEV1 (volumen máximo de aire espirado en el primer segundo) del paciente</string>
+    <string name="copdbode_question2_answer4">Igual o menor que 35%</string>
+    <string name="copdbode_question2_answer1">Igual o mayor que 65%</string>
+    <string name="copdbode_question2_answer2">Entre 50% y 64%</string>
+    <string name="copdbode_question2_answer3">Entre 36% y 49%</string>
+    <string name="copdbode_question1_answer1">Mayor que 21</string>
+    <string name="copdbode_question1_answer2">Igual o menor que 21</string>
+    <string name="copdbode_question3">Indique el grado de disnea (escala mMRC) del paciente</string>
+    <string name="copdbode_question3_answer4">Grado 4</string>
+    <string name="copdbode_question3_answer3">Grado 3</string>
+    <string name="copdbode_question3_answer2">Grado 2</string>
+    <string name="copdbode_question3_answer1">Grado 0 ó 1</string>
+    <string name="copdbode_question4">Indique el resultado del test de los 6 minutos marcha (6MWT) del paciente</string>
+    <string name="copdbode_question4_answer1">Igual o mayor que 350 metros</string>
+    <string name="copdbode_question4_answer2">Entre 250 y 349 metros</string>
+    <string name="copdbode_question4_answer3">Entre 150 y 249 metros</string>
+    <string name="copdbode_question4_answer4">Igual o menor que 149 metros</string>
+    <string name="copdbode_result_description">Mortalidad global a los 4 años: %1$s%% \n EPOC %2$s estadio %3$s</string>
+    <string name="mild">Leve</string>
+    <string name="moderate">Moderado</string>
+    <string name="grave">Grave</string>
+    <string name="terminal">Terminal</string>
+    <string name="very_grave">Muy grave</string>
+    <string name="copdbode_question5">Indique si el paciente sufre alguno de los siguientes criterios</string>
+    <string name="copdbode_question5_answer1">Más de 2 hospitalizaciones al año</string>
+    <string name="copdbode_question5_answer2">Sedentarismo o baja actividad física</string>
+    <string name="copdbode_question5_answer3">Elevada dependencia para las actividades diarias</string>
+    <string name="copdbode_question5_answer4">Insuficiencia respiratoria crónica</string>
+    <string name="bode">BODE</string>
+    <string name="bodex">BODEx</string>
+    <string name="copdbodex_question4">Indique el número de exacerbaciones graves en el último año</string>
+    <string name="copdbodex_question4_answer1">Ninguna exacerbación</string>
+    <string name="copdbodex_question4_answer2">1 o 2 exacerbaciones</string>
+    <string name="copdbodex_question4_answer3">3 o más exacerbaciones</string>
+    <string name="copdbodex_intro_title">Índice BODEx</string>
+    <string name="copdbodex_result_bode_recommended">La puntuación es mayor 5. Se recomiendo la utilización del índice de BODE.</string>
+    <string name="nutrition">Nutrición</string>
+    <string name="guides">Guías</string>
+    <string name="title_fragment_guides">Guías</string>
+    <string name="breathing_therapy">La rehabilitación respiratoria</string>
+    <string name="general">General</string>
+    <string name="breathing_therapy_intro">
+        Consiste en un programa de ejercicios que mejorarán su estado físico y, por tanto, su calidad de vida.\n\n
+        Los objetivos de estos ejercicios son:\n
+        {gmd-check} Aliviar su sensación de ahogo.\n
+        {gmd-check} Facilitar las actividades de su vida diaria (pasear, asearse, subir escaleras, viajar, etc.).\n
+        {gmd-check} Mejorar su estado de ánimo.\n\n
+        Las personas con EPOC, incluso si están en una fase avanzada, pueden realizar estos ejercicios. Los principales son caminar y utilizar la bicicleta estática. También es importante que realice ejercicios con los brazos y ejercicios respiratorios.
+    </string>
+    <string name="recommendations">Recomendaciones</string>
+    <string name="recommendations_exercise">Recomendaciones para hacer ejercicio</string>
+    <string name="breathing_therapy_recommendations">
+        {gmd-check} Use ropa cómoda, que no le apriete el abdomen y calzado cerrado que le cubra el talón y no le provoque molestias.\n
+        {gmd-check} Lo importante es que realice el ejercicio aunque sea muy despacio.\n
+        {gmd-check} Descanse 30 minutos cuando finalice los ejercicios.\n
+        {gmd-check} Evite los ejercicios en las 3 horas siguientes a la comida principal.\n
+    </string>
+    <string name="breathing_therapy_recommendations_tip1">Haga los ejercicios con una postura erguida, cogiendo aire por la nariz inflando la barriga y echándolo por la boca, como si soplara.</string>
+    <string name="breathing_therapy_recommendations_tip2">No olvide el inhalador: si tiene dificultad respiratoria, párese, aplique el inhalador, respire hondo y continúe con los descansos necesarios.</string>
+    <string name="breathing_therapy_recommendations_tip3">Todos los ejercicios hay que realizarlos de forma suave y progresiva</string>
+    <string name="how_to_walk">Cómo caminar</string>
+    <string name="breathing_therapy_walk">
+        Postura erguida con hombros relajados y moviendo los brazos con balanceo.\n\n
+        {gmd-check} Debe caminar despacio, por terreno llano, al ritmo que tolere, sin forzar.\n
+        {gmd-check} Evite los momentos del día de más calor o de frío intenso.\n
+        {gmd-check} El objetivo es caminar de 30 minutos a 1 hora diaria, de 3 a 7 días a la semana. Comience por 15 minutos al día y aumente 5 minutos más cada semana.\n
+    </string>
+    <string name="how_to_bicycle">Programa de bicicleta</string>
+    <string name="breathing_therapy_bicycle">
+        {gmd-check} Siga las mismas recomendaciones en cuanto al tipo de respiración, postura, ropa cómoda y uso de los inhaladores.\n
+        {gmd-check} Comience por 5 minutos por la mañana y 5 minutos por la tarde todos los días.\n
+        {gmd-check} Aumente 5 minutos cada semana.\n
+    </string>
+    <string name="breathing_therapy_common_tips">
+        {gmd-check} Realice los ejercicios en posición sentada, con el tronco erguido y los hombros relajados.\n
+        {gmd-check} Cada ejercicio se realiza en 2 tandas: primero se hace 5 veces, se descansa un minuto y se repite el ejercicio otras 5 veces.\n
+        {gmd-check} Todos los ejercicios hay que realizarlos de forma suave y progresiva.\n
+    </string>
+    <string name="breathing_therapy_breathing_goal"><b>Objetivo</b>: aumentar la entrada de aire en los pulmones</string>
+    <string name="breathing_exercise_title1">Respiración con labios fruncidos</string>
+    <string name="breathing_exercise_desc1">Coja el máximo de aire por la nariz, de forma lenta y profunda, inflando el abdomen y después échelo por la boca de forma suave, como si soplara.</string>
+    <string name="breathing_exercise_title2">Expansión costal</string>
+    <string name="breathing_exercise_desc2">Levante los brazos hasta la horizontal respirando por la nariz y baje los brazos echando el aire por la boca.</string>
+    <string name="breathing_therapy_arms_goal">
+        <b>Objetivo</b>: tonificar los brazos y facilitar la realización de las tareas diarias.\n
+        <b>Recuerde</b>: inspire por la nariz al subir y suelte el aire por la boca al bajar.\n\n
+        Todos los ejercicios de brazos se pueden realizar con pesas de 1 ó 2 kg si no provoca dificultad respiratoria.
+    </string>
+    <string name="arms_exercise_title1">Flexión de brazos</string>
+    <string name="arms_exercise_desc1">Levante los brazos por delante del tronco, hasta el máximo que pueda por encima de la cabeza, manténgalos 3 segundos y bájelos.</string>
+    <string name="arms_exercise_title2">Abducción de brazos</string>
+    <string name="arms_exercise_desc2">Abrir los brazos hasta la altura de los hombros, manténgalos de 3 a 5 segundos y bájelos.</string>
+    <string name="arms_exercise_title3">Flexo-extensión de codos</string>
+    <string name="arms_exercise_desc3">Con los brazos extendidos, flexione los codos, manténgalos de 3 a 5 segundos y extiéndalos nuevamente.</string>
+    <string name="exercise_careful_tip">
+        No debe hacer ejercicio en los siguientes casos:\n
+        {gmd-check} Si tiene dificultad respiratoria severa.\n
+        {gmd-check} Si la fiebre es superior a 38ºC.\n
+        {gmd-check} Si siente dolor torácico.\n
+        {gmd-check} Si se presenta inflamación articular.\n\n
+        En cualquiera de estos casos, ACUDA A SU MÉDICO/A.
+    </string>
+    <string name="app_exercise_help_tip">Esta aplicación, Ayuda EPOC, le permite llevar un control exhaustivo de todos los ejercicios que realice</string>
+    <string name="what_is_copd">¿Qué es la EPOC?</string>
+    <string name="what_is_copd_title1">¿Qué es la enfermedad  pulmonar obstructiva crónica (EPOC)?</string>
+    <string name="what_is_copd_title2">¿Es frecuente la EPOC?</string>
+    <string name="what_is_copd_title3">¿Cómo se manifiesta?</string>
+    <string name="what_is_copd_title4">¿Cómo se diagnostica la EPOC?</string>
+    <string name="what_is_copd_title5">¿Por qué el tabaco causa EPOC?</string>
+    <string name="what_is_copd_title6">¿Es lo mismo EPOC que bronquitis crónica?</string>
+    <string name="what_is_copd_desc1">La EPOC es una enfermedad crónica en la que los bronquios se obstruyen como consecuencia de respirar humo de tabaco u otras sustancias dañinas. Esta obstrucción hace más difícil la respiración.</string>
+    <string name="what_is_copd_desc2"><b>Sí</b>. En España, las investigaciones demuestran que el 9,1% de la población general entre 40 y 69 años padece esta enfermedad. Es la cuarta causa de muerte por enfermedad a nivel mundial.</string>
+    <string name="what_is_copd_desc3">Inicialmente puede no tener síntomas. A medida que la enfermedad avanza puede ocasionar tos, esputos y ahogo. En fases más avanzadas los síntomas se agravan, perdiendo calidad de vida. Es habitual que, en el curso de su enfermedad, sufra descompensaciones que agraven sus síntomas.</string>
+    <string name="what_is_copd_desc4">La única forma de saber si usted padece una EPOC es <b>mediante una prueba que se llama espirometría</b>. La espirometría mide objetivamente si los bronquios están obstruidos. Se hace mediante un aparato que mide el aire que se expulsa después de una inspiración profunda.</string>
+    <string name="what_is_copd_desc5">Fumar o respirar humo de tabaco provoca inflamación bronquial crónica, obstrucción progresiva de los bronquios y destrucción del pulmón.\n\n Aunque el tabaco es la causa fundamental, no es la única. Respirar humos en determinados trabajos, en la cocina o calentando el hogar con combustibles fósiles, puede favorecer o incluso causar una EPOC.</string>
+    <string name="what_is_copd_desc6"><b>No</b>. En la EPOC los bronquios están obstruidos. La bronquitis crónica también suele ser habitual en personas fumadoras, pero sólo hay tos y expectoración durante varios meses al año. <b>La realización de la espirometría aclara la diferencia.</b></string>
+    <string name="living_better_copd">Vivir mejor con la EPOC</string>
+    <string name="living_better_subtitle_copd">Usted <b>vivirá mejor y más años</b> si sigue las recomendaciones de esta guía.</string>
+    <string name="living_better_smoking">1. Evitar tabaco</string>
+    <string name="living_better_nutrition">2. Cuidar alimentación</string>
+    <string name="living_better_exercise">3. Realizar ejercicio</string>
+    <string name="living_better_vaccine">4. Vacunas</string>
+    <string name="living_better_medication">5. Medicación</string>
+    <string name="living_better_getting_worse">6. Reconocer descompensaciones</string>
+    <string name="living_better_smoking_title">1. Evite el tabaco y ambientes contaminados</string>
+    <string name="living_better_smoking_desc1"><b>Lo más beneficioso para usted es abandonar el tabaco absolutamente</b>. Procure que otras personas no fumen en su casa. <b>También es importante evitar ambientes contaminados</b> (bares o zonas donde se fume, trabajos con inhalación de humos, etc.).</string>
+    <string name="living_better_smoking_question1">¿Puedo fumar algo, aunque sea unos cigarrillos al día?</string>
+    <string name="living_better_smoking_answer1"><b>No</b>, no debe fumar nada, (cigarrillos, cigarros-puros, pipas, etc…). Aunque sólo sea uno, le perjudica, por su EPOC y por las muchas enfermedades que provoca el tabaco (cáncer, infartos de corazón, etc.).</string>
+    <string name="living_better_smoking_question2">¿Cómo puedo dejar de fumar?</string>
+    <string name="living_better_smoking_answer2">Hay algunas personas que pueden abandonar el tabaco por sí mismas. No obstante, <b>la mayoría necesita ayuda. No dude en consultar al personal sanitario</b>, buscarán la mejor forma de ayudarle. También puede consultar en el Programa de Deshabituación Tabáquica vía telefónica: 900 85 03 00 ó 902 50 50 60.\n<b>Dejar de fumar es posible, muchas personas como usted lo han conseguido</b>.</string>
+    <string name="living_better_nutrition_title">2. Cuide su alimentación</string>
+    <string name="living_better_nutrition_desc1">En la EPOC, <b>una alimentación correcta favorece el mantenimiento de una mejor calidad de vida</b>. Es muy recomendable que se mantenga en su peso adecuado. Tanto el sobrepeso como la desnutrición van a influir desfavorablemente en la evolución de su enfermedad.</string>
+    <string name="living_better_nutrition_question1">¿Qué alimentos son los más recomendables?</string>
+    <string name="living_better_nutrition_answer1">Es recomendable realizar <b>comidas ligeras y poco abundantes, varias veces al día</b> (4 – 6 tomas al día), <b>con alimentos de fácil masticación</b>. La mejor bebida es el agua, siendo preciso ingerir una cantidad aproximada de 1,5 litros al día. Se deben instaurar medidas para prevenir el estreñimiento, aumentando el consumo de cereales integrales, frutas y vegetales.</string>
+    <string name="living_better_nutrition_question2">¿Qué alimentos debo evitar?</string>
+    <string name="living_better_nutrition_answer2">Deberá <b>evitar alimentos que precisen una masticación prolongada y fuerte</b>, así como aquellos que <b>causan flatulencia y/o digestiones pesadas</b> (col, coliflor, cebolla, etc.). Evite la ingesta excesiva de hidratos de carbono (pan, patatas, pastas, arroz, etc.), así como las bebidas gaseosas. También deberá evitar tomar alimentos muy fríos, muy calientes o aquellos que le provoquen, por su experiencia, irritación faríngea, porque pueden provocar la aparición de tos.</string>
+    <string name="living_better_exercise_title">3. Realice ejercicio físico regularmente</string>
+    <string name="living_better_exercise_desc1">
+        El ejercicio físico desempeña un papel muy importante en la vida de cualquier persona. A personas con su enfermedad, <b>la actividad física regular les ayuda a sentirse bien y respirar mejor</b>.\n\n
+        Si practica ejercicio de forma regular, obtendrá los siguientes beneficios:\n
+        {gmd-check} Mayor nivel de funcionalidad, consiguiendo independencia de la familia, de su entorno social y del personal sanitario.\n
+        {gmd-check} Mejorará su sensación de ahogo y tendrá mayor tolerancia al ejercicio.\n
+        {gmd-check} Reducirá su aislamiento y estrés, ya que notará mejoría en su bienestar emocional y mental.\n
+        {gmd-check} Reducirá descompensaciones, al ayudar a su organismo a mantenerse sano y luchar contra las infecciones.\n
+        {gmd-check} Le ayudará a descansar mejor durante la noche.\n
+    </string>
+    <string name="living_better_exercise_question1">¿Qué tipo de ejercicio me conviene?</string>
+    <string name="living_better_exercise_answer1">En función de sus preferencias, hay muchos ejercicios que puede practicar. Natación, bicicleta, cinta continua, baile, son todos adecuados. <b>Le recomendamos que trate de CAMINAR. ¡Es una de las mejores opciones posibles!</b></string>
+    <string name="living_better_exercise_question2">¿Puede perjudicarme tener sensación de ahogo mientras hago ejercicio?</string>
+    <string name="living_better_exercise_answer2">Un poco de falta de aire, mientras hace ejercicio, no le hará daño. Le aconsejamos, eso sí, que la mantenga en un nivel moderado.</string>
+    <string name="living_better_vaccine_title">4. Vacúnese</string>
+    <string name="living_better_vaccine_desc1">Todos los años, salvo contraindicación médica, debe administrarse la <b>vacuna antigripal</b>. El virus de la gripe puede provocarle un empeoramiento de su enfermedad.\n\n
+        La vacuna evita, en la mayoría de los casos, que usted sufra la gripe o, al menos, hace que sea menos grave. Acuda a su centro de salud a primeros de otoño, donde la informarán de la fecha de comienzo de la vacunación.\n\n
+        La <b>vacuna neumocócica</b> está indicada en determinados pacientes con EPOC. Pregunte a su médica/o que le indicará sobre la necesidad o no de administrarse esta vacuna.
+    </string>
+    <string name="living_better_vaccine_question1">¿Me puede sentar mal la vacuna antigripal?</string>
+    <string name="living_better_vaccine_answer1">Es raro que pueda provocarle alguna reacción. La mayoría de las reacciones se producen en la zona de la inyección y son leves. A veces, puede dar fiebre y malestar general que suelen ser leves y durar menos de 48 horas. Los beneficios que puede obtener de la vacuna son muy superiores a las molestias.</string>
+    <string name="living_better_vaccine_question2">¿Puedo acatarrarme aunque me vacune de la gripe?</string>
+    <string name="living_better_vaccine_answer2">La vacuna de la gripe protege de la infección por el virus de la gripe en un alto porcentaje de casos, pero no previene de otros muchos virus que pueden afectarle. <b>Es habitual que tenga otros catarros durante el invierno</b>, se haya vacunado o no de la gripe.</string>
+    <string name="living_better_medication_title">5. Utilice adecuadamente la medicación y conozca sus efectos</string>
+    <string name="living_better_medication_desc1">En el caso de la EPOC no sólo es importante que use la medicación que le han prescrito, además <b>conviene conocer para qué sirve y cómo debe utilizarla</b>.</string>
+    <string name="living_better_medication_question1">¿Qué medicamentos se utilizan en el tratamiento de la EPOC?</string>
+    <string name="living_better_medication_answer1">Hay dos tipos principales de medicamentos de uso habitual en el tratamiento de la EPOC: <b>los broncodilatadores y los corticoides inhalados</b>. Se decide por un tratamiento u otro según la gravedad de la enfermedad, la alteración de las actividades de la vida diaria que produce y los efectos secundarios de los mismos.</string>
+    <string name="living_better_medication_question2">¿Qué son los Broncodilatadores?</string>
+    <string name="living_better_medication_answer2">Son fármacos que <b>permiten que los bronquios se ensanchen y facilitan la respiración</b>. Fundamentalmente, son usados por vía inhalada. Hay diferentes medicamentos broncodilatadores, según la rapidez de su inicio y la duración de su efecto:\n\n
+        {faw-medkit} Broncodilatadores de corta duración:\n
+        Estos fármacos son llamados “de rescate” por su inicio rápido y se usan cuando se agravan síntomas. Su efecto dura entre 4-8 horas.\n\n
+        {faw-medkit} Broncodilatadores de larga duración:\n
+        Su acción dura (12-24h.) Se indican cuando siente ahogo a diario.
+    </string>
+    <string name="living_better_medication_question3">¿Qué son los Corticoides?</string>
+    <string name="living_better_medication_answer3">Los corticoides son medicamentos utilizados <b>para reducir la inflamación de las vías respiratorias</b>. Suelen tomarse por vía inhalada y, a veces, en comprimidos. Los corticoides inhalados pueden combinarse con un broncodilatador.</string>
+    <string name="living_better_medication_question4">¿Por qué se usan los medicamentos inhalados?</string>
+    <string name="living_better_medication_answer4">De esta forma, el medicamento <b>actúa directamente sobre el bronquio</b>. Hay que utilizar adecuadamente los dispositivos de inhalación. El personal sanitario le ayudará a elegir el más adecuado y le enseñarán a usarlo. <b>Acuda siempre a consulta con su inhalador para revisar periódicamente la técnica</b>.</string>
+    <string name="living_better_medication_question5">¿Cómo debo tomar los inhaladores?</string>
+    <string name="living_better_medication_answer5">Procure realizar la toma de los inhaladores como le han indicado. <b>El uso incorrecto equivale a no tomar la medicación</b>. Acuda a su Centro de Salud u Hospital siempre con los inhaladores que esté utilizando, si es necesario el personal sanitario le realizará una prueba para comprobar su técnica inhalatoria y ayudarle a mejorarla.</string>
+    <string name="living_better_medication_question6">¿Cuáles son los efectos secundarios de la medicación para EPOC?</string>
+    <string name="living_better_medication_answer6">Los medicamentos inhalados para el tratamiento de la EPOC <b>son muy seguros</b>. No obstante, en algunos casos, pueden provocar efectos secundarios. Con los broncodilatadores pueden aparecer temblor de manos, sequedad de boca y palpitaciones. Los corticoides inhalados pueden provocar irritación de la faringe y ronquera, que puede evitarse con enjuagues bucales tras su uso. Si estos síntomas persisten o aparecen otros nuevos consulte a su médica/o.\n\n
+        El uso prolongado de corticoides orales (comprimidos) sin control médico puede favorecer la aparición a largo plazo de algunas enfermedades.
+    </string>
+    <string name="living_better_medication_question7">¿Hay otros medicamentos para el tratamiento de la EPOC?</string>
+    <string name="living_better_medication_answer7">Algunas personas con esputo viscoso, difícil de expectorar, se pueden beneficiar del uso de mucolíticos.</string>
+    <string name="living_better_medication_question8">¿Qué medicamentos pueden hacerme daño?</string>
+    <string name="living_better_medication_answer8">Hay pacientes con EPOC a quienes pueden perjudicar medicamentos como los antitusígenos, sedantes y relajantes.</string>
+    <string name="living_better_getting_worse_title">6. Reconozca las descompensaciones</string>
+    <string name="living_better_getting_worse_question1">¿Qué es una descompensación?</string>
+    <string name="living_better_getting_worse_answer1">Una descompensación es un empeoramiento mantenido de su situación clínica, generalmente de inicio rápido, que se manifiesta con <b>aumento de la tos, del esputo y el ahogo. Esta situación puede ocurrir a lo largo de su enfermedad</b>.</string>
+    <string name="living_better_getting_worse_question2">¿Qué causa una descompensación?</string>
+    <string name="living_better_getting_worse_answer2"><b>La principal causa es una infección respiratoria</b> (virus y/o bacterias). Otros factores que pueden empeorarle son: contaminación ambiental o abandono del tratamiento, entre otros.</string>
+    <string name="living_better_getting_worse_question3">¿Qué tengo que hacer en caso de descompensación?</string>
+    <string name="living_better_getting_worse_answer3">
+        Si nota un aumento de sus síntomas, <b>no se alarme y haga lo siguiente</b>:\n
+        {gmd-check} Tómese la medicación de rescate sin sobrepasar los límites que le hayan indicado.\n
+        {gmd-check} Evite cambios bruscos de temperatura y ambientes contaminados.\n
+        {gmd-check} Reduzca su actividad física.\n
+        {gmd-check} Aumente la ingesta de líquidos (agua e infusiones).\n
+        {gmd-check} Haga comidas ligeras, poco abundantes y frecuentes (4-6 al día).\n
+        {gmd-check} Póngase el termómetro y compruebe su temperatura.\n
+        {gmd-check} Si su médica/o le ha facilitado un plan de actuación para estos casos, póngalo en marcha.
+    </string>
+    <string name="living_better_getting_worse_question4">¿Cuándo debo buscar atención sanitaria?</string>
+    <string name="living_better_getting_worse_answer4">
+        {gmd-check} Tiene fiebre mayor de 38ºC.\n
+        {gmd-check} Aparece o aumenta la hinchazón de los tobillos o de las piernas.\n
+        {gmd-check} Tiene dolor en el pecho.\n
+        {gmd-check} Está irritable.\n
+        {gmd-check} Tiene desorientación.\n
+        {gmd-check} Le duele la cabeza.\n
+        {gmd-check} Tiene más sueño de lo habitual.
+    </string>
+    <string name="living_better_getting_worse_question5">Tras una descompensación ¿hasta cuándo debo mantener el tratamiento?</string>
+    <string name="living_better_getting_worse_answer5"><b>Es muy importante que siga el tratamiento indicado</b> en su Centro de Salud, en el Servicio de Urgencias o en el informe médico de alta hospitalaria. Los reajustes en el tratamiento deberán ser realizados por su médica/o de Atención Primaria o su especialista en Neumología.</string>
+    <string name="my_scale_grade_is">Mi grado es:</string>
+    <string name="scale_mmrc_dyspnea_title">Escala de disnea mMRC</string>
+    <string name="grade_of_dyspnea">Grado de disnea</string>
+    <string name="description">Descripción</string>
+    <string name="grade_of_dyspnea_desc0">Ausencia de disnea excepto al realizar ejercicio intenso.</string>
+    <string name="grade_of_dyspnea_desc1">Disnea al andar depresia en llano, o al andar subiendo una pendiente poco pronunciada.</string>
+    <string name="grade_of_dyspnea_desc2">La disnea le produce una incapacidad de mantener el paso de otras personas de la misma edad caminando en llano o tener que parar a descansar al andar en llano a su propio paso.</string>
+    <string name="grade_of_dyspnea_desc3">La disnea hace que tenga que parar a descansar al andar unos 100 m o pocos minutos después de andar en llano.</string>
+    <string name="grade_of_dyspnea_desc4">La disnea le impide al paciente salir de casa o aparece con actividades como vestirse o desvestirse.</string>
+    <string name="scale_mmrc">Escala mMRC</string>
+    <string name="grade">Grado</string>
+    <string name="scale_grade_save_realm_success">Grado de la escala guardado</string>
+    <string name="scale_borg_title">Escala de BORG</string>
+    <string name="scale_borg_description">La escala de BORG es la recomendada por la Sociedad Española de Neumología y Cirugía Torácica (SEPAR) durante la prueba de esfuerzo cardiopulmonar. Consta de 12 niveles numéricos de disnea (entre 0 y 10 puntos) con descriptores verbales para cada uno de ellos. </string>
+    <string name="scale_borg_grade_desc0">Nada</string>
+    <string name="scale_borg_grade_desc1">Muy, muy ligera</string>
+    <string name="scale_borg_grade_desc2">Muy ligera</string>
+    <string name="scale_borg_grade_desc3">Ligera</string>
+    <string name="scale_borg_grade_desc4">Moderada</string>
+    <string name="scale_borg_grade_desc5">Algo intensa</string>
+    <string name="scale_borg_grade_desc6">Intensa</string>
+    <string name="scale_borg_grade_desc7">Entre 5 y 7</string>
+    <string name="scale_borg_grade_desc8">Muy intensa</string>
+    <string name="scale_borg_grade_desc9">Entre 7 y 9</string>
+    <string name="scale_borg_grade_desc10">Muy, muy intensa (casi máxima)</string>
+    <string name="scale_borg_grade_desc11">Máxima</string>
+    <string name="scale_borg">Escala de Borg</string>
+    <string name="reminders_empty">No hay recordatorios configurados</string>
+    <string name="achievements">Logros</string>
+    <string name="title_fragment_achievements">Logros</string>
+    <string name="locked">Bloqueado</string>
+    <string name="gratz_achievement_unlocked">¡Enhorabuena! Has desbloqueado un logro. ¡Sigue así!</string>
+    <string name="congratulations">¡Enhorabuena!</string>
+    <string name="new_achievement_unlocked">Has desbloqueado un nuevo logro. Compártelo con tus familiares y amigos.\n<b>¡Sigue así!</b></string>
+    <string name="taken_medication">Tomado</string>
+    <string name="videos">Vídeos</string>
+    <string name="title_fragment_videos">Vídeos</string>
+    <string name="medical_attentions">Atenciones sanitarias</string>
+    <string name="exacerbations_this_year">Exacerbaciones anuales</string>
+    <string name="checkups_this_year">Revisiones médicas anuales</string>
+    <string name="not_registered">No registrado</string>
+    <string name="medication_taken_this_week">Medicamentos semanales</string>
+    <string name="exercise_this_week">Ejercicio semanal</string>
+    <string name="smoking_this_week">Tabaco semanal</string>
+    <string name="copd_diagnoses">Diagnósticos</string>
+    <string name="copdps_index">COPD-PS</string>
+    <string name="cat_index">CAT</string>
+    <string name="bode_index">BODE</string>
+    <string name="bodex_index">BODEx</string>
+    <string name="copd_scales">Escalas EPOC</string>
+    <string name="mmrc_scale">mMRC</string>
+    <string name="borg_scale">Borg</string>
+    <string name="my_copd">Mi EPOC</string>
+    <string name="title_fragment_my_copd">Mi EPOC</string>
+    <string name="drawer_item_expandable_patient">Paciente</string>
+    <string name="drawer_item_expandable_diagnoses">Diagnósticos</string>
+    <string name="drawer_item_expandable_scales">Escalas</string>
+    <string name="pref_title_version">Versión</string>
+    <string name="settings">Ajustes</string>
+    <string name="title_fragment_settings">Ajustes</string>
+    <string name="age_preference_message">Indique su edad</string>
+    <string name="title_age_preference">Edad</string>
+    <string name="about_application">Sobre la aplicación</string>
+    <string name="years">años</string>
+    <string name="title_genre_preference">Género</string>
+    <string name="woman">Mujer</string>
+    <string name="man">Hombre</string>
+    <string name="patient">Paciente</string>
+    <string name="title_send_anonymous_data_preference">Enviar datos anónimos</string>
+    <string name="send_anonymous_data_summary_yes">Sí, enviar datos anónimos para que sean tratados en estudios científicos con el fin de mejorar la calidad de vida de los pacientes.</string>
+    <string name="send_anonymous_data_summary_no">No enviar datos anónimos para que sean tratados en estudios científicos con el fin de mejorar la calidad de vida de los pacientes.</string>
+    <string name="title_get_daily_form_notifications_preference">Recibir recordatorios</string>
+    <string name="get_daily_form_notifications_yes">Quiero que la aplicación me recuerde que tengo que registrar mi actividad diaria.</string>
+    <string name="get_daily_form_notifications_no">No quiero que la aplicación me recuerde que tengo que registrar mi actividad diaria.</string>
+    <string name="title_is_smoker_preference">¿Es fumador/a?</string>
+    <string name="is_smoker_yes">Sí, soy fumador/a o lo he sido en el pasado.</string>
+    <string name="is_smoker_no">No soy fumador/a ni lo he sido en el pasado.</string>
+    <string name="title_smoking_years_preference">Años fumando</string>
+    <string name="smoking_years_preference_message">Indique el número de años que lleva fumando</string>
+    <string name="app_name_subtitle">Vivir mejor con EPOC</string>
+    <string name="application">Aplicación</string>
+    <string name="appintro_slide1_title">Bienvenido/a</string>
+    <string name="appintro_slide1_description"><b>Ayuda EPOC</b> es un asistente destinado a los pacientes de EPOC cuyo objetivo principal es permiterles mejorar la adherencia al tratamiento y el autocontrol de la enfermedad.</string>
+    <string name="appintro_slide2_title">Guías y vídeos</string>
+    <string name="appintro_slide2_description">La aplicación pone a dispoción del paciente multitud de recursos visuales y de lectura para que aprenda los conceptos fundamentales de la EPOC.</string>
+    <string name="appintro_slide3_title">Controla la EPOC</string>
+    <string name="appintro_slide3_description">
+        Lleva un control total sobre los factores más importantes que influyen en la EPOC. Observa tus progresos y mejora el autocontrol de la EPOC minuto a minuto.
+    </string>
+    <string name="appintro_slide4_title">Desbloquea logros</string>
+    <string name="appintro_slide4_description">Desbloquea los logros de ejercicio y tabaquismo para que vivas mejor con la EPOC.\n<b>¡Alcanza el podio!</b></string>
+    <string name="appintro_slide5_title">Diagnósticos</string>
+    <string name="appintro_slide5_description">Utiliza las herramientas, escalas e indices para medir en primera instancia el grado de EPOC. <b>Consulta siempre a tu médico los resultados obtenidos</b>.</string>
+    <string name="appintro_slide6_title">Comenzar</string>
+    <string name="appintro_slide6_description">Deseamos que esta aplicación le ayude en su día a día y mejore en gran medida su calidad de vida.</string>
+    <string name="about_copdhelp_title">Acerca de Ayuda EPOC</string>
+    <string name="about_copdhelp_introduction">Introducción</string>
+    <string name="about_copdhelp_introduction_desc">
+        <b>Ayuda EPOC</b> es un asistente destinado a los pacientes de EPOC cuyo objetivo principal es permitirles mejorar la adherencia al tratamiento y el autocontrol de la enfermedad mediante los recursos que se describen a continuación:\n
+        {gmd-check} Guías: La aplicación dispone de varias guías que ayudarán al paciente a familiarizarse con la EPOC y conocer los aspectos fundamentales.\n
+        {gmd-check} Vídeos: Se han seleccionado distintos vídeos en los que se muestran casos reales de la vida diaria de pacientes con EPOC, cómo realizar los ejercicios recomendados, y cómo utilizar los inhaladores, entre otros.\n
+        {gmd-check} Registro y control total sobre aspectos fundamentales de la EPOC: El paciente puede llevar un registro diario de exacerbaciones, revisiones médicas ordinarias, índice de masa corporal, ejercicio realizado, tabaco, etc. Todos estos datos se pueden ver cómodamente mediante las gráficas semanales, mensuales y anuales integradas en la aplicación, que a su vez muestran el progreso respecto a la semana, mes o año anterior.\n
+        {gmd-check} Recordatorios de dosis: Se ofrece la posibilidad de establecer alarmas fácilmente para que la aplicación avise al paciente cuando tenga que tomarse una dosis de su medicación.\n
+        {gmd-check} Logros: El paciente puede desbloquear hasta 8 logros, 4 relacionados con el ejercicio físico y otros 4 relacionados con el tabaquismo. Estos conceptos de gamificación incentivan al paciente y pueden mejorar la adherencia al tratamiento de la EPOC.\n
+        {gmd-check} Diagnósticos: La aplicación integra 4 índices relacionados con el diagnóstico de la EPOC, que son: COPD-PS, CAT, BODE y BODEx. El paciente puede obtener un diagnóstico del grado de EPOC mediante la realización de los correspondientes cuestionarios.\n
+        {gmd-check} Escalas: Del mismo modo que los diagnósticos, se incluyen dos escalas: la escala de disnea mMRC y la escala de disnea de Borg.\n
+        <b>Gracias por la confianza depositada en esta aplicación.</b>
+    </string>
+    <string name="about_copdhelp_responsibility">Responsabilidad</string>
+    <string name="about_copdhelp_responsibility_desc">
+        Los contenidos incorporados en esta aplicación no sustituyen el consejo médico y no deben ser considerados bajo ninguna circunstancia reemplazos del mismo. Debido a los constantes avances científicos que se producen en el ámbito del diagnóstico y tratamiento de la EPOC, los autores de esta aplicación no garantizan que la información ofrecida sea completa y precisa, por lo que se exime a los autores de cualquier responsabilidad derivada del uso de la aplicación. Esta aplicación debe ser utilizada como una guía y los profesionales médicos deben utilizar el juicio clínico e individualizar el tratamiento para cada paciente. Para preguntas relacionadas con su enfermedad, síntomas y tratamiento, usted debe buscar el consejo de un profesional de la salud.
+    </string>
+    <string name="about_copdhelp_privacy">Privacidad</string>
+    <string name="about_copdhelp_privacy_desc">
+        Todos los datos registrados de los usuaros son almacenados localmente en el dispositivo móvil. En ningún momento se envían a servidores externos sin el consentimiento previo del usuario.\n
+        La conexión a internet solamente es necesaria para mostrar y reproducir los vídeos.
+    </string>
+    <string name="about_copdhelp_authors">Autores</string>
+    <string name="about_copdhelp_authors_desc">
+        - <b>Álvaro Arcos García</b>. Encargado del desarrollo completo de la aplicación, desde la idea hasta la solución final, y de la adaptación y edición de los contenidos.\n
+        {faw_linkedin_square} https://es.linkedin.com/in/alvaroarcos \n
+        {faw_twitter_square} https://twitter.com/aarcosg \n
+        {faw_github_square} https://github.com/aarcosg \n
+    </string>
+    <string name="about_copdhelp_sources">Fuentes consultadas</string>
+    <string name="about_copdhelp_sources_desc" formatted="false">
+        La información que ofrece la aplicación está basada en las siguientes fuentes:\n
+        - Manual para personas con EPOC. Vivir con EPOC. Disponible en: http://www.juntadeandalucia.es/salud/sites/csalud/contenidos/Informacion_General/p_3_p_3_procesos_asistenciales_integrados/pai/epoc_v3 \n
+        - Manual sobre rehabilitación respiratoria para personas con EPOC. Disponible en: http://www.juntadeandalucia.es/agenciadecalidadsanitaria/reto-msspa/docs/Manual_de_Rehabilitacion_Respiratoria_para_personas_con_EPOC.pdf \n
+        - Enfermedad Pulmonar Obstructiva Crónica. Proceso Asistencial Integrado. Disponible en: http://www.juntadeandalucia.es/agenciadecalidadsanitaria/reto-msspa/docs/enfermedad_pulmonar_obstructiva_cronica.pdf \n
+        - CuidaEPOC. Soporte en el cuidado del paciente con EPOC. Disponible en: http://www.juntadeandalucia.es/agenciadecalidadsanitaria/reto-msspa/docs/manejo_de%20_la%20_terapia%20_inhalada.pdf \n
+        - Conozca cómo vivir con la EPOC. Disponible en: http://www.juntadeandalucia.es/agenciadecalidadsanitaria/reto-msspa/docs/Guia-pacientes.pdf \n
+        - COPD Assessment Test (CAT). Disponible en: http://www.thoracic.org/members/assemblies/assemblies/srn/questionaires/copd.php y http://www.catestonline.org/english/index_Spain.htm \n
+        - Validación de la versión traducida del Chronic Obstructive Pulmonary Disease-Population Screener (COPD-PS). Su utilidad y la del FEV1/FEV6 para el diagnóstico de enfermedad pulmonar obstructiva crónica. Disponible en: http://www.elsevier.es/es-revista-medicina-clinica-2-articulo-validacion-version-traducida-del-ichronic-90157453 \n
+        - The MRC breathlessness scale. Disponible en: http://occmed.oxfordjournals.org/content/58/3/226.full \n
+        - Validation of chronic obstructive pulmonary disease recording in the Clinical Practice Research Datalink (CPRD-GOLD). Disponible en: http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4120321/ \n
+        - Guía alimentaria para pacientes con EPOC. Disponible en: http://www.ms.gba.gov.ar/sitios/hcetrangolo/files/2013/02/Guia_EPOC.pdf \n
+        - Atención integral al paciente con EPOC. Guía de práctica clínica. Disponible en: http://www.guiasalud.es/GPC/GPC_468_EPOC_AP_AE.pdf \n
+        - Development and validation of a model to predict the risk of exacerbations in chronic obstructive pulmonary disease. Disponible en: http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3797610/ \n
+        - Predicting frequent COPD exacerbations using primary care data. Disponible en: http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4644169/ \n
+    </string>
+    <string name="about_copdhelp_image_resources">Recursos gráficos</string>
+    <string name="about_copdhelp_image_resources_desc">
+        Los recursos gráficos utilizados en la aplicación han sido extráidos principalmente de las fuentes consultadas provenientes de la Junta de Andalucía. Todos los derechos corresponden a sus respectivos autores.\n
+        Las imágenes utilizadas para los logros han sido diseñadas por Freepik.com y modificadas por los autores de la aplicación.
+        El resto de imágenes tienen licencia Creative Commons CC0.
+    </string>
+    <string name="about_copdhelp_contact">Contacto</string>
+    <string name="about_copdhelp_contact_desc">
+        Si detecta algún riesgo, incidente o error en la información ofrecida por la aplicación, o desea realizar alguna consulta, puede contactar conmigo enviando un correo electrónico a la dirección ayudaepocapp@gmail.com.
+    </string>
+    <string name="reminder_daily_form_notification">Introduzca su actividad diaria</string>
+    <string name="reminder_daily_form_notification_subtext">Recuerde dedicar 5 minutos a introducir su actividad diaria. Puede desactivar estas notificaciones en los ajustes de la aplicación.</string>
+    <string name="medication">Medicine</string>
+
+
 </resources>

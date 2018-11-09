@@ -22,14 +22,14 @@ public class MedicineTakenBroadcastReceiver extends WakefulBroadcastReceiver {
         MedicineReminder reminder = findMedicineReminder(intent.getLongExtra(RemindersHelper.EXTRA_ID,-1L));
         if(reminder != null){
             saveMedicineTaken(context, reminder);
-            openMainActivity(context,reminder.getId());
+            openMainActivity(context,reminder.getId(), intent.getIntExtra(RemindersHelper.EXTRA_NOTIFICATION_ID,1));
         }
     }
 
-    private void openMainActivity(Context context, Long reminderId) {
+    private void openMainActivity(Context context, Long reminderId, int notificationId) {
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra(RemindersHelper.EXTRA_ID, reminderId);
-        intent.putExtra(RemindersHelper.EXTRA_NOTIFICATION_ID, reminderId);
+        intent.putExtra(RemindersHelper.EXTRA_NOTIFICATION_ID, notificationId);
         intent.addFlags(
                 Intent.FLAG_ACTIVITY_NEW_TASK
                         | Intent.FLAG_ACTIVITY_CLEAR_TOP

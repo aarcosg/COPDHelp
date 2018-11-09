@@ -8,12 +8,11 @@ import com.aarcosg.copdhelp.BuildConfig;
 import com.aarcosg.copdhelp.COPDHelpApplication;
 import com.aarcosg.copdhelp.di.scopes.PerApp;
 import com.aarcosg.copdhelp.utils.PrimaryKeyFactory;
-import com.facebook.stetho.Stetho;
-import com.squareup.leakcanary.LeakCanary;
-import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
+import com.crashlytics.android.Crashlytics;
 
 import dagger.Module;
 import dagger.Provides;
+import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -26,14 +25,14 @@ public class ApplicationModule {
     public ApplicationModule(COPDHelpApplication application) {
         this.mApplication = application;
         if(BuildConfig.DEBUG){
-            LeakCanary.install(mApplication);
+            /*LeakCanary.install(mApplication);
             Stetho.initialize(
                     Stetho.newInitializerBuilder(mApplication)
                             .enableDumpapp(Stetho.defaultDumperPluginsProvider(mApplication))
                             .enableWebKitInspector(RealmInspectorModulesProvider.builder(mApplication).build())
-                            .build());
+                            .build());*/
         }else{
-
+            Fabric.with(mApplication, new Crashlytics());
         }
         setupRealm();
 

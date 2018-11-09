@@ -3,7 +3,6 @@ package com.aarcosg.copdhelp.interactor;
 import android.support.annotation.Nullable;
 
 import com.aarcosg.copdhelp.data.realm.entity.Achievement;
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 
 import java.util.Calendar;
 
@@ -25,7 +24,7 @@ public class AchievementInteractorImpl implements AchievementInteractor {
     @Inject
     public AchievementInteractorImpl(){}
 
-    @RxLogObservable
+
     @Override
     public Observable<RealmResults<Achievement>> realmFindAll(
             @Nullable Func1<RealmQuery<Achievement>, RealmQuery<Achievement>> predicate
@@ -44,7 +43,7 @@ public class AchievementInteractorImpl implements AchievementInteractor {
         return Observable.just(results);
     }
 
-    @RxLogObservable
+
     @SuppressWarnings("unchecked")
     @Override
     public Observable<Achievement> realmFindById(Long id) {
@@ -52,7 +51,7 @@ public class AchievementInteractorImpl implements AchievementInteractor {
                 .equalTo("id",id).findFirst());
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<Achievement> realmCreate(Achievement achievement) {
         Calendar calendar = Calendar.getInstance();
@@ -70,7 +69,7 @@ public class AchievementInteractorImpl implements AchievementInteractor {
         return Observable.just(realmAchievement);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<Achievement> realmUpdate(Long id, Achievement achievement) {
         Calendar calendar = Calendar.getInstance();
@@ -89,7 +88,7 @@ public class AchievementInteractorImpl implements AchievementInteractor {
         return Observable.just(realmAchievement);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<Achievement> realmRemove(Long id) {
         getRealm().beginTransaction();
@@ -100,7 +99,7 @@ public class AchievementInteractorImpl implements AchievementInteractor {
         return Observable.just(realmAchievement);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<Achievement> realmCreateIfNotExists(Achievement achievement) {
         if(getRealm().where(Achievement.class).equalTo("id",achievement.getId()).findFirst() == null){

@@ -52,7 +52,7 @@
                 android:textStyle="bold"
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:fontFamily="sans-serif-light"
-                android:text="@string/medicine"/>
+                android:text="@string/medication"/>
 
             <TextView
                 android:id="@+id/dose_tv"

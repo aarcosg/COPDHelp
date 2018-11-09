@@ -108,14 +108,14 @@
         <item>@string/bmi_state_overweight</item>
         <item>@string/bmi_state_obesity</item>
     </string-array>
-    <string-array name="bmi_icons">
+    <string-array name="bmi_icons" translatable="false">
         <item>gmd_sentiment_neutral</item>
         <item>gmd_sentiment_dissatisfied</item>
         <item>gmd_sentiment_satisfied</item>
         <item>gmd_sentiment_dissatisfied</item>
         <item>gmd_sentiment_very_dissatisfied</item>
     </string-array>
-    <string-array name="medicine">
+    <string-array name="medicine" translatable="false">
         <item>Azitromicina</item>
         <item>Budesonide</item>
         <item>Carboximetilcisteína</item>
@@ -138,7 +138,7 @@
         <item>Umeclidinium</item>
         <item>Vilanterol</item>
     </string-array>
-    <string-array name="medicine_frequency">
+    <string-array name="medicine_frequency" translatable="false">
         <item>2</item>
         <item>4</item>
         <item>6</item>
@@ -146,7 +146,7 @@
         <item>12</item>
         <item>24</item>
     </string-array>
-    <string-array name="exercise_type_icons">
+    <string-array name="exercise_type_icons" translatable="false">
         <item>gmd_directions_walk</item>
         <item>gmd_directions_bike</item>
         <item>cmd_weather_windy</item>
@@ -180,14 +180,14 @@
         <item>@string/living_better_medication</item>
         <item>@string/living_better_getting_worse</item>
     </string-array>
-    <string-array name="scale_mmrc_grades">
+    <string-array name="scale_mmrc_grades" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
     </string-array>
-    <string-array name="scale_borg_grades">
+    <string-array name="scale_borg_grades" translatable="false">
         <item>0</item>
         <item>0.5</item>
         <item>1</item>
@@ -253,8 +253,38 @@
         <item>@string/woman</item>
         <item>@string/man</item>
     </string-array>
-    <string-array name="pref_genre_list_values">
+    <string-array name="pref_genre_list_values" translatable="false">
         <item>0</item>
         <item>1</item>
+    </string-array>
+    <string-array name="medicine_dose">
+        <item>4,5 microgram</item>
+        <item>5 microgram</item>
+        <item>6 microgram</item>
+        <item>10 microgram</item>
+        <item>12 microgram</item>
+        <item>18 microgram</item>
+        <item>22 microgram</item>
+        <item>25 microgram</item>
+        <item>50 microgram</item>
+        <item>62,5 microgram</item>
+        <item>80 microgram</item>
+        <item>92 microgram</item>
+        <item>100 microgram</item>
+        <item>125 microgram</item>
+        <item>150 microgram</item>
+        <item>160 microgram</item>
+        <item>184 microgram</item>
+        <item>200 microgram</item>
+        <item>250 microgram</item>
+        <item>300 microgram</item>
+        <item>400 microgram</item>
+        <item>500 microgram</item>
+        <item>600 microgram</item>
+        <item>700 microgram</item>
+        <item>800 microgram</item>
+        <item>900 microgram</item>
+        <item>1 gramme</item>
+        <item>1,5 grammes</item>
     </string-array>
 </resources>

@@ -9,6 +9,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -241,13 +242,22 @@ public class SmokeEditFragment extends BaseFragment implements SmokeEditView {
     }
 
     private void saveSmoke() {
-        Smoke smoke = new Smoke(
-                Integer.valueOf(mQuantityEt.getText().toString()),
-                mSmokeTime.getTime());
-        if (mSmoke == null) {
-            mSmokeEditPresenter.addRealmObject(smoke);
-        } else {
-            mSmokeEditPresenter.editRealmObject(mSmoke.getId(), smoke);
+        if(TextUtils.isEmpty(mQuantityEt.getText())){
+            mQuantityEt.setError(getString(R.string.required_field));
+            mQuantityEt.requestFocus();
+        }else {
+            int quantity;
+            try{
+                quantity = Integer.valueOf(mQuantityEt.getText().toString());
+            }catch (NumberFormatException e){
+                quantity = 0;
+            }
+            Smoke smoke = new Smoke(quantity, mSmokeTime.getTime());
+            if (mSmoke == null) {
+                mSmokeEditPresenter.addRealmObject(smoke);
+            } else {
+                mSmokeEditPresenter.editRealmObject(mSmoke.getId(), smoke);
+            }
         }
     }
 

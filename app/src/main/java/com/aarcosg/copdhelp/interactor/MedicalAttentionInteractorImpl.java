@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 
 import com.aarcosg.copdhelp.data.realm.entity.MedicalAttention;
 import com.aarcosg.copdhelp.utils.PrimaryKeyFactory;
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 
 import java.util.Calendar;
 
@@ -26,7 +25,7 @@ public class MedicalAttentionInteractorImpl implements MedicalAttentionInteracto
     @Inject
     public MedicalAttentionInteractorImpl(){}
 
-    @RxLogObservable
+
     @Override
     public Observable<RealmResults<MedicalAttention>> realmFindAll(
             @Nullable Func1<RealmQuery<MedicalAttention>, RealmQuery<MedicalAttention>> predicate
@@ -45,7 +44,7 @@ public class MedicalAttentionInteractorImpl implements MedicalAttentionInteracto
         return Observable.just(results);
     }
 
-    @RxLogObservable
+
     @SuppressWarnings("unchecked")
     @Override
     public Observable<MedicalAttention> realmFindById(Long id) {
@@ -53,7 +52,7 @@ public class MedicalAttentionInteractorImpl implements MedicalAttentionInteracto
                 .equalTo("id",id).findFirst());
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<MedicalAttention> realmCreate(MedicalAttention medicalAttention) {
         Calendar calendar = Calendar.getInstance();
@@ -73,7 +72,7 @@ public class MedicalAttentionInteractorImpl implements MedicalAttentionInteracto
         return Observable.just(realmMedicalAttention);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<MedicalAttention> realmUpdate(Long id, MedicalAttention medicalAttention) {
         Calendar calendar = Calendar.getInstance();
@@ -93,7 +92,7 @@ public class MedicalAttentionInteractorImpl implements MedicalAttentionInteracto
         return Observable.just(realmMedicalAttention);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<MedicalAttention> realmRemove(Long id) {
         getRealm().beginTransaction();

@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import com.aarcosg.copdhelp.data.realm.RealmTable;
 import com.aarcosg.copdhelp.data.realm.entity.User;
 import com.aarcosg.copdhelp.utils.PrimaryKeyFactory;
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 
 import javax.inject.Inject;
 
@@ -25,7 +24,7 @@ public class UserInteractorImpl implements UserInteractor {
     @Inject
     public UserInteractorImpl(){}
 
-    @RxLogObservable
+
     @Override
     public Observable<RealmResults<User>> realmFindAll(
             @Nullable Func1<RealmQuery<User>, RealmQuery<User>> predicate
@@ -44,7 +43,7 @@ public class UserInteractorImpl implements UserInteractor {
         return Observable.just(results);
     }
 
-    @RxLogObservable
+
     @SuppressWarnings("unchecked")
     @Override
     public Observable<User> realmFindById(Long id) {
@@ -52,7 +51,7 @@ public class UserInteractorImpl implements UserInteractor {
                 .equalTo("id",id).findFirst());
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<User> realmCreate(User user) {
         getRealm().beginTransaction();
@@ -70,7 +69,7 @@ public class UserInteractorImpl implements UserInteractor {
         return Observable.just(realmUser);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<User> realmUpdate(Long id, User user) {
         getRealm().beginTransaction();
@@ -92,7 +91,7 @@ public class UserInteractorImpl implements UserInteractor {
         return Observable.just(realmUser);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<User> realmRemove(Long id) {
         getRealm().beginTransaction();
@@ -103,7 +102,7 @@ public class UserInteractorImpl implements UserInteractor {
         return Observable.just(realmUser);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<User> updateCOPDIndexResult(Long id, String realmCOPDIndexTable, int result) {
         getRealm().beginTransaction();
@@ -121,7 +120,7 @@ public class UserInteractorImpl implements UserInteractor {
         return Observable.just(realmUser);
     }
 
-    @RxLogObservable
+
     @Override
     public Observable<User> updateCOPDScaleGrade(Long id, String realmCOPDScaleTable, double grade) {
         getRealm().beginTransaction();
