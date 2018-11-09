@@ -3,3 +3,5 @@
 This is the source code for the Android app "COPD Help" available at [Google Play](https://play.google.com/store/apps/details?id=com.aarcosg.copdhelp).   
 
 Código fuente de la aplicación Android "Ayuda EPOC" disponible en [Google Play](https://play.google.com/store/apps/details?id=com.aarcosg.copdhelp).
+
+[![Download COPD Help on Google Play](https://play.google.com/intl/en_us/badges/images/badge_new.png)](https://play.google.com/store/apps/details?id=com.aarcosg.copdhelp)
